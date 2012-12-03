@@ -16,6 +16,7 @@ options {
 	import br.ufsc.inf.ine5426.caneca.interno.Metodo;
 	import br.ufsc.inf.ine5426.caneca.interno.Reporter;
 	import br.ufsc.inf.ine5426.caneca.interno.TabelaDeSimbolos;
+	import br.ufsc.inf.ine5426.caneca.interno.Tipo;
 	import br.ufsc.inf.ine5426.caneca.interno.Variavel;
 	
 	import java.util.Queue;
@@ -36,13 +37,12 @@ options {
 	}
 	
 	public <T extends Escopo> void reportarDefinicao(Boolean definido, String nomeDoMembro, T membro, String tipoDoSimbolo, int linha, int coluna) {
-		String mensagem = null;
+		Reporter reporter = Reporter.fornecerInstancia();
 		if (!definido) {
-			mensagem = "[\%s] [\%s, \%s] [\%s] \%s já definido.";
+			reporter.reportarErro(String.format("[\%s] [\%s, \%s] [\%s] \%s já definido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
 		} else {
-			mensagem = "[\%s] [\%s, \%s] [\%s] \%s definido.";
+			reporter.reportarSucesso(String.format("[\%s] [\%s, \%s] [\%s] \%s definido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
 		}
-		Reporter.fornecerInstancia().reportarSucesso(String.format(mensagem, escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
 	}
 }
 
@@ -73,8 +73,8 @@ iniciarClasse
 			classe.abrir(escopoAtual);
 			escopoAtual = classe;
 			filaDeEscopos.add(escopoAtual);
-			Atributo esse = new Atributo("esse", $IDENTIFICADOR.text);
-			Atributo essa = new Atributo("essa", $IDENTIFICADOR.text);
+			Atributo esse = new Atributo("esse", new Tipo($IDENTIFICADOR.text));
+			Atributo essa = new Atributo("essa", new Tipo($IDENTIFICADOR.text));
 			boolean esseDefinido = classe.definirAtributo(esse);
 			boolean essaDefinida = classe.definirAtributo(essa);
 			reportarDefinicao(esseDefinido, "esse", esse, "atributo", $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
@@ -182,17 +182,18 @@ declaracaoDeAtributo
 		}
 	;
 
-tipo returns [String umTipo]
+tipo returns [Tipo umTipo]
 	: ^(TIPO_ IDENTIFICADOR
 		{
-			umTipo = $IDENTIFICADOR.text;
+			umTipo = new Tipo($IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
 		}
 	 listaDeTipos[umTipo])
 	;
 
-listaDeTipos[String tipoPai]
+listaDeTipos[Tipo tipoPai]
 	: ^(TIPOS_ (tipo
 		{
+			tipoPai.adicionarTipoAninhado($tipo.umTipo);
 		}
 	 )*)
 	;

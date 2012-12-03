@@ -23,7 +23,9 @@ public interface Escopo {
 	
 	public String fornecerNome();
 	
-	public Classe fornecerTipo();
+	public Classe fornecerClasseDoTipo();
+	
+	public Tipo fornecerTipo();
 
 	public Escopo fornecerEscopoPai();
 }

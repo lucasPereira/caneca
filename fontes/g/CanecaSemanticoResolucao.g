@@ -16,6 +16,7 @@ options {
 	import br.ufsc.inf.ine5426.caneca.interno.Metodo;
 	import br.ufsc.inf.ine5426.caneca.interno.Reporter;
 	import br.ufsc.inf.ine5426.caneca.interno.TabelaDeSimbolos;
+	import br.ufsc.inf.ine5426.caneca.interno.Tipo;
 	import br.ufsc.inf.ine5426.caneca.interno.Variavel;
 	
 	import java.util.Queue;
@@ -32,16 +33,15 @@ options {
 	}
 	
 	public <T extends Escopo> void reportarResolucao(String nomeDoMembro, T membro, String tipoDoSimbolo, int linha, int coluna) {
-		String mensagem = null;
+		Reporter reporter = Reporter.fornecerInstancia();
 		if (membro == Classe.NAO_ENCONTRADA ||
 					membro == Atributo.NAO_ENCONTRADO ||
 					membro == Metodo.NAO_ENCONTRADO ||
 					membro == Variavel.NAO_ENCONTRADA) {
-			mensagem = "[\%s] [\%s, \%s] [\%s] \%s não resolvido.";
+			reporter.reportarErro(String.format("[\%s] [\%s, \%s] [\%s] \%s não resolvido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
 		} else {
-			mensagem = "[\%s] [\%s, \%s] [\%s] \%s resolvido.";
+			reporter.reportarSucesso(String.format("[\%s] [\%s, \%s] [\%s] \%s resolvido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
 		}
-		Reporter.fornecerInstancia().reportarSucesso(String.format(mensagem, escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
 	}
 }
 
@@ -83,8 +83,8 @@ terminarClasse
 iniciarMetodo
 	: ^(METODO_ ^(ASSINATURA_ . (ESTATICO)? tipo IDENTIFICADOR .) .)
 		{
-			Classe classe = escopoAtual.resolverClasse($tipo.umTipo);
-			reportarResolucao($tipo.umTipo, classe, "classe", $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			Classe classe = escopoAtual.resolverClasse($tipo.umTipo.fornecerNome());
+			reportarResolucao($tipo.umTipo.fornecerNome(), classe, "classe", $tipo.umTipo.fornecerLinha(), $tipo.umTipo.fornecerColuna());
 			escopoAtual = filaDeEscopos.poll();
 		}
 	;
@@ -141,24 +141,24 @@ terminarBloco
 declaracao
 	: ^(DECLARACAO_ tipo IDENTIFICADOR)
 		{
-			Classe classe = escopoAtual.resolverClasse($tipo.umTipo);
-			reportarResolucao($tipo.umTipo, classe, "classe", $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			Classe classe = escopoAtual.resolverClasse($tipo.umTipo.fornecerNome());
+			reportarResolucao($tipo.umTipo.fornecerNome(), classe, "classe", $tipo.umTipo.fornecerLinha(), $tipo.umTipo.fornecerColuna());
 		}
 	;
 
 declaracaoDeAtributo
 	: ^(ATRIBUTO_ . (ESTATICO)? tipo IDENTIFICADOR (.)?)
 		{
-			Classe classe = escopoAtual.resolverClasse($tipo.umTipo);
-			reportarResolucao($tipo.umTipo, classe, "classe", $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			Classe classe = escopoAtual.resolverClasse($tipo.umTipo.fornecerNome());
+			reportarResolucao($tipo.umTipo.fornecerNome(), classe, "classe", $tipo.umTipo.fornecerLinha(), $tipo.umTipo.fornecerColuna());
 		}
 	;
 
 instanciacao
 	: ^(INSTANCIACAO_ tipo .)
 		{
-			Classe classe = escopoAtual.resolverClasse($tipo.umTipo);
-			reportarResolucao($tipo.umTipo, classe, "classe", $INSTANCIACAO_.getLine(), $INSTANCIACAO_.getCharPositionInLine());
+			Classe classe = escopoAtual.resolverClasse($tipo.umTipo.fornecerNome());
+			reportarResolucao($tipo.umTipo.fornecerNome(), classe, "classe", $tipo.umTipo.fornecerLinha(), $tipo.umTipo.fornecerColuna());
 		}
 	;
 
@@ -194,7 +194,7 @@ referencia
 			reportarResolucao($IDENTIFICADOR.text, referenciaDeMetodo, "metodo", $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
 			referencia = referenciaDeMetodo;
 			if (referenciaDeMetodo != Metodo.NAO_ENCONTRADO) {
-				referencia = new Variavel("retorne", referencia.fornecerTipo().fornecerNome(), 0);
+				referencia = new Variavel("retorne", referencia.fornecerTipo(), 0);
 				referencia.abrir(escopoAtual);
 				referencia.fechar();
 			} else {
@@ -222,7 +222,7 @@ chamada
 				reportarResolucao($IDENTIFICADOR.text, referenciaDeMetodo, "metodo", $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
 				referencia = referenciaDeMetodo;
 				if (referenciaDeMetodo != Metodo.NAO_ENCONTRADO) {
-					referencia = new Variavel("retorne", referencia.fornecerTipo().fornecerNome(), 0);
+					referencia = new Variavel("retorne", referencia.fornecerTipo(), 0);
 					referencia.abrir(escopoAtual);
 					referencia.fechar();
 				} else {
@@ -232,17 +232,18 @@ chamada
 		}
 	;
 
-tipo returns [String umTipo]
+tipo returns [Tipo umTipo]
 	: ^(TIPO_ IDENTIFICADOR
 		{
-			umTipo = $IDENTIFICADOR.text;
+			umTipo = new Tipo($IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
 		}
 	 listaDeTipos[umTipo])
 	;
 
-listaDeTipos[String tipoPai]
+listaDeTipos[Tipo tipoPai]
 	: ^(TIPOS_ (tipo
 		{
+			tipoPai.adicionarTipoAninhado($tipo.umTipo);
 		}
 	 )*)
 	;

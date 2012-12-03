@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public final class Metodo extends EscopoAbstrato {
-	public static final Metodo NAO_ENCONTRADO = new Metodo("metodoNaoEncontrado", Classe.NAO_ENCONTRADA.fornecerNome());
+	public static final Metodo NAO_ENCONTRADO = new Metodo("metodoNaoEncontrado", null);
 	private Map<String, Variavel> argumentos;
 	
-	public Metodo(String nome, String nomeDoTipo) {
-		super(nome, nomeDoTipo);
+	public Metodo(String nome, Tipo tipo) {
+		super(nome, tipo);
 		argumentos = new HashMap<String, Variavel>();
 	}
 	

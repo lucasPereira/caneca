@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaSemanticoResolucao.g 2012-12-03 01:44:44
+// $ANTLR 3.4 fontes/g/CanecaSemanticoResolucao.g 2012-12-03 08:07:20
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 	
@@ -9,6 +9,7 @@
 	import br.ufsc.inf.ine5426.caneca.interno.Metodo;
 	import br.ufsc.inf.ine5426.caneca.interno.Reporter;
 	import br.ufsc.inf.ine5426.caneca.interno.TabelaDeSimbolos;
+	import br.ufsc.inf.ine5426.caneca.interno.Tipo;
 	import br.ufsc.inf.ine5426.caneca.interno.Variavel;
 	
 	import java.util.Queue;
@@ -183,16 +184,15 @@ public class CanecaSemanticoResolucao extends TreeFilter {
     	}
     	
     	public <T extends Escopo> void reportarResolucao(String nomeDoMembro, T membro, String tipoDoSimbolo, int linha, int coluna) {
-    		String mensagem = null;
+    		Reporter reporter = Reporter.fornecerInstancia();
     		if (membro == Classe.NAO_ENCONTRADA ||
     					membro == Atributo.NAO_ENCONTRADO ||
     					membro == Metodo.NAO_ENCONTRADO ||
     					membro == Variavel.NAO_ENCONTRADA) {
-    			mensagem = "[%s] [%s, %s] [%s] %s não resolvido.";
+    			reporter.reportarErro(String.format("[%s] [%s, %s] [%s] %s não resolvido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
     		} else {
-    			mensagem = "[%s] [%s, %s] [%s] %s resolvido.";
+    			reporter.reportarSucesso(String.format("[%s] [%s, %s] [%s] %s resolvido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
     		}
-    		Reporter.fornecerInstancia().reportarSucesso(String.format(mensagem, escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
     	}
 
 
@@ -583,8 +583,7 @@ public class CanecaSemanticoResolucao extends TreeFilter {
     // $ANTLR start "iniciarMetodo"
     // fontes/g/CanecaSemanticoResolucao.g:83:1: iniciarMetodo : ^( METODO_ ^( ASSINATURA_ . ( ESTATICO )? tipo IDENTIFICADOR . ) . ) ;
     public final void iniciarMetodo() throws RecognitionException {
-        CommonTree IDENTIFICADOR2=null;
-        String tipo1 =null;
+        Tipo tipo1 =null;
 
 
         try {
@@ -624,7 +623,7 @@ public class CanecaSemanticoResolucao extends TreeFilter {
             state._fsp--;
             if (state.failed) return ;
 
-            IDENTIFICADOR2=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_iniciarMetodo199); if (state.failed) return ;
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_iniciarMetodo199); if (state.failed) return ;
 
             matchAny(input); if (state.failed) return ;
 
@@ -637,8 +636,8 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
             if ( state.backtracking==1 ) {
-            			Classe classe = escopoAtual.resolverClasse(tipo1);
-            			reportarResolucao(tipo1, classe, "classe", IDENTIFICADOR2.getLine(), IDENTIFICADOR2.getCharPositionInLine());
+            			Classe classe = escopoAtual.resolverClasse(tipo1.fornecerNome());
+            			reportarResolucao(tipo1.fornecerNome(), classe, "classe", tipo1.fornecerLinha(), tipo1.fornecerColuna());
             			escopoAtual = filaDeEscopos.poll();
             		}
 
@@ -844,13 +843,13 @@ public class CanecaSemanticoResolucao extends TreeFilter {
     // $ANTLR start "iniciarBloco"
     // fontes/g/CanecaSemanticoResolucao.g:123:1: iniciarBloco : ^( INSTRUCOES_ ( . )* ) ;
     public final void iniciarBloco() throws RecognitionException {
-        CommonTree INSTRUCOES_3=null;
+        CommonTree INSTRUCOES_2=null;
 
         try {
             // fontes/g/CanecaSemanticoResolucao.g:124:2: ( ^( INSTRUCOES_ ( . )* ) )
             // fontes/g/CanecaSemanticoResolucao.g:124:4: ^( INSTRUCOES_ ( . )* )
             {
-            INSTRUCOES_3=(CommonTree)match(input,INSTRUCOES_,FOLLOW_INSTRUCOES__in_iniciarBloco324); if (state.failed) return ;
+            INSTRUCOES_2=(CommonTree)match(input,INSTRUCOES_,FOLLOW_INSTRUCOES__in_iniciarBloco324); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
@@ -888,7 +887,7 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
             if ( state.backtracking==1 ) {
-            			if (INSTRUCOES_3.hasAncestor(METODO_)) {
+            			if (INSTRUCOES_2.hasAncestor(METODO_)) {
             				escopoAtual = filaDeEscopos.poll();
             			}
             		}
@@ -913,16 +912,16 @@ public class CanecaSemanticoResolucao extends TreeFilter {
     // $ANTLR start "terminarBloco"
     // fontes/g/CanecaSemanticoResolucao.g:132:1: terminarBloco : INSTRUCOES_ ;
     public final void terminarBloco() throws RecognitionException {
-        CommonTree INSTRUCOES_4=null;
+        CommonTree INSTRUCOES_3=null;
 
         try {
             // fontes/g/CanecaSemanticoResolucao.g:133:2: ( INSTRUCOES_ )
             // fontes/g/CanecaSemanticoResolucao.g:133:4: INSTRUCOES_
             {
-            INSTRUCOES_4=(CommonTree)match(input,INSTRUCOES_,FOLLOW_INSTRUCOES__in_terminarBloco345); if (state.failed) return ;
+            INSTRUCOES_3=(CommonTree)match(input,INSTRUCOES_,FOLLOW_INSTRUCOES__in_terminarBloco345); if (state.failed) return ;
 
             if ( state.backtracking==1 ) {
-            			if (INSTRUCOES_4.hasAncestor(METODO_)) {
+            			if (INSTRUCOES_3.hasAncestor(METODO_)) {
             				escopoAtual = filaDeEscopos.poll();
             			}
             		}
@@ -947,8 +946,7 @@ public class CanecaSemanticoResolucao extends TreeFilter {
     // $ANTLR start "declaracao"
     // fontes/g/CanecaSemanticoResolucao.g:141:1: declaracao : ^( DECLARACAO_ tipo IDENTIFICADOR ) ;
     public final void declaracao() throws RecognitionException {
-        CommonTree IDENTIFICADOR6=null;
-        String tipo5 =null;
+        Tipo tipo4 =null;
 
 
         try {
@@ -959,19 +957,19 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
             match(input, Token.DOWN, null); if (state.failed) return ;
             pushFollow(FOLLOW_tipo_in_declaracao363);
-            tipo5=tipo();
+            tipo4=tipo();
 
             state._fsp--;
             if (state.failed) return ;
 
-            IDENTIFICADOR6=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracao365); if (state.failed) return ;
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracao365); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
 
             if ( state.backtracking==1 ) {
-            			Classe classe = escopoAtual.resolverClasse(tipo5);
-            			reportarResolucao(tipo5, classe, "classe", IDENTIFICADOR6.getLine(), IDENTIFICADOR6.getCharPositionInLine());
+            			Classe classe = escopoAtual.resolverClasse(tipo4.fornecerNome());
+            			reportarResolucao(tipo4.fornecerNome(), classe, "classe", tipo4.fornecerLinha(), tipo4.fornecerColuna());
             		}
 
             }
@@ -994,8 +992,7 @@ public class CanecaSemanticoResolucao extends TreeFilter {
     // $ANTLR start "declaracaoDeAtributo"
     // fontes/g/CanecaSemanticoResolucao.g:149:1: declaracaoDeAtributo : ^( ATRIBUTO_ . ( ESTATICO )? tipo IDENTIFICADOR ( . )? ) ;
     public final void declaracaoDeAtributo() throws RecognitionException {
-        CommonTree IDENTIFICADOR8=null;
-        String tipo7 =null;
+        Tipo tipo5 =null;
 
 
         try {
@@ -1027,12 +1024,12 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
             pushFollow(FOLLOW_tipo_in_declaracaoDeAtributo391);
-            tipo7=tipo();
+            tipo5=tipo();
 
             state._fsp--;
             if (state.failed) return ;
 
-            IDENTIFICADOR8=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracaoDeAtributo393); if (state.failed) return ;
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracaoDeAtributo393); if (state.failed) return ;
 
             // fontes/g/CanecaSemanticoResolucao.g:150:49: ( . )?
             int alt6=2;
@@ -1057,8 +1054,8 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
             if ( state.backtracking==1 ) {
-            			Classe classe = escopoAtual.resolverClasse(tipo7);
-            			reportarResolucao(tipo7, classe, "classe", IDENTIFICADOR8.getLine(), IDENTIFICADOR8.getCharPositionInLine());
+            			Classe classe = escopoAtual.resolverClasse(tipo5.fornecerNome());
+            			reportarResolucao(tipo5.fornecerNome(), classe, "classe", tipo5.fornecerLinha(), tipo5.fornecerColuna());
             		}
 
             }
@@ -1081,19 +1078,18 @@ public class CanecaSemanticoResolucao extends TreeFilter {
     // $ANTLR start "instanciacao"
     // fontes/g/CanecaSemanticoResolucao.g:157:1: instanciacao : ^( INSTANCIACAO_ tipo . ) ;
     public final void instanciacao() throws RecognitionException {
-        CommonTree INSTANCIACAO_10=null;
-        String tipo9 =null;
+        Tipo tipo6 =null;
 
 
         try {
             // fontes/g/CanecaSemanticoResolucao.g:158:2: ( ^( INSTANCIACAO_ tipo . ) )
             // fontes/g/CanecaSemanticoResolucao.g:158:4: ^( INSTANCIACAO_ tipo . )
             {
-            INSTANCIACAO_10=(CommonTree)match(input,INSTANCIACAO_,FOLLOW_INSTANCIACAO__in_instanciacao415); if (state.failed) return ;
+            match(input,INSTANCIACAO_,FOLLOW_INSTANCIACAO__in_instanciacao415); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
             pushFollow(FOLLOW_tipo_in_instanciacao417);
-            tipo9=tipo();
+            tipo6=tipo();
 
             state._fsp--;
             if (state.failed) return ;
@@ -1104,8 +1100,8 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
             if ( state.backtracking==1 ) {
-            			Classe classe = escopoAtual.resolverClasse(tipo9);
-            			reportarResolucao(tipo9, classe, "classe", INSTANCIACAO_10.getLine(), INSTANCIACAO_10.getCharPositionInLine());
+            			Classe classe = escopoAtual.resolverClasse(tipo6.fornecerNome());
+            			reportarResolucao(tipo6.fornecerNome(), classe, "classe", tipo6.fornecerLinha(), tipo6.fornecerColuna());
             		}
 
             }
@@ -1129,7 +1125,7 @@ public class CanecaSemanticoResolucao extends TreeFilter {
     // fontes/g/CanecaSemanticoResolucao.g:165:1: referencia : ( ^( REFERENCIA_ identificador= ( IDENTIFICADOR | ESSE | ESSA ) ) | ^( REFERENCIA_ IDENTIFICADOR . ) );
     public final void referencia() throws RecognitionException {
         CommonTree identificador=null;
-        CommonTree IDENTIFICADOR11=null;
+        CommonTree IDENTIFICADOR7=null;
 
         try {
             // fontes/g/CanecaSemanticoResolucao.g:166:2: ( ^( REFERENCIA_ identificador= ( IDENTIFICADOR | ESSE | ESSA ) ) | ^( REFERENCIA_ IDENTIFICADOR . ) )
@@ -1246,7 +1242,7 @@ public class CanecaSemanticoResolucao extends TreeFilter {
                     match(input,REFERENCIA_,FOLLOW_REFERENCIA__in_referencia463); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    IDENTIFICADOR11=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_referencia465); if (state.failed) return ;
+                    IDENTIFICADOR7=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_referencia465); if (state.failed) return ;
 
                     matchAny(input); if (state.failed) return ;
 
@@ -1254,11 +1250,11 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
                     if ( state.backtracking==1 ) {
-                    			Metodo referenciaDeMetodo = escopoAtual.resolverMetodo((IDENTIFICADOR11!=null?IDENTIFICADOR11.getText():null));
-                    			reportarResolucao((IDENTIFICADOR11!=null?IDENTIFICADOR11.getText():null), referenciaDeMetodo, "metodo", IDENTIFICADOR11.getLine(), IDENTIFICADOR11.getCharPositionInLine());
+                    			Metodo referenciaDeMetodo = escopoAtual.resolverMetodo((IDENTIFICADOR7!=null?IDENTIFICADOR7.getText():null));
+                    			reportarResolucao((IDENTIFICADOR7!=null?IDENTIFICADOR7.getText():null), referenciaDeMetodo, "metodo", IDENTIFICADOR7.getLine(), IDENTIFICADOR7.getCharPositionInLine());
                     			referencia = referenciaDeMetodo;
                     			if (referenciaDeMetodo != Metodo.NAO_ENCONTRADO) {
-                    				referencia = new Variavel("retorne", referencia.fornecerTipo().fornecerNome(), 0);
+                    				referencia = new Variavel("retorne", referencia.fornecerTipo(), 0);
                     				referencia.abrir(escopoAtual);
                     				referencia.fechar();
                     			} else {
@@ -1288,8 +1284,8 @@ public class CanecaSemanticoResolucao extends TreeFilter {
     // $ANTLR start "chamada"
     // fontes/g/CanecaSemanticoResolucao.g:206:1: chamada : ( ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ) | ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR . ) );
     public final void chamada() throws RecognitionException {
-        CommonTree IDENTIFICADOR12=null;
-        CommonTree IDENTIFICADOR13=null;
+        CommonTree IDENTIFICADOR8=null;
+        CommonTree IDENTIFICADOR9=null;
 
         try {
             // fontes/g/CanecaSemanticoResolucao.g:207:2: ( ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ) | ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR . ) )
@@ -1363,15 +1359,15 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    IDENTIFICADOR12=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_chamada492); if (state.failed) return ;
+                    IDENTIFICADOR8=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_chamada492); if (state.failed) return ;
 
                     match(input, Token.UP, null); if (state.failed) return ;
 
 
                     if ( state.backtracking==1 ) {
                     			if (referencia != null) {
-                    				Atributo referenciaDeAtributo = referencia.resolverAtributo((IDENTIFICADOR12!=null?IDENTIFICADOR12.getText():null));
-                    				reportarResolucao((IDENTIFICADOR12!=null?IDENTIFICADOR12.getText():null), referenciaDeAtributo, "atributo", IDENTIFICADOR12.getLine(), IDENTIFICADOR12.getCharPositionInLine());
+                    				Atributo referenciaDeAtributo = referencia.resolverAtributo((IDENTIFICADOR8!=null?IDENTIFICADOR8.getText():null));
+                    				reportarResolucao((IDENTIFICADOR8!=null?IDENTIFICADOR8.getText():null), referenciaDeAtributo, "atributo", IDENTIFICADOR8.getLine(), IDENTIFICADOR8.getCharPositionInLine());
                     				referencia = referenciaDeAtributo;
                     				if (referenciaDeAtributo == Atributo.NAO_ENCONTRADO) {
                     					referencia = null;
@@ -1397,7 +1393,7 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    IDENTIFICADOR13=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_chamada511); if (state.failed) return ;
+                    IDENTIFICADOR9=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_chamada511); if (state.failed) return ;
 
                     matchAny(input); if (state.failed) return ;
 
@@ -1406,11 +1402,11 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
                     if ( state.backtracking==1 ) {
                     			if (referencia != null) {
-                    				Metodo referenciaDeMetodo = referencia.resolverMetodo((IDENTIFICADOR13!=null?IDENTIFICADOR13.getText():null));
-                    				reportarResolucao((IDENTIFICADOR13!=null?IDENTIFICADOR13.getText():null), referenciaDeMetodo, "metodo", IDENTIFICADOR13.getLine(), IDENTIFICADOR13.getCharPositionInLine());
+                    				Metodo referenciaDeMetodo = referencia.resolverMetodo((IDENTIFICADOR9!=null?IDENTIFICADOR9.getText():null));
+                    				reportarResolucao((IDENTIFICADOR9!=null?IDENTIFICADOR9.getText():null), referenciaDeMetodo, "metodo", IDENTIFICADOR9.getLine(), IDENTIFICADOR9.getCharPositionInLine());
                     				referencia = referenciaDeMetodo;
                     				if (referenciaDeMetodo != Metodo.NAO_ENCONTRADO) {
-                    					referencia = new Variavel("retorne", referencia.fornecerTipo().fornecerNome(), 0);
+                    					referencia = new Variavel("retorne", referencia.fornecerTipo(), 0);
                     					referencia.abrir(escopoAtual);
                     					referencia.fechar();
                     				} else {
@@ -1439,12 +1435,12 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
     // $ANTLR start "tipo"
-    // fontes/g/CanecaSemanticoResolucao.g:235:1: tipo returns [String umTipo] : ^( TIPO_ IDENTIFICADOR listaDeTipos[umTipo] ) ;
-    public final String tipo() throws RecognitionException {
-        String umTipo = null;
+    // fontes/g/CanecaSemanticoResolucao.g:235:1: tipo returns [Tipo umTipo] : ^( TIPO_ IDENTIFICADOR listaDeTipos[umTipo] ) ;
+    public final Tipo tipo() throws RecognitionException {
+        Tipo umTipo = null;
 
 
-        CommonTree IDENTIFICADOR14=null;
+        CommonTree IDENTIFICADOR10=null;
 
         try {
             // fontes/g/CanecaSemanticoResolucao.g:236:2: ( ^( TIPO_ IDENTIFICADOR listaDeTipos[umTipo] ) )
@@ -1453,10 +1449,10 @@ public class CanecaSemanticoResolucao extends TreeFilter {
             match(input,TIPO_,FOLLOW_TIPO__in_tipo534); if (state.failed) return umTipo;
 
             match(input, Token.DOWN, null); if (state.failed) return umTipo;
-            IDENTIFICADOR14=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipo536); if (state.failed) return umTipo;
+            IDENTIFICADOR10=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipo536); if (state.failed) return umTipo;
 
             if ( state.backtracking==1 ) {
-            			umTipo = (IDENTIFICADOR14!=null?IDENTIFICADOR14.getText():null);
+            			umTipo = new Tipo((IDENTIFICADOR10!=null?IDENTIFICADOR10.getText():null), IDENTIFICADOR10.getLine(), IDENTIFICADOR10.getCharPositionInLine());
             		}
 
             pushFollow(FOLLOW_listaDeTipos_in_tipo544);
@@ -1486,8 +1482,11 @@ public class CanecaSemanticoResolucao extends TreeFilter {
 
 
     // $ANTLR start "listaDeTipos"
-    // fontes/g/CanecaSemanticoResolucao.g:243:1: listaDeTipos[String tipoPai] : ^( TIPOS_ ( tipo )* ) ;
-    public final void listaDeTipos(String tipoPai) throws RecognitionException {
+    // fontes/g/CanecaSemanticoResolucao.g:243:1: listaDeTipos[Tipo tipoPai] : ^( TIPOS_ ( tipo )* ) ;
+    public final void listaDeTipos(Tipo tipoPai) throws RecognitionException {
+        Tipo tipo11 =null;
+
+
         try {
             // fontes/g/CanecaSemanticoResolucao.g:244:2: ( ^( TIPOS_ ( tipo )* ) )
             // fontes/g/CanecaSemanticoResolucao.g:244:4: ^( TIPOS_ ( tipo )* )
@@ -1512,12 +1511,13 @@ public class CanecaSemanticoResolucao extends TreeFilter {
                 	    // fontes/g/CanecaSemanticoResolucao.g:244:14: tipo
                 	    {
                 	    pushFollow(FOLLOW_tipo_in_listaDeTipos562);
-                	    tipo();
+                	    tipo11=tipo();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
 
                 	    if ( state.backtracking==1 ) {
+                	    			tipoPai.adicionarTipoAninhado(tipo11);
                 	    		}
 
                 	    }

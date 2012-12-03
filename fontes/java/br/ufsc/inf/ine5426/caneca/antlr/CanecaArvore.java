@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaArvore.g 2012-12-03 01:44:42
+// $ANTLR 3.4 fontes/g/CanecaArvore.g 2012-12-03 08:07:18
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 
@@ -418,7 +418,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_interfaces.add(interfaces4.getTree());
 
                     // AST REWRITE
-                    // elements: interfaces, cabecalho
+                    // elements: cabecalho, interfaces
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -884,7 +884,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: IDENTIFICADOR, IDENTIFICADOR, IDENTIFICADOR_DE_PACOTE
+                    // elements: IDENTIFICADOR, IDENTIFICADOR_DE_PACOTE, IDENTIFICADOR
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1083,7 +1083,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_corpoDaClasse.add(corpoDaClasse23.getTree());
 
             // AST REWRITE
-            // elements: listaDeTiposGenericos, listaDeInterfaces, modificadorDeAcessoFeminino, corpoDaClasse, IDENTIFICADOR
+            // elements: listaDeInterfaces, corpoDaClasse, IDENTIFICADOR, listaDeTiposGenericos, modificadorDeAcessoFeminino
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1224,7 +1224,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_corpoDaInterface.add(corpoDaInterface29.getTree());
 
             // AST REWRITE
-            // elements: listaDeInterfaces, listaDeTiposGenericos, corpoDaInterface, modificadorDeAcessoFeminino, IDENTIFICADOR
+            // elements: corpoDaInterface, listaDeInterfaces, modificadorDeAcessoFeminino, IDENTIFICADOR, listaDeTiposGenericos
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1365,7 +1365,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: construtores, metodos, destrutor, atributos
+            // elements: atributos, destrutor, metodos, construtores
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1480,7 +1480,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: atributos, assinaturasDeMetodos
+            // elements: assinaturasDeMetodos, atributos
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2111,7 +2111,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: modificadorDeAcessoMasculino, IDENTIFICADOR, tipo, atribuicao, ESTATICO
+            // elements: ESTATICO, modificadorDeAcessoMasculino, atribuicao, IDENTIFICADOR, tipo
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2226,7 +2226,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_blocoDeInstrucoes.add(blocoDeInstrucoes53.getTree());
 
             // AST REWRITE
-            // elements: assinaturaDeConstrutor, blocoDeInstrucoes
+            // elements: blocoDeInstrucoes, assinaturaDeConstrutor
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2321,7 +2321,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_blocoDeInstrucoes.add(blocoDeInstrucoes55.getTree());
 
             // AST REWRITE
-            // elements: assinaturaDeDestrutor, blocoDeInstrucoes
+            // elements: blocoDeInstrucoes, assinaturaDeDestrutor
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2416,7 +2416,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_blocoDeInstrucoes.add(blocoDeInstrucoes57.getTree());
 
             // AST REWRITE
-            // elements: assinaturaDeMetodo, blocoDeInstrucoes
+            // elements: blocoDeInstrucoes, assinaturaDeMetodo
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2527,7 +2527,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeArgumentos.add(listaDeArgumentos61.getTree());
 
             // AST REWRITE
-            // elements: listaDeArgumentos, IDENTIFICADOR, modificadorDeAcessoMasculino
+            // elements: listaDeArgumentos, modificadorDeAcessoMasculino, IDENTIFICADOR
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2642,7 +2642,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeArgumentos.add(listaDeArgumentos65.getTree());
 
             // AST REWRITE
-            // elements: IDENTIFICADOR, modificadorDeAcessoMasculino, listaDeArgumentos
+            // elements: listaDeArgumentos, IDENTIFICADOR, modificadorDeAcessoMasculino
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2793,7 +2793,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeArgumentos.add(listaDeArgumentos71.getTree());
 
             // AST REWRITE
-            // elements: tipo, modificadorDeAcessoMasculino, listaDeArgumentos, IDENTIFICADOR, ESTATICO
+            // elements: IDENTIFICADOR, ESTATICO, listaDeArgumentos, tipo, modificadorDeAcessoMasculino
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -3917,7 +3917,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeInterfaces.add(listaDeInterfaces98.getTree());
 
             // AST REWRITE
-            // elements: IDENTIFICADOR, listaDeInterfaces
+            // elements: listaDeInterfaces, IDENTIFICADOR
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4011,7 +4011,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeTipos.add(listaDeTipos100.getTree());
 
             // AST REWRITE
-            // elements: IDENTIFICADOR, listaDeTipos
+            // elements: listaDeTipos, IDENTIFICADOR
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5492,7 +5492,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: chamada, seletor
+            // elements: seletor, chamada
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -5775,7 +5775,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: IDENTIFICADOR, listaDeParametros
+                    // elements: listaDeParametros, IDENTIFICADOR
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -6029,7 +6029,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeParametros.add(listaDeParametros153.getTree());
 
             // AST REWRITE
-            // elements: listaDeParametros, tipo
+            // elements: tipo, listaDeParametros
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6363,7 +6363,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: expressao, blocoDeInstrucoes, blocoDeInstrucoes
+            // elements: blocoDeInstrucoes, blocoDeInstrucoes, expressao
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6664,7 +6664,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_blocoDeInstrucoes.add(blocoDeInstrucoes180.getTree());
 
             // AST REWRITE
-            // elements: expressao, declaracao, blocoDeInstrucoes
+            // elements: declaracao, blocoDeInstrucoes, expressao
             // token labels: 
             // rule labels: retval
             // token list labels: 

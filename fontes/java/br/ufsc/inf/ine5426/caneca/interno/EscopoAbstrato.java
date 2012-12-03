@@ -5,30 +5,26 @@ import java.util.Map;
 public abstract class EscopoAbstrato implements Escopo {
 	private Escopo escopoPai;
 	private String nome;
-	private String nomeDoTipo;
+	private Tipo tipo;
 	
 	public EscopoAbstrato(String nome) {
 		this(nome, null);
 	}
 	
-	public EscopoAbstrato(String nome, String nomeDoTipo) {
+	public EscopoAbstrato(String nome, Tipo tipo) {
 		this.nome = nome;
-		this.nomeDoTipo = nomeDoTipo;
+		this.tipo = tipo;
 	}
 	
 	@Override
 	public final void abrir(Escopo escopoPai) {
-		if (!(this instanceof Variavel || this instanceof Atributo)) {
-			System.out.println(String.format("[%s] Escopo aberto.", fornecerNome()));
-		}
+		Reporter.fornecerInstancia().reportarAberturaDeEscopo(this);
 		this.escopoPai = escopoPai;
 	}
 	
 	@Override
 	public final Escopo fechar() {
-		if (!(this instanceof Variavel || this instanceof Atributo)) {
-			System.out.println(String.format("[%s] Escopo fechado.", fornecerNome()));
-		}
+		Reporter.fornecerInstancia().reportarFechamentoDeEscopo(this);
 		return escopoPai;
 	}
 	
@@ -78,11 +74,13 @@ public abstract class EscopoAbstrato implements Escopo {
 	}
 	
 	@Override
-	public final Classe fornecerTipo() {
-		if (nomeDoTipo == null) {
-			return Classe.NAO_ENCONTRADA;
-		}
-		return resolverClasse(nomeDoTipo);
+	public final Classe fornecerClasseDoTipo() {
+		return (tipo == null) ? Classe.NAO_ENCONTRADA : resolverClasse(tipo.fornecerNome());
+	}
+	
+	@Override
+	public final Tipo fornecerTipo() {
+		return tipo;
 	}
 	
 	@Override

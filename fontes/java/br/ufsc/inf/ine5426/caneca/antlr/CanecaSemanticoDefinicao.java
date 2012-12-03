@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaSemanticoDefinicao.g 2012-12-03 01:44:43
+// $ANTLR 3.4 fontes/g/CanecaSemanticoDefinicao.g 2012-12-03 08:07:19
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 	
@@ -9,6 +9,7 @@
 	import br.ufsc.inf.ine5426.caneca.interno.Metodo;
 	import br.ufsc.inf.ine5426.caneca.interno.Reporter;
 	import br.ufsc.inf.ine5426.caneca.interno.TabelaDeSimbolos;
+	import br.ufsc.inf.ine5426.caneca.interno.Tipo;
 	import br.ufsc.inf.ine5426.caneca.interno.Variavel;
 	
 	import java.util.Queue;
@@ -187,13 +188,12 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
     	}
     	
     	public <T extends Escopo> void reportarDefinicao(Boolean definido, String nomeDoMembro, T membro, String tipoDoSimbolo, int linha, int coluna) {
-    		String mensagem = null;
+    		Reporter reporter = Reporter.fornecerInstancia();
     		if (!definido) {
-    			mensagem = "[%s] [%s, %s] [%s] %s já definido.";
+    			reporter.reportarErro(String.format("[%s] [%s, %s] [%s] %s já definido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
     		} else {
-    			mensagem = "[%s] [%s, %s] [%s] %s definido.";
+    			reporter.reportarSucesso(String.format("[%s] [%s, %s] [%s] %s definido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
     		}
-    		Reporter.fornecerInstancia().reportarSucesso(String.format(mensagem, escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
     	}
 
 
@@ -490,9 +490,8 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
             			classe.abrir(escopoAtual);
             			escopoAtual = classe;
             			filaDeEscopos.add(escopoAtual);
-            			
-            			Atributo esse = new Atributo("esse", (IDENTIFICADOR1!=null?IDENTIFICADOR1.getText():null));
-            			Atributo essa = new Atributo("essa", (IDENTIFICADOR1!=null?IDENTIFICADOR1.getText():null));
+            			Atributo esse = new Atributo("esse", new Tipo((IDENTIFICADOR1!=null?IDENTIFICADOR1.getText():null)));
+            			Atributo essa = new Atributo("essa", new Tipo((IDENTIFICADOR1!=null?IDENTIFICADOR1.getText():null)));
             			boolean esseDefinido = classe.definirAtributo(esse);
             			boolean essaDefinida = classe.definirAtributo(essa);
             			reportarDefinicao(esseDefinido, "esse", esse, "atributo", IDENTIFICADOR1.getLine(), IDENTIFICADOR1.getCharPositionInLine());
@@ -521,11 +520,11 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "terminarClasse"
-    // fontes/g/CanecaSemanticoDefinicao.g:90:1: terminarClasse : CLASSE_ ;
+    // fontes/g/CanecaSemanticoDefinicao.g:89:1: terminarClasse : CLASSE_ ;
     public final void terminarClasse() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:91:2: ( CLASSE_ )
-            // fontes/g/CanecaSemanticoDefinicao.g:91:4: CLASSE_
+            // fontes/g/CanecaSemanticoDefinicao.g:90:2: ( CLASSE_ )
+            // fontes/g/CanecaSemanticoDefinicao.g:90:4: CLASSE_
             {
             match(input,CLASSE_,FOLLOW_CLASSE__in_terminarClasse154); if (state.failed) return ;
 
@@ -552,15 +551,15 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "iniciarMetodo"
-    // fontes/g/CanecaSemanticoDefinicao.g:98:1: iniciarMetodo : ^( METODO_ ^( ASSINATURA_ . ( ESTATICO )? tipo IDENTIFICADOR . ) . ) ;
+    // fontes/g/CanecaSemanticoDefinicao.g:97:1: iniciarMetodo : ^( METODO_ ^( ASSINATURA_ . ( ESTATICO )? tipo IDENTIFICADOR . ) . ) ;
     public final void iniciarMetodo() throws RecognitionException {
         CommonTree IDENTIFICADOR2=null;
-        String tipo3 =null;
+        Tipo tipo3 =null;
 
 
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:99:2: ( ^( METODO_ ^( ASSINATURA_ . ( ESTATICO )? tipo IDENTIFICADOR . ) . ) )
-            // fontes/g/CanecaSemanticoDefinicao.g:99:4: ^( METODO_ ^( ASSINATURA_ . ( ESTATICO )? tipo IDENTIFICADOR . ) . )
+            // fontes/g/CanecaSemanticoDefinicao.g:98:2: ( ^( METODO_ ^( ASSINATURA_ . ( ESTATICO )? tipo IDENTIFICADOR . ) . ) )
+            // fontes/g/CanecaSemanticoDefinicao.g:98:4: ^( METODO_ ^( ASSINATURA_ . ( ESTATICO )? tipo IDENTIFICADOR . ) . )
             {
             match(input,METODO_,FOLLOW_METODO__in_iniciarMetodo170); if (state.failed) return ;
 
@@ -570,7 +569,7 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
             match(input, Token.DOWN, null); if (state.failed) return ;
             matchAny(input); if (state.failed) return ;
 
-            // fontes/g/CanecaSemanticoDefinicao.g:99:30: ( ESTATICO )?
+            // fontes/g/CanecaSemanticoDefinicao.g:98:30: ( ESTATICO )?
             int alt3=2;
             int LA3_0 = input.LA(1);
 
@@ -579,7 +578,7 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
             }
             switch (alt3) {
                 case 1 :
-                    // fontes/g/CanecaSemanticoDefinicao.g:99:31: ESTATICO
+                    // fontes/g/CanecaSemanticoDefinicao.g:98:31: ESTATICO
                     {
                     match(input,ESTATICO,FOLLOW_ESTATICO_in_iniciarMetodo178); if (state.failed) return ;
 
@@ -634,11 +633,11 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "terminarMetodo"
-    // fontes/g/CanecaSemanticoDefinicao.g:110:1: terminarMetodo : METODO_ ;
+    // fontes/g/CanecaSemanticoDefinicao.g:109:1: terminarMetodo : METODO_ ;
     public final void terminarMetodo() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:111:2: ( METODO_ )
-            // fontes/g/CanecaSemanticoDefinicao.g:111:4: METODO_
+            // fontes/g/CanecaSemanticoDefinicao.g:110:2: ( METODO_ )
+            // fontes/g/CanecaSemanticoDefinicao.g:110:4: METODO_
             {
             match(input,METODO_,FOLLOW_METODO__in_terminarMetodo205); if (state.failed) return ;
 
@@ -665,11 +664,11 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "iniciarConstrutor"
-    // fontes/g/CanecaSemanticoDefinicao.g:118:1: iniciarConstrutor : ^( CONSTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . ) ;
+    // fontes/g/CanecaSemanticoDefinicao.g:117:1: iniciarConstrutor : ^( CONSTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . ) ;
     public final void iniciarConstrutor() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:119:2: ( ^( CONSTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . ) )
-            // fontes/g/CanecaSemanticoDefinicao.g:119:4: ^( CONSTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . )
+            // fontes/g/CanecaSemanticoDefinicao.g:118:2: ( ^( CONSTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . ) )
+            // fontes/g/CanecaSemanticoDefinicao.g:118:4: ^( CONSTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . )
             {
             match(input,CONSTRUTOR_,FOLLOW_CONSTRUTOR__in_iniciarConstrutor221); if (state.failed) return ;
 
@@ -712,11 +711,11 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "terminarConstrutor"
-    // fontes/g/CanecaSemanticoDefinicao.g:124:1: terminarConstrutor : CONSTRUTOR_ ;
+    // fontes/g/CanecaSemanticoDefinicao.g:123:1: terminarConstrutor : CONSTRUTOR_ ;
     public final void terminarConstrutor() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:125:2: ( CONSTRUTOR_ )
-            // fontes/g/CanecaSemanticoDefinicao.g:125:4: CONSTRUTOR_
+            // fontes/g/CanecaSemanticoDefinicao.g:124:2: ( CONSTRUTOR_ )
+            // fontes/g/CanecaSemanticoDefinicao.g:124:4: CONSTRUTOR_
             {
             match(input,CONSTRUTOR_,FOLLOW_CONSTRUTOR__in_terminarConstrutor249); if (state.failed) return ;
 
@@ -741,11 +740,11 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "iniciarDestrutor"
-    // fontes/g/CanecaSemanticoDefinicao.g:130:1: iniciarDestrutor : ^( DESTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . ) ;
+    // fontes/g/CanecaSemanticoDefinicao.g:129:1: iniciarDestrutor : ^( DESTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . ) ;
     public final void iniciarDestrutor() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:131:2: ( ^( DESTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . ) )
-            // fontes/g/CanecaSemanticoDefinicao.g:131:4: ^( DESTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . )
+            // fontes/g/CanecaSemanticoDefinicao.g:130:2: ( ^( DESTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . ) )
+            // fontes/g/CanecaSemanticoDefinicao.g:130:4: ^( DESTRUTOR_ ^( ASSINATURA_ . IDENTIFICADOR . ) . )
             {
             match(input,DESTRUTOR_,FOLLOW_DESTRUTOR__in_iniciarDestrutor265); if (state.failed) return ;
 
@@ -788,11 +787,11 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "terminarDestrutor"
-    // fontes/g/CanecaSemanticoDefinicao.g:136:1: terminarDestrutor : DESTRUTOR_ ;
+    // fontes/g/CanecaSemanticoDefinicao.g:135:1: terminarDestrutor : DESTRUTOR_ ;
     public final void terminarDestrutor() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:137:2: ( DESTRUTOR_ )
-            // fontes/g/CanecaSemanticoDefinicao.g:137:4: DESTRUTOR_
+            // fontes/g/CanecaSemanticoDefinicao.g:136:2: ( DESTRUTOR_ )
+            // fontes/g/CanecaSemanticoDefinicao.g:136:4: DESTRUTOR_
             {
             match(input,DESTRUTOR_,FOLLOW_DESTRUTOR__in_terminarDestrutor293); if (state.failed) return ;
 
@@ -817,19 +816,19 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "iniciarBloco"
-    // fontes/g/CanecaSemanticoDefinicao.g:142:1: iniciarBloco : ^( INSTRUCOES_ ( . )* ) ;
+    // fontes/g/CanecaSemanticoDefinicao.g:141:1: iniciarBloco : ^( INSTRUCOES_ ( . )* ) ;
     public final void iniciarBloco() throws RecognitionException {
         CommonTree INSTRUCOES_4=null;
 
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:143:2: ( ^( INSTRUCOES_ ( . )* ) )
-            // fontes/g/CanecaSemanticoDefinicao.g:143:4: ^( INSTRUCOES_ ( . )* )
+            // fontes/g/CanecaSemanticoDefinicao.g:142:2: ( ^( INSTRUCOES_ ( . )* ) )
+            // fontes/g/CanecaSemanticoDefinicao.g:142:4: ^( INSTRUCOES_ ( . )* )
             {
             INSTRUCOES_4=(CommonTree)match(input,INSTRUCOES_,FOLLOW_INSTRUCOES__in_iniciarBloco309); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemanticoDefinicao.g:143:18: ( . )*
+                // fontes/g/CanecaSemanticoDefinicao.g:142:18: ( . )*
                 loop4:
                 do {
                     int alt4=2;
@@ -845,7 +844,7 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
                     switch (alt4) {
                 	case 1 :
-                	    // fontes/g/CanecaSemanticoDefinicao.g:143:19: .
+                	    // fontes/g/CanecaSemanticoDefinicao.g:142:19: .
                 	    {
                 	    matchAny(input); if (state.failed) return ;
 
@@ -889,13 +888,13 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "terminarBloco"
-    // fontes/g/CanecaSemanticoDefinicao.g:154:1: terminarBloco : INSTRUCOES_ ;
+    // fontes/g/CanecaSemanticoDefinicao.g:153:1: terminarBloco : INSTRUCOES_ ;
     public final void terminarBloco() throws RecognitionException {
         CommonTree INSTRUCOES_5=null;
 
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:155:2: ( INSTRUCOES_ )
-            // fontes/g/CanecaSemanticoDefinicao.g:155:4: INSTRUCOES_
+            // fontes/g/CanecaSemanticoDefinicao.g:154:2: ( INSTRUCOES_ )
+            // fontes/g/CanecaSemanticoDefinicao.g:154:4: INSTRUCOES_
             {
             INSTRUCOES_5=(CommonTree)match(input,INSTRUCOES_,FOLLOW_INSTRUCOES__in_terminarBloco330); if (state.failed) return ;
 
@@ -924,15 +923,15 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "declaracao"
-    // fontes/g/CanecaSemanticoDefinicao.g:164:1: declaracao : ^( DECLARACAO_ tipo IDENTIFICADOR ) ;
+    // fontes/g/CanecaSemanticoDefinicao.g:163:1: declaracao : ^( DECLARACAO_ tipo IDENTIFICADOR ) ;
     public final void declaracao() throws RecognitionException {
         CommonTree IDENTIFICADOR6=null;
-        String tipo7 =null;
+        Tipo tipo7 =null;
 
 
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:165:2: ( ^( DECLARACAO_ tipo IDENTIFICADOR ) )
-            // fontes/g/CanecaSemanticoDefinicao.g:165:4: ^( DECLARACAO_ tipo IDENTIFICADOR )
+            // fontes/g/CanecaSemanticoDefinicao.g:164:2: ( ^( DECLARACAO_ tipo IDENTIFICADOR ) )
+            // fontes/g/CanecaSemanticoDefinicao.g:164:4: ^( DECLARACAO_ tipo IDENTIFICADOR )
             {
             match(input,DECLARACAO_,FOLLOW_DECLARACAO__in_declaracao346); if (state.failed) return ;
 
@@ -974,22 +973,22 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "declaracaoDeAtributo"
-    // fontes/g/CanecaSemanticoDefinicao.g:175:1: declaracaoDeAtributo : ^( ATRIBUTO_ . ( ESTATICO )? tipo IDENTIFICADOR ( . )? ) ;
+    // fontes/g/CanecaSemanticoDefinicao.g:174:1: declaracaoDeAtributo : ^( ATRIBUTO_ . ( ESTATICO )? tipo IDENTIFICADOR ( . )? ) ;
     public final void declaracaoDeAtributo() throws RecognitionException {
         CommonTree IDENTIFICADOR8=null;
-        String tipo9 =null;
+        Tipo tipo9 =null;
 
 
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:176:2: ( ^( ATRIBUTO_ . ( ESTATICO )? tipo IDENTIFICADOR ( . )? ) )
-            // fontes/g/CanecaSemanticoDefinicao.g:176:4: ^( ATRIBUTO_ . ( ESTATICO )? tipo IDENTIFICADOR ( . )? )
+            // fontes/g/CanecaSemanticoDefinicao.g:175:2: ( ^( ATRIBUTO_ . ( ESTATICO )? tipo IDENTIFICADOR ( . )? ) )
+            // fontes/g/CanecaSemanticoDefinicao.g:175:4: ^( ATRIBUTO_ . ( ESTATICO )? tipo IDENTIFICADOR ( . )? )
             {
             match(input,ATRIBUTO_,FOLLOW_ATRIBUTO__in_declaracaoDeAtributo367); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
             matchAny(input); if (state.failed) return ;
 
-            // fontes/g/CanecaSemanticoDefinicao.g:176:18: ( ESTATICO )?
+            // fontes/g/CanecaSemanticoDefinicao.g:175:18: ( ESTATICO )?
             int alt5=2;
             int LA5_0 = input.LA(1);
 
@@ -998,7 +997,7 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
             }
             switch (alt5) {
                 case 1 :
-                    // fontes/g/CanecaSemanticoDefinicao.g:176:19: ESTATICO
+                    // fontes/g/CanecaSemanticoDefinicao.g:175:19: ESTATICO
                     {
                     match(input,ESTATICO,FOLLOW_ESTATICO_in_declaracaoDeAtributo372); if (state.failed) return ;
 
@@ -1016,7 +1015,7 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
             IDENTIFICADOR8=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracaoDeAtributo378); if (state.failed) return ;
 
-            // fontes/g/CanecaSemanticoDefinicao.g:176:49: ( . )?
+            // fontes/g/CanecaSemanticoDefinicao.g:175:49: ( . )?
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1025,7 +1024,7 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
             }
             switch (alt6) {
                 case 1 :
-                    // fontes/g/CanecaSemanticoDefinicao.g:176:50: .
+                    // fontes/g/CanecaSemanticoDefinicao.g:175:50: .
                     {
                     matchAny(input); if (state.failed) return ;
 
@@ -1064,16 +1063,16 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "tipo"
-    // fontes/g/CanecaSemanticoDefinicao.g:186:1: tipo returns [String umTipo] : ^( TIPO_ IDENTIFICADOR listaDeTipos[umTipo] ) ;
-    public final String tipo() throws RecognitionException {
-        String umTipo = null;
+    // fontes/g/CanecaSemanticoDefinicao.g:185:1: tipo returns [Tipo umTipo] : ^( TIPO_ IDENTIFICADOR listaDeTipos[umTipo] ) ;
+    public final Tipo tipo() throws RecognitionException {
+        Tipo umTipo = null;
 
 
         CommonTree IDENTIFICADOR10=null;
 
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:187:2: ( ^( TIPO_ IDENTIFICADOR listaDeTipos[umTipo] ) )
-            // fontes/g/CanecaSemanticoDefinicao.g:187:4: ^( TIPO_ IDENTIFICADOR listaDeTipos[umTipo] )
+            // fontes/g/CanecaSemanticoDefinicao.g:186:2: ( ^( TIPO_ IDENTIFICADOR listaDeTipos[umTipo] ) )
+            // fontes/g/CanecaSemanticoDefinicao.g:186:4: ^( TIPO_ IDENTIFICADOR listaDeTipos[umTipo] )
             {
             match(input,TIPO_,FOLLOW_TIPO__in_tipo404); if (state.failed) return umTipo;
 
@@ -1081,7 +1080,7 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
             IDENTIFICADOR10=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipo406); if (state.failed) return umTipo;
 
             if ( state.backtracking==1 ) {
-            			umTipo = (IDENTIFICADOR10!=null?IDENTIFICADOR10.getText():null);
+            			umTipo = new Tipo((IDENTIFICADOR10!=null?IDENTIFICADOR10.getText():null), IDENTIFICADOR10.getLine(), IDENTIFICADOR10.getCharPositionInLine());
             		}
 
             pushFollow(FOLLOW_listaDeTipos_in_tipo414);
@@ -1111,17 +1110,20 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
 
     // $ANTLR start "listaDeTipos"
-    // fontes/g/CanecaSemanticoDefinicao.g:194:1: listaDeTipos[String tipoPai] : ^( TIPOS_ ( tipo )* ) ;
-    public final void listaDeTipos(String tipoPai) throws RecognitionException {
+    // fontes/g/CanecaSemanticoDefinicao.g:193:1: listaDeTipos[Tipo tipoPai] : ^( TIPOS_ ( tipo )* ) ;
+    public final void listaDeTipos(Tipo tipoPai) throws RecognitionException {
+        Tipo tipo11 =null;
+
+
         try {
-            // fontes/g/CanecaSemanticoDefinicao.g:195:2: ( ^( TIPOS_ ( tipo )* ) )
-            // fontes/g/CanecaSemanticoDefinicao.g:195:4: ^( TIPOS_ ( tipo )* )
+            // fontes/g/CanecaSemanticoDefinicao.g:194:2: ( ^( TIPOS_ ( tipo )* ) )
+            // fontes/g/CanecaSemanticoDefinicao.g:194:4: ^( TIPOS_ ( tipo )* )
             {
             match(input,TIPOS_,FOLLOW_TIPOS__in_listaDeTipos429); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemanticoDefinicao.g:195:13: ( tipo )*
+                // fontes/g/CanecaSemanticoDefinicao.g:194:13: ( tipo )*
                 loop7:
                 do {
                     int alt7=2;
@@ -1134,15 +1136,16 @@ public class CanecaSemanticoDefinicao extends TreeFilter {
 
                     switch (alt7) {
                 	case 1 :
-                	    // fontes/g/CanecaSemanticoDefinicao.g:195:14: tipo
+                	    // fontes/g/CanecaSemanticoDefinicao.g:194:14: tipo
                 	    {
                 	    pushFollow(FOLLOW_tipo_in_listaDeTipos432);
-                	    tipo();
+                	    tipo11=tipo();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
 
                 	    if ( state.backtracking==1 ) {
+                	    			tipoPai.adicionarTipoAninhado(tipo11);
                 	    		}
 
                 	    }
