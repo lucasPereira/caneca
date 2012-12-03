@@ -20,6 +20,7 @@ relatorios=${construcao}/relatorios
 relatorioAnaliseLexica=${relatorios}/analiseLexica.txt
 relatorioAnaliseSintatica=${relatorios}/analiseSintatica.txt
 relatorioAnaliseArvore=${relatorios}/analiseArvore.txt
+relatorioAnaliseSemantica=${relatorios}/analiseSemantica.txt
 relatorioErroExecucao=${relatorios}/erroExecucao.txt
 relatorioSaidaExecucao=${relatorios}/saidaExecucao.txt
 
@@ -27,17 +28,29 @@ recursos=recursos
 recursoEspecificacaoDoGEdit=${recursos}/outros/especificacaoDoGEdit.xml
 
 nomeDoAnalisadorLexico=CanecaLexico
-nomeDoAnalisadorSintatico=CanecaSintatico
-nomeDoAnalisadorArvore=CanecaArvore
 gLexico=${fontesGramaticas}/${nomeDoAnalisadorLexico}.g
 javaLexico=${fontesJavaAntlr}/${nomeDoAnalisadorLexico}.java
 tokensLexico=${fontesJavaAntlr}/${nomeDoAnalisadorLexico}.tokens
+
+nomeDoAnalisadorSintatico=CanecaSintatico
 gSintatico=${fontesGramaticas}/${nomeDoAnalisadorSintatico}.g
 javaSintatico=${fontesJavaAntlr}/${nomeDoAnalisadorSintatico}.java
 tokensSintatico=${fontesJavaAntlr}/${nomeDoAnalisadorSintatico}.tokens
+
+nomeDoAnalisadorArvore=CanecaArvore
 gArvore=${fontesGramaticas}/${nomeDoAnalisadorArvore}.g
 javaArvore=${fontesJavaAntlr}/${nomeDoAnalisadorArvore}.java
 tokensArvore=${fontesJavaAntlr}/${nomeDoAnalisadorArvore}.tokens
+
+nomeDoAnalisadorSemanticoDefinicao=CanecaSemanticoDefinicao
+gSemanticoDefinicao=${fontesGramaticas}/${nomeDoAnalisadorSemanticoDefinicao}.g
+javaSemanticoDefinicao=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoDefinicao}.java
+tokensSemanticoDefinicao=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoDefinicao}.tokens
+
+nomeDoAnalisadorSemanticoResolucao=CanecaSemanticoResolucao
+gSemanticoResolucao=${fontesGramaticas}/${nomeDoAnalisadorSemanticoResolucao}.g
+javaSemanticoResolucao=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoResolucao}.java
+tokensSemanticoResolucao=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoResolucao}.tokens
 
 gerados=gerados
 geradosHtml=${gerados}/html
@@ -73,19 +86,13 @@ criarDiretorios() {
 	mkdir -p ${geradosHtml};
 }
 
-gerarAnalisadorLexico() {
-	echo ":gerarAnalisadorLexico";
+gerarAnalisadores() {
+	echo ":gerarAnalisadores";
 	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gLexico} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseLexica};
-}
-
-gerarAnalisadorSintatico() {
-	echo ":gerarAnalisadorSintatico";
 	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gSintatico} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseSintatica};
-}
-
-gerarAnalisadorArvore() {
-	echo ":gerarAnalisadorArvore";
 	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gArvore} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseArvore};
+	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gSemanticoDefinicao} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseSemantica};
+	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gSemanticoResolucao} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseSemantica};
 }
 
 compilarFontesJava() {
@@ -101,13 +108,11 @@ adicionarCanecaAoGEdit() {
 }
 
 construir() {
-	limpar
-	criarDiretorios
-	gerarAnalisadorLexico
-	gerarAnalisadorSintatico
-	gerarAnalisadorArvore
-	compilarFontesJava
-	adicionarCanecaAoGEdit
+	limpar;
+	criarDiretorios;
+	gerarAnalisadores;
+	compilarFontesJava;
+	adicionarCanecaAoGEdit;
 }
 
 if [ -n "$1" ]
@@ -116,6 +121,4 @@ then
 else
 	construir
 fi
-
-
 

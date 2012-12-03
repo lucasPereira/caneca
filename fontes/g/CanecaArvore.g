@@ -47,6 +47,7 @@ tokens {
 	PARA_;
 	PARAMETROS_;
 	PROGRAMA_;
+	REFERENCIA_;
 	REPITA_;
 	RETORNO_;
 	SE_;
@@ -201,7 +202,7 @@ listaDeInterfaces
 	: (IMPLEMENTA tipo (SEPARADOR tipo)*)? -> ^(INTERFACES_ (tipo)*)
 	;
 
- listaDeTiposGenericos
+listaDeTiposGenericos
 	: (COLCHETE_ESQUERDO tipoGenerico COLCHETE_DIREITO)* -> ^(TIPOS_GENERICOS_ (tipoGenerico)*)
 	;
 
@@ -279,10 +280,10 @@ comando
 	;
 
 seletor
-	: ESSE -> ^(SELECAO_ ESSE)
-	| ESSA -> ^(SELECAO_ ESSA)
+	: ESSE -> ^(REFERENCIA_ ESSE)
+	| ESSA -> ^(REFERENCIA_ ESSA)
 	| instanciacao -> ^(SELECAO_ instanciacao)
-	| IDENTIFICADOR (listaDeParametros)? -> ^(SELECAO_ IDENTIFICADOR (listaDeParametros)?)
+	| IDENTIFICADOR (listaDeParametros)? -> ^(REFERENCIA_ IDENTIFICADOR (listaDeParametros)?)
 	;
 
 chamada
@@ -310,7 +311,7 @@ para
 	;
 
 repita
-	: REPITA PARENTESE_ESQUERDO declaracao PARENTESE_DIREITO blocoDeInstrucoes -> ^(REPITA_ declaracao)
+	: REPITA PARENTESE_ESQUERDO declaracao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes -> ^(REPITA_ declaracao expressao blocoDeInstrucoes)
 	;
 
 enquanto

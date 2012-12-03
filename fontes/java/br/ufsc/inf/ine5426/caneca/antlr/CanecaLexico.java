@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaLexico.g 2012-11-27 22:14:56
+// $ANTLR 3.4 fontes/g/CanecaLexico.g 2012-12-03 01:44:39
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 	import java.lang.System;

@@ -258,7 +258,7 @@ listaDeInterfaces
 	: (IMPLEMENTA tipo (SEPARADOR tipo)*)?
 	;
 
- listaDeTiposGenericos
+listaDeTiposGenericos
 	: (COLCHETE_ESQUERDO tipoGenerico COLCHETE_DIREITO)*
 	;
 
@@ -367,7 +367,7 @@ para
 	;
 
 repita
-	: REPITA PARENTESE_ESQUERDO declaracao PARENTESE_DIREITO blocoDeInstrucoes
+	: REPITA PARENTESE_ESQUERDO declaracao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes
 	;
 
 enquanto

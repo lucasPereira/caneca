@@ -35,10 +35,20 @@ javaSintatico=${fontesJavaAntlr}/${nomeDoAnalisadorSintatico}.java
 
 classePrincipal=br.ufsc.inf.ine5426.caneca.Compilador
 
-./construir.sh
+construir() {
+	./construir.sh;
+}
 
-echo ":executar"
-echo ""
-java -classpath ${binariosJava}:${bibliotecaJavaAntlr} ${classePrincipal} $1 $2
-echo ""
+executar() {
+	echo ":executar";
+	echo "";
+	java -classpath ${binariosJava}:${bibliotecaJavaAntlr} ${classePrincipal} $1 $2;
+	echo "";
+}
+
+if [ -n "$3" ]
+then
+	$3;
+fi
+executar $1 $2;
 
