@@ -5,6 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Tipo {
+	public static final Tipo INTEIRO = new Tipo("Inteiro");
+	public static final Tipo REAL = new Tipo("Real");
+	public static final Tipo BOOLEANO = new Tipo("Booleano");
+	public static final Tipo CARACTERE = new Tipo("Caractere");
+	public static final Tipo TEXTO = new Tipo("Texto");
+	public static final Tipo NADA = new Tipo("Nada");
 	private String nome;
 	private int linha;
 	private int coluna;
@@ -36,15 +42,14 @@ public class Tipo {
 		return coluna;
 	}
 	
-	@Override
-	public boolean equals(Object outro) {
+	public boolean contido(Object outro) {
 		if (outro instanceof Tipo) {
 			Tipo outroTipo = (Tipo) outro;
 			if (tiposAninhados.size() == outroTipo.tiposAninhados.size()) {
 				Iterator<Tipo> iterador = tiposAninhados.iterator();
 				Iterator<Tipo> iteradorDoOutro = outroTipo.tiposAninhados.iterator();
 				while (iterador.hasNext()) {
-					if (!iterador.next().equals(iteradorDoOutro.next())) {
+					if (!iterador.next().contido(iteradorDoOutro.next())) {
 						return false;
 					}
 				}

@@ -39,7 +39,7 @@ options {
 	public <T extends Escopo> void reportarDefinicao(Boolean definido, String nomeDoMembro, T membro, String tipoDoSimbolo, int linha, int coluna) {
 		Reporter reporter = Reporter.fornecerInstancia();
 		if (!definido) {
-			reporter.reportarErro(String.format("[\%s] [\%s, \%s] [\%s] \%s já definido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
+			reporter.reportarErro(String.format("[\%s] [\%s, \%s] [\%s] \%s não foi definido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
 		} else {
 			reporter.reportarSucesso(String.format("[\%s] [\%s, \%s] [\%s] \%s definido.", escopoAtual.fornecerNome(), linha, coluna, tipoDoSimbolo, nomeDoMembro), membro);
 		}
@@ -117,24 +117,40 @@ terminarMetodo
 iniciarConstrutor
 	: ^(CONSTRUTOR_ ^(ASSINATURA_ . IDENTIFICADOR .) .)
 		{
+			Metodo construtor = new Metodo($IDENTIFICADOR.text, null);
+			boolean definido = ((Classe) escopoAtual).definirConstrutor(construtor);
+			reportarDefinicao(definido, $IDENTIFICADOR.text, construtor, "construtor", $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			construtor.abrir(escopoAtual);
+			escopoAtual = construtor;
+			filaDeEscopos.add(escopoAtual);
 		}
 	;
 
 terminarConstrutor
 	: CONSTRUTOR_
 		{
+			escopoAtual = escopoAtual.fechar();
+			filaDeEscopos.add(escopoAtual);
 		}
 	;
 
 iniciarDestrutor
 	: ^(DESTRUTOR_ ^(ASSINATURA_ . IDENTIFICADOR .) .)
 		{
+			Metodo destrutor = new Metodo($IDENTIFICADOR.text, null);
+			boolean definido = ((Classe) escopoAtual).definirDestrutor(destrutor);
+			reportarDefinicao(definido, $IDENTIFICADOR.text, destrutor, "destrutor", $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			destrutor.abrir(escopoAtual);
+			escopoAtual = destrutor;
+			filaDeEscopos.add(escopoAtual);
 		}
 	;
 
 terminarDestrutor
 	: DESTRUTOR_
 		{
+			escopoAtual = escopoAtual.fechar();
+			filaDeEscopos.add(escopoAtual);
 		}
 	;
 

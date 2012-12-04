@@ -26,10 +26,15 @@ options {
 	private Escopo escopoAtual;
 	private Escopo referencia;
 	private Queue<Escopo> filaDeEscopos;
+	private Queue<Escopo> filaDeReferencias;
 	
 	public void fixarFilaDeEscopos(Queue<Escopo> filaDeEscopos) {
 		this.filaDeEscopos = filaDeEscopos;
 		this.escopoAtual = filaDeEscopos.poll();
+	}
+	
+	public void fixarFilaDeReferencias(Queue<Escopo> filaDeReferencias) {
+		this.filaDeReferencias = filaDeReferencias;
 	}
 	
 	public <T extends Escopo> void reportarResolucao(String nomeDoMembro, T membro, String tipoDoSimbolo, int linha, int coluna) {
@@ -53,7 +58,7 @@ topdown
 	| iniciarBloco
 	| declaracao
 	| declaracaoDeAtributo
-	| instanciacao
+	| comando
 	;
 
 bottomup
@@ -62,8 +67,6 @@ bottomup
 	| terminarConstrutor
 	| terminarDestrutor
 	| terminarBloco
-	| referencia
-	| chamada
 	;
 
 iniciarClasse
@@ -99,24 +102,28 @@ terminarMetodo
 iniciarConstrutor
 	: ^(CONSTRUTOR_ ^(ASSINATURA_ . IDENTIFICADOR .) .)
 		{
+			escopoAtual = filaDeEscopos.poll();
 		}
 	;
 
 terminarConstrutor
 	: CONSTRUTOR_
 		{
+			escopoAtual = filaDeEscopos.poll();
 		}
 	;
 
 iniciarDestrutor
 	: ^(DESTRUTOR_ ^(ASSINATURA_ . IDENTIFICADOR .) .)
 		{
+			escopoAtual = filaDeEscopos.poll();
 		}
 	;
 
 terminarDestrutor
 	: DESTRUTOR_
 		{
+			escopoAtual = filaDeEscopos.poll();
 		}
 	;
 
@@ -154,12 +161,11 @@ declaracaoDeAtributo
 		}
 	;
 
-instanciacao
-	: ^(INSTANCIACAO_ tipo .)
-		{
-			Classe classe = escopoAtual.resolverClasse($tipo.umTipo.fornecerNome());
-			reportarResolucao($tipo.umTipo.fornecerNome(), classe, "classe", $tipo.umTipo.fornecerLinha(), $tipo.umTipo.fornecerColuna());
-		}
+comando
+	@after {
+		filaDeReferencias.add(referencia);
+	}
+	: ^(COMANDO_ referencia (chamada)*)
 	;
 
 referencia
@@ -187,6 +193,7 @@ referencia
 			} else {
 				reportarResolucao($identificador.text, referenciaDeVariavel, "variavel", $identificador.getLine(), $identificador.getCharPositionInLine());				
 			}
+			//filaDeReferencias.add(referencia);
 		}
 	| ^(REFERENCIA_ IDENTIFICADOR .)
 		{
@@ -194,12 +201,27 @@ referencia
 			reportarResolucao($IDENTIFICADOR.text, referenciaDeMetodo, "metodo", $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
 			referencia = referenciaDeMetodo;
 			if (referenciaDeMetodo != Metodo.NAO_ENCONTRADO) {
-				referencia = new Variavel("retorne", referencia.fornecerTipo(), 0);
+				referencia = new Variavel("retorno", referencia.fornecerTipo(), 0);
 				referencia.abrir(escopoAtual);
 				referencia.fechar();
 			} else {
 				referencia = null;
 			}
+			//filaDeReferencias.add(referencia);
+		}
+	| ^(REFERENCIA_ ^(INSTANCIACAO_ tipo .))
+		{
+			Classe referenciaDeClasse = escopoAtual.resolverClasse($tipo.umTipo.fornecerNome());
+			reportarResolucao($tipo.umTipo.fornecerNome(), referenciaDeClasse, "classe", $tipo.umTipo.fornecerLinha(), $tipo.umTipo.fornecerColuna());
+			referencia = referenciaDeClasse;
+			if (referenciaDeClasse != Classe.NAO_ENCONTRADA) {
+				referencia = new Variavel("instancia", $tipo.umTipo, 0);
+				referencia.abrir(escopoAtual);
+				referencia.fechar();
+			} else {
+				referencia = null;
+			}
+			//filaDeReferencias.add(referencia);
 		}
 	;
 
@@ -213,6 +235,7 @@ chamada
 				if (referenciaDeAtributo == Atributo.NAO_ENCONTRADO) {
 					referencia = null;
 				}
+				//filaDeReferencias.add(referencia);
 			}
 		}
 	| ^((CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO) IDENTIFICADOR .)
@@ -228,6 +251,7 @@ chamada
 				} else {
 					referencia = null;
 				}
+				//filaDeReferencias.add(referencia);
 			}
 		}
 	;

@@ -207,7 +207,7 @@ assinaturasDeMetodos
 	;
 
 atributo
-	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (atribuicao)? TERMINADOR
+	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR /*(atribuicao)?*/ TERMINADOR
 	;
 
 construtor
@@ -227,7 +227,7 @@ assinaturaDeConstrutor
 	;
 
 assinaturaDeDestrutor
-	: DESTRUTOR modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos
+	: DESTRUTOR modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia
 	;
 
 assinaturaDeMetodo
@@ -248,6 +248,10 @@ modificadorDeAcessoFeminino
 
 listaDeParametros
 	: PARENTESE_ESQUERDO (expressao (SEPARADOR expressao)*)? PARENTESE_DIREITO
+	;
+
+listaDeArgumentosVazia
+	: PARENTESE_ESQUERDO PARENTESE_DIREITO
 	;
 
 listaDeArgumentos
@@ -282,6 +286,7 @@ declaracao
 	: tipo IDENTIFICADOR
 	;
 
+/*
 atribuicao
 	: ATRIBUIDOR expressaoOuLogico
 	;
@@ -289,6 +294,7 @@ atribuicao
 declaracaoComAtribuicaoOpcional
 	: declaracao (atribuicao)?
 	;
+*/
 
 expressao
 	: expressaoOuLogico (ATRIBUIDOR expressaoOuLogico)?
@@ -316,8 +322,8 @@ expressaoMultiplicativa
 
 expressaoUnaria
 	: expressaoPrimaria
-	| SUBTRACAO expressaoUnaria
-	| NEGACAO expressaoUnaria
+	| SUBTRACAO expressaoPrimaria
+	| NEGACAO expressaoPrimaria
 	;
 
 expressaoPrimaria
@@ -390,7 +396,7 @@ instrucao
 	:
 	( options {k = 2;}
 		: expressao TERMINADOR
-		| declaracaoComAtribuicaoOpcional TERMINADOR
+		| /*declaracaoComAtribuicaoOpcional*/ declaracao TERMINADOR
 	)
 	| destruicao TERMINADOR
 	| retorno TERMINADOR

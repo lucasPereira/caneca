@@ -8,7 +8,7 @@ public interface Escopo {
 	public boolean definirClasse(Classe classe);
 	
 	public boolean definirAtributo(Atributo atributo);
-	
+
 	public boolean definirMetodo(Metodo metodo);
 	
 	public boolean definirVariavel(Variavel variavel);
@@ -16,7 +16,7 @@ public interface Escopo {
 	public Classe resolverClasse(String nomeDaClasse);
 	
 	public Atributo resolverAtributo(String nomeDoAtributo);
-	
+
 	public Metodo resolverMetodo(String nomeDoMetodo);
 	
 	public Variavel resolverVariavel(String nomeDaVariavel, int indice);

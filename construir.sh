@@ -52,6 +52,16 @@ gSemanticoResolucao=${fontesGramaticas}/${nomeDoAnalisadorSemanticoResolucao}.g
 javaSemanticoResolucao=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoResolucao}.java
 tokensSemanticoResolucao=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoResolucao}.tokens
 
+nomeDoAnalisadorSemanticoExpressoes=CanecaSemanticoExpressoes
+gSemanticoExpressoes=${fontesGramaticas}/${nomeDoAnalisadorSemanticoExpressoes}.g
+javaSemanticoExpressoes=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoExpressoes}.java
+tokensSemanticoExpressoes=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoExpressoes}.tokens
+
+#nomeDoAnalisadorSemanticoChamada=CanecaSemanticoChamada
+#gSemanticoChamada=${fontesGramaticas}/${nomeDoAnalisadorSemanticoChamada}.g
+#javaSemanticoChamada=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoChamada}.java
+#tokensSemanticoChamada=${fontesJavaAntlr}/${nomeDoAnalisadorSemanticoChamada}.tokens
+
 gerados=gerados
 geradosHtml=${gerados}/html
 
@@ -88,11 +98,12 @@ criarDiretorios() {
 
 gerarAnalisadores() {
 	echo ":gerarAnalisadores";
-	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gLexico} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseLexica};
+	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gLexico} -fo ${fontesJavaAntlr} -report -print >> ${relatorioAnaliseLexica};
 	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gSintatico} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseSintatica};
 	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gArvore} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseArvore};
 	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gSemanticoDefinicao} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseSemantica};
 	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gSemanticoResolucao} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseSemantica};
+	java -classpath ${bibliotecaJavaAntlr} org.antlr.Tool ${gSemanticoExpressoes} -fo ${fontesJavaAntlr} -report -print > ${relatorioAnaliseSemantica};
 }
 
 compilarFontesJava() {

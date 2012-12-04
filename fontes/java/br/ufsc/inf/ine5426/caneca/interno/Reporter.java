@@ -9,6 +9,10 @@ public class Reporter {
 	private List<Escopo> membrosDeErros;
 	private List<String> mensagensDeSucessos;
 	private List<Escopo> membrosDeSucessos;
+	private List<String> mensagensDeErrosDeExpressao;
+	private List<Tipo> tiposDeErrosDeExpressao;
+	private List<String> mensagensDeSucessosDeExpressao;
+	private List<Tipo> tiposDeSucessosDeExpressao;
 	
 	public static Reporter fornecerInstancia() {
 		return (INSTANCIA == null) ? (INSTANCIA = new Reporter()) : INSTANCIA;
@@ -19,6 +23,10 @@ public class Reporter {
 		membrosDeErros = new ArrayList<Escopo>();
 		mensagensDeSucessos = new ArrayList<String>();
 		membrosDeSucessos = new ArrayList<Escopo>();
+		mensagensDeErrosDeExpressao = new ArrayList<String>();
+		tiposDeErrosDeExpressao = new ArrayList<Tipo>();
+		mensagensDeSucessosDeExpressao = new ArrayList<String>();
+		tiposDeSucessosDeExpressao = new ArrayList<Tipo>();
 	}
 	
 	public <T extends Escopo> void reportarErro(String mensagem, T membro) {
@@ -43,6 +51,26 @@ public class Reporter {
 		if (!(escopo instanceof Variavel || escopo instanceof Atributo)) {
 			System.out.println(String.format("[%s] Escopo fechado.", escopo.fornecerNome()));
 		}
+	}
+	
+	public void reportarErroDeTipo(Tipo tipo, String expressao) {
+		mensagensDeErrosDeExpressao.add(expressao);
+		tiposDeErrosDeExpressao.add(tipo);
+		System.out.println(String.format("[%s] [%s, %s] [%s] tipo inválido.", tipo.fornecerNome(), tipo.fornecerLinha(), tipo.fornecerColuna(), expressao));
+	}
+	
+	public void reportarSucessoDeTipo(Tipo tipo, String expressao) {
+		mensagensDeSucessosDeExpressao.add(expressao);
+		tiposDeSucessosDeExpressao.add(tipo);
+		System.out.println(String.format("[%s] [%s, %s] [%s] tipo válido.", tipo.fornecerNome(), tipo.fornecerLinha(), tipo.fornecerColuna(), expressao));
+	}
+	
+	public boolean possuiErroDeDeifinicaoResolucao() {
+		return (membrosDeErros.size() > 0);
+	}
+	
+	public boolean possuiErroDeExpressao() {
+		return (tiposDeErrosDeExpressao.size() > 0);
 	}
 }
 

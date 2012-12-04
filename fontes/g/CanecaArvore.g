@@ -46,12 +46,14 @@ tokens {
 	PACOTE_;
 	PARA_;
 	PARAMETROS_;
+	PRIMARIA_;
 	PROGRAMA_;
 	REFERENCIA_;
 	REPITA_;
 	RETORNO_;
 	SE_;
 	SELECAO_;
+	SUBTRACAO_UNARIA_;
 	TENTE_;
 	TIPO_;
 	TIPO_GENERICO_;
@@ -151,7 +153,7 @@ assinaturasDeMetodos
 	;
 
 atributo
-	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (atribuicao)? TERMINADOR -> ^(ATRIBUTO_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (atribuicao)?)
+	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR /*(atribuicao)?*/ TERMINADOR -> ^(ATRIBUTO_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR /*(atribuicao)?*/)
 	;
 
 construtor
@@ -171,7 +173,7 @@ assinaturaDeConstrutor
 	;
 
 assinaturaDeDestrutor
-	: DESTRUTOR modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos -> ^(ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos)
+	: DESTRUTOR modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia -> ^(ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia)
 	;
 
 assinaturaDeMetodo
@@ -192,6 +194,10 @@ modificadorDeAcessoFeminino
 
 listaDeParametros
 	: PARENTESE_ESQUERDO (expressao (SEPARADOR expressao)*)? PARENTESE_DIREITO -> ^(PARAMETROS_ (expressao)*)
+	;
+
+listaDeArgumentosVazia
+	: PARENTESE_ESQUERDO PARENTESE_DIREITO -> ^(ARGUMENTOS_)
 	;
 
 listaDeArgumentos
@@ -226,13 +232,17 @@ declaracao
 	: tipo IDENTIFICADOR -> ^(DECLARACAO_ tipo IDENTIFICADOR)
 	;
 
+/*
 atribuicao
 	: ATRIBUIDOR expressaoOuLogico -> ^(ATRIBUICAO_ expressaoOuLogico)
 	;
+*/
 
+/*
 declaracaoComAtribuicaoOpcional
 	: declaracao (atribuicao)? -> ^(DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ declaracao (atribuicao)?)
 	;
+*/
 
 expressao
 	: expressaoOuLogico (ATRIBUIDOR^ expressaoOuLogico)?
@@ -247,7 +257,7 @@ expressaoELogico
 	;
 
 expressaoComparacaoLogica
-	: expressaoAditiva ((IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL)^ expressaoAditiva)*
+	: expressaoAditiva ((IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL)^ expressaoAditiva)?
 	;
 
 expressaoAditiva
@@ -259,9 +269,9 @@ expressaoMultiplicativa
 	;
 
 expressaoUnaria
-	: expressaoPrimaria
-	| SUBTRACAO^ expressaoUnaria
-	| NEGACAO^ expressaoUnaria
+	: expressaoPrimaria ->  ^(PRIMARIA_ expressaoPrimaria)
+	| SUBTRACAO expressaoPrimaria -> ^(SUBTRACAO_UNARIA_ expressaoPrimaria)
+	| NEGACAO^ expressaoPrimaria
 	;
 
 expressaoPrimaria
@@ -276,13 +286,13 @@ expressaoPrimaria
 	;
 
 comando
-	: seletor (chamada)* -> ^(COMANDO_ seletor (chamada)*)
+	: referencia (chamada)* -> ^(COMANDO_ referencia (chamada)*)
 	;
 
-seletor
+referencia
 	: ESSE -> ^(REFERENCIA_ ESSE)
 	| ESSA -> ^(REFERENCIA_ ESSA)
-	| instanciacao -> ^(SELECAO_ instanciacao)
+	| instanciacao -> ^(REFERENCIA_ instanciacao)
 	| IDENTIFICADOR (listaDeParametros)? -> ^(REFERENCIA_ IDENTIFICADOR (listaDeParametros)?)
 	;
 
@@ -334,7 +344,7 @@ instrucao
 	:
 	( options {k = 2;}
 		: expressao TERMINADOR!
-		| declaracaoComAtribuicaoOpcional TERMINADOR!
+		| /*declaracaoComAtribuicaoOpcional*/ declaracao TERMINADOR!
 	)
 	| destruicao TERMINADOR!
 	| retorno TERMINADOR!

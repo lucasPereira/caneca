@@ -13,4 +13,4 @@
 
 * [Resolvido] Problema: referenciar métodos como se fossem atributos.
 * Problema: referenciar métodos e atributos estáticos.
-
+* Problema: construtores com assinaturas equivalentes.
