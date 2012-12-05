@@ -1,0 +1,3 @@
+* Interfaces (implementa).
+* Pacotes.
+* Genéricos.

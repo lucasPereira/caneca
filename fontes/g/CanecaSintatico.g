@@ -207,7 +207,7 @@ assinaturasDeMetodos
 	;
 
 atributo
-	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR /*(atribuicao)?*/ TERMINADOR
+	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (atribuicao)? TERMINADOR
 	;
 
 construtor
@@ -286,7 +286,6 @@ declaracao
 	: tipo IDENTIFICADOR
 	;
 
-/*
 atribuicao
 	: ATRIBUIDOR expressaoOuLogico
 	;
@@ -294,7 +293,6 @@ atribuicao
 declaracaoComAtribuicaoOpcional
 	: declaracao (atribuicao)?
 	;
-*/
 
 expressao
 	: expressaoOuLogico (ATRIBUIDOR expressaoOuLogico)?
@@ -309,7 +307,7 @@ expressaoELogico
 	;
 
 expressaoComparacaoLogica
-	: expressaoAditiva ((IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL) expressaoAditiva)*
+	: expressaoAditiva ((IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL) expressaoAditiva)?
 	;
 
 expressaoAditiva
@@ -338,10 +336,10 @@ expressaoPrimaria
 	;
 
 comando
-	: seletor (chamada)*
+	: referencia (chamada)*
 	;
 
-seletor
+referencia
 	: ESSE
 	| ESSA
 	| instanciacao
@@ -396,7 +394,7 @@ instrucao
 	:
 	( options {k = 2;}
 		: expressao TERMINADOR
-		| /*declaracaoComAtribuicaoOpcional*/ declaracao TERMINADOR
+		| declaracaoComAtribuicaoOpcional TERMINADOR
 	)
 	| destruicao TERMINADOR
 	| retorno TERMINADOR

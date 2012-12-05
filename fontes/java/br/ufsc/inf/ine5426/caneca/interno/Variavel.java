@@ -1,31 +1,37 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-public final class Variavel extends EscopoAbstrato {
-	public static final Variavel NAO_ENCONTRADA = new Variavel("variavelNaoEncontrada", null, 0);
-	private int indice;
+public final class Variavel implements Simbolo {
+	private EscopoLocal dono;
+	private Tipo tipo;
+	private String nome;
+	private int linha;
+	private int coluna;
 	
-	public Variavel(String nome, Tipo tipo, int indice) {
-		super(nome, tipo);
-		this.indice = indice;
+	public Variavel(EscopoLocal dono, Tipo tipo, String nome, int linha, int coluna) {
+		this.dono = dono;
+		this.tipo = tipo;
+		this.nome = nome;
+		this.linha = linha;
+		this.coluna = coluna;
+	}
+	
+	public boolean mesmoTipo(Variavel outra) {
+		return tipo.mesmoQue(outra.tipo);
 	}
 	
 	@Override
-	public Classe resolverClasse(String nomeDaClasse) {
-		return fornecerEscopoPai().resolverClasse(nomeDaClasse);
+	public String fornecerNome() {
+		return nome;
 	}
 	
 	@Override
-	public Atributo resolverAtributo(String nomeDoAtributo) {
-		return fornecerClasseDoTipo().resolverAtributo(nomeDoAtributo);
+	public int fornecerLinha() {
+		return linha;
 	}
 	
 	@Override
-	public Metodo resolverMetodo(String nomeDoMetodo) {
-		return fornecerClasseDoTipo().resolverMetodo(nomeDoMetodo);
-	}
-	
-	public boolean eReferenciaAvancada(int indiceDoReferenciador) {
-		return (indice > indiceDoReferenciador);
+	public int fornecerColuna() {
+		return coluna;
 	}
 }
 

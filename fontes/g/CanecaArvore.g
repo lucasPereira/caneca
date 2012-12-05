@@ -153,7 +153,7 @@ assinaturasDeMetodos
 	;
 
 atributo
-	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR /*(atribuicao)?*/ TERMINADOR -> ^(ATRIBUTO_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR /*(atribuicao)?*/)
+	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (atribuicao)? TERMINADOR -> ^(ATRIBUTO_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (atribuicao)?)
 	;
 
 construtor
@@ -232,17 +232,13 @@ declaracao
 	: tipo IDENTIFICADOR -> ^(DECLARACAO_ tipo IDENTIFICADOR)
 	;
 
-/*
 atribuicao
 	: ATRIBUIDOR expressaoOuLogico -> ^(ATRIBUICAO_ expressaoOuLogico)
 	;
-*/
 
-/*
 declaracaoComAtribuicaoOpcional
 	: declaracao (atribuicao)? -> ^(DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ declaracao (atribuicao)?)
 	;
-*/
 
 expressao
 	: expressaoOuLogico (ATRIBUIDOR^ expressaoOuLogico)?
@@ -275,7 +271,7 @@ expressaoUnaria
 	;
 
 expressaoPrimaria
-	: PARENTESE_ESQUERDO expressao PARENTESE_DIREITO -> ^(expressao)
+	: PARENTESE_ESQUERDO expressao PARENTESE_DIREITO -> expressao
 	| VALOR_BOOLEANO
 	| VALOR_NULO
 	| CONSTANTE_INTEIRA
@@ -325,7 +321,7 @@ repita
 	;
 
 enquanto
-	: ENQUANTO PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes -> ^(ENQUANTO_ expressao)
+	: ENQUANTO PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes -> ^(ENQUANTO_ expressao blocoDeInstrucoes)
 	;
 
 tente
@@ -344,7 +340,7 @@ instrucao
 	:
 	( options {k = 2;}
 		: expressao TERMINADOR!
-		| /*declaracaoComAtribuicaoOpcional*/ declaracao TERMINADOR!
+		| declaracaoComAtribuicaoOpcional TERMINADOR!
 	)
 	| destruicao TERMINADOR!
 	| retorno TERMINADOR!

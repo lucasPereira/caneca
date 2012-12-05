@@ -6,76 +6,86 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public final class Classe extends EscopoAbstrato {
-	public static Classe NAO_ENCONTRADA = new Classe("classeNaoEncontrada");
+public final class Classe implements Simbolo {
 	private Map<String, Atributo> atributos;
 	private Map<String, Metodo> metodos;
-	private List<Metodo> construtores;
-	private Metodo destrutor;
+	private List<Construtor> construtores;
+	private Destrutor destrutor;
+	private String nome;
+	private int linha;
+	private int coluna;
 	
-	public Classe(String nome) {
-		super(nome);
+	public Classe(String nome, int linha, int coluna) {
+		this.nome = nome;
+		this.linha = linha;
+		this.coluna = coluna;
 		atributos = new HashMap<String, Atributo>();
 		metodos = new HashMap<String, Metodo>();
-		construtores = new LinkedList<Metodo>();
+		construtores = new LinkedList<Construtor>();
 	}
 	
-	public boolean definirConstrutor(Metodo construtor) {
-		if (fornecerNome().equals(construtor.fornecerNome())) {
-			construtores.add(construtor);
-			return true;
+	public boolean definirAtributo(Atributo atributo) {
+		if (atributos.containsKey(atributo.fornecerNome())) {
+			Reporter.instancia().reportarErroDeDefinicaoRepetidaDeAtributo(atributo);
+			return false;
 		}
-		return false;
+		atributos.put(atributo.fornecerNome(), atributo);
+		Reporter.instancia().reportarDefinicaoDeAtributo(atributo);
+		return true;
 	}
 	
-	public boolean definirDestrutor(Metodo destrutor) {
-		if (this.destrutor == null) {
-			this.destrutor = destrutor;
-			return true;
+	public boolean definirConstrutor(Construtor construtor) {
+		if (!nome.equals(construtor.fornecerNome())) {
+			Reporter.instancia().reportarErroDeDefinicaoDeNomeErradoDeConstrutor(construtor);
+			return false;
 		}
-		return false;
-	}
-	
-	public boolean instanciar(List<Tipo> tiposDosParametros) {
-		Iterator<Metodo> iteradorDeConstrutores = construtores.iterator();
+		/*
+		Iterator<Construtor> iteradorDeConstrutores = construtores.iterator();
 		while (iteradorDeConstrutores.hasNext()) {
-			if (iteradorDeConstrutores.next().chamar(tiposDosParametros)) {
-				return true;
+			if (iteradorDeConstrutores.next().mesmaAssinatura(construtor)) {
+				Reporter.instancia().reportarErroDeDefinicaoRepetidaDeConstrutor(construtor);
+				return false;
 			}
 		}
-		return false;
+		*/
+		construtores.add(construtor);
+		Reporter.instancia().reportarDefinicaoDeConstrutor(construtor);
+		return true;
 	}
 	
-	public boolean destruir() {
-		if (destrutor != null) {
-			return true;
+	public boolean definirDestrutor(Destrutor destrutor) {
+		if (!nome.equals(destrutor.fornecerNome())) {
+			Reporter.instancia().reportarErroDeDefinicaoDeNomeErradoDeDestrutor(destrutor);
+			return false;
 		}
-		return false;
+		this.destrutor = destrutor;
+		Reporter.instancia().reportarDefinicaoDeDestrutor(destrutor);
+		return true;
 	}
 	
-	@Override
-	public boolean definirAtributo(Atributo atributo) {
-		return definirMembro(atributos, atributo, "atributo");
-	}
-	
-	@Override
 	public boolean definirMetodo(Metodo metodo) {
-		return definirMembro(metodos, metodo, "metodo");
+		if (metodos.containsKey(metodo.fornecerNome())) {
+			Reporter.instancia().reportarErroDeDefinicaoRepetidaDeMetodo(metodo);
+			return false;
+		}
+		metodos.put(metodo.fornecerNome(), metodo);
+		Reporter.instancia().reportarDefinicaoDeMetodo(metodo);
+		return true;
 	}
 	
 	@Override
-	public Classe resolverClasse(String nomeDaClasse) {
-		return fornecerEscopoPai().resolverClasse(nomeDaClasse);
+	public String fornecerNome() {
+		return nome;
 	}
 	
 	@Override
-	public Atributo resolverAtributo(String nomeDoAtributo) {
-		return resolverMembro(atributos, Atributo.NAO_ENCONTRADO, nomeDoAtributo, "atributo");
+	public int fornecerLinha() {
+		return linha;
 	}
 	
 	@Override
-	public Metodo resolverMetodo(String nomeDoMetodo) {
-		return resolverMembro(metodos, Metodo.NAO_ENCONTRADO, nomeDoMetodo, "metodo");
+	public int fornecerColuna() {
+		return coluna;
 	}
 }
 

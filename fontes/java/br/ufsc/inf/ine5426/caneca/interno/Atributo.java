@@ -1,25 +1,37 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-public final class Atributo extends EscopoAbstrato {
-	public static final Atributo NAO_ENCONTRADO = new Atributo("atributoNaoEncontrado", null);
+public final class Atributo implements Simbolo {
+	private Classe classe;
+	private Tipo tipo;
+	private String nome;
+	private int linha;
+	private int coluna;
 	
-	public Atributo(String nome, Tipo tipo) {
-		super(nome, tipo);
+	public Atributo(Classe classe, Tipo tipo, String nome, int linha, int coluna) {
+		this.classe = classe;
+		this.tipo = tipo;
+		this.nome = nome;
+		this.linha = linha;
+		this.coluna = coluna;
+	}
+	
+	public boolean mesmoTipo(Atributo outro) {
+		return tipo.mesmoQue(outro.tipo);
 	}
 	
 	@Override
-	public Classe resolverClasse(String nomeDaClasse) {
-		return fornecerEscopoPai().resolverClasse(nomeDaClasse);
+	public String fornecerNome() {
+		return nome;
 	}
 	
 	@Override
-	public Atributo resolverAtributo(String nomeDoAtributo) {
-		return fornecerClasseDoTipo().resolverAtributo(nomeDoAtributo);
+	public int fornecerLinha() {
+		return linha;
 	}
 	
 	@Override
-	public Metodo resolverMetodo(String nomeDoMetodo) {
-		return fornecerClasseDoTipo().resolverMetodo(nomeDoMetodo);
+	public int fornecerColuna() {
+		return coluna;
 	}
 }
 

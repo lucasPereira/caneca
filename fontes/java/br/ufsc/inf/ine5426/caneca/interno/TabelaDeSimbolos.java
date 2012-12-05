@@ -1,24 +1,23 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
-public final class TabelaDeSimbolos extends EscopoAbstrato {
+public final class TabelaDeSimbolos {
 	private Map<String, Classe> classes;
 	
 	public TabelaDeSimbolos() {
-		super("Global");
 		classes = new HashMap<String, Classe>();
 	}
 	
-	@Override
 	public boolean definirClasse(Classe classe) {
-		return definirMembro(classes, classe, "classe");
-	}
-	
-	@Override
-	public Classe resolverClasse(String nomeDaClasse) {
-		return resolverMembro(classes, Classe.NAO_ENCONTRADA, nomeDaClasse, "classe");
+		if (classes.containsKey(classe.fornecerNome())) {
+			Reporter.instancia().reportarErroDeDefinicaoRepetidaDeClasse(classe);
+			return false;
+		}
+		classes.put(classe.fornecerNome(), classe);
+		Reporter.instancia().reportarDefinicaoDeClasse(classe);
+		return true;
 	}
 }
 
