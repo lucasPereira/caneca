@@ -117,6 +117,7 @@ public class AnaliseSemantica {
 			if (Reporter.fornecerInstancia().possuiErroDeExpressao()) {
 				System.out.println("Existem erros semânticos de expressão. Corrija os erros para prosseguir.");
 			} else {
+				System.out.println("Análise semântica realizada com sucesso.");
 				/*
 				CanecaSemanticoChamada analisadorSemanticoChamada = new CanecaSemanticoChamada(fluxoDeNodos);
 				analisadorSemanticoChamada.fixarFilaDeEscopos(filaDeEscoposChamada);

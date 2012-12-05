@@ -19,8 +19,10 @@ classe publica MinhaClasse inicio
 				essa.variavelQualquer;
 				euMesmo.outraClasse.excutar();
 				euMesmo.outraClasse.excutar().pegarRetorno();
-				Texto textoQualquer = euMesmo.outraClasse.executar().pegarRetorno();
-				Texto textoQualquerDeAtributo = euMesmo.outraClasse.executar().pegarRetorno.tamanho;
+				Texto textoQualquer;
+				textoQualquer = euMesmo.outraClasse.executar().pegarRetorno();
+				Texto textoQualquerDeAtributo;
+				textoQualquerDeAtributo = euMesmo.outraClasse.executar().pegarRetorno.tamanho;
 				Inteiro variavelQualquer;
 				variavelQualquer = 2;
 				Real variavelQualquerOutra;

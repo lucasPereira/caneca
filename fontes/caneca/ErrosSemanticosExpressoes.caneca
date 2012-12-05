@@ -6,10 +6,12 @@ classe publica MinhaClasse inicio
 	atributo publico MinhaClasse euMesmo;
 	
 	construtor publico MinhaClasse() inicio
+		Inteiro numero;
 		20 * 30;
 		numero * -numero * numero * numero / falso;
-		10 * 20 + 30 > 20.0 || 10;
-		Inteiro numero;
+		10 * 20 + 30 > 20.0 || 10
+		verdadeiro > 10;
+		10 + falso <= 5;
 		numero = "texto";
 	fim
 	construtor publico MinhaClasse(Texto parametroDeConstrutorExtra) inicio

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaSemanticoDefinicao.g 2012-12-04 16:26:58
+// $ANTLR 3.4 fontes/g/CanecaSemanticoDefinicao.g 2012-12-05 02:33:03
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 	

@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaSemanticoExpressoes.g 2012-12-04 16:27:00
+// $ANTLR 3.4 fontes/g/CanecaSemanticoExpressoes.g 2012-12-05 02:33:05
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 	import br.ufsc.inf.ine5426.caneca.interno.Bloco;
