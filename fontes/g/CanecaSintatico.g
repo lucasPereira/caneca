@@ -409,4 +409,3 @@ instrucao
 blocoDeInstrucoes
 	: INICIO (instrucao)* FIM
 	;
-

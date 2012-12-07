@@ -1,13 +1,13 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
 public final class Variavel implements Simbolo {
-	private EscopoLocal dono;
+	private Escopo dono;
 	private Tipo tipo;
 	private String nome;
 	private int linha;
 	private int coluna;
 	
-	public Variavel(EscopoLocal dono, Tipo tipo, String nome, int linha, int coluna) {
+	public Variavel(Escopo dono, Tipo tipo, String nome, int linha, int coluna) {
 		this.dono = dono;
 		this.tipo = tipo;
 		this.nome = nome;
@@ -34,4 +34,3 @@ public final class Variavel implements Simbolo {
 		return coluna;
 	}
 }
-

@@ -1,0 +1,10 @@
+pacote @pacoteQualquer;
+classe publica MinhaClasse inicio
+	atributo publico Real pi = 3.14;
+	construtor publico MinhaClasse() inicio fim
+	construtor publico MinhaClasse(Texto parametro) inicio fim
+	destrutor publico MinhaClasse() inicio fim
+	metodo publico Real pi(Booleano parametro) inicio
+		retorne esse.pi;
+	fim
+fim

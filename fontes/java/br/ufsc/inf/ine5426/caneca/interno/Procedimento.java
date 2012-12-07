@@ -2,12 +2,12 @@ package br.ufsc.inf.ine5426.caneca.interno;
 
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 
-public abstract class Procedimento<T> implements EscopoLocal, Simbolo {
+public abstract class Procedimento<T> implements Escopo, Simbolo {
 	private Map<String, Variavel> argumentos;
 	private Classe classe;
+	private Bloco bloco;
 	private String nome;
 	private int linha;
 	private int coluna;
@@ -42,11 +42,29 @@ public abstract class Procedimento<T> implements EscopoLocal, Simbolo {
 			return false;
 		}
 		argumentos.put(variavel.fornecerNome(), variavel);
+		Reporter.instancia().reportarDefinicaoDeVariavel(variavel);
 		return true;
 	}
 	
 	@Override
-	public final EscopoLocal fornecerEscopoPai() {
+	public final boolean definirBloco(Bloco bloco) {
+		bloco = bloco;
+		Reporter.instancia().reportarDefinicaoDeBloco(bloco);
+		return true;
+	}
+	
+	@Override
+	public final boolean definirInstrucao(Instrucao instrucao) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public final boolean definirExpressao(Expressao expressao) {
+		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public final Escopo fornecerEscopoPai() {
 		return null;
 	}
 	
@@ -65,4 +83,3 @@ public abstract class Procedimento<T> implements EscopoLocal, Simbolo {
 		return coluna;
 	}
 }
-

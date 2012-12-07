@@ -23,7 +23,7 @@ public final class Reporter {
 	}
 	
 	public void reportarDefinicaoDeMetodo(Metodo metodo) {
-		mostrarMensagem("Definição de metodo.",
+		mostrarMensagem("Definição de método.",
 				metodo.fornecerNome(), metodo.fornecerLinha(), metodo.fornecerColuna());
 	}
 	
@@ -38,8 +38,20 @@ public final class Reporter {
 	}
 	
 	public void reportarDefinicaoDeVariavel(Variavel variavel) {
-		mostrarMensagem("Definição de variavel.",
+		mostrarMensagem("Definição de variável.",
 				variavel.fornecerNome(), variavel.fornecerLinha(), variavel.fornecerColuna());
+	}
+	
+	public void reportarDefinicaoDeBloco(Bloco bloco) {
+		mostrarMensagem("Definição de bloco.");
+	}
+	
+	public void reportarDefinicaoDeInstrucao(Instrucao instrucao) {
+		mostrarMensagem("Definição de instrução.");
+	}
+	
+	public void reportarDefinicaoDeExpressao(Expressao expressao) {
+		mostrarMensagem("Definição de expressão.");
 	}
 	
 	public void reportarErroDeDefinicaoRepetidaDeClasse(Classe classe) {
@@ -74,13 +86,13 @@ public final class Reporter {
 	
 	public void reportarErroDeDefinicaoDeNomeErradoDeConstrutor(Construtor construtor) {
 		errosDeDefinicao++;
-		mostrarMensagemDeErro("Definição de nome errado do construtor. O nome deve ser o mesmo da classe.",
+		mostrarMensagemDeErro("Definição de nome errado do construtor.",
 				construtor.fornecerNome(), construtor.fornecerLinha(), construtor.fornecerColuna());
 	}
 	
 	public void reportarErroDeDefinicaoDeNomeErradoDeDestrutor(Destrutor destrutor) {
 		errosDeDefinicao++;
-		mostrarMensagemDeErro("Definição de nome errado do destrutor. O nome deve ser o mesmo da classe.",
+		mostrarMensagemDeErro("Definição de nome errado do destrutor.",
 				destrutor.fornecerNome(), destrutor.fornecerLinha(), destrutor.fornecerColuna());
 	}
 	
@@ -88,16 +100,27 @@ public final class Reporter {
 		mostrarMensagemDeErro("Existem erros léxicos e/ou sintáticos. Corrija os erros antes de continuar a análise semântica.");
 	}
 	
-	private void mostrarMensagemDeErro(String mensagem) {
-		System.out.println(String.format("[Erro] %s", mensagem));
-	}
-	
 	private void mostrarMensagemDeErro(String mensagem, String nome, int linha, int coluna) {
 		System.out.println(String.format("[Erro] [%s] [%s, %s] %s", nome, linha, coluna, mensagem));
+	}
+	
+	private void mostrarMensagemDeErro(String mensagem) {
+		System.out.println(String.format("[Erro] %s", mensagem));
 	}
 	
 	private void mostrarMensagem(String mensagem, String nome, int linha, int coluna) {
 		System.out.println(String.format("[Sucesso] [%s] [%s, %s] %s", nome, linha, coluna, mensagem));
 	}
+	
+	private void mostrarMensagem(String mensagem, int linha, int coluna) {
+		System.out.println(String.format("[Sucesso] [%s, %s] %s", linha, coluna, mensagem));
+	}
+	
+	private void mostrarMensagem(String mensagem, String nome) {
+		System.out.println(String.format("[Sucesso] [%s] %s", nome, mensagem));
+	}
+	
+	private void mostrarMensagem(String mensagem) {
+		System.out.println(String.format("[Sucesso] %s", mensagem));
+	}
 }
-

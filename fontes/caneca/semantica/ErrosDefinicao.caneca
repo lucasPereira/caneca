@@ -10,6 +10,7 @@ classe publica MinhaClasse inicio
 		retorne esse.pi;
 	fim
 	metodo publico Nada naoExisteSobrecarga() inicio fim
+	metodo publico Texto naoExisteSobrecarga() inicio fim
 	metodo publico Nada naoExisteSobrecarga(Texto texto) inicio fim
 	metodo publico Nada naoPodeVariavelRepetida() inicio
 		Texto codigo = "123456";
@@ -28,4 +29,3 @@ classe publica ClasseRepetida inicio
 	construtor publico ClasseRepetida() inicio fim
 	destrutor publico ClasseRepetida() inicio fim
 fim
-

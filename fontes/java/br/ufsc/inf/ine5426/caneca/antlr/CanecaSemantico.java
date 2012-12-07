@@ -1,14 +1,22 @@
-// $ANTLR 3.4 fontes/g/CanecaSemantico.g 2012-12-05 07:22:03
+// $ANTLR 3.4 fontes/g/CanecaSemantico.g 2012-12-07 04:38:48
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 	
 	import br.ufsc.inf.ine5426.caneca.interno.Atributo;
+	import br.ufsc.inf.ine5426.caneca.interno.Bloco;
 	import br.ufsc.inf.ine5426.caneca.interno.Classe;
 	import br.ufsc.inf.ine5426.caneca.interno.Construtor;
 	import br.ufsc.inf.ine5426.caneca.interno.Destrutor;
-	import br.ufsc.inf.ine5426.caneca.interno.EscopoLocal;
+	import br.ufsc.inf.ine5426.caneca.interno.Escopo;
+	import br.ufsc.inf.ine5426.caneca.interno.Expressao;
+	import br.ufsc.inf.ine5426.caneca.interno.Instrucao;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoPara;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoRepita;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoSe;
+	import br.ufsc.inf.ine5426.caneca.interno.Metodo;
 	import br.ufsc.inf.ine5426.caneca.interno.TabelaDeSimbolos;
 	import br.ufsc.inf.ine5426.caneca.interno.Tipo;
+	import br.ufsc.inf.ine5426.caneca.interno.Variavel;
 
 
 import org.antlr.runtime.*;
@@ -174,7 +182,13 @@ public class CanecaSemantico extends TreeFilter {
 
     	private TabelaDeSimbolos tabelaDeSimbolos;
     	private Classe classeAtual;
-    	private EscopoLocal escopoLocalAtual;
+    	private Construtor construtorAtual;
+    	private Destrutor destrutorAtual;
+    	private Metodo metodoAtual;
+    	private Bloco blocoAtual;
+    	private Instrucao instrucaoAtual;
+    	private Expressao expressaoAtual;
+    	private Escopo escopoAtual;
     	private boolean debug = false;
     	
     	public void fixarTabelaDeSimbolos(TabelaDeSimbolos tabelaDeSimbolos) {
@@ -190,11 +204,11 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "topdown"
-    // fontes/g/CanecaSemantico.g:44:1: topdown : ( classe | atributo | construtor | destrutor );
+    // fontes/g/CanecaSemantico.g:58:1: topdown : ( classe | atributo | construtor | destrutor | metodo | declaracao | bloco | se | para | repita );
     public final void topdown() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:45:2: ( classe | atributo | construtor | destrutor )
-            int alt1=4;
+            // fontes/g/CanecaSemantico.g:59:2: ( classe | atributo | construtor | destrutor | metodo | declaracao | bloco | se | para | repita )
+            int alt1=10;
             switch ( input.LA(1) ) {
             case CLASSE_:
                 {
@@ -216,6 +230,36 @@ public class CanecaSemantico extends TreeFilter {
                 alt1=4;
                 }
                 break;
+            case METODO_:
+                {
+                alt1=5;
+                }
+                break;
+            case DECLARACAO_:
+                {
+                alt1=6;
+                }
+                break;
+            case INSTRUCOES_:
+                {
+                alt1=7;
+                }
+                break;
+            case SE_:
+                {
+                alt1=8;
+                }
+                break;
+            case PARA_:
+                {
+                alt1=9;
+                }
+                break;
+            case REPITA_:
+                {
+                alt1=10;
+                }
+                break;
             default:
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
@@ -227,7 +271,7 @@ public class CanecaSemantico extends TreeFilter {
 
             switch (alt1) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:45:4: classe
+                    // fontes/g/CanecaSemantico.g:59:4: classe
                     {
                     pushFollow(FOLLOW_classe_in_topdown60);
                     classe();
@@ -238,7 +282,7 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:46:4: atributo
+                    // fontes/g/CanecaSemantico.g:60:4: atributo
                     {
                     pushFollow(FOLLOW_atributo_in_topdown65);
                     atributo();
@@ -249,7 +293,7 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaSemantico.g:47:4: construtor
+                    // fontes/g/CanecaSemantico.g:61:4: construtor
                     {
                     pushFollow(FOLLOW_construtor_in_topdown70);
                     construtor();
@@ -260,10 +304,76 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 4 :
-                    // fontes/g/CanecaSemantico.g:48:4: destrutor
+                    // fontes/g/CanecaSemantico.g:62:4: destrutor
                     {
                     pushFollow(FOLLOW_destrutor_in_topdown75);
                     destrutor();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 5 :
+                    // fontes/g/CanecaSemantico.g:63:4: metodo
+                    {
+                    pushFollow(FOLLOW_metodo_in_topdown80);
+                    metodo();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 6 :
+                    // fontes/g/CanecaSemantico.g:64:4: declaracao
+                    {
+                    pushFollow(FOLLOW_declaracao_in_topdown85);
+                    declaracao();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 7 :
+                    // fontes/g/CanecaSemantico.g:65:4: bloco
+                    {
+                    pushFollow(FOLLOW_bloco_in_topdown90);
+                    bloco();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 8 :
+                    // fontes/g/CanecaSemantico.g:66:4: se
+                    {
+                    pushFollow(FOLLOW_se_in_topdown95);
+                    se();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 9 :
+                    // fontes/g/CanecaSemantico.g:67:4: para
+                    {
+                    pushFollow(FOLLOW_para_in_topdown100);
+                    para();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 10 :
+                    // fontes/g/CanecaSemantico.g:68:4: repita
+                    {
+                    pushFollow(FOLLOW_repita_in_topdown105);
+                    repita();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -288,11 +398,11 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "bottomup"
-    // fontes/g/CanecaSemantico.g:51:1: bottomup : ( terminaClasse | terminarConstrutor | terminarDestrutor );
+    // fontes/g/CanecaSemantico.g:71:1: bottomup : ( terminaClasse | terminarConstrutor | terminarDestrutor | terminarMetodo | terminarBloco | terminarSe | terminarPara | terminarRepita );
     public final void bottomup() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:52:2: ( terminaClasse | terminarConstrutor | terminarDestrutor )
-            int alt2=3;
+            // fontes/g/CanecaSemantico.g:72:2: ( terminaClasse | terminarConstrutor | terminarDestrutor | terminarMetodo | terminarBloco | terminarSe | terminarPara | terminarRepita )
+            int alt2=8;
             switch ( input.LA(1) ) {
             case CLASSE_:
                 {
@@ -309,6 +419,31 @@ public class CanecaSemantico extends TreeFilter {
                 alt2=3;
                 }
                 break;
+            case METODO_:
+                {
+                alt2=4;
+                }
+                break;
+            case INSTRUCOES_:
+                {
+                alt2=5;
+                }
+                break;
+            case SE_:
+                {
+                alt2=6;
+                }
+                break;
+            case PARA_:
+                {
+                alt2=7;
+                }
+                break;
+            case REPITA_:
+                {
+                alt2=8;
+                }
+                break;
             default:
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
@@ -320,9 +455,9 @@ public class CanecaSemantico extends TreeFilter {
 
             switch (alt2) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:52:4: terminaClasse
+                    // fontes/g/CanecaSemantico.g:72:4: terminaClasse
                     {
-                    pushFollow(FOLLOW_terminaClasse_in_bottomup86);
+                    pushFollow(FOLLOW_terminaClasse_in_bottomup116);
                     terminaClasse();
 
                     state._fsp--;
@@ -331,9 +466,9 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:53:4: terminarConstrutor
+                    // fontes/g/CanecaSemantico.g:73:4: terminarConstrutor
                     {
-                    pushFollow(FOLLOW_terminarConstrutor_in_bottomup91);
+                    pushFollow(FOLLOW_terminarConstrutor_in_bottomup121);
                     terminarConstrutor();
 
                     state._fsp--;
@@ -342,10 +477,65 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaSemantico.g:54:4: terminarDestrutor
+                    // fontes/g/CanecaSemantico.g:74:4: terminarDestrutor
                     {
-                    pushFollow(FOLLOW_terminarDestrutor_in_bottomup96);
+                    pushFollow(FOLLOW_terminarDestrutor_in_bottomup126);
                     terminarDestrutor();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 4 :
+                    // fontes/g/CanecaSemantico.g:75:4: terminarMetodo
+                    {
+                    pushFollow(FOLLOW_terminarMetodo_in_bottomup131);
+                    terminarMetodo();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 5 :
+                    // fontes/g/CanecaSemantico.g:76:4: terminarBloco
+                    {
+                    pushFollow(FOLLOW_terminarBloco_in_bottomup136);
+                    terminarBloco();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 6 :
+                    // fontes/g/CanecaSemantico.g:77:4: terminarSe
+                    {
+                    pushFollow(FOLLOW_terminarSe_in_bottomup141);
+                    terminarSe();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 7 :
+                    // fontes/g/CanecaSemantico.g:78:4: terminarPara
+                    {
+                    pushFollow(FOLLOW_terminarPara_in_bottomup146);
+                    terminarPara();
+
+                    state._fsp--;
+                    if (state.failed) return ;
+
+                    }
+                    break;
+                case 8 :
+                    // fontes/g/CanecaSemantico.g:79:4: terminarRepita
+                    {
+                    pushFollow(FOLLOW_terminarRepita_in_bottomup151);
+                    terminarRepita();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -370,16 +560,16 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "programa"
-    // fontes/g/CanecaSemantico.g:57:1: programa : ^( PROGRAMA_ ( unicadeDeCompilacao )+ ) ;
+    // fontes/g/CanecaSemantico.g:82:1: programa : ^( PROGRAMA_ ( unicadeDeCompilacao )+ ) ;
     public final void programa() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:58:2: ( ^( PROGRAMA_ ( unicadeDeCompilacao )+ ) )
-            // fontes/g/CanecaSemantico.g:58:4: ^( PROGRAMA_ ( unicadeDeCompilacao )+ )
+            // fontes/g/CanecaSemantico.g:83:2: ( ^( PROGRAMA_ ( unicadeDeCompilacao )+ ) )
+            // fontes/g/CanecaSemantico.g:83:4: ^( PROGRAMA_ ( unicadeDeCompilacao )+ )
             {
-            match(input,PROGRAMA_,FOLLOW_PROGRAMA__in_programa108); if (state.failed) return ;
+            match(input,PROGRAMA_,FOLLOW_PROGRAMA__in_programa163); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            // fontes/g/CanecaSemantico.g:58:16: ( unicadeDeCompilacao )+
+            // fontes/g/CanecaSemantico.g:83:16: ( unicadeDeCompilacao )+
             int cnt3=0;
             loop3:
             do {
@@ -393,9 +583,9 @@ public class CanecaSemantico extends TreeFilter {
 
                 switch (alt3) {
             	case 1 :
-            	    // fontes/g/CanecaSemantico.g:58:17: unicadeDeCompilacao
+            	    // fontes/g/CanecaSemantico.g:83:17: unicadeDeCompilacao
             	    {
-            	    pushFollow(FOLLOW_unicadeDeCompilacao_in_programa111);
+            	    pushFollow(FOLLOW_unicadeDeCompilacao_in_programa166);
             	    unicadeDeCompilacao();
 
             	    state._fsp--;
@@ -436,26 +626,26 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "unicadeDeCompilacao"
-    // fontes/g/CanecaSemantico.g:61:1: unicadeDeCompilacao : ( ^( UNIDADE_ cabecalho classe ) | ^( UNIDADE_ cabecalho interfaces ) );
+    // fontes/g/CanecaSemantico.g:86:1: unicadeDeCompilacao : ( ^( UNIDADE_ cabecalho classe ) | ^( UNIDADE_ cabecalho interfaces ) );
     public final void unicadeDeCompilacao() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:62:2: ( ^( UNIDADE_ cabecalho classe ) | ^( UNIDADE_ cabecalho interfaces ) )
+            // fontes/g/CanecaSemantico.g:87:2: ( ^( UNIDADE_ cabecalho classe ) | ^( UNIDADE_ cabecalho interfaces ) )
             int alt4=2;
             alt4 = dfa4.predict(input);
             switch (alt4) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:62:4: ^( UNIDADE_ cabecalho classe )
+                    // fontes/g/CanecaSemantico.g:87:4: ^( UNIDADE_ cabecalho classe )
                     {
-                    match(input,UNIDADE_,FOLLOW_UNIDADE__in_unicadeDeCompilacao126); if (state.failed) return ;
+                    match(input,UNIDADE_,FOLLOW_UNIDADE__in_unicadeDeCompilacao181); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_cabecalho_in_unicadeDeCompilacao128);
+                    pushFollow(FOLLOW_cabecalho_in_unicadeDeCompilacao183);
                     cabecalho();
 
                     state._fsp--;
                     if (state.failed) return ;
 
-                    pushFollow(FOLLOW_classe_in_unicadeDeCompilacao130);
+                    pushFollow(FOLLOW_classe_in_unicadeDeCompilacao185);
                     classe();
 
                     state._fsp--;
@@ -467,18 +657,18 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:63:4: ^( UNIDADE_ cabecalho interfaces )
+                    // fontes/g/CanecaSemantico.g:88:4: ^( UNIDADE_ cabecalho interfaces )
                     {
-                    match(input,UNIDADE_,FOLLOW_UNIDADE__in_unicadeDeCompilacao137); if (state.failed) return ;
+                    match(input,UNIDADE_,FOLLOW_UNIDADE__in_unicadeDeCompilacao192); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_cabecalho_in_unicadeDeCompilacao139);
+                    pushFollow(FOLLOW_cabecalho_in_unicadeDeCompilacao194);
                     cabecalho();
 
                     state._fsp--;
                     if (state.failed) return ;
 
-                    pushFollow(FOLLOW_interfaces_in_unicadeDeCompilacao141);
+                    pushFollow(FOLLOW_interfaces_in_unicadeDeCompilacao196);
                     interfaces();
 
                     state._fsp--;
@@ -507,22 +697,22 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "cabecalho"
-    // fontes/g/CanecaSemantico.g:66:1: cabecalho : ^( CABECALHO_ pacote importacoes ) ;
+    // fontes/g/CanecaSemantico.g:91:1: cabecalho : ^( CABECALHO_ pacote importacoes ) ;
     public final void cabecalho() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:67:2: ( ^( CABECALHO_ pacote importacoes ) )
-            // fontes/g/CanecaSemantico.g:67:4: ^( CABECALHO_ pacote importacoes )
+            // fontes/g/CanecaSemantico.g:92:2: ( ^( CABECALHO_ pacote importacoes ) )
+            // fontes/g/CanecaSemantico.g:92:4: ^( CABECALHO_ pacote importacoes )
             {
-            match(input,CABECALHO_,FOLLOW_CABECALHO__in_cabecalho154); if (state.failed) return ;
+            match(input,CABECALHO_,FOLLOW_CABECALHO__in_cabecalho209); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_pacote_in_cabecalho156);
+            pushFollow(FOLLOW_pacote_in_cabecalho211);
             pacote();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_importacoes_in_cabecalho158);
+            pushFollow(FOLLOW_importacoes_in_cabecalho213);
             importacoes();
 
             state._fsp--;
@@ -549,16 +739,16 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "pacote"
-    // fontes/g/CanecaSemantico.g:70:1: pacote : ^( PACOTE_ IDENTIFICADOR_DE_PACOTE ) ;
+    // fontes/g/CanecaSemantico.g:95:1: pacote : ^( PACOTE_ IDENTIFICADOR_DE_PACOTE ) ;
     public final void pacote() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:71:2: ( ^( PACOTE_ IDENTIFICADOR_DE_PACOTE ) )
-            // fontes/g/CanecaSemantico.g:71:4: ^( PACOTE_ IDENTIFICADOR_DE_PACOTE )
+            // fontes/g/CanecaSemantico.g:96:2: ( ^( PACOTE_ IDENTIFICADOR_DE_PACOTE ) )
+            // fontes/g/CanecaSemantico.g:96:4: ^( PACOTE_ IDENTIFICADOR_DE_PACOTE )
             {
-            match(input,PACOTE_,FOLLOW_PACOTE__in_pacote171); if (state.failed) return ;
+            match(input,PACOTE_,FOLLOW_PACOTE__in_pacote226); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,IDENTIFICADOR_DE_PACOTE,FOLLOW_IDENTIFICADOR_DE_PACOTE_in_pacote173); if (state.failed) return ;
+            match(input,IDENTIFICADOR_DE_PACOTE,FOLLOW_IDENTIFICADOR_DE_PACOTE_in_pacote228); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
@@ -581,17 +771,17 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "importacoes"
-    // fontes/g/CanecaSemantico.g:74:1: importacoes : ^( IMPORTACOES_ ( importacao )* ) ;
+    // fontes/g/CanecaSemantico.g:99:1: importacoes : ^( IMPORTACOES_ ( importacao )* ) ;
     public final void importacoes() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:75:2: ( ^( IMPORTACOES_ ( importacao )* ) )
-            // fontes/g/CanecaSemantico.g:75:4: ^( IMPORTACOES_ ( importacao )* )
+            // fontes/g/CanecaSemantico.g:100:2: ( ^( IMPORTACOES_ ( importacao )* ) )
+            // fontes/g/CanecaSemantico.g:100:4: ^( IMPORTACOES_ ( importacao )* )
             {
-            match(input,IMPORTACOES_,FOLLOW_IMPORTACOES__in_importacoes186); if (state.failed) return ;
+            match(input,IMPORTACOES_,FOLLOW_IMPORTACOES__in_importacoes241); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:75:19: ( importacao )*
+                // fontes/g/CanecaSemantico.g:100:19: ( importacao )*
                 loop5:
                 do {
                     int alt5=2;
@@ -604,9 +794,9 @@ public class CanecaSemantico extends TreeFilter {
 
                     switch (alt5) {
                 	case 1 :
-                	    // fontes/g/CanecaSemantico.g:75:20: importacao
+                	    // fontes/g/CanecaSemantico.g:100:20: importacao
                 	    {
-                	    pushFollow(FOLLOW_importacao_in_importacoes189);
+                	    pushFollow(FOLLOW_importacao_in_importacoes244);
                 	    importacao();
 
                 	    state._fsp--;
@@ -643,10 +833,10 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "importacao"
-    // fontes/g/CanecaSemantico.g:78:1: importacao : ( ^( IMPORTACAO_ IDENTIFICADOR IDENTIFICADOR_DE_PACOTE ( IDENTIFICADOR )? ) | ^( IMPORTACAO_ IDENTIFICADOR_DE_PACOTE ) );
+    // fontes/g/CanecaSemantico.g:103:1: importacao : ( ^( IMPORTACAO_ IDENTIFICADOR IDENTIFICADOR_DE_PACOTE ( IDENTIFICADOR )? ) | ^( IMPORTACAO_ IDENTIFICADOR_DE_PACOTE ) );
     public final void importacao() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:79:2: ( ^( IMPORTACAO_ IDENTIFICADOR IDENTIFICADOR_DE_PACOTE ( IDENTIFICADOR )? ) | ^( IMPORTACAO_ IDENTIFICADOR_DE_PACOTE ) )
+            // fontes/g/CanecaSemantico.g:104:2: ( ^( IMPORTACAO_ IDENTIFICADOR IDENTIFICADOR_DE_PACOTE ( IDENTIFICADOR )? ) | ^( IMPORTACAO_ IDENTIFICADOR_DE_PACOTE ) )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -690,16 +880,16 @@ public class CanecaSemantico extends TreeFilter {
             }
             switch (alt7) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:79:4: ^( IMPORTACAO_ IDENTIFICADOR IDENTIFICADOR_DE_PACOTE ( IDENTIFICADOR )? )
+                    // fontes/g/CanecaSemantico.g:104:4: ^( IMPORTACAO_ IDENTIFICADOR IDENTIFICADOR_DE_PACOTE ( IDENTIFICADOR )? )
                     {
-                    match(input,IMPORTACAO_,FOLLOW_IMPORTACAO__in_importacao204); if (state.failed) return ;
+                    match(input,IMPORTACAO_,FOLLOW_IMPORTACAO__in_importacao259); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_importacao206); if (state.failed) return ;
+                    match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_importacao261); if (state.failed) return ;
 
-                    match(input,IDENTIFICADOR_DE_PACOTE,FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao208); if (state.failed) return ;
+                    match(input,IDENTIFICADOR_DE_PACOTE,FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao263); if (state.failed) return ;
 
-                    // fontes/g/CanecaSemantico.g:79:56: ( IDENTIFICADOR )?
+                    // fontes/g/CanecaSemantico.g:104:56: ( IDENTIFICADOR )?
                     int alt6=2;
                     int LA6_0 = input.LA(1);
 
@@ -708,9 +898,9 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     switch (alt6) {
                         case 1 :
-                            // fontes/g/CanecaSemantico.g:79:57: IDENTIFICADOR
+                            // fontes/g/CanecaSemantico.g:104:57: IDENTIFICADOR
                             {
-                            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_importacao211); if (state.failed) return ;
+                            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_importacao266); if (state.failed) return ;
 
                             }
                             break;
@@ -724,12 +914,12 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:80:4: ^( IMPORTACAO_ IDENTIFICADOR_DE_PACOTE )
+                    // fontes/g/CanecaSemantico.g:105:4: ^( IMPORTACAO_ IDENTIFICADOR_DE_PACOTE )
                     {
-                    match(input,IMPORTACAO_,FOLLOW_IMPORTACAO__in_importacao220); if (state.failed) return ;
+                    match(input,IMPORTACAO_,FOLLOW_IMPORTACAO__in_importacao275); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    match(input,IDENTIFICADOR_DE_PACOTE,FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao222); if (state.failed) return ;
+                    match(input,IDENTIFICADOR_DE_PACOTE,FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao277); if (state.failed) return ;
 
                     match(input, Token.UP, null); if (state.failed) return ;
 
@@ -754,32 +944,32 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "classe"
-    // fontes/g/CanecaSemantico.g:83:1: classe : ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . ) ;
+    // fontes/g/CanecaSemantico.g:108:1: classe : ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . ) ;
     public final void classe() throws RecognitionException {
         CommonTree IDENTIFICADOR1=null;
 
         try {
-            // fontes/g/CanecaSemantico.g:84:2: ( ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . ) )
-            // fontes/g/CanecaSemantico.g:84:4: ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . )
+            // fontes/g/CanecaSemantico.g:109:2: ( ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . ) )
+            // fontes/g/CanecaSemantico.g:109:4: ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . )
             {
-            match(input,CLASSE_,FOLLOW_CLASSE__in_classe235); if (state.failed) return ;
+            match(input,CLASSE_,FOLLOW_CLASSE__in_classe290); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_modificadorDeAcessoFeminino_in_classe237);
+            pushFollow(FOLLOW_modificadorDeAcessoFeminino_in_classe292);
             modificadorDeAcessoFeminino();
 
             state._fsp--;
             if (state.failed) return ;
 
-            IDENTIFICADOR1=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_classe239); if (state.failed) return ;
+            IDENTIFICADOR1=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_classe294); if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeTiposGenericos_in_classe241);
+            pushFollow(FOLLOW_listaDeTiposGenericos_in_classe296);
             listaDeTiposGenericos();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeInterfaces_in_classe243);
+            pushFollow(FOLLOW_listaDeInterfaces_in_classe298);
             listaDeInterfaces();
 
             state._fsp--;
@@ -793,8 +983,8 @@ public class CanecaSemantico extends TreeFilter {
             if ( state.backtracking==1 ) {
             			mostrar("classe");
             			Classe classe = new Classe((IDENTIFICADOR1!=null?IDENTIFICADOR1.getText():null), IDENTIFICADOR1.getLine(), IDENTIFICADOR1.getCharPositionInLine());
-            			classeAtual = classe;
             			tabelaDeSimbolos.definirClasse(classe);
+            			classeAtual = classe;
             		}
 
             }
@@ -815,30 +1005,30 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "terminaClasse"
-    // fontes/g/CanecaSemantico.g:93:1: terminaClasse : ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . ) ;
+    // fontes/g/CanecaSemantico.g:118:1: terminaClasse : ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . ) ;
     public final void terminaClasse() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:94:2: ( ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . ) )
-            // fontes/g/CanecaSemantico.g:94:4: ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . )
+            // fontes/g/CanecaSemantico.g:119:2: ( ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . ) )
+            // fontes/g/CanecaSemantico.g:119:4: ^( CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces . )
             {
-            match(input,CLASSE_,FOLLOW_CLASSE__in_terminaClasse262); if (state.failed) return ;
+            match(input,CLASSE_,FOLLOW_CLASSE__in_terminaClasse317); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_modificadorDeAcessoFeminino_in_terminaClasse264);
+            pushFollow(FOLLOW_modificadorDeAcessoFeminino_in_terminaClasse319);
             modificadorDeAcessoFeminino();
 
             state._fsp--;
             if (state.failed) return ;
 
-            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_terminaClasse266); if (state.failed) return ;
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_terminaClasse321); if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeTiposGenericos_in_terminaClasse268);
+            pushFollow(FOLLOW_listaDeTiposGenericos_in_terminaClasse323);
             listaDeTiposGenericos();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeInterfaces_in_terminaClasse270);
+            pushFollow(FOLLOW_listaDeInterfaces_in_terminaClasse325);
             listaDeInterfaces();
 
             state._fsp--;
@@ -872,36 +1062,36 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "interfaces"
-    // fontes/g/CanecaSemantico.g:101:1: interfaces : ^( INTERFACE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces corpoDaInterface ) ;
+    // fontes/g/CanecaSemantico.g:126:1: interfaces : ^( INTERFACE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces corpoDaInterface ) ;
     public final void interfaces() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:102:2: ( ^( INTERFACE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces corpoDaInterface ) )
-            // fontes/g/CanecaSemantico.g:102:4: ^( INTERFACE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces corpoDaInterface )
+            // fontes/g/CanecaSemantico.g:127:2: ( ^( INTERFACE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces corpoDaInterface ) )
+            // fontes/g/CanecaSemantico.g:127:4: ^( INTERFACE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces corpoDaInterface )
             {
-            match(input,INTERFACE_,FOLLOW_INTERFACE__in_interfaces289); if (state.failed) return ;
+            match(input,INTERFACE_,FOLLOW_INTERFACE__in_interfaces344); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_modificadorDeAcessoFeminino_in_interfaces291);
+            pushFollow(FOLLOW_modificadorDeAcessoFeminino_in_interfaces346);
             modificadorDeAcessoFeminino();
 
             state._fsp--;
             if (state.failed) return ;
 
-            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_interfaces293); if (state.failed) return ;
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_interfaces348); if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeTiposGenericos_in_interfaces295);
+            pushFollow(FOLLOW_listaDeTiposGenericos_in_interfaces350);
             listaDeTiposGenericos();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeInterfaces_in_interfaces297);
+            pushFollow(FOLLOW_listaDeInterfaces_in_interfaces352);
             listaDeInterfaces();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_corpoDaInterface_in_interfaces299);
+            pushFollow(FOLLOW_corpoDaInterface_in_interfaces354);
             corpoDaInterface();
 
             state._fsp--;
@@ -928,34 +1118,34 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "corpoDaClasse"
-    // fontes/g/CanecaSemantico.g:105:1: corpoDaClasse : ^( CORPO_ atributos construtores destrutor metodos ) ;
+    // fontes/g/CanecaSemantico.g:130:1: corpoDaClasse : ^( CORPO_ atributos construtores destrutor metodos ) ;
     public final void corpoDaClasse() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:106:2: ( ^( CORPO_ atributos construtores destrutor metodos ) )
-            // fontes/g/CanecaSemantico.g:106:4: ^( CORPO_ atributos construtores destrutor metodos )
+            // fontes/g/CanecaSemantico.g:131:2: ( ^( CORPO_ atributos construtores destrutor metodos ) )
+            // fontes/g/CanecaSemantico.g:131:4: ^( CORPO_ atributos construtores destrutor metodos )
             {
-            match(input,CORPO_,FOLLOW_CORPO__in_corpoDaClasse312); if (state.failed) return ;
+            match(input,CORPO_,FOLLOW_CORPO__in_corpoDaClasse367); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_atributos_in_corpoDaClasse314);
+            pushFollow(FOLLOW_atributos_in_corpoDaClasse369);
             atributos();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_construtores_in_corpoDaClasse316);
+            pushFollow(FOLLOW_construtores_in_corpoDaClasse371);
             construtores();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_destrutor_in_corpoDaClasse318);
+            pushFollow(FOLLOW_destrutor_in_corpoDaClasse373);
             destrutor();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_metodos_in_corpoDaClasse320);
+            pushFollow(FOLLOW_metodos_in_corpoDaClasse375);
             metodos();
 
             state._fsp--;
@@ -982,22 +1172,22 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "corpoDaInterface"
-    // fontes/g/CanecaSemantico.g:109:1: corpoDaInterface : ^( CORPO_ atributos assinaturasDeMetodos ) ;
+    // fontes/g/CanecaSemantico.g:134:1: corpoDaInterface : ^( CORPO_ atributos assinaturasDeMetodos ) ;
     public final void corpoDaInterface() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:110:2: ( ^( CORPO_ atributos assinaturasDeMetodos ) )
-            // fontes/g/CanecaSemantico.g:110:4: ^( CORPO_ atributos assinaturasDeMetodos )
+            // fontes/g/CanecaSemantico.g:135:2: ( ^( CORPO_ atributos assinaturasDeMetodos ) )
+            // fontes/g/CanecaSemantico.g:135:4: ^( CORPO_ atributos assinaturasDeMetodos )
             {
-            match(input,CORPO_,FOLLOW_CORPO__in_corpoDaInterface333); if (state.failed) return ;
+            match(input,CORPO_,FOLLOW_CORPO__in_corpoDaInterface388); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_atributos_in_corpoDaInterface335);
+            pushFollow(FOLLOW_atributos_in_corpoDaInterface390);
             atributos();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_assinaturasDeMetodos_in_corpoDaInterface337);
+            pushFollow(FOLLOW_assinaturasDeMetodos_in_corpoDaInterface392);
             assinaturasDeMetodos();
 
             state._fsp--;
@@ -1024,17 +1214,17 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "atributos"
-    // fontes/g/CanecaSemantico.g:113:1: atributos : ^( ATRIBUTOS_ ( atributo )* ) ;
+    // fontes/g/CanecaSemantico.g:138:1: atributos : ^( ATRIBUTOS_ ( atributo )* ) ;
     public final void atributos() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:114:2: ( ^( ATRIBUTOS_ ( atributo )* ) )
-            // fontes/g/CanecaSemantico.g:114:4: ^( ATRIBUTOS_ ( atributo )* )
+            // fontes/g/CanecaSemantico.g:139:2: ( ^( ATRIBUTOS_ ( atributo )* ) )
+            // fontes/g/CanecaSemantico.g:139:4: ^( ATRIBUTOS_ ( atributo )* )
             {
-            match(input,ATRIBUTOS_,FOLLOW_ATRIBUTOS__in_atributos350); if (state.failed) return ;
+            match(input,ATRIBUTOS_,FOLLOW_ATRIBUTOS__in_atributos405); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:114:17: ( atributo )*
+                // fontes/g/CanecaSemantico.g:139:17: ( atributo )*
                 loop8:
                 do {
                     int alt8=2;
@@ -1047,9 +1237,9 @@ public class CanecaSemantico extends TreeFilter {
 
                     switch (alt8) {
                 	case 1 :
-                	    // fontes/g/CanecaSemantico.g:114:18: atributo
+                	    // fontes/g/CanecaSemantico.g:139:18: atributo
                 	    {
-                	    pushFollow(FOLLOW_atributo_in_atributos353);
+                	    pushFollow(FOLLOW_atributo_in_atributos408);
                 	    atributo();
 
                 	    state._fsp--;
@@ -1086,16 +1276,16 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "construtores"
-    // fontes/g/CanecaSemantico.g:117:1: construtores : ^( CONSTRUTORES_ ( construtor )+ ) ;
+    // fontes/g/CanecaSemantico.g:142:1: construtores : ^( CONSTRUTORES_ ( construtor )+ ) ;
     public final void construtores() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:118:2: ( ^( CONSTRUTORES_ ( construtor )+ ) )
-            // fontes/g/CanecaSemantico.g:118:4: ^( CONSTRUTORES_ ( construtor )+ )
+            // fontes/g/CanecaSemantico.g:143:2: ( ^( CONSTRUTORES_ ( construtor )+ ) )
+            // fontes/g/CanecaSemantico.g:143:4: ^( CONSTRUTORES_ ( construtor )+ )
             {
-            match(input,CONSTRUTORES_,FOLLOW_CONSTRUTORES__in_construtores368); if (state.failed) return ;
+            match(input,CONSTRUTORES_,FOLLOW_CONSTRUTORES__in_construtores423); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            // fontes/g/CanecaSemantico.g:118:20: ( construtor )+
+            // fontes/g/CanecaSemantico.g:143:20: ( construtor )+
             int cnt9=0;
             loop9:
             do {
@@ -1109,9 +1299,9 @@ public class CanecaSemantico extends TreeFilter {
 
                 switch (alt9) {
             	case 1 :
-            	    // fontes/g/CanecaSemantico.g:118:21: construtor
+            	    // fontes/g/CanecaSemantico.g:143:21: construtor
             	    {
-            	    pushFollow(FOLLOW_construtor_in_construtores371);
+            	    pushFollow(FOLLOW_construtor_in_construtores426);
             	    construtor();
 
             	    state._fsp--;
@@ -1152,17 +1342,17 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "metodos"
-    // fontes/g/CanecaSemantico.g:121:1: metodos : ^( METODOS_ ( metodo )* ) ;
+    // fontes/g/CanecaSemantico.g:146:1: metodos : ^( METODOS_ ( metodo )* ) ;
     public final void metodos() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:122:2: ( ^( METODOS_ ( metodo )* ) )
-            // fontes/g/CanecaSemantico.g:122:4: ^( METODOS_ ( metodo )* )
+            // fontes/g/CanecaSemantico.g:147:2: ( ^( METODOS_ ( metodo )* ) )
+            // fontes/g/CanecaSemantico.g:147:4: ^( METODOS_ ( metodo )* )
             {
-            match(input,METODOS_,FOLLOW_METODOS__in_metodos386); if (state.failed) return ;
+            match(input,METODOS_,FOLLOW_METODOS__in_metodos441); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:122:15: ( metodo )*
+                // fontes/g/CanecaSemantico.g:147:15: ( metodo )*
                 loop10:
                 do {
                     int alt10=2;
@@ -1175,9 +1365,9 @@ public class CanecaSemantico extends TreeFilter {
 
                     switch (alt10) {
                 	case 1 :
-                	    // fontes/g/CanecaSemantico.g:122:16: metodo
+                	    // fontes/g/CanecaSemantico.g:147:16: metodo
                 	    {
-                	    pushFollow(FOLLOW_metodo_in_metodos389);
+                	    pushFollow(FOLLOW_metodo_in_metodos444);
                 	    metodo();
 
                 	    state._fsp--;
@@ -1214,17 +1404,17 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "assinaturasDeMetodos"
-    // fontes/g/CanecaSemantico.g:125:1: assinaturasDeMetodos : ^( ASSINATURAS_DE_METODOS_ ( ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR listaDeArgumentos ) )* ) ;
+    // fontes/g/CanecaSemantico.g:150:1: assinaturasDeMetodos : ^( ASSINATURAS_DE_METODOS_ ( ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) )* ) ;
     public final void assinaturasDeMetodos() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:126:2: ( ^( ASSINATURAS_DE_METODOS_ ( ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR listaDeArgumentos ) )* ) )
-            // fontes/g/CanecaSemantico.g:126:4: ^( ASSINATURAS_DE_METODOS_ ( ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR listaDeArgumentos ) )* )
+            // fontes/g/CanecaSemantico.g:151:2: ( ^( ASSINATURAS_DE_METODOS_ ( ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) )* ) )
+            // fontes/g/CanecaSemantico.g:151:4: ^( ASSINATURAS_DE_METODOS_ ( ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) )* )
             {
-            match(input,ASSINATURAS_DE_METODOS_,FOLLOW_ASSINATURAS_DE_METODOS__in_assinaturasDeMetodos404); if (state.failed) return ;
+            match(input,ASSINATURAS_DE_METODOS_,FOLLOW_ASSINATURAS_DE_METODOS__in_assinaturasDeMetodos459); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:126:30: ( ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR listaDeArgumentos ) )*
+                // fontes/g/CanecaSemantico.g:151:30: ( ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) )*
                 loop12:
                 do {
                     int alt12=2;
@@ -1237,18 +1427,18 @@ public class CanecaSemantico extends TreeFilter {
 
                     switch (alt12) {
                 	case 1 :
-                	    // fontes/g/CanecaSemantico.g:126:31: ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR listaDeArgumentos )
+                	    // fontes/g/CanecaSemantico.g:151:31: ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . )
                 	    {
-                	    match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_assinaturasDeMetodos408); if (state.failed) return ;
+                	    match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_assinaturasDeMetodos463); if (state.failed) return ;
 
                 	    match(input, Token.DOWN, null); if (state.failed) return ;
-                	    pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_assinaturasDeMetodos410);
+                	    pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_assinaturasDeMetodos465);
                 	    modificadorDeAcessoMasculino();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
 
-                	    // fontes/g/CanecaSemantico.g:126:74: ( ESTATICO )?
+                	    // fontes/g/CanecaSemantico.g:151:74: ( ESTATICO )?
                 	    int alt11=2;
                 	    int LA11_0 = input.LA(1);
 
@@ -1257,9 +1447,9 @@ public class CanecaSemantico extends TreeFilter {
                 	    }
                 	    switch (alt11) {
                 	        case 1 :
-                	            // fontes/g/CanecaSemantico.g:126:75: ESTATICO
+                	            // fontes/g/CanecaSemantico.g:151:75: ESTATICO
                 	            {
-                	            match(input,ESTATICO,FOLLOW_ESTATICO_in_assinaturasDeMetodos413); if (state.failed) return ;
+                	            match(input,ESTATICO,FOLLOW_ESTATICO_in_assinaturasDeMetodos468); if (state.failed) return ;
 
                 	            }
                 	            break;
@@ -1267,19 +1457,15 @@ public class CanecaSemantico extends TreeFilter {
                 	    }
 
 
-                	    pushFollow(FOLLOW_tipo_in_assinaturasDeMetodos417);
+                	    pushFollow(FOLLOW_tipo_in_assinaturasDeMetodos472);
                 	    tipo();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
 
-                	    match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_assinaturasDeMetodos419); if (state.failed) return ;
+                	    match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_assinaturasDeMetodos474); if (state.failed) return ;
 
-                	    pushFollow(FOLLOW_listaDeArgumentos_in_assinaturasDeMetodos421);
-                	    listaDeArgumentos();
-
-                	    state._fsp--;
-                	    if (state.failed) return ;
+                	    matchAny(input); if (state.failed) return ;
 
                 	    match(input, Token.UP, null); if (state.failed) return ;
 
@@ -1315,26 +1501,26 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "atributo"
-    // fontes/g/CanecaSemantico.g:129:1: atributo : ^( ATRIBUTO_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( . )? ) ;
+    // fontes/g/CanecaSemantico.g:154:1: atributo : ^( ATRIBUTO_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( . )? ) ;
     public final void atributo() throws RecognitionException {
         CommonTree IDENTIFICADOR3=null;
         Tipo tipo2 =null;
 
 
         try {
-            // fontes/g/CanecaSemantico.g:130:2: ( ^( ATRIBUTO_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( . )? ) )
-            // fontes/g/CanecaSemantico.g:130:4: ^( ATRIBUTO_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( . )? )
+            // fontes/g/CanecaSemantico.g:155:2: ( ^( ATRIBUTO_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( . )? ) )
+            // fontes/g/CanecaSemantico.g:155:4: ^( ATRIBUTO_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( . )? )
             {
-            match(input,ATRIBUTO_,FOLLOW_ATRIBUTO__in_atributo437); if (state.failed) return ;
+            match(input,ATRIBUTO_,FOLLOW_ATRIBUTO__in_atributo492); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_atributo439);
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_atributo494);
             modificadorDeAcessoMasculino();
 
             state._fsp--;
             if (state.failed) return ;
 
-            // fontes/g/CanecaSemantico.g:130:45: ( ESTATICO )?
+            // fontes/g/CanecaSemantico.g:155:45: ( ESTATICO )?
             int alt13=2;
             int LA13_0 = input.LA(1);
 
@@ -1343,9 +1529,9 @@ public class CanecaSemantico extends TreeFilter {
             }
             switch (alt13) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:130:46: ESTATICO
+                    // fontes/g/CanecaSemantico.g:155:46: ESTATICO
                     {
-                    match(input,ESTATICO,FOLLOW_ESTATICO_in_atributo442); if (state.failed) return ;
+                    match(input,ESTATICO,FOLLOW_ESTATICO_in_atributo497); if (state.failed) return ;
 
                     }
                     break;
@@ -1353,15 +1539,15 @@ public class CanecaSemantico extends TreeFilter {
             }
 
 
-            pushFollow(FOLLOW_tipo_in_atributo446);
+            pushFollow(FOLLOW_tipo_in_atributo501);
             tipo2=tipo();
 
             state._fsp--;
             if (state.failed) return ;
 
-            IDENTIFICADOR3=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_atributo448); if (state.failed) return ;
+            IDENTIFICADOR3=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_atributo503); if (state.failed) return ;
 
-            // fontes/g/CanecaSemantico.g:130:76: ( . )?
+            // fontes/g/CanecaSemantico.g:155:76: ( . )?
             int alt14=2;
             int LA14_0 = input.LA(1);
 
@@ -1370,7 +1556,7 @@ public class CanecaSemantico extends TreeFilter {
             }
             switch (alt14) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:130:77: .
+                    // fontes/g/CanecaSemantico.g:155:77: .
                     {
                     matchAny(input); if (state.failed) return ;
 
@@ -1407,33 +1593,29 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "construtor"
-    // fontes/g/CanecaSemantico.g:138:1: construtor : ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos ) . ) ;
+    // fontes/g/CanecaSemantico.g:163:1: construtor : ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . ) ;
     public final void construtor() throws RecognitionException {
         CommonTree IDENTIFICADOR4=null;
 
         try {
-            // fontes/g/CanecaSemantico.g:139:2: ( ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos ) . ) )
-            // fontes/g/CanecaSemantico.g:139:4: ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos ) . )
+            // fontes/g/CanecaSemantico.g:164:2: ( ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . ) )
+            // fontes/g/CanecaSemantico.g:164:4: ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . )
             {
-            match(input,CONSTRUTOR_,FOLLOW_CONSTRUTOR__in_construtor470); if (state.failed) return ;
+            match(input,CONSTRUTOR_,FOLLOW_CONSTRUTOR__in_construtor525); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_construtor474); if (state.failed) return ;
+            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_construtor529); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_construtor476);
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_construtor531);
             modificadorDeAcessoMasculino();
 
             state._fsp--;
             if (state.failed) return ;
 
-            IDENTIFICADOR4=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_construtor478); if (state.failed) return ;
+            IDENTIFICADOR4=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_construtor533); if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeArgumentos_in_construtor480);
-            listaDeArgumentos();
-
-            state._fsp--;
-            if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
@@ -1446,8 +1628,9 @@ public class CanecaSemantico extends TreeFilter {
             if ( state.backtracking==1 ) {
             			mostrar("construtor");
             			Construtor construtor = new Construtor(classeAtual, (IDENTIFICADOR4!=null?IDENTIFICADOR4.getText():null), IDENTIFICADOR4.getLine(), IDENTIFICADOR4.getCharPositionInLine());
-            			escopoLocalAtual = construtor;
             			classeAtual.definirConstrutor(construtor);
+            			escopoAtual = construtor;
+            			construtorAtual = construtor;
             		}
 
             }
@@ -1468,31 +1651,27 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "terminarConstrutor"
-    // fontes/g/CanecaSemantico.g:148:1: terminarConstrutor : ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos ) . ) ;
+    // fontes/g/CanecaSemantico.g:174:1: terminarConstrutor : ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . ) ;
     public final void terminarConstrutor() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:149:2: ( ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos ) . ) )
-            // fontes/g/CanecaSemantico.g:149:4: ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos ) . )
+            // fontes/g/CanecaSemantico.g:175:2: ( ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . ) )
+            // fontes/g/CanecaSemantico.g:175:4: ^( CONSTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . )
             {
-            match(input,CONSTRUTOR_,FOLLOW_CONSTRUTOR__in_terminarConstrutor500); if (state.failed) return ;
+            match(input,CONSTRUTOR_,FOLLOW_CONSTRUTOR__in_terminarConstrutor555); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_terminarConstrutor504); if (state.failed) return ;
+            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_terminarConstrutor559); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_terminarConstrutor506);
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_terminarConstrutor561);
             modificadorDeAcessoMasculino();
 
             state._fsp--;
             if (state.failed) return ;
 
-            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_terminarConstrutor508); if (state.failed) return ;
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_terminarConstrutor563); if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeArgumentos_in_terminarConstrutor510);
-            listaDeArgumentos();
-
-            state._fsp--;
-            if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
@@ -1504,7 +1683,9 @@ public class CanecaSemantico extends TreeFilter {
 
             if ( state.backtracking==1 ) {
             			mostrar("terminarConstrutor");
-            			escopoLocalAtual = escopoLocalAtual.fornecerEscopoPai();
+            			classeAtual.verificarAssinaturaDeConstrutor(construtorAtual);
+            			escopoAtual = construtorAtual.fornecerEscopoPai();
+            			construtorAtual = null;
             		}
 
             }
@@ -1525,33 +1706,29 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "destrutor"
-    // fontes/g/CanecaSemantico.g:156:1: destrutor : ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia ) . ) ;
+    // fontes/g/CanecaSemantico.g:184:1: destrutor : ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . ) ;
     public final void destrutor() throws RecognitionException {
         CommonTree IDENTIFICADOR5=null;
 
         try {
-            // fontes/g/CanecaSemantico.g:157:2: ( ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia ) . ) )
-            // fontes/g/CanecaSemantico.g:157:4: ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia ) . )
+            // fontes/g/CanecaSemantico.g:185:2: ( ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . ) )
+            // fontes/g/CanecaSemantico.g:185:4: ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . )
             {
-            match(input,DESTRUTOR_,FOLLOW_DESTRUTOR__in_destrutor530); if (state.failed) return ;
+            match(input,DESTRUTOR_,FOLLOW_DESTRUTOR__in_destrutor585); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_destrutor533); if (state.failed) return ;
+            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_destrutor588); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_destrutor535);
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_destrutor590);
             modificadorDeAcessoMasculino();
 
             state._fsp--;
             if (state.failed) return ;
 
-            IDENTIFICADOR5=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_destrutor537); if (state.failed) return ;
+            IDENTIFICADOR5=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_destrutor592); if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeArgumentosVazia_in_destrutor539);
-            listaDeArgumentosVazia();
-
-            state._fsp--;
-            if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
@@ -1564,8 +1741,9 @@ public class CanecaSemantico extends TreeFilter {
             if ( state.backtracking==1 ) {
             			mostrar("destrutor");
             			Destrutor destrutor = new Destrutor(classeAtual, (IDENTIFICADOR5!=null?IDENTIFICADOR5.getText():null), IDENTIFICADOR5.getLine(), IDENTIFICADOR5.getCharPositionInLine());
-            			escopoLocalAtual = destrutor;
             			classeAtual.definirDestrutor(destrutor);
+            			escopoAtual = destrutor;
+            			destrutorAtual = destrutor;
             		}
 
             }
@@ -1586,31 +1764,27 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "terminarDestrutor"
-    // fontes/g/CanecaSemantico.g:166:1: terminarDestrutor : ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia ) . ) ;
+    // fontes/g/CanecaSemantico.g:195:1: terminarDestrutor : ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . ) ;
     public final void terminarDestrutor() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:167:2: ( ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia ) . ) )
-            // fontes/g/CanecaSemantico.g:167:4: ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia ) . )
+            // fontes/g/CanecaSemantico.g:196:2: ( ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . ) )
+            // fontes/g/CanecaSemantico.g:196:4: ^( DESTRUTOR_ ^( ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR . ) . )
             {
-            match(input,DESTRUTOR_,FOLLOW_DESTRUTOR__in_terminarDestrutor559); if (state.failed) return ;
+            match(input,DESTRUTOR_,FOLLOW_DESTRUTOR__in_terminarDestrutor614); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_terminarDestrutor562); if (state.failed) return ;
+            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_terminarDestrutor617); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_terminarDestrutor564);
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_terminarDestrutor619);
             modificadorDeAcessoMasculino();
 
             state._fsp--;
             if (state.failed) return ;
 
-            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_terminarDestrutor566); if (state.failed) return ;
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_terminarDestrutor621); if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeArgumentosVazia_in_terminarDestrutor568);
-            listaDeArgumentosVazia();
-
-            state._fsp--;
-            if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
@@ -1622,7 +1796,8 @@ public class CanecaSemantico extends TreeFilter {
 
             if ( state.backtracking==1 ) {
             			mostrar("terminarDestrutor");
-            			escopoLocalAtual = escopoLocalAtual.fornecerEscopoPai();
+            			escopoAtual = destrutorAtual.fornecerEscopoPai();
+            			destrutorAtual = null;
             		}
 
             }
@@ -1643,25 +1818,29 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "metodo"
-    // fontes/g/CanecaSemantico.g:174:1: metodo : ^( METODO_ ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR listaDeArgumentos ) . ) ;
+    // fontes/g/CanecaSemantico.g:204:1: metodo : ^( METODO_ ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) . ) ;
     public final void metodo() throws RecognitionException {
+        CommonTree IDENTIFICADOR7=null;
+        Tipo tipo6 =null;
+
+
         try {
-            // fontes/g/CanecaSemantico.g:175:2: ( ^( METODO_ ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR listaDeArgumentos ) . ) )
-            // fontes/g/CanecaSemantico.g:175:4: ^( METODO_ ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR listaDeArgumentos ) . )
+            // fontes/g/CanecaSemantico.g:205:2: ( ^( METODO_ ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) . ) )
+            // fontes/g/CanecaSemantico.g:205:4: ^( METODO_ ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) . )
             {
-            match(input,METODO_,FOLLOW_METODO__in_metodo588); if (state.failed) return ;
+            match(input,METODO_,FOLLOW_METODO__in_metodo643); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_metodo591); if (state.failed) return ;
+            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_metodo646); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_metodo593);
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_metodo648);
             modificadorDeAcessoMasculino();
 
             state._fsp--;
             if (state.failed) return ;
 
-            // fontes/g/CanecaSemantico.g:175:57: ( ESTATICO )?
+            // fontes/g/CanecaSemantico.g:205:57: ( ESTATICO )?
             int alt15=2;
             int LA15_0 = input.LA(1);
 
@@ -1670,9 +1849,9 @@ public class CanecaSemantico extends TreeFilter {
             }
             switch (alt15) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:175:58: ESTATICO
+                    // fontes/g/CanecaSemantico.g:205:58: ESTATICO
                     {
-                    match(input,ESTATICO,FOLLOW_ESTATICO_in_metodo596); if (state.failed) return ;
+                    match(input,ESTATICO,FOLLOW_ESTATICO_in_metodo651); if (state.failed) return ;
 
                     }
                     break;
@@ -1680,19 +1859,15 @@ public class CanecaSemantico extends TreeFilter {
             }
 
 
-            pushFollow(FOLLOW_tipo_in_metodo600);
-            tipo();
+            pushFollow(FOLLOW_tipo_in_metodo655);
+            tipo6=tipo();
 
             state._fsp--;
             if (state.failed) return ;
 
-            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_metodo602); if (state.failed) return ;
+            IDENTIFICADOR7=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_metodo657); if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeArgumentos_in_metodo604);
-            listaDeArgumentos();
-
-            state._fsp--;
-            if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
@@ -1701,6 +1876,14 @@ public class CanecaSemantico extends TreeFilter {
 
             match(input, Token.UP, null); if (state.failed) return ;
 
+
+            if ( state.backtracking==1 ) {
+            			mostrar("metodo");
+            			Metodo metodo = new Metodo(classeAtual, tipo6, (IDENTIFICADOR7!=null?IDENTIFICADOR7.getText():null), IDENTIFICADOR7.getLine(), IDENTIFICADOR7.getCharPositionInLine());
+            			classeAtual.definirMetodo(metodo);
+            			escopoAtual = metodo;
+            			metodoAtual = metodo;
+            		}
 
             }
 
@@ -1719,11 +1902,90 @@ public class CanecaSemantico extends TreeFilter {
 
 
 
+    // $ANTLR start "terminarMetodo"
+    // fontes/g/CanecaSemantico.g:215:1: terminarMetodo : ^( METODO_ ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) . ) ;
+    public final void terminarMetodo() throws RecognitionException {
+        try {
+            // fontes/g/CanecaSemantico.g:216:2: ( ^( METODO_ ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) . ) )
+            // fontes/g/CanecaSemantico.g:216:4: ^( METODO_ ^( ASSINATURA_ modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR . ) . )
+            {
+            match(input,METODO_,FOLLOW_METODO__in_terminarMetodo679); if (state.failed) return ;
+
+            match(input, Token.DOWN, null); if (state.failed) return ;
+            match(input,ASSINATURA_,FOLLOW_ASSINATURA__in_terminarMetodo682); if (state.failed) return ;
+
+            match(input, Token.DOWN, null); if (state.failed) return ;
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_terminarMetodo684);
+            modificadorDeAcessoMasculino();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            // fontes/g/CanecaSemantico.g:216:57: ( ESTATICO )?
+            int alt16=2;
+            int LA16_0 = input.LA(1);
+
+            if ( (LA16_0==ESTATICO) ) {
+                alt16=1;
+            }
+            switch (alt16) {
+                case 1 :
+                    // fontes/g/CanecaSemantico.g:216:58: ESTATICO
+                    {
+                    match(input,ESTATICO,FOLLOW_ESTATICO_in_terminarMetodo687); if (state.failed) return ;
+
+                    }
+                    break;
+
+            }
+
+
+            pushFollow(FOLLOW_tipo_in_terminarMetodo691);
+            tipo();
+
+            state._fsp--;
+            if (state.failed) return ;
+
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_terminarMetodo693); if (state.failed) return ;
+
+            matchAny(input); if (state.failed) return ;
+
+            match(input, Token.UP, null); if (state.failed) return ;
+
+
+            matchAny(input); if (state.failed) return ;
+
+            match(input, Token.UP, null); if (state.failed) return ;
+
+
+            if ( state.backtracking==1 ) {
+            			mostrar("terminarMetodo");
+            			escopoAtual = metodoAtual.fornecerEscopoPai();
+            			metodoAtual = null;
+            		}
+
+            }
+
+        }
+
+        	catch (RecognitionException erro) {
+        		throw erro;
+        	}
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
+    // $ANTLR end "terminarMetodo"
+
+
+
     // $ANTLR start "modificadorDeAcessoMasculino"
-    // fontes/g/CanecaSemantico.g:178:1: modificadorDeAcessoMasculino : ( PUBLICO | PRIVADO | PROTEGIDO );
+    // fontes/g/CanecaSemantico.g:224:1: modificadorDeAcessoMasculino : ( PUBLICO | PRIVADO | PROTEGIDO );
     public final void modificadorDeAcessoMasculino() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:179:2: ( PUBLICO | PRIVADO | PROTEGIDO )
+            // fontes/g/CanecaSemantico.g:225:2: ( PUBLICO | PRIVADO | PROTEGIDO )
             // fontes/g/CanecaSemantico.g:
             {
             if ( input.LA(1)==PRIVADO||input.LA(1)==PROTEGIDO||input.LA(1)==PUBLICO ) {
@@ -1756,10 +2018,10 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "modificadorDeAcessoFeminino"
-    // fontes/g/CanecaSemantico.g:184:1: modificadorDeAcessoFeminino : ( PUBLICA | PRIVADA | PROTEGIDA );
+    // fontes/g/CanecaSemantico.g:230:1: modificadorDeAcessoFeminino : ( PUBLICA | PRIVADA | PROTEGIDA );
     public final void modificadorDeAcessoFeminino() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:185:2: ( PUBLICA | PRIVADA | PROTEGIDA )
+            // fontes/g/CanecaSemantico.g:231:2: ( PUBLICA | PRIVADA | PROTEGIDA )
             // fontes/g/CanecaSemantico.g:
             {
             if ( input.LA(1)==PRIVADA||input.LA(1)==PROTEGIDA||input.LA(1)==PUBLICA ) {
@@ -1792,121 +2054,33 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "listaDeParametros"
-    // fontes/g/CanecaSemantico.g:190:1: listaDeParametros : ^( PARAMETROS_ ( expressao )* ) ;
+    // fontes/g/CanecaSemantico.g:236:1: listaDeParametros : ^( PARAMETROS_ ( expressao )* ) ;
     public final void listaDeParametros() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:191:2: ( ^( PARAMETROS_ ( expressao )* ) )
-            // fontes/g/CanecaSemantico.g:191:4: ^( PARAMETROS_ ( expressao )* )
+            // fontes/g/CanecaSemantico.g:237:2: ( ^( PARAMETROS_ ( expressao )* ) )
+            // fontes/g/CanecaSemantico.g:237:4: ^( PARAMETROS_ ( expressao )* )
             {
-            match(input,PARAMETROS_,FOLLOW_PARAMETROS__in_listaDeParametros662); if (state.failed) return ;
+            match(input,PARAMETROS_,FOLLOW_PARAMETROS__in_listaDeParametros757); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:191:18: ( expressao )*
-                loop16:
-                do {
-                    int alt16=2;
-                    int LA16_0 = input.LA(1);
-
-                    if ( (LA16_0==ATRIBUIDOR||LA16_0==DIFERENTE||(LA16_0 >= DIVISAO && LA16_0 <= E)||LA16_0==IGUAL||(LA16_0 >= MAIOR && LA16_0 <= MENOR_IGUAL)||(LA16_0 >= MULTIPLICACAO && LA16_0 <= NEGACAO)||LA16_0==OU||LA16_0==RESTO_DA_DIVISAO||(LA16_0 >= SOMA && LA16_0 <= SUBTRACAO)||LA16_0==PRIMARIA_||LA16_0==SUBTRACAO_UNARIA_) ) {
-                        alt16=1;
-                    }
-
-
-                    switch (alt16) {
-                	case 1 :
-                	    // fontes/g/CanecaSemantico.g:191:19: expressao
-                	    {
-                	    pushFollow(FOLLOW_expressao_in_listaDeParametros665);
-                	    expressao();
-
-                	    state._fsp--;
-                	    if (state.failed) return ;
-
-                	    }
-                	    break;
-
-                	default :
-                	    break loop16;
-                    }
-                } while (true);
-
-
-                match(input, Token.UP, null); if (state.failed) return ;
-            }
-
-
-            }
-
-        }
-
-        	catch (RecognitionException erro) {
-        		throw erro;
-        	}
-
-        finally {
-        	// do for sure before leaving
-        }
-        return ;
-    }
-    // $ANTLR end "listaDeParametros"
-
-
-
-    // $ANTLR start "listaDeArgumentosVazia"
-    // fontes/g/CanecaSemantico.g:194:1: listaDeArgumentosVazia : ARGUMENTOS_ ;
-    public final void listaDeArgumentosVazia() throws RecognitionException {
-        try {
-            // fontes/g/CanecaSemantico.g:195:2: ( ARGUMENTOS_ )
-            // fontes/g/CanecaSemantico.g:195:4: ARGUMENTOS_
-            {
-            match(input,ARGUMENTOS_,FOLLOW_ARGUMENTOS__in_listaDeArgumentosVazia679); if (state.failed) return ;
-
-            }
-
-        }
-
-        	catch (RecognitionException erro) {
-        		throw erro;
-        	}
-
-        finally {
-        	// do for sure before leaving
-        }
-        return ;
-    }
-    // $ANTLR end "listaDeArgumentosVazia"
-
-
-
-    // $ANTLR start "listaDeArgumentos"
-    // fontes/g/CanecaSemantico.g:198:1: listaDeArgumentos : ^( ARGUMENTOS_ ( declaracao )* ) ;
-    public final void listaDeArgumentos() throws RecognitionException {
-        try {
-            // fontes/g/CanecaSemantico.g:199:2: ( ^( ARGUMENTOS_ ( declaracao )* ) )
-            // fontes/g/CanecaSemantico.g:199:4: ^( ARGUMENTOS_ ( declaracao )* )
-            {
-            match(input,ARGUMENTOS_,FOLLOW_ARGUMENTOS__in_listaDeArgumentos691); if (state.failed) return ;
-
-            if ( input.LA(1)==Token.DOWN ) {
-                match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:199:18: ( declaracao )*
+                // fontes/g/CanecaSemantico.g:237:18: ( expressao )*
                 loop17:
                 do {
                     int alt17=2;
                     int LA17_0 = input.LA(1);
 
-                    if ( (LA17_0==DECLARACAO_) ) {
+                    if ( (LA17_0==ATRIBUIDOR||LA17_0==DIFERENTE||(LA17_0 >= DIVISAO && LA17_0 <= E)||LA17_0==IGUAL||(LA17_0 >= MAIOR && LA17_0 <= MENOR_IGUAL)||(LA17_0 >= MULTIPLICACAO && LA17_0 <= NEGACAO)||LA17_0==OU||LA17_0==RESTO_DA_DIVISAO||(LA17_0 >= SOMA && LA17_0 <= SUBTRACAO)||LA17_0==PRIMARIA_||LA17_0==SUBTRACAO_UNARIA_) ) {
                         alt17=1;
                     }
 
 
                     switch (alt17) {
                 	case 1 :
-                	    // fontes/g/CanecaSemantico.g:199:19: declaracao
+                	    // fontes/g/CanecaSemantico.g:237:19: expressao
                 	    {
-                	    pushFollow(FOLLOW_declaracao_in_listaDeArgumentos694);
-                	    declaracao();
+                	    pushFollow(FOLLOW_expressao_in_listaDeParametros760);
+                	    expressao();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
@@ -1937,41 +2111,66 @@ public class CanecaSemantico extends TreeFilter {
         }
         return ;
     }
-    // $ANTLR end "listaDeArgumentos"
+    // $ANTLR end "listaDeParametros"
 
 
 
-    // $ANTLR start "listaDeInterfaces"
-    // fontes/g/CanecaSemantico.g:202:1: listaDeInterfaces : ^( INTERFACES_ ( tipo )* ) ;
-    public final void listaDeInterfaces() throws RecognitionException {
+    // $ANTLR start "listaDeArgumentosVazia"
+    // fontes/g/CanecaSemantico.g:240:1: listaDeArgumentosVazia : ARGUMENTOS_ ;
+    public final void listaDeArgumentosVazia() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:203:2: ( ^( INTERFACES_ ( tipo )* ) )
-            // fontes/g/CanecaSemantico.g:203:4: ^( INTERFACES_ ( tipo )* )
+            // fontes/g/CanecaSemantico.g:241:2: ( ARGUMENTOS_ )
+            // fontes/g/CanecaSemantico.g:241:4: ARGUMENTOS_
             {
-            match(input,INTERFACES_,FOLLOW_INTERFACES__in_listaDeInterfaces709); if (state.failed) return ;
+            match(input,ARGUMENTOS_,FOLLOW_ARGUMENTOS__in_listaDeArgumentosVazia774); if (state.failed) return ;
+
+            }
+
+        }
+
+        	catch (RecognitionException erro) {
+        		throw erro;
+        	}
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
+    // $ANTLR end "listaDeArgumentosVazia"
+
+
+
+    // $ANTLR start "listaDeArgumentos"
+    // fontes/g/CanecaSemantico.g:244:1: listaDeArgumentos : ^( ARGUMENTOS_ ( . )* ) ;
+    public final void listaDeArgumentos() throws RecognitionException {
+        try {
+            // fontes/g/CanecaSemantico.g:245:2: ( ^( ARGUMENTOS_ ( . )* ) )
+            // fontes/g/CanecaSemantico.g:245:4: ^( ARGUMENTOS_ ( . )* )
+            {
+            match(input,ARGUMENTOS_,FOLLOW_ARGUMENTOS__in_listaDeArgumentos786); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:203:18: ( tipo )*
+                // fontes/g/CanecaSemantico.g:245:18: ( . )*
                 loop18:
                 do {
                     int alt18=2;
                     int LA18_0 = input.LA(1);
 
-                    if ( (LA18_0==TIPO_) ) {
+                    if ( ((LA18_0 >= ATRIBUIDOR && LA18_0 <= UNIDADE_)) ) {
                         alt18=1;
+                    }
+                    else if ( (LA18_0==UP) ) {
+                        alt18=2;
                     }
 
 
                     switch (alt18) {
                 	case 1 :
-                	    // fontes/g/CanecaSemantico.g:203:19: tipo
+                	    // fontes/g/CanecaSemantico.g:245:19: .
                 	    {
-                	    pushFollow(FOLLOW_tipo_in_listaDeInterfaces712);
-                	    tipo();
-
-                	    state._fsp--;
-                	    if (state.failed) return ;
+                	    matchAny(input); if (state.failed) return ;
 
                 	    }
                 	    break;
@@ -1999,38 +2198,38 @@ public class CanecaSemantico extends TreeFilter {
         }
         return ;
     }
-    // $ANTLR end "listaDeInterfaces"
+    // $ANTLR end "listaDeArgumentos"
 
 
 
-    // $ANTLR start "listaDeTiposGenericos"
-    // fontes/g/CanecaSemantico.g:206:1: listaDeTiposGenericos : ^( TIPOS_GENERICOS_ ( tipoGenerico )* ) ;
-    public final void listaDeTiposGenericos() throws RecognitionException {
+    // $ANTLR start "listaDeInterfaces"
+    // fontes/g/CanecaSemantico.g:248:1: listaDeInterfaces : ^( INTERFACES_ ( tipo )* ) ;
+    public final void listaDeInterfaces() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:207:2: ( ^( TIPOS_GENERICOS_ ( tipoGenerico )* ) )
-            // fontes/g/CanecaSemantico.g:207:4: ^( TIPOS_GENERICOS_ ( tipoGenerico )* )
+            // fontes/g/CanecaSemantico.g:249:2: ( ^( INTERFACES_ ( tipo )* ) )
+            // fontes/g/CanecaSemantico.g:249:4: ^( INTERFACES_ ( tipo )* )
             {
-            match(input,TIPOS_GENERICOS_,FOLLOW_TIPOS_GENERICOS__in_listaDeTiposGenericos727); if (state.failed) return ;
+            match(input,INTERFACES_,FOLLOW_INTERFACES__in_listaDeInterfaces804); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:207:23: ( tipoGenerico )*
+                // fontes/g/CanecaSemantico.g:249:18: ( tipo )*
                 loop19:
                 do {
                     int alt19=2;
                     int LA19_0 = input.LA(1);
 
-                    if ( (LA19_0==TIPO_GENERICO_) ) {
+                    if ( (LA19_0==TIPO_) ) {
                         alt19=1;
                     }
 
 
                     switch (alt19) {
                 	case 1 :
-                	    // fontes/g/CanecaSemantico.g:207:24: tipoGenerico
+                	    // fontes/g/CanecaSemantico.g:249:19: tipo
                 	    {
-                	    pushFollow(FOLLOW_tipoGenerico_in_listaDeTiposGenericos730);
-                	    tipoGenerico();
+                	    pushFollow(FOLLOW_tipo_in_listaDeInterfaces807);
+                	    tipo();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
@@ -2061,38 +2260,38 @@ public class CanecaSemantico extends TreeFilter {
         }
         return ;
     }
-    // $ANTLR end "listaDeTiposGenericos"
+    // $ANTLR end "listaDeInterfaces"
 
 
 
-    // $ANTLR start "listaDeTipos"
-    // fontes/g/CanecaSemantico.g:210:1: listaDeTipos : ^( TIPOS_ ( tipo )* ) ;
-    public final void listaDeTipos() throws RecognitionException {
+    // $ANTLR start "listaDeTiposGenericos"
+    // fontes/g/CanecaSemantico.g:252:1: listaDeTiposGenericos : ^( TIPOS_GENERICOS_ ( tipoGenerico )* ) ;
+    public final void listaDeTiposGenericos() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:211:2: ( ^( TIPOS_ ( tipo )* ) )
-            // fontes/g/CanecaSemantico.g:211:4: ^( TIPOS_ ( tipo )* )
+            // fontes/g/CanecaSemantico.g:253:2: ( ^( TIPOS_GENERICOS_ ( tipoGenerico )* ) )
+            // fontes/g/CanecaSemantico.g:253:4: ^( TIPOS_GENERICOS_ ( tipoGenerico )* )
             {
-            match(input,TIPOS_,FOLLOW_TIPOS__in_listaDeTipos745); if (state.failed) return ;
+            match(input,TIPOS_GENERICOS_,FOLLOW_TIPOS_GENERICOS__in_listaDeTiposGenericos822); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:211:13: ( tipo )*
+                // fontes/g/CanecaSemantico.g:253:23: ( tipoGenerico )*
                 loop20:
                 do {
                     int alt20=2;
                     int LA20_0 = input.LA(1);
 
-                    if ( (LA20_0==TIPO_) ) {
+                    if ( (LA20_0==TIPO_GENERICO_) ) {
                         alt20=1;
                     }
 
 
                     switch (alt20) {
                 	case 1 :
-                	    // fontes/g/CanecaSemantico.g:211:14: tipo
+                	    // fontes/g/CanecaSemantico.g:253:24: tipoGenerico
                 	    {
-                	    pushFollow(FOLLOW_tipo_in_listaDeTipos748);
-                	    tipo();
+                	    pushFollow(FOLLOW_tipoGenerico_in_listaDeTiposGenericos825);
+                	    tipoGenerico();
 
                 	    state._fsp--;
                 	    if (state.failed) return ;
@@ -2123,37 +2322,99 @@ public class CanecaSemantico extends TreeFilter {
         }
         return ;
     }
+    // $ANTLR end "listaDeTiposGenericos"
+
+
+
+    // $ANTLR start "listaDeTipos"
+    // fontes/g/CanecaSemantico.g:256:1: listaDeTipos : ^( TIPOS_ ( tipo )* ) ;
+    public final void listaDeTipos() throws RecognitionException {
+        try {
+            // fontes/g/CanecaSemantico.g:257:2: ( ^( TIPOS_ ( tipo )* ) )
+            // fontes/g/CanecaSemantico.g:257:4: ^( TIPOS_ ( tipo )* )
+            {
+            match(input,TIPOS_,FOLLOW_TIPOS__in_listaDeTipos840); if (state.failed) return ;
+
+            if ( input.LA(1)==Token.DOWN ) {
+                match(input, Token.DOWN, null); if (state.failed) return ;
+                // fontes/g/CanecaSemantico.g:257:13: ( tipo )*
+                loop21:
+                do {
+                    int alt21=2;
+                    int LA21_0 = input.LA(1);
+
+                    if ( (LA21_0==TIPO_) ) {
+                        alt21=1;
+                    }
+
+
+                    switch (alt21) {
+                	case 1 :
+                	    // fontes/g/CanecaSemantico.g:257:14: tipo
+                	    {
+                	    pushFollow(FOLLOW_tipo_in_listaDeTipos843);
+                	    tipo();
+
+                	    state._fsp--;
+                	    if (state.failed) return ;
+
+                	    }
+                	    break;
+
+                	default :
+                	    break loop21;
+                    }
+                } while (true);
+
+
+                match(input, Token.UP, null); if (state.failed) return ;
+            }
+
+
+            }
+
+        }
+
+        	catch (RecognitionException erro) {
+        		throw erro;
+        	}
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
     // $ANTLR end "listaDeTipos"
 
 
 
     // $ANTLR start "listaDeCapturas"
-    // fontes/g/CanecaSemantico.g:214:1: listaDeCapturas : ^( CAPTURAS_ ( capture )+ ) ;
+    // fontes/g/CanecaSemantico.g:260:1: listaDeCapturas : ^( CAPTURAS_ ( capture )+ ) ;
     public final void listaDeCapturas() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:215:2: ( ^( CAPTURAS_ ( capture )+ ) )
-            // fontes/g/CanecaSemantico.g:215:4: ^( CAPTURAS_ ( capture )+ )
+            // fontes/g/CanecaSemantico.g:261:2: ( ^( CAPTURAS_ ( capture )+ ) )
+            // fontes/g/CanecaSemantico.g:261:4: ^( CAPTURAS_ ( capture )+ )
             {
-            match(input,CAPTURAS_,FOLLOW_CAPTURAS__in_listaDeCapturas763); if (state.failed) return ;
+            match(input,CAPTURAS_,FOLLOW_CAPTURAS__in_listaDeCapturas858); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            // fontes/g/CanecaSemantico.g:215:16: ( capture )+
-            int cnt21=0;
-            loop21:
+            // fontes/g/CanecaSemantico.g:261:16: ( capture )+
+            int cnt22=0;
+            loop22:
             do {
-                int alt21=2;
-                int LA21_0 = input.LA(1);
+                int alt22=2;
+                int LA22_0 = input.LA(1);
 
-                if ( (LA21_0==CAPTURE_) ) {
-                    alt21=1;
+                if ( (LA22_0==CAPTURE_) ) {
+                    alt22=1;
                 }
 
 
-                switch (alt21) {
+                switch (alt22) {
             	case 1 :
-            	    // fontes/g/CanecaSemantico.g:215:17: capture
+            	    // fontes/g/CanecaSemantico.g:261:17: capture
             	    {
-            	    pushFollow(FOLLOW_capture_in_listaDeCapturas766);
+            	    pushFollow(FOLLOW_capture_in_listaDeCapturas861);
             	    capture();
 
             	    state._fsp--;
@@ -2163,13 +2424,13 @@ public class CanecaSemantico extends TreeFilter {
             	    break;
 
             	default :
-            	    if ( cnt21 >= 1 ) break loop21;
+            	    if ( cnt22 >= 1 ) break loop22;
             	    if (state.backtracking>0) {state.failed=true; return ;}
                         EarlyExitException eee =
-                            new EarlyExitException(21, input);
+                            new EarlyExitException(22, input);
                         throw eee;
                 }
-                cnt21++;
+                cnt22++;
             } while (true);
 
 
@@ -2194,18 +2455,18 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "tipoGenerico"
-    // fontes/g/CanecaSemantico.g:218:1: tipoGenerico : ^( TIPO_GENERICO_ IDENTIFICADOR listaDeInterfaces ) ;
+    // fontes/g/CanecaSemantico.g:264:1: tipoGenerico : ^( TIPO_GENERICO_ IDENTIFICADOR listaDeInterfaces ) ;
     public final void tipoGenerico() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:219:2: ( ^( TIPO_GENERICO_ IDENTIFICADOR listaDeInterfaces ) )
-            // fontes/g/CanecaSemantico.g:219:4: ^( TIPO_GENERICO_ IDENTIFICADOR listaDeInterfaces )
+            // fontes/g/CanecaSemantico.g:265:2: ( ^( TIPO_GENERICO_ IDENTIFICADOR listaDeInterfaces ) )
+            // fontes/g/CanecaSemantico.g:265:4: ^( TIPO_GENERICO_ IDENTIFICADOR listaDeInterfaces )
             {
-            match(input,TIPO_GENERICO_,FOLLOW_TIPO_GENERICO__in_tipoGenerico781); if (state.failed) return ;
+            match(input,TIPO_GENERICO_,FOLLOW_TIPO_GENERICO__in_tipoGenerico876); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipoGenerico783); if (state.failed) return ;
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipoGenerico878); if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeInterfaces_in_tipoGenerico785);
+            pushFollow(FOLLOW_listaDeInterfaces_in_tipoGenerico880);
             listaDeInterfaces();
 
             state._fsp--;
@@ -2232,23 +2493,23 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "tipo"
-    // fontes/g/CanecaSemantico.g:222:1: tipo returns [Tipo tipo] : ^( TIPO_ IDENTIFICADOR listaDeTipos ) ;
+    // fontes/g/CanecaSemantico.g:268:1: tipo returns [Tipo tipo] : ^( TIPO_ IDENTIFICADOR listaDeTipos ) ;
     public final Tipo tipo() throws RecognitionException {
         Tipo tipo = null;
 
 
-        CommonTree IDENTIFICADOR6=null;
+        CommonTree IDENTIFICADOR8=null;
 
         try {
-            // fontes/g/CanecaSemantico.g:223:2: ( ^( TIPO_ IDENTIFICADOR listaDeTipos ) )
-            // fontes/g/CanecaSemantico.g:223:4: ^( TIPO_ IDENTIFICADOR listaDeTipos )
+            // fontes/g/CanecaSemantico.g:269:2: ( ^( TIPO_ IDENTIFICADOR listaDeTipos ) )
+            // fontes/g/CanecaSemantico.g:269:4: ^( TIPO_ IDENTIFICADOR listaDeTipos )
             {
-            match(input,TIPO_,FOLLOW_TIPO__in_tipo802); if (state.failed) return tipo;
+            match(input,TIPO_,FOLLOW_TIPO__in_tipo897); if (state.failed) return tipo;
 
             match(input, Token.DOWN, null); if (state.failed) return tipo;
-            IDENTIFICADOR6=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipo804); if (state.failed) return tipo;
+            IDENTIFICADOR8=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipo899); if (state.failed) return tipo;
 
-            pushFollow(FOLLOW_listaDeTipos_in_tipo806);
+            pushFollow(FOLLOW_listaDeTipos_in_tipo901);
             listaDeTipos();
 
             state._fsp--;
@@ -2258,7 +2519,7 @@ public class CanecaSemantico extends TreeFilter {
 
 
             if ( state.backtracking==1 ) {
-            			tipo = new Tipo((IDENTIFICADOR6!=null?IDENTIFICADOR6.getText():null));
+            			tipo = new Tipo((IDENTIFICADOR8!=null?IDENTIFICADOR8.getText():null));
             		}
 
             }
@@ -2279,25 +2540,35 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "declaracao"
-    // fontes/g/CanecaSemantico.g:229:1: declaracao : ^( DECLARACAO_ tipo IDENTIFICADOR ) ;
+    // fontes/g/CanecaSemantico.g:275:1: declaracao : ^( DECLARACAO_ tipo IDENTIFICADOR ) ;
     public final void declaracao() throws RecognitionException {
+        CommonTree IDENTIFICADOR10=null;
+        Tipo tipo9 =null;
+
+
         try {
-            // fontes/g/CanecaSemantico.g:230:2: ( ^( DECLARACAO_ tipo IDENTIFICADOR ) )
-            // fontes/g/CanecaSemantico.g:230:4: ^( DECLARACAO_ tipo IDENTIFICADOR )
+            // fontes/g/CanecaSemantico.g:276:2: ( ^( DECLARACAO_ tipo IDENTIFICADOR ) )
+            // fontes/g/CanecaSemantico.g:276:4: ^( DECLARACAO_ tipo IDENTIFICADOR )
             {
-            match(input,DECLARACAO_,FOLLOW_DECLARACAO__in_declaracao823); if (state.failed) return ;
+            match(input,DECLARACAO_,FOLLOW_DECLARACAO__in_declaracao918); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_tipo_in_declaracao825);
-            tipo();
+            pushFollow(FOLLOW_tipo_in_declaracao920);
+            tipo9=tipo();
 
             state._fsp--;
             if (state.failed) return ;
 
-            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracao827); if (state.failed) return ;
+            IDENTIFICADOR10=(CommonTree)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracao922); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
+
+            if ( state.backtracking==1 ) {
+            			mostrar("variavel");
+            			Variavel variavel = new Variavel(escopoAtual, tipo9, (IDENTIFICADOR10!=null?IDENTIFICADOR10.getText():null), IDENTIFICADOR10.getLine(), IDENTIFICADOR10.getCharPositionInLine());
+            			escopoAtual.definirVariavel(variavel);
+            		}
 
             }
 
@@ -2317,16 +2588,16 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "atribuicao"
-    // fontes/g/CanecaSemantico.g:233:1: atribuicao : ^( ATRIBUICAO_ expressaoOuLogico ) ;
+    // fontes/g/CanecaSemantico.g:284:1: atribuicao : ^( ATRIBUICAO_ expressaoOuLogico ) ;
     public final void atribuicao() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:234:2: ( ^( ATRIBUICAO_ expressaoOuLogico ) )
-            // fontes/g/CanecaSemantico.g:234:4: ^( ATRIBUICAO_ expressaoOuLogico )
+            // fontes/g/CanecaSemantico.g:285:2: ( ^( ATRIBUICAO_ expressaoOuLogico ) )
+            // fontes/g/CanecaSemantico.g:285:4: ^( ATRIBUICAO_ expressaoOuLogico )
             {
-            match(input,ATRIBUICAO_,FOLLOW_ATRIBUICAO__in_atribuicao840); if (state.failed) return ;
+            match(input,ATRIBUICAO_,FOLLOW_ATRIBUICAO__in_atribuicao939); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_expressaoOuLogico_in_atribuicao842);
+            pushFollow(FOLLOW_expressaoOuLogico_in_atribuicao941);
             expressaoOuLogico();
 
             state._fsp--;
@@ -2353,33 +2624,29 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "declaracaoComAtribuicaoOpcional"
-    // fontes/g/CanecaSemantico.g:237:1: declaracaoComAtribuicaoOpcional : ^( DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ declaracao ( atribuicao )? ) ;
+    // fontes/g/CanecaSemantico.g:288:1: declaracaoComAtribuicaoOpcional : ^( DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ . ( atribuicao )? ) ;
     public final void declaracaoComAtribuicaoOpcional() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:238:2: ( ^( DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ declaracao ( atribuicao )? ) )
-            // fontes/g/CanecaSemantico.g:238:4: ^( DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ declaracao ( atribuicao )? )
+            // fontes/g/CanecaSemantico.g:289:2: ( ^( DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ . ( atribuicao )? ) )
+            // fontes/g/CanecaSemantico.g:289:4: ^( DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ . ( atribuicao )? )
             {
-            match(input,DECLARACAO_COM_ATRIBUICAO_OPICIONAL_,FOLLOW_DECLARACAO_COM_ATRIBUICAO_OPICIONAL__in_declaracaoComAtribuicaoOpcional855); if (state.failed) return ;
+            match(input,DECLARACAO_COM_ATRIBUICAO_OPICIONAL_,FOLLOW_DECLARACAO_COM_ATRIBUICAO_OPICIONAL__in_declaracaoComAtribuicaoOpcional954); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_declaracao_in_declaracaoComAtribuicaoOpcional857);
-            declaracao();
+            matchAny(input); if (state.failed) return ;
 
-            state._fsp--;
-            if (state.failed) return ;
+            // fontes/g/CanecaSemantico.g:289:45: ( atribuicao )?
+            int alt23=2;
+            int LA23_0 = input.LA(1);
 
-            // fontes/g/CanecaSemantico.g:238:54: ( atribuicao )?
-            int alt22=2;
-            int LA22_0 = input.LA(1);
-
-            if ( (LA22_0==ATRIBUICAO_) ) {
-                alt22=1;
+            if ( (LA23_0==ATRIBUICAO_) ) {
+                alt23=1;
             }
-            switch (alt22) {
+            switch (alt23) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:238:55: atribuicao
+                    // fontes/g/CanecaSemantico.g:289:46: atribuicao
                     {
-                    pushFollow(FOLLOW_atribuicao_in_declaracaoComAtribuicaoOpcional860);
+                    pushFollow(FOLLOW_atribuicao_in_declaracaoComAtribuicaoOpcional959);
                     atribuicao();
 
                     state._fsp--;
@@ -2412,41 +2679,41 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "expressao"
-    // fontes/g/CanecaSemantico.g:241:1: expressao : ( ^( ATRIBUIDOR expressaoOuLogico expressaoOuLogico ) | expressaoOuLogico );
+    // fontes/g/CanecaSemantico.g:292:1: expressao : ( ^( ATRIBUIDOR expressaoOuLogico expressaoOuLogico ) | expressaoOuLogico );
     public final void expressao() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:242:2: ( ^( ATRIBUIDOR expressaoOuLogico expressaoOuLogico ) | expressaoOuLogico )
-            int alt23=2;
-            int LA23_0 = input.LA(1);
+            // fontes/g/CanecaSemantico.g:293:2: ( ^( ATRIBUIDOR expressaoOuLogico expressaoOuLogico ) | expressaoOuLogico )
+            int alt24=2;
+            int LA24_0 = input.LA(1);
 
-            if ( (LA23_0==ATRIBUIDOR) ) {
-                alt23=1;
+            if ( (LA24_0==ATRIBUIDOR) ) {
+                alt24=1;
             }
-            else if ( (LA23_0==DIFERENTE||(LA23_0 >= DIVISAO && LA23_0 <= E)||LA23_0==IGUAL||(LA23_0 >= MAIOR && LA23_0 <= MENOR_IGUAL)||(LA23_0 >= MULTIPLICACAO && LA23_0 <= NEGACAO)||LA23_0==OU||LA23_0==RESTO_DA_DIVISAO||(LA23_0 >= SOMA && LA23_0 <= SUBTRACAO)||LA23_0==PRIMARIA_||LA23_0==SUBTRACAO_UNARIA_) ) {
-                alt23=2;
+            else if ( (LA24_0==DIFERENTE||(LA24_0 >= DIVISAO && LA24_0 <= E)||LA24_0==IGUAL||(LA24_0 >= MAIOR && LA24_0 <= MENOR_IGUAL)||(LA24_0 >= MULTIPLICACAO && LA24_0 <= NEGACAO)||LA24_0==OU||LA24_0==RESTO_DA_DIVISAO||(LA24_0 >= SOMA && LA24_0 <= SUBTRACAO)||LA24_0==PRIMARIA_||LA24_0==SUBTRACAO_UNARIA_) ) {
+                alt24=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 23, 0, input);
+                    new NoViableAltException("", 24, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt23) {
+            switch (alt24) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:242:4: ^( ATRIBUIDOR expressaoOuLogico expressaoOuLogico )
+                    // fontes/g/CanecaSemantico.g:293:4: ^( ATRIBUIDOR expressaoOuLogico expressaoOuLogico )
                     {
-                    match(input,ATRIBUIDOR,FOLLOW_ATRIBUIDOR_in_expressao875); if (state.failed) return ;
+                    match(input,ATRIBUIDOR,FOLLOW_ATRIBUIDOR_in_expressao974); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_expressaoOuLogico_in_expressao877);
+                    pushFollow(FOLLOW_expressaoOuLogico_in_expressao976);
                     expressaoOuLogico();
 
                     state._fsp--;
                     if (state.failed) return ;
 
-                    pushFollow(FOLLOW_expressaoOuLogico_in_expressao879);
+                    pushFollow(FOLLOW_expressaoOuLogico_in_expressao978);
                     expressaoOuLogico();
 
                     state._fsp--;
@@ -2458,9 +2725,9 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:243:4: expressaoOuLogico
+                    // fontes/g/CanecaSemantico.g:294:4: expressaoOuLogico
                     {
-                    pushFollow(FOLLOW_expressaoOuLogico_in_expressao885);
+                    pushFollow(FOLLOW_expressaoOuLogico_in_expressao984);
                     expressaoOuLogico();
 
                     state._fsp--;
@@ -2486,41 +2753,41 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "expressaoOuLogico"
-    // fontes/g/CanecaSemantico.g:246:1: expressaoOuLogico : ( ^( OU expressaoELogico expressaoELogico ) | expressaoELogico );
+    // fontes/g/CanecaSemantico.g:297:1: expressaoOuLogico : ( ^( OU expressaoELogico expressaoELogico ) | expressaoELogico );
     public final void expressaoOuLogico() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:247:2: ( ^( OU expressaoELogico expressaoELogico ) | expressaoELogico )
-            int alt24=2;
-            int LA24_0 = input.LA(1);
+            // fontes/g/CanecaSemantico.g:298:2: ( ^( OU expressaoELogico expressaoELogico ) | expressaoELogico )
+            int alt25=2;
+            int LA25_0 = input.LA(1);
 
-            if ( (LA24_0==OU) ) {
-                alt24=1;
+            if ( (LA25_0==OU) ) {
+                alt25=1;
             }
-            else if ( (LA24_0==DIFERENTE||(LA24_0 >= DIVISAO && LA24_0 <= E)||LA24_0==IGUAL||(LA24_0 >= MAIOR && LA24_0 <= MENOR_IGUAL)||(LA24_0 >= MULTIPLICACAO && LA24_0 <= NEGACAO)||LA24_0==RESTO_DA_DIVISAO||(LA24_0 >= SOMA && LA24_0 <= SUBTRACAO)||LA24_0==PRIMARIA_||LA24_0==SUBTRACAO_UNARIA_) ) {
-                alt24=2;
+            else if ( (LA25_0==DIFERENTE||(LA25_0 >= DIVISAO && LA25_0 <= E)||LA25_0==IGUAL||(LA25_0 >= MAIOR && LA25_0 <= MENOR_IGUAL)||(LA25_0 >= MULTIPLICACAO && LA25_0 <= NEGACAO)||LA25_0==RESTO_DA_DIVISAO||(LA25_0 >= SOMA && LA25_0 <= SUBTRACAO)||LA25_0==PRIMARIA_||LA25_0==SUBTRACAO_UNARIA_) ) {
+                alt25=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 24, 0, input);
+                    new NoViableAltException("", 25, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt24) {
+            switch (alt25) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:247:4: ^( OU expressaoELogico expressaoELogico )
+                    // fontes/g/CanecaSemantico.g:298:4: ^( OU expressaoELogico expressaoELogico )
                     {
-                    match(input,OU,FOLLOW_OU_in_expressaoOuLogico897); if (state.failed) return ;
+                    match(input,OU,FOLLOW_OU_in_expressaoOuLogico996); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico899);
+                    pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico998);
                     expressaoELogico();
 
                     state._fsp--;
                     if (state.failed) return ;
 
-                    pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico901);
+                    pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico1000);
                     expressaoELogico();
 
                     state._fsp--;
@@ -2532,9 +2799,9 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:248:4: expressaoELogico
+                    // fontes/g/CanecaSemantico.g:299:4: expressaoELogico
                     {
-                    pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico907);
+                    pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico1006);
                     expressaoELogico();
 
                     state._fsp--;
@@ -2560,41 +2827,41 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "expressaoELogico"
-    // fontes/g/CanecaSemantico.g:251:1: expressaoELogico : ( ^( E expressaoComparacaoLogica expressaoComparacaoLogica ) | expressaoComparacaoLogica );
+    // fontes/g/CanecaSemantico.g:302:1: expressaoELogico : ( ^( E expressaoComparacaoLogica expressaoComparacaoLogica ) | expressaoComparacaoLogica );
     public final void expressaoELogico() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:252:2: ( ^( E expressaoComparacaoLogica expressaoComparacaoLogica ) | expressaoComparacaoLogica )
-            int alt25=2;
-            int LA25_0 = input.LA(1);
+            // fontes/g/CanecaSemantico.g:303:2: ( ^( E expressaoComparacaoLogica expressaoComparacaoLogica ) | expressaoComparacaoLogica )
+            int alt26=2;
+            int LA26_0 = input.LA(1);
 
-            if ( (LA25_0==E) ) {
-                alt25=1;
+            if ( (LA26_0==E) ) {
+                alt26=1;
             }
-            else if ( (LA25_0==DIFERENTE||LA25_0==DIVISAO||LA25_0==IGUAL||(LA25_0 >= MAIOR && LA25_0 <= MENOR_IGUAL)||(LA25_0 >= MULTIPLICACAO && LA25_0 <= NEGACAO)||LA25_0==RESTO_DA_DIVISAO||(LA25_0 >= SOMA && LA25_0 <= SUBTRACAO)||LA25_0==PRIMARIA_||LA25_0==SUBTRACAO_UNARIA_) ) {
-                alt25=2;
+            else if ( (LA26_0==DIFERENTE||LA26_0==DIVISAO||LA26_0==IGUAL||(LA26_0 >= MAIOR && LA26_0 <= MENOR_IGUAL)||(LA26_0 >= MULTIPLICACAO && LA26_0 <= NEGACAO)||LA26_0==RESTO_DA_DIVISAO||(LA26_0 >= SOMA && LA26_0 <= SUBTRACAO)||LA26_0==PRIMARIA_||LA26_0==SUBTRACAO_UNARIA_) ) {
+                alt26=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 25, 0, input);
+                    new NoViableAltException("", 26, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt25) {
+            switch (alt26) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:252:4: ^( E expressaoComparacaoLogica expressaoComparacaoLogica )
+                    // fontes/g/CanecaSemantico.g:303:4: ^( E expressaoComparacaoLogica expressaoComparacaoLogica )
                     {
-                    match(input,E,FOLLOW_E_in_expressaoELogico919); if (state.failed) return ;
+                    match(input,E,FOLLOW_E_in_expressaoELogico1018); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico921);
+                    pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico1020);
                     expressaoComparacaoLogica();
 
                     state._fsp--;
                     if (state.failed) return ;
 
-                    pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico923);
+                    pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico1022);
                     expressaoComparacaoLogica();
 
                     state._fsp--;
@@ -2606,9 +2873,9 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:253:4: expressaoComparacaoLogica
+                    // fontes/g/CanecaSemantico.g:304:4: expressaoComparacaoLogica
                     {
-                    pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico929);
+                    pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico1028);
                     expressaoComparacaoLogica();
 
                     state._fsp--;
@@ -2634,30 +2901,30 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "expressaoComparacaoLogica"
-    // fontes/g/CanecaSemantico.g:256:1: expressaoComparacaoLogica : ( ^( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva expressaoAditiva ) | expressaoAditiva );
+    // fontes/g/CanecaSemantico.g:307:1: expressaoComparacaoLogica : ( ^( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva expressaoAditiva ) | expressaoAditiva );
     public final void expressaoComparacaoLogica() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:257:2: ( ^( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva expressaoAditiva ) | expressaoAditiva )
-            int alt26=2;
-            int LA26_0 = input.LA(1);
+            // fontes/g/CanecaSemantico.g:308:2: ( ^( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva expressaoAditiva ) | expressaoAditiva )
+            int alt27=2;
+            int LA27_0 = input.LA(1);
 
-            if ( (LA26_0==DIFERENTE||LA26_0==IGUAL||(LA26_0 >= MAIOR && LA26_0 <= MENOR_IGUAL)) ) {
-                alt26=1;
+            if ( (LA27_0==DIFERENTE||LA27_0==IGUAL||(LA27_0 >= MAIOR && LA27_0 <= MENOR_IGUAL)) ) {
+                alt27=1;
             }
-            else if ( (LA26_0==DIVISAO||(LA26_0 >= MULTIPLICACAO && LA26_0 <= NEGACAO)||LA26_0==RESTO_DA_DIVISAO||(LA26_0 >= SOMA && LA26_0 <= SUBTRACAO)||LA26_0==PRIMARIA_||LA26_0==SUBTRACAO_UNARIA_) ) {
-                alt26=2;
+            else if ( (LA27_0==DIVISAO||(LA27_0 >= MULTIPLICACAO && LA27_0 <= NEGACAO)||LA27_0==RESTO_DA_DIVISAO||(LA27_0 >= SOMA && LA27_0 <= SUBTRACAO)||LA27_0==PRIMARIA_||LA27_0==SUBTRACAO_UNARIA_) ) {
+                alt27=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 26, 0, input);
+                    new NoViableAltException("", 27, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt26) {
+            switch (alt27) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:257:4: ^( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva expressaoAditiva )
+                    // fontes/g/CanecaSemantico.g:308:4: ^( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva expressaoAditiva )
                     {
                     if ( input.LA(1)==DIFERENTE||input.LA(1)==IGUAL||(input.LA(1) >= MAIOR && input.LA(1) <= MENOR_IGUAL) ) {
                         input.consume();
@@ -2672,13 +2939,13 @@ public class CanecaSemantico extends TreeFilter {
 
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica965);
+                    pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica1064);
                     expressaoAditiva();
 
                     state._fsp--;
                     if (state.failed) return ;
 
-                    pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica967);
+                    pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica1066);
                     expressaoAditiva();
 
                     state._fsp--;
@@ -2690,9 +2957,9 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:258:4: expressaoAditiva
+                    // fontes/g/CanecaSemantico.g:309:4: expressaoAditiva
                     {
-                    pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica973);
+                    pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica1072);
                     expressaoAditiva();
 
                     state._fsp--;
@@ -2718,30 +2985,30 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "expressaoAditiva"
-    // fontes/g/CanecaSemantico.g:261:1: expressaoAditiva : ( ^( ( SOMA | SUBTRACAO ) expressaoMultiplicativa expressaoMultiplicativa ) | expressaoMultiplicativa );
+    // fontes/g/CanecaSemantico.g:312:1: expressaoAditiva : ( ^( ( SOMA | SUBTRACAO ) expressaoMultiplicativa expressaoMultiplicativa ) | expressaoMultiplicativa );
     public final void expressaoAditiva() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:262:2: ( ^( ( SOMA | SUBTRACAO ) expressaoMultiplicativa expressaoMultiplicativa ) | expressaoMultiplicativa )
-            int alt27=2;
-            int LA27_0 = input.LA(1);
+            // fontes/g/CanecaSemantico.g:313:2: ( ^( ( SOMA | SUBTRACAO ) expressaoMultiplicativa expressaoMultiplicativa ) | expressaoMultiplicativa )
+            int alt28=2;
+            int LA28_0 = input.LA(1);
 
-            if ( ((LA27_0 >= SOMA && LA27_0 <= SUBTRACAO)) ) {
-                alt27=1;
+            if ( ((LA28_0 >= SOMA && LA28_0 <= SUBTRACAO)) ) {
+                alt28=1;
             }
-            else if ( (LA27_0==DIVISAO||(LA27_0 >= MULTIPLICACAO && LA27_0 <= NEGACAO)||LA27_0==RESTO_DA_DIVISAO||LA27_0==PRIMARIA_||LA27_0==SUBTRACAO_UNARIA_) ) {
-                alt27=2;
+            else if ( (LA28_0==DIVISAO||(LA28_0 >= MULTIPLICACAO && LA28_0 <= NEGACAO)||LA28_0==RESTO_DA_DIVISAO||LA28_0==PRIMARIA_||LA28_0==SUBTRACAO_UNARIA_) ) {
+                alt28=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 27, 0, input);
+                    new NoViableAltException("", 28, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt27) {
+            switch (alt28) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:262:4: ^( ( SOMA | SUBTRACAO ) expressaoMultiplicativa expressaoMultiplicativa )
+                    // fontes/g/CanecaSemantico.g:313:4: ^( ( SOMA | SUBTRACAO ) expressaoMultiplicativa expressaoMultiplicativa )
                     {
                     if ( (input.LA(1) >= SOMA && input.LA(1) <= SUBTRACAO) ) {
                         input.consume();
@@ -2756,13 +3023,13 @@ public class CanecaSemantico extends TreeFilter {
 
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva993);
+                    pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1092);
                     expressaoMultiplicativa();
 
                     state._fsp--;
                     if (state.failed) return ;
 
-                    pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva995);
+                    pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1094);
                     expressaoMultiplicativa();
 
                     state._fsp--;
@@ -2774,9 +3041,9 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:263:4: expressaoMultiplicativa
+                    // fontes/g/CanecaSemantico.g:314:4: expressaoMultiplicativa
                     {
-                    pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1001);
+                    pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1100);
                     expressaoMultiplicativa();
 
                     state._fsp--;
@@ -2802,30 +3069,30 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "expressaoMultiplicativa"
-    // fontes/g/CanecaSemantico.g:266:1: expressaoMultiplicativa : ( ^( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria expressaoUnaria ) | expressaoUnaria );
+    // fontes/g/CanecaSemantico.g:317:1: expressaoMultiplicativa : ( ^( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria expressaoUnaria ) | expressaoUnaria );
     public final void expressaoMultiplicativa() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:267:2: ( ^( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria expressaoUnaria ) | expressaoUnaria )
-            int alt28=2;
-            int LA28_0 = input.LA(1);
+            // fontes/g/CanecaSemantico.g:318:2: ( ^( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria expressaoUnaria ) | expressaoUnaria )
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA28_0==DIVISAO||LA28_0==MULTIPLICACAO||LA28_0==RESTO_DA_DIVISAO) ) {
-                alt28=1;
+            if ( (LA29_0==DIVISAO||LA29_0==MULTIPLICACAO||LA29_0==RESTO_DA_DIVISAO) ) {
+                alt29=1;
             }
-            else if ( (LA28_0==NEGACAO||LA28_0==PRIMARIA_||LA28_0==SUBTRACAO_UNARIA_) ) {
-                alt28=2;
+            else if ( (LA29_0==NEGACAO||LA29_0==PRIMARIA_||LA29_0==SUBTRACAO_UNARIA_) ) {
+                alt29=2;
             }
             else {
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 28, 0, input);
+                    new NoViableAltException("", 29, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt28) {
+            switch (alt29) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:267:4: ^( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria expressaoUnaria )
+                    // fontes/g/CanecaSemantico.g:318:4: ^( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria expressaoUnaria )
                     {
                     if ( input.LA(1)==DIVISAO||input.LA(1)==MULTIPLICACAO||input.LA(1)==RESTO_DA_DIVISAO ) {
                         input.consume();
@@ -2840,13 +3107,13 @@ public class CanecaSemantico extends TreeFilter {
 
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1025);
+                    pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1124);
                     expressaoUnaria();
 
                     state._fsp--;
                     if (state.failed) return ;
 
-                    pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1027);
+                    pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1126);
                     expressaoUnaria();
 
                     state._fsp--;
@@ -2858,9 +3125,9 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:268:4: expressaoUnaria
+                    // fontes/g/CanecaSemantico.g:319:4: expressaoUnaria
                     {
-                    pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1033);
+                    pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1132);
                     expressaoUnaria();
 
                     state._fsp--;
@@ -2886,44 +3153,44 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "expressaoUnaria"
-    // fontes/g/CanecaSemantico.g:271:1: expressaoUnaria : ( ^( PRIMARIA_ expressaoPrimaria ) | ^( SUBTRACAO_UNARIA_ expressaoPrimaria ) | ^( NEGACAO expressaoPrimaria ) );
+    // fontes/g/CanecaSemantico.g:322:1: expressaoUnaria : ( ^( PRIMARIA_ expressaoPrimaria ) | ^( SUBTRACAO_UNARIA_ expressaoPrimaria ) | ^( NEGACAO expressaoPrimaria ) );
     public final void expressaoUnaria() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:272:2: ( ^( PRIMARIA_ expressaoPrimaria ) | ^( SUBTRACAO_UNARIA_ expressaoPrimaria ) | ^( NEGACAO expressaoPrimaria ) )
-            int alt29=3;
+            // fontes/g/CanecaSemantico.g:323:2: ( ^( PRIMARIA_ expressaoPrimaria ) | ^( SUBTRACAO_UNARIA_ expressaoPrimaria ) | ^( NEGACAO expressaoPrimaria ) )
+            int alt30=3;
             switch ( input.LA(1) ) {
             case PRIMARIA_:
                 {
-                alt29=1;
+                alt30=1;
                 }
                 break;
             case SUBTRACAO_UNARIA_:
                 {
-                alt29=2;
+                alt30=2;
                 }
                 break;
             case NEGACAO:
                 {
-                alt29=3;
+                alt30=3;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 29, 0, input);
+                    new NoViableAltException("", 30, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt29) {
+            switch (alt30) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:272:4: ^( PRIMARIA_ expressaoPrimaria )
+                    // fontes/g/CanecaSemantico.g:323:4: ^( PRIMARIA_ expressaoPrimaria )
                     {
-                    match(input,PRIMARIA_,FOLLOW_PRIMARIA__in_expressaoUnaria1045); if (state.failed) return ;
+                    match(input,PRIMARIA_,FOLLOW_PRIMARIA__in_expressaoUnaria1144); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria1047);
+                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria1146);
                     expressaoPrimaria();
 
                     state._fsp--;
@@ -2935,12 +3202,12 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:273:4: ^( SUBTRACAO_UNARIA_ expressaoPrimaria )
+                    // fontes/g/CanecaSemantico.g:324:4: ^( SUBTRACAO_UNARIA_ expressaoPrimaria )
                     {
-                    match(input,SUBTRACAO_UNARIA_,FOLLOW_SUBTRACAO_UNARIA__in_expressaoUnaria1054); if (state.failed) return ;
+                    match(input,SUBTRACAO_UNARIA_,FOLLOW_SUBTRACAO_UNARIA__in_expressaoUnaria1153); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria1056);
+                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria1155);
                     expressaoPrimaria();
 
                     state._fsp--;
@@ -2952,12 +3219,12 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaSemantico.g:274:4: ^( NEGACAO expressaoPrimaria )
+                    // fontes/g/CanecaSemantico.g:325:4: ^( NEGACAO expressaoPrimaria )
                     {
-                    match(input,NEGACAO,FOLLOW_NEGACAO_in_expressaoUnaria1063); if (state.failed) return ;
+                    match(input,NEGACAO,FOLLOW_NEGACAO_in_expressaoUnaria1162); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria1065);
+                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria1164);
                     expressaoPrimaria();
 
                     state._fsp--;
@@ -2986,11 +3253,11 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "expressaoPrimaria"
-    // fontes/g/CanecaSemantico.g:277:1: expressaoPrimaria : ( expressao | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | comando );
+    // fontes/g/CanecaSemantico.g:328:1: expressaoPrimaria : ( expressao | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | comando );
     public final void expressaoPrimaria() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:278:2: ( expressao | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | comando )
-            int alt30=8;
+            // fontes/g/CanecaSemantico.g:329:2: ( expressao | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | comando )
+            int alt31=8;
             switch ( input.LA(1) ) {
             case ATRIBUIDOR:
             case DIFERENTE:
@@ -3010,58 +3277,58 @@ public class CanecaSemantico extends TreeFilter {
             case PRIMARIA_:
             case SUBTRACAO_UNARIA_:
                 {
-                alt30=1;
+                alt31=1;
                 }
                 break;
             case VALOR_BOOLEANO:
                 {
-                alt30=2;
+                alt31=2;
                 }
                 break;
             case VALOR_NULO:
                 {
-                alt30=3;
+                alt31=3;
                 }
                 break;
             case CONSTANTE_INTEIRA:
                 {
-                alt30=4;
+                alt31=4;
                 }
                 break;
             case CONSTANTE_REAL:
                 {
-                alt30=5;
+                alt31=5;
                 }
                 break;
             case LITERAL_CARACTERE:
                 {
-                alt30=6;
+                alt31=6;
                 }
                 break;
             case LITERAL_TEXTO:
                 {
-                alt30=7;
+                alt31=7;
                 }
                 break;
             case COMANDO_:
                 {
-                alt30=8;
+                alt31=8;
                 }
                 break;
             default:
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 30, 0, input);
+                    new NoViableAltException("", 31, 0, input);
 
                 throw nvae;
 
             }
 
-            switch (alt30) {
+            switch (alt31) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:278:4: expressao
+                    // fontes/g/CanecaSemantico.g:329:4: expressao
                     {
-                    pushFollow(FOLLOW_expressao_in_expressaoPrimaria1077);
+                    pushFollow(FOLLOW_expressao_in_expressaoPrimaria1176);
                     expressao();
 
                     state._fsp--;
@@ -3070,51 +3337,51 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:279:4: VALOR_BOOLEANO
+                    // fontes/g/CanecaSemantico.g:330:4: VALOR_BOOLEANO
                     {
-                    match(input,VALOR_BOOLEANO,FOLLOW_VALOR_BOOLEANO_in_expressaoPrimaria1082); if (state.failed) return ;
+                    match(input,VALOR_BOOLEANO,FOLLOW_VALOR_BOOLEANO_in_expressaoPrimaria1181); if (state.failed) return ;
 
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaSemantico.g:280:4: VALOR_NULO
+                    // fontes/g/CanecaSemantico.g:331:4: VALOR_NULO
                     {
-                    match(input,VALOR_NULO,FOLLOW_VALOR_NULO_in_expressaoPrimaria1087); if (state.failed) return ;
+                    match(input,VALOR_NULO,FOLLOW_VALOR_NULO_in_expressaoPrimaria1186); if (state.failed) return ;
 
                     }
                     break;
                 case 4 :
-                    // fontes/g/CanecaSemantico.g:281:4: CONSTANTE_INTEIRA
+                    // fontes/g/CanecaSemantico.g:332:4: CONSTANTE_INTEIRA
                     {
-                    match(input,CONSTANTE_INTEIRA,FOLLOW_CONSTANTE_INTEIRA_in_expressaoPrimaria1092); if (state.failed) return ;
+                    match(input,CONSTANTE_INTEIRA,FOLLOW_CONSTANTE_INTEIRA_in_expressaoPrimaria1191); if (state.failed) return ;
 
                     }
                     break;
                 case 5 :
-                    // fontes/g/CanecaSemantico.g:282:4: CONSTANTE_REAL
+                    // fontes/g/CanecaSemantico.g:333:4: CONSTANTE_REAL
                     {
-                    match(input,CONSTANTE_REAL,FOLLOW_CONSTANTE_REAL_in_expressaoPrimaria1097); if (state.failed) return ;
+                    match(input,CONSTANTE_REAL,FOLLOW_CONSTANTE_REAL_in_expressaoPrimaria1196); if (state.failed) return ;
 
                     }
                     break;
                 case 6 :
-                    // fontes/g/CanecaSemantico.g:283:4: LITERAL_CARACTERE
+                    // fontes/g/CanecaSemantico.g:334:4: LITERAL_CARACTERE
                     {
-                    match(input,LITERAL_CARACTERE,FOLLOW_LITERAL_CARACTERE_in_expressaoPrimaria1102); if (state.failed) return ;
+                    match(input,LITERAL_CARACTERE,FOLLOW_LITERAL_CARACTERE_in_expressaoPrimaria1201); if (state.failed) return ;
 
                     }
                     break;
                 case 7 :
-                    // fontes/g/CanecaSemantico.g:284:4: LITERAL_TEXTO
+                    // fontes/g/CanecaSemantico.g:335:4: LITERAL_TEXTO
                     {
-                    match(input,LITERAL_TEXTO,FOLLOW_LITERAL_TEXTO_in_expressaoPrimaria1107); if (state.failed) return ;
+                    match(input,LITERAL_TEXTO,FOLLOW_LITERAL_TEXTO_in_expressaoPrimaria1206); if (state.failed) return ;
 
                     }
                     break;
                 case 8 :
-                    // fontes/g/CanecaSemantico.g:285:4: comando
+                    // fontes/g/CanecaSemantico.g:336:4: comando
                     {
-                    pushFollow(FOLLOW_comando_in_expressaoPrimaria1112);
+                    pushFollow(FOLLOW_comando_in_expressaoPrimaria1211);
                     comando();
 
                     state._fsp--;
@@ -3140,37 +3407,37 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "comando"
-    // fontes/g/CanecaSemantico.g:288:1: comando : ^( COMANDO_ referencia ( chamada )* ) ;
+    // fontes/g/CanecaSemantico.g:339:1: comando : ^( COMANDO_ referencia ( chamada )* ) ;
     public final void comando() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:289:2: ( ^( COMANDO_ referencia ( chamada )* ) )
-            // fontes/g/CanecaSemantico.g:289:4: ^( COMANDO_ referencia ( chamada )* )
+            // fontes/g/CanecaSemantico.g:340:2: ( ^( COMANDO_ referencia ( chamada )* ) )
+            // fontes/g/CanecaSemantico.g:340:4: ^( COMANDO_ referencia ( chamada )* )
             {
-            match(input,COMANDO_,FOLLOW_COMANDO__in_comando1124); if (state.failed) return ;
+            match(input,COMANDO_,FOLLOW_COMANDO__in_comando1223); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_referencia_in_comando1126);
+            pushFollow(FOLLOW_referencia_in_comando1225);
             referencia();
 
             state._fsp--;
             if (state.failed) return ;
 
-            // fontes/g/CanecaSemantico.g:289:26: ( chamada )*
-            loop31:
+            // fontes/g/CanecaSemantico.g:340:26: ( chamada )*
+            loop32:
             do {
-                int alt31=2;
-                int LA31_0 = input.LA(1);
+                int alt32=2;
+                int LA32_0 = input.LA(1);
 
-                if ( ((LA31_0 >= CHAMADA_DE_CLASSE && LA31_0 <= CHAMADA_DE_OBJETO)) ) {
-                    alt31=1;
+                if ( ((LA32_0 >= CHAMADA_DE_CLASSE && LA32_0 <= CHAMADA_DE_OBJETO)) ) {
+                    alt32=1;
                 }
 
 
-                switch (alt31) {
+                switch (alt32) {
             	case 1 :
-            	    // fontes/g/CanecaSemantico.g:289:27: chamada
+            	    // fontes/g/CanecaSemantico.g:340:27: chamada
             	    {
-            	    pushFollow(FOLLOW_chamada_in_comando1129);
+            	    pushFollow(FOLLOW_chamada_in_comando1228);
             	    chamada();
 
             	    state._fsp--;
@@ -3180,7 +3447,7 @@ public class CanecaSemantico extends TreeFilter {
             	    break;
 
             	default :
-            	    break loop31;
+            	    break loop32;
                 }
             } while (true);
 
@@ -3206,42 +3473,42 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "referencia"
-    // fontes/g/CanecaSemantico.g:292:1: referencia : ( ^( REFERENCIA_ ESSE ) | ^( REFERENCIA_ ESSA ) | ^( REFERENCIA_ instanciacao ) | ^( REFERENCIA_ IDENTIFICADOR ( listaDeParametros )? ) );
+    // fontes/g/CanecaSemantico.g:343:1: referencia : ( ^( REFERENCIA_ ESSE ) | ^( REFERENCIA_ ESSA ) | ^( REFERENCIA_ instanciacao ) | ^( REFERENCIA_ IDENTIFICADOR ( listaDeParametros )? ) );
     public final void referencia() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:293:2: ( ^( REFERENCIA_ ESSE ) | ^( REFERENCIA_ ESSA ) | ^( REFERENCIA_ instanciacao ) | ^( REFERENCIA_ IDENTIFICADOR ( listaDeParametros )? ) )
-            int alt33=4;
-            int LA33_0 = input.LA(1);
+            // fontes/g/CanecaSemantico.g:344:2: ( ^( REFERENCIA_ ESSE ) | ^( REFERENCIA_ ESSA ) | ^( REFERENCIA_ instanciacao ) | ^( REFERENCIA_ IDENTIFICADOR ( listaDeParametros )? ) )
+            int alt34=4;
+            int LA34_0 = input.LA(1);
 
-            if ( (LA33_0==REFERENCIA_) ) {
-                int LA33_1 = input.LA(2);
+            if ( (LA34_0==REFERENCIA_) ) {
+                int LA34_1 = input.LA(2);
 
-                if ( (LA33_1==DOWN) ) {
+                if ( (LA34_1==DOWN) ) {
                     switch ( input.LA(3) ) {
                     case ESSE:
                         {
-                        alt33=1;
+                        alt34=1;
                         }
                         break;
                     case ESSA:
                         {
-                        alt33=2;
+                        alt34=2;
                         }
                         break;
                     case IDENTIFICADOR:
                         {
-                        alt33=4;
+                        alt34=4;
                         }
                         break;
                     case INSTANCIACAO_:
                         {
-                        alt33=3;
+                        alt34=3;
                         }
                         break;
                     default:
                         if (state.backtracking>0) {state.failed=true; return ;}
                         NoViableAltException nvae =
-                            new NoViableAltException("", 33, 2, input);
+                            new NoViableAltException("", 34, 2, input);
 
                         throw nvae;
 
@@ -3251,7 +3518,7 @@ public class CanecaSemantico extends TreeFilter {
                 else {
                     if (state.backtracking>0) {state.failed=true; return ;}
                     NoViableAltException nvae =
-                        new NoViableAltException("", 33, 1, input);
+                        new NoViableAltException("", 34, 1, input);
 
                     throw nvae;
 
@@ -3260,19 +3527,19 @@ public class CanecaSemantico extends TreeFilter {
             else {
                 if (state.backtracking>0) {state.failed=true; return ;}
                 NoViableAltException nvae =
-                    new NoViableAltException("", 33, 0, input);
+                    new NoViableAltException("", 34, 0, input);
 
                 throw nvae;
 
             }
-            switch (alt33) {
+            switch (alt34) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:293:4: ^( REFERENCIA_ ESSE )
+                    // fontes/g/CanecaSemantico.g:344:4: ^( REFERENCIA_ ESSE )
                     {
-                    match(input,REFERENCIA_,FOLLOW_REFERENCIA__in_referencia1144); if (state.failed) return ;
+                    match(input,REFERENCIA_,FOLLOW_REFERENCIA__in_referencia1243); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    match(input,ESSE,FOLLOW_ESSE_in_referencia1146); if (state.failed) return ;
+                    match(input,ESSE,FOLLOW_ESSE_in_referencia1245); if (state.failed) return ;
 
                     match(input, Token.UP, null); if (state.failed) return ;
 
@@ -3280,12 +3547,12 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSemantico.g:294:4: ^( REFERENCIA_ ESSA )
+                    // fontes/g/CanecaSemantico.g:345:4: ^( REFERENCIA_ ESSA )
                     {
-                    match(input,REFERENCIA_,FOLLOW_REFERENCIA__in_referencia1153); if (state.failed) return ;
+                    match(input,REFERENCIA_,FOLLOW_REFERENCIA__in_referencia1252); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    match(input,ESSA,FOLLOW_ESSA_in_referencia1155); if (state.failed) return ;
+                    match(input,ESSA,FOLLOW_ESSA_in_referencia1254); if (state.failed) return ;
 
                     match(input, Token.UP, null); if (state.failed) return ;
 
@@ -3293,12 +3560,12 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaSemantico.g:295:4: ^( REFERENCIA_ instanciacao )
+                    // fontes/g/CanecaSemantico.g:346:4: ^( REFERENCIA_ instanciacao )
                     {
-                    match(input,REFERENCIA_,FOLLOW_REFERENCIA__in_referencia1162); if (state.failed) return ;
+                    match(input,REFERENCIA_,FOLLOW_REFERENCIA__in_referencia1261); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    pushFollow(FOLLOW_instanciacao_in_referencia1164);
+                    pushFollow(FOLLOW_instanciacao_in_referencia1263);
                     instanciacao();
 
                     state._fsp--;
@@ -3310,25 +3577,25 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 4 :
-                    // fontes/g/CanecaSemantico.g:296:4: ^( REFERENCIA_ IDENTIFICADOR ( listaDeParametros )? )
+                    // fontes/g/CanecaSemantico.g:347:4: ^( REFERENCIA_ IDENTIFICADOR ( listaDeParametros )? )
                     {
-                    match(input,REFERENCIA_,FOLLOW_REFERENCIA__in_referencia1171); if (state.failed) return ;
+                    match(input,REFERENCIA_,FOLLOW_REFERENCIA__in_referencia1270); if (state.failed) return ;
 
                     match(input, Token.DOWN, null); if (state.failed) return ;
-                    match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_referencia1173); if (state.failed) return ;
+                    match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_referencia1272); if (state.failed) return ;
 
-                    // fontes/g/CanecaSemantico.g:296:32: ( listaDeParametros )?
-                    int alt32=2;
-                    int LA32_0 = input.LA(1);
+                    // fontes/g/CanecaSemantico.g:347:32: ( listaDeParametros )?
+                    int alt33=2;
+                    int LA33_0 = input.LA(1);
 
-                    if ( (LA32_0==PARAMETROS_) ) {
-                        alt32=1;
+                    if ( (LA33_0==PARAMETROS_) ) {
+                        alt33=1;
                     }
-                    switch (alt32) {
+                    switch (alt33) {
                         case 1 :
-                            // fontes/g/CanecaSemantico.g:296:33: listaDeParametros
+                            // fontes/g/CanecaSemantico.g:347:33: listaDeParametros
                             {
-                            pushFollow(FOLLOW_listaDeParametros_in_referencia1176);
+                            pushFollow(FOLLOW_listaDeParametros_in_referencia1275);
                             listaDeParametros();
 
                             state._fsp--;
@@ -3363,11 +3630,11 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "chamada"
-    // fontes/g/CanecaSemantico.g:299:1: chamada : ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? ) ;
+    // fontes/g/CanecaSemantico.g:350:1: chamada : ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? ) ;
     public final void chamada() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:300:2: ( ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? ) )
-            // fontes/g/CanecaSemantico.g:300:4: ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? )
+            // fontes/g/CanecaSemantico.g:351:2: ( ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? ) )
+            // fontes/g/CanecaSemantico.g:351:4: ^( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? )
             {
             if ( (input.LA(1) >= CHAMADA_DE_CLASSE && input.LA(1) <= CHAMADA_DE_OBJETO) ) {
                 input.consume();
@@ -3382,20 +3649,20 @@ public class CanecaSemantico extends TreeFilter {
 
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_chamada1199); if (state.failed) return ;
+            match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_chamada1298); if (state.failed) return ;
 
-            // fontes/g/CanecaSemantico.g:300:60: ( listaDeParametros )?
-            int alt34=2;
-            int LA34_0 = input.LA(1);
+            // fontes/g/CanecaSemantico.g:351:60: ( listaDeParametros )?
+            int alt35=2;
+            int LA35_0 = input.LA(1);
 
-            if ( (LA34_0==PARAMETROS_) ) {
-                alt34=1;
+            if ( (LA35_0==PARAMETROS_) ) {
+                alt35=1;
             }
-            switch (alt34) {
+            switch (alt35) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:300:61: listaDeParametros
+                    // fontes/g/CanecaSemantico.g:351:61: listaDeParametros
                     {
-                    pushFollow(FOLLOW_listaDeParametros_in_chamada1202);
+                    pushFollow(FOLLOW_listaDeParametros_in_chamada1301);
                     listaDeParametros();
 
                     state._fsp--;
@@ -3428,22 +3695,22 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "instanciacao"
-    // fontes/g/CanecaSemantico.g:303:1: instanciacao : ^( INSTANCIACAO_ tipo listaDeParametros ) ;
+    // fontes/g/CanecaSemantico.g:354:1: instanciacao : ^( INSTANCIACAO_ tipo listaDeParametros ) ;
     public final void instanciacao() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:304:2: ( ^( INSTANCIACAO_ tipo listaDeParametros ) )
-            // fontes/g/CanecaSemantico.g:304:4: ^( INSTANCIACAO_ tipo listaDeParametros )
+            // fontes/g/CanecaSemantico.g:355:2: ( ^( INSTANCIACAO_ tipo listaDeParametros ) )
+            // fontes/g/CanecaSemantico.g:355:4: ^( INSTANCIACAO_ tipo listaDeParametros )
             {
-            match(input,INSTANCIACAO_,FOLLOW_INSTANCIACAO__in_instanciacao1217); if (state.failed) return ;
+            match(input,INSTANCIACAO_,FOLLOW_INSTANCIACAO__in_instanciacao1316); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_tipo_in_instanciacao1219);
+            pushFollow(FOLLOW_tipo_in_instanciacao1318);
             tipo();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeParametros_in_instanciacao1221);
+            pushFollow(FOLLOW_listaDeParametros_in_instanciacao1320);
             listaDeParametros();
 
             state._fsp--;
@@ -3470,16 +3737,16 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "destruicao"
-    // fontes/g/CanecaSemantico.g:307:1: destruicao : ^( DESTRUICAO_ expressao ) ;
+    // fontes/g/CanecaSemantico.g:358:1: destruicao : ^( DESTRUICAO_ expressao ) ;
     public final void destruicao() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:308:2: ( ^( DESTRUICAO_ expressao ) )
-            // fontes/g/CanecaSemantico.g:308:4: ^( DESTRUICAO_ expressao )
+            // fontes/g/CanecaSemantico.g:359:2: ( ^( DESTRUICAO_ expressao ) )
+            // fontes/g/CanecaSemantico.g:359:4: ^( DESTRUICAO_ expressao )
             {
-            match(input,DESTRUICAO_,FOLLOW_DESTRUICAO__in_destruicao1234); if (state.failed) return ;
+            match(input,DESTRUICAO_,FOLLOW_DESTRUICAO__in_destruicao1333); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_expressao_in_destruicao1236);
+            pushFollow(FOLLOW_expressao_in_destruicao1335);
             expressao();
 
             state._fsp--;
@@ -3506,16 +3773,16 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "retorno"
-    // fontes/g/CanecaSemantico.g:311:1: retorno : ^( RETORNO_ expressao ) ;
+    // fontes/g/CanecaSemantico.g:362:1: retorno : ^( RETORNO_ expressao ) ;
     public final void retorno() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:312:2: ( ^( RETORNO_ expressao ) )
-            // fontes/g/CanecaSemantico.g:312:4: ^( RETORNO_ expressao )
+            // fontes/g/CanecaSemantico.g:363:2: ( ^( RETORNO_ expressao ) )
+            // fontes/g/CanecaSemantico.g:363:4: ^( RETORNO_ expressao )
             {
-            match(input,RETORNO_,FOLLOW_RETORNO__in_retorno1250); if (state.failed) return ;
+            match(input,RETORNO_,FOLLOW_RETORNO__in_retorno1349); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_expressao_in_retorno1252);
+            pushFollow(FOLLOW_expressao_in_retorno1351);
             expressao();
 
             state._fsp--;
@@ -3542,43 +3809,31 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "se"
-    // fontes/g/CanecaSemantico.g:315:1: se : ^( SE_ expressao blocoDeInstrucoes ( blocoDeInstrucoes )? ) ;
+    // fontes/g/CanecaSemantico.g:366:1: se : ^( SE_ . . ( . )? ) ;
     public final void se() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:316:2: ( ^( SE_ expressao blocoDeInstrucoes ( blocoDeInstrucoes )? ) )
-            // fontes/g/CanecaSemantico.g:316:4: ^( SE_ expressao blocoDeInstrucoes ( blocoDeInstrucoes )? )
+            // fontes/g/CanecaSemantico.g:367:2: ( ^( SE_ . . ( . )? ) )
+            // fontes/g/CanecaSemantico.g:367:4: ^( SE_ . . ( . )? )
             {
-            match(input,SE_,FOLLOW_SE__in_se1265); if (state.failed) return ;
+            match(input,SE_,FOLLOW_SE__in_se1364); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_expressao_in_se1267);
-            expressao();
+            matchAny(input); if (state.failed) return ;
 
-            state._fsp--;
-            if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_se1269);
-            blocoDeInstrucoes();
+            // fontes/g/CanecaSemantico.g:367:14: ( . )?
+            int alt36=2;
+            int LA36_0 = input.LA(1);
 
-            state._fsp--;
-            if (state.failed) return ;
-
-            // fontes/g/CanecaSemantico.g:316:38: ( blocoDeInstrucoes )?
-            int alt35=2;
-            int LA35_0 = input.LA(1);
-
-            if ( (LA35_0==INSTRUCOES_) ) {
-                alt35=1;
+            if ( ((LA36_0 >= ATRIBUIDOR && LA36_0 <= UNIDADE_)) ) {
+                alt36=1;
             }
-            switch (alt35) {
+            switch (alt36) {
                 case 1 :
-                    // fontes/g/CanecaSemantico.g:316:38: blocoDeInstrucoes
+                    // fontes/g/CanecaSemantico.g:367:14: .
                     {
-                    pushFollow(FOLLOW_blocoDeInstrucoes_in_se1271);
-                    blocoDeInstrucoes();
-
-                    state._fsp--;
-                    if (state.failed) return ;
+                    matchAny(input); if (state.failed) return ;
 
                     }
                     break;
@@ -3588,6 +3843,14 @@ public class CanecaSemantico extends TreeFilter {
 
             match(input, Token.UP, null); if (state.failed) return ;
 
+
+            if ( state.backtracking==1 ) {
+            			mostrar("se");
+            			InstrucaoSe instrucao = new InstrucaoSe(escopoAtual);
+            			escopoAtual.definirInstrucao(instrucao);
+            			escopoAtual = instrucao;
+            			instrucaoAtual = instrucao;
+            		}
 
             }
 
@@ -3606,36 +3869,93 @@ public class CanecaSemantico extends TreeFilter {
 
 
 
-    // $ANTLR start "para"
-    // fontes/g/CanecaSemantico.g:319:1: para : ^( PARA_ expressao expressao expressao ) ;
-    public final void para() throws RecognitionException {
+    // $ANTLR start "terminarSe"
+    // fontes/g/CanecaSemantico.g:377:1: terminarSe : ^( SE_ . . ( . )? ) ;
+    public final void terminarSe() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:320:2: ( ^( PARA_ expressao expressao expressao ) )
-            // fontes/g/CanecaSemantico.g:320:4: ^( PARA_ expressao expressao expressao )
+            // fontes/g/CanecaSemantico.g:378:2: ( ^( SE_ . . ( . )? ) )
+            // fontes/g/CanecaSemantico.g:378:4: ^( SE_ . . ( . )? )
             {
-            match(input,PARA_,FOLLOW_PARA__in_para1285); if (state.failed) return ;
+            match(input,SE_,FOLLOW_SE__in_terminarSe1388); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_expressao_in_para1287);
-            expressao();
+            matchAny(input); if (state.failed) return ;
 
-            state._fsp--;
-            if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
 
-            pushFollow(FOLLOW_expressao_in_para1289);
-            expressao();
+            // fontes/g/CanecaSemantico.g:378:14: ( . )?
+            int alt37=2;
+            int LA37_0 = input.LA(1);
 
-            state._fsp--;
-            if (state.failed) return ;
+            if ( ((LA37_0 >= ATRIBUIDOR && LA37_0 <= UNIDADE_)) ) {
+                alt37=1;
+            }
+            switch (alt37) {
+                case 1 :
+                    // fontes/g/CanecaSemantico.g:378:14: .
+                    {
+                    matchAny(input); if (state.failed) return ;
 
-            pushFollow(FOLLOW_expressao_in_para1291);
-            expressao();
+                    }
+                    break;
 
-            state._fsp--;
-            if (state.failed) return ;
+            }
+
 
             match(input, Token.UP, null); if (state.failed) return ;
 
+
+            if ( state.backtracking==1 ) {
+            			mostrar("terminarSe");
+            			escopoAtual = instrucaoAtual.fornecerEscopoPai();
+            			instrucaoAtual = null;
+            		}
+
+            }
+
+        }
+
+        	catch (RecognitionException erro) {
+        		throw erro;
+        	}
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
+    // $ANTLR end "terminarSe"
+
+
+
+    // $ANTLR start "para"
+    // fontes/g/CanecaSemantico.g:386:1: para : ^( PARA_ . . . . ) ;
+    public final void para() throws RecognitionException {
+        try {
+            // fontes/g/CanecaSemantico.g:387:2: ( ^( PARA_ . . . . ) )
+            // fontes/g/CanecaSemantico.g:387:4: ^( PARA_ . . . . )
+            {
+            match(input,PARA_,FOLLOW_PARA__in_para1412); if (state.failed) return ;
+
+            match(input, Token.DOWN, null); if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
+
+            matchAny(input); if (state.failed) return ;
+
+            matchAny(input); if (state.failed) return ;
+
+            matchAny(input); if (state.failed) return ;
+
+            match(input, Token.UP, null); if (state.failed) return ;
+
+
+            if ( state.backtracking==1 ) {
+            			mostrar("para");
+            			InstrucaoPara instrucao = new InstrucaoPara(escopoAtual);
+            			escopoAtual.definirInstrucao(instrucao);
+            			escopoAtual = instrucao;
+            			instrucaoAtual = instrucao;
+            		}
 
             }
 
@@ -3654,36 +3974,76 @@ public class CanecaSemantico extends TreeFilter {
 
 
 
-    // $ANTLR start "repita"
-    // fontes/g/CanecaSemantico.g:323:1: repita : ^( REPITA_ declaracao expressao blocoDeInstrucoes ) ;
-    public final void repita() throws RecognitionException {
+    // $ANTLR start "terminarPara"
+    // fontes/g/CanecaSemantico.g:397:1: terminarPara : ^( PARA_ . . . . ) ;
+    public final void terminarPara() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:324:2: ( ^( REPITA_ declaracao expressao blocoDeInstrucoes ) )
-            // fontes/g/CanecaSemantico.g:324:4: ^( REPITA_ declaracao expressao blocoDeInstrucoes )
+            // fontes/g/CanecaSemantico.g:398:2: ( ^( PARA_ . . . . ) )
+            // fontes/g/CanecaSemantico.g:398:4: ^( PARA_ . . . . )
             {
-            match(input,REPITA_,FOLLOW_REPITA__in_repita1304); if (state.failed) return ;
+            match(input,PARA_,FOLLOW_PARA__in_terminarPara1437); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_declaracao_in_repita1306);
-            declaracao();
+            matchAny(input); if (state.failed) return ;
 
-            state._fsp--;
-            if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
 
-            pushFollow(FOLLOW_expressao_in_repita1308);
-            expressao();
+            matchAny(input); if (state.failed) return ;
 
-            state._fsp--;
-            if (state.failed) return ;
-
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_repita1310);
-            blocoDeInstrucoes();
-
-            state._fsp--;
-            if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
 
             match(input, Token.UP, null); if (state.failed) return ;
 
+
+            if ( state.backtracking==1 ) {
+            			mostrar("terminarPara");
+            			escopoAtual = instrucaoAtual.fornecerEscopoPai();
+            			instrucaoAtual = null;
+            		}
+
+            }
+
+        }
+
+        	catch (RecognitionException erro) {
+        		throw erro;
+        	}
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
+    // $ANTLR end "terminarPara"
+
+
+
+    // $ANTLR start "repita"
+    // fontes/g/CanecaSemantico.g:406:1: repita : ^( REPITA_ . . . ) ;
+    public final void repita() throws RecognitionException {
+        try {
+            // fontes/g/CanecaSemantico.g:407:2: ( ^( REPITA_ . . . ) )
+            // fontes/g/CanecaSemantico.g:407:4: ^( REPITA_ . . . )
+            {
+            match(input,REPITA_,FOLLOW_REPITA__in_repita1462); if (state.failed) return ;
+
+            match(input, Token.DOWN, null); if (state.failed) return ;
+            matchAny(input); if (state.failed) return ;
+
+            matchAny(input); if (state.failed) return ;
+
+            matchAny(input); if (state.failed) return ;
+
+            match(input, Token.UP, null); if (state.failed) return ;
+
+
+            if ( state.backtracking==1 ) {
+            			mostrar("repita");
+            			InstrucaoRepita instrucao = new InstrucaoRepita(escopoAtual);
+            			escopoAtual.definirInstrucao(instrucao);
+            			escopoAtual = instrucao;
+            			instrucaoAtual = instrucao;
+            		}
 
             }
 
@@ -3702,24 +4062,66 @@ public class CanecaSemantico extends TreeFilter {
 
 
 
-    // $ANTLR start "enquanto"
-    // fontes/g/CanecaSemantico.g:327:1: enquanto : ^( ENQUANTO_ expressao blocoDeInstrucoes ) ;
-    public final void enquanto() throws RecognitionException {
+    // $ANTLR start "terminarRepita"
+    // fontes/g/CanecaSemantico.g:417:1: terminarRepita : ^( REPITA_ . . . ) ;
+    public final void terminarRepita() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:328:2: ( ^( ENQUANTO_ expressao blocoDeInstrucoes ) )
-            // fontes/g/CanecaSemantico.g:328:4: ^( ENQUANTO_ expressao blocoDeInstrucoes )
+            // fontes/g/CanecaSemantico.g:418:2: ( ^( REPITA_ . . . ) )
+            // fontes/g/CanecaSemantico.g:418:4: ^( REPITA_ . . . )
             {
-            match(input,ENQUANTO_,FOLLOW_ENQUANTO__in_enquanto1323); if (state.failed) return ;
+            match(input,REPITA_,FOLLOW_REPITA__in_terminarRepita1485); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_expressao_in_enquanto1325);
+            matchAny(input); if (state.failed) return ;
+
+            matchAny(input); if (state.failed) return ;
+
+            matchAny(input); if (state.failed) return ;
+
+            match(input, Token.UP, null); if (state.failed) return ;
+
+
+            if ( state.backtracking==1 ) {
+            			mostrar("terminarRepita");
+            			escopoAtual = instrucaoAtual.fornecerEscopoPai();
+            			instrucaoAtual = null;
+            		}
+
+            }
+
+        }
+
+        	catch (RecognitionException erro) {
+        		throw erro;
+        	}
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
+    // $ANTLR end "terminarRepita"
+
+
+
+    // $ANTLR start "enquanto"
+    // fontes/g/CanecaSemantico.g:426:1: enquanto : ^( ENQUANTO_ expressao bloco ) ;
+    public final void enquanto() throws RecognitionException {
+        try {
+            // fontes/g/CanecaSemantico.g:427:2: ( ^( ENQUANTO_ expressao bloco ) )
+            // fontes/g/CanecaSemantico.g:427:4: ^( ENQUANTO_ expressao bloco )
+            {
+            match(input,ENQUANTO_,FOLLOW_ENQUANTO__in_enquanto1508); if (state.failed) return ;
+
+            match(input, Token.DOWN, null); if (state.failed) return ;
+            pushFollow(FOLLOW_expressao_in_enquanto1510);
             expressao();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_enquanto1327);
-            blocoDeInstrucoes();
+            pushFollow(FOLLOW_bloco_in_enquanto1512);
+            bloco();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3745,22 +4147,22 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "tente"
-    // fontes/g/CanecaSemantico.g:331:1: tente : ^( TENTE_ blocoDeInstrucoes listaDeCapturas ) ;
+    // fontes/g/CanecaSemantico.g:430:1: tente : ^( TENTE_ bloco listaDeCapturas ) ;
     public final void tente() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:332:2: ( ^( TENTE_ blocoDeInstrucoes listaDeCapturas ) )
-            // fontes/g/CanecaSemantico.g:332:4: ^( TENTE_ blocoDeInstrucoes listaDeCapturas )
+            // fontes/g/CanecaSemantico.g:431:2: ( ^( TENTE_ bloco listaDeCapturas ) )
+            // fontes/g/CanecaSemantico.g:431:4: ^( TENTE_ bloco listaDeCapturas )
             {
-            match(input,TENTE_,FOLLOW_TENTE__in_tente1340); if (state.failed) return ;
+            match(input,TENTE_,FOLLOW_TENTE__in_tente1525); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_tente1342);
-            blocoDeInstrucoes();
+            pushFollow(FOLLOW_bloco_in_tente1527);
+            bloco();
 
             state._fsp--;
             if (state.failed) return ;
 
-            pushFollow(FOLLOW_listaDeCapturas_in_tente1344);
+            pushFollow(FOLLOW_listaDeCapturas_in_tente1529);
             listaDeCapturas();
 
             state._fsp--;
@@ -3787,23 +4189,19 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "capture"
-    // fontes/g/CanecaSemantico.g:335:1: capture : ^( CAPTURE_ declaracao blocoDeInstrucoes ) ;
+    // fontes/g/CanecaSemantico.g:434:1: capture : ^( CAPTURE_ . bloco ) ;
     public final void capture() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:336:2: ( ^( CAPTURE_ declaracao blocoDeInstrucoes ) )
-            // fontes/g/CanecaSemantico.g:336:4: ^( CAPTURE_ declaracao blocoDeInstrucoes )
+            // fontes/g/CanecaSemantico.g:435:2: ( ^( CAPTURE_ . bloco ) )
+            // fontes/g/CanecaSemantico.g:435:4: ^( CAPTURE_ . bloco )
             {
-            match(input,CAPTURE_,FOLLOW_CAPTURE__in_capture1357); if (state.failed) return ;
+            match(input,CAPTURE_,FOLLOW_CAPTURE__in_capture1542); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_declaracao_in_capture1359);
-            declaracao();
+            matchAny(input); if (state.failed) return ;
 
-            state._fsp--;
-            if (state.failed) return ;
-
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_capture1361);
-            blocoDeInstrucoes();
+            pushFollow(FOLLOW_bloco_in_capture1546);
+            bloco();
 
             state._fsp--;
             if (state.failed) return ;
@@ -3829,16 +4227,16 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "lance"
-    // fontes/g/CanecaSemantico.g:339:1: lance : ^( LANCE_ expressao ) ;
+    // fontes/g/CanecaSemantico.g:438:1: lance : ^( LANCE_ expressao ) ;
     public final void lance() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:340:2: ( ^( LANCE_ expressao ) )
-            // fontes/g/CanecaSemantico.g:340:4: ^( LANCE_ expressao )
+            // fontes/g/CanecaSemantico.g:439:2: ( ^( LANCE_ expressao ) )
+            // fontes/g/CanecaSemantico.g:439:4: ^( LANCE_ expressao )
             {
-            match(input,LANCE_,FOLLOW_LANCE__in_lance1374); if (state.failed) return ;
+            match(input,LANCE_,FOLLOW_LANCE__in_lance1559); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
-            pushFollow(FOLLOW_expressao_in_lance1376);
+            pushFollow(FOLLOW_expressao_in_lance1561);
             expressao();
 
             state._fsp--;
@@ -3864,34 +4262,34 @@ public class CanecaSemantico extends TreeFilter {
 
 
 
-    // $ANTLR start "blocoDeInstrucoes"
-    // fontes/g/CanecaSemantico.g:343:1: blocoDeInstrucoes : ^( INSTRUCOES_ ( . )* ) ;
-    public final void blocoDeInstrucoes() throws RecognitionException {
+    // $ANTLR start "bloco"
+    // fontes/g/CanecaSemantico.g:442:1: bloco : ^( INSTRUCOES_ ( . )* ) ;
+    public final void bloco() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:344:2: ( ^( INSTRUCOES_ ( . )* ) )
-            // fontes/g/CanecaSemantico.g:344:4: ^( INSTRUCOES_ ( . )* )
+            // fontes/g/CanecaSemantico.g:443:2: ( ^( INSTRUCOES_ ( . )* ) )
+            // fontes/g/CanecaSemantico.g:443:4: ^( INSTRUCOES_ ( . )* )
             {
-            match(input,INSTRUCOES_,FOLLOW_INSTRUCOES__in_blocoDeInstrucoes1389); if (state.failed) return ;
+            match(input,INSTRUCOES_,FOLLOW_INSTRUCOES__in_bloco1574); if (state.failed) return ;
 
             if ( input.LA(1)==Token.DOWN ) {
                 match(input, Token.DOWN, null); if (state.failed) return ;
-                // fontes/g/CanecaSemantico.g:344:18: ( . )*
-                loop36:
+                // fontes/g/CanecaSemantico.g:443:18: ( . )*
+                loop38:
                 do {
-                    int alt36=2;
-                    int LA36_0 = input.LA(1);
+                    int alt38=2;
+                    int LA38_0 = input.LA(1);
 
-                    if ( ((LA36_0 >= ATRIBUIDOR && LA36_0 <= UNIDADE_)) ) {
-                        alt36=1;
+                    if ( ((LA38_0 >= ATRIBUIDOR && LA38_0 <= UNIDADE_)) ) {
+                        alt38=1;
                     }
-                    else if ( (LA36_0==UP) ) {
-                        alt36=2;
+                    else if ( (LA38_0==UP) ) {
+                        alt38=2;
                     }
 
 
-                    switch (alt36) {
+                    switch (alt38) {
                 	case 1 :
-                	    // fontes/g/CanecaSemantico.g:344:19: .
+                	    // fontes/g/CanecaSemantico.g:443:19: .
                 	    {
                 	    matchAny(input); if (state.failed) return ;
 
@@ -3899,7 +4297,7 @@ public class CanecaSemantico extends TreeFilter {
                 	    break;
 
                 	default :
-                	    break loop36;
+                	    break loop38;
                     }
                 } while (true);
 
@@ -3907,6 +4305,14 @@ public class CanecaSemantico extends TreeFilter {
                 match(input, Token.UP, null); if (state.failed) return ;
             }
 
+
+            if ( state.backtracking==1 ) {
+            			mostrar("bloco");
+            			Bloco bloco = new Bloco(escopoAtual);
+            			escopoAtual.definirBloco(bloco);
+            			escopoAtual = bloco;
+            			blocoAtual = bloco;
+            		}
 
             }
 
@@ -3921,7 +4327,74 @@ public class CanecaSemantico extends TreeFilter {
         }
         return ;
     }
-    // $ANTLR end "blocoDeInstrucoes"
+    // $ANTLR end "bloco"
+
+
+
+    // $ANTLR start "terminarBloco"
+    // fontes/g/CanecaSemantico.g:453:1: terminarBloco : ^( INSTRUCOES_ ( . )* ) ;
+    public final void terminarBloco() throws RecognitionException {
+        try {
+            // fontes/g/CanecaSemantico.g:454:2: ( ^( INSTRUCOES_ ( . )* ) )
+            // fontes/g/CanecaSemantico.g:454:4: ^( INSTRUCOES_ ( . )* )
+            {
+            match(input,INSTRUCOES_,FOLLOW_INSTRUCOES__in_terminarBloco1596); if (state.failed) return ;
+
+            if ( input.LA(1)==Token.DOWN ) {
+                match(input, Token.DOWN, null); if (state.failed) return ;
+                // fontes/g/CanecaSemantico.g:454:18: ( . )*
+                loop39:
+                do {
+                    int alt39=2;
+                    int LA39_0 = input.LA(1);
+
+                    if ( ((LA39_0 >= ATRIBUIDOR && LA39_0 <= UNIDADE_)) ) {
+                        alt39=1;
+                    }
+                    else if ( (LA39_0==UP) ) {
+                        alt39=2;
+                    }
+
+
+                    switch (alt39) {
+                	case 1 :
+                	    // fontes/g/CanecaSemantico.g:454:19: .
+                	    {
+                	    matchAny(input); if (state.failed) return ;
+
+                	    }
+                	    break;
+
+                	default :
+                	    break loop39;
+                    }
+                } while (true);
+
+
+                match(input, Token.UP, null); if (state.failed) return ;
+            }
+
+
+            if ( state.backtracking==1 ) {
+            			mostrar("terminarBloco");
+            			escopoAtual = blocoAtual.fornecerEscopoPai();
+            			blocoAtual = null;
+            		}
+
+            }
+
+        }
+
+        	catch (RecognitionException erro) {
+        		throw erro;
+        	}
+
+        finally {
+        	// do for sure before leaving
+        }
+        return ;
+    }
+    // $ANTLR end "terminarBloco"
 
     // Delegated rules
 
@@ -3997,7 +4470,7 @@ public class CanecaSemantico extends TreeFilter {
             this.transition = DFA4_transition;
         }
         public String getDescription() {
-            return "61:1: unicadeDeCompilacao : ( ^( UNIDADE_ cabecalho classe ) | ^( UNIDADE_ cabecalho interfaces ) );";
+            return "86:1: unicadeDeCompilacao : ( ^( UNIDADE_ cabecalho classe ) | ^( UNIDADE_ cabecalho interfaces ) );";
         }
     }
  
@@ -4006,209 +4479,212 @@ public class CanecaSemantico extends TreeFilter {
     public static final BitSet FOLLOW_atributo_in_topdown65 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_construtor_in_topdown70 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_destrutor_in_topdown75 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_terminaClasse_in_bottomup86 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_terminarConstrutor_in_bottomup91 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_terminarDestrutor_in_bottomup96 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PROGRAMA__in_programa108 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_unicadeDeCompilacao_in_programa111 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000000000002L});
-    public static final BitSet FOLLOW_UNIDADE__in_unicadeDeCompilacao126 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_cabecalho_in_unicadeDeCompilacao128 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
-    public static final BitSet FOLLOW_classe_in_unicadeDeCompilacao130 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_UNIDADE__in_unicadeDeCompilacao137 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_cabecalho_in_unicadeDeCompilacao139 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000000L});
-    public static final BitSet FOLLOW_interfaces_in_unicadeDeCompilacao141 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CABECALHO__in_cabecalho154 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_pacote_in_cabecalho156 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
-    public static final BitSet FOLLOW_importacoes_in_cabecalho158 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_PACOTE__in_pacote171 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_pacote173 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_IMPORTACOES__in_importacoes186 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_importacao_in_importacoes189 = new BitSet(new long[]{0x0000000000000008L,0x0000010000000000L});
-    public static final BitSet FOLLOW_IMPORTACAO__in_importacao204 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_importacao206 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao208 = new BitSet(new long[]{0x0000000400000008L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_importacao211 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_IMPORTACAO__in_importacao220 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao222 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CLASSE__in_classe235 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoFeminino_in_classe237 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_classe239 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000000L});
-    public static final BitSet FOLLOW_listaDeTiposGenericos_in_classe241 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_listaDeInterfaces_in_classe243 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
-    public static final BitSet FOLLOW_CLASSE__in_terminaClasse262 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoFeminino_in_terminaClasse264 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_terminaClasse266 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000000L});
-    public static final BitSet FOLLOW_listaDeTiposGenericos_in_terminaClasse268 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_listaDeInterfaces_in_terminaClasse270 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
-    public static final BitSet FOLLOW_INTERFACE__in_interfaces289 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoFeminino_in_interfaces291 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_interfaces293 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000000L});
-    public static final BitSet FOLLOW_listaDeTiposGenericos_in_interfaces295 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_listaDeInterfaces_in_interfaces297 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
-    public static final BitSet FOLLOW_corpoDaInterface_in_interfaces299 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CORPO__in_corpoDaClasse312 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_atributos_in_corpoDaClasse314 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
-    public static final BitSet FOLLOW_construtores_in_corpoDaClasse316 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000000L});
-    public static final BitSet FOLLOW_destrutor_in_corpoDaClasse318 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
-    public static final BitSet FOLLOW_metodos_in_corpoDaClasse320 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CORPO__in_corpoDaInterface333 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_atributos_in_corpoDaInterface335 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
-    public static final BitSet FOLLOW_assinaturasDeMetodos_in_corpoDaInterface337 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ATRIBUTOS__in_atributos350 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_atributo_in_atributos353 = new BitSet(new long[]{0x0000000000000008L,0x0000000000400000L});
-    public static final BitSet FOLLOW_CONSTRUTORES__in_construtores368 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_construtor_in_construtores371 = new BitSet(new long[]{0x0000000000000008L,0x0000000080000000L});
-    public static final BitSet FOLLOW_METODOS__in_metodos386 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_metodo_in_metodos389 = new BitSet(new long[]{0x0000000000000008L,0x0001000000000000L});
-    public static final BitSet FOLLOW_ASSINATURAS_DE_METODOS__in_assinaturasDeMetodos404 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ASSINATURA__in_assinaturasDeMetodos408 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturasDeMetodos410 = new BitSet(new long[]{0x0000000100000000L,0x8000000000000000L});
-    public static final BitSet FOLLOW_ESTATICO_in_assinaturasDeMetodos413 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
-    public static final BitSet FOLLOW_tipo_in_assinaturasDeMetodos417 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturasDeMetodos419 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_listaDeArgumentos_in_assinaturasDeMetodos421 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ATRIBUTO__in_atributo437 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_atributo439 = new BitSet(new long[]{0x0000000100000000L,0x8000000000000000L});
-    public static final BitSet FOLLOW_ESTATICO_in_atributo442 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
-    public static final BitSet FOLLOW_tipo_in_atributo446 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_atributo448 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF8L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
-    public static final BitSet FOLLOW_CONSTRUTOR__in_construtor470 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ASSINATURA__in_construtor474 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_construtor476 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_construtor478 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_listaDeArgumentos_in_construtor480 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CONSTRUTOR__in_terminarConstrutor500 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ASSINATURA__in_terminarConstrutor504 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_terminarConstrutor506 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_terminarConstrutor508 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_listaDeArgumentos_in_terminarConstrutor510 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DESTRUTOR__in_destrutor530 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ASSINATURA__in_destrutor533 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_destrutor535 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_destrutor537 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_listaDeArgumentosVazia_in_destrutor539 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DESTRUTOR__in_terminarDestrutor559 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ASSINATURA__in_terminarDestrutor562 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_terminarDestrutor564 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_terminarDestrutor566 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_listaDeArgumentosVazia_in_terminarDestrutor568 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_METODO__in_metodo588 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ASSINATURA__in_metodo591 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_metodo593 = new BitSet(new long[]{0x0000000100000000L,0x8000000000000000L});
-    public static final BitSet FOLLOW_ESTATICO_in_metodo596 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
-    public static final BitSet FOLLOW_tipo_in_metodo600 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_metodo602 = new BitSet(new long[]{0x0000000000000000L,0x0000000000010000L});
-    public static final BitSet FOLLOW_listaDeArgumentos_in_metodo604 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_PARAMETROS__in_listaDeParametros662 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressao_in_listaDeParametros665 = new BitSet(new long[]{0x004DE0100D000018L,0x0810000000000308L});
-    public static final BitSet FOLLOW_ARGUMENTOS__in_listaDeArgumentosVazia679 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ARGUMENTOS__in_listaDeArgumentos691 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_declaracao_in_listaDeArgumentos694 = new BitSet(new long[]{0x0000000000000008L,0x0000000200000000L});
-    public static final BitSet FOLLOW_INTERFACES__in_listaDeInterfaces709 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces712 = new BitSet(new long[]{0x0000000000000008L,0x8000000000000000L});
-    public static final BitSet FOLLOW_TIPOS_GENERICOS__in_listaDeTiposGenericos727 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_tipoGenerico_in_listaDeTiposGenericos730 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_TIPOS__in_listaDeTipos745 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_tipo_in_listaDeTipos748 = new BitSet(new long[]{0x0000000000000008L,0x8000000000000000L});
-    public static final BitSet FOLLOW_CAPTURAS__in_listaDeCapturas763 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_capture_in_listaDeCapturas766 = new BitSet(new long[]{0x0000000000000008L,0x0000000002000000L});
-    public static final BitSet FOLLOW_TIPO_GENERICO__in_tipoGenerico781 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_tipoGenerico783 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
-    public static final BitSet FOLLOW_listaDeInterfaces_in_tipoGenerico785 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_TIPO__in_tipo802 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_tipo804 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
-    public static final BitSet FOLLOW_listaDeTipos_in_tipo806 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DECLARACAO__in_declaracao823 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_tipo_in_declaracao825 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_declaracao827 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ATRIBUICAO__in_atribuicao840 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoOuLogico_in_atribuicao842 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DECLARACAO_COM_ATRIBUICAO_OPICIONAL__in_declaracaoComAtribuicaoOpcional855 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_declaracao_in_declaracaoComAtribuicaoOpcional857 = new BitSet(new long[]{0x0000000000000008L,0x0000000000100000L});
-    public static final BitSet FOLLOW_atribuicao_in_declaracaoComAtribuicaoOpcional860 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ATRIBUIDOR_in_expressao875 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao877 = new BitSet(new long[]{0x004DE0100D000000L,0x0810000000000308L});
-    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao879 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao885 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_OU_in_expressaoOuLogico897 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico899 = new BitSet(new long[]{0x000DE0100D000000L,0x0810000000000308L});
-    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico901 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico907 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_E_in_expressaoELogico919 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico921 = new BitSet(new long[]{0x000DE01005000000L,0x0810000000000308L});
-    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico923 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico929 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_expressaoComparacaoLogica941 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica965 = new BitSet(new long[]{0x000C000004000000L,0x0810000000000308L});
-    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica967 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica973 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_expressaoAditiva985 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva993 = new BitSet(new long[]{0x000C000004000000L,0x0810000000000008L});
-    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva995 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1001 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_expressaoMultiplicativa1013 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1025 = new BitSet(new long[]{0x0008000000000000L,0x0810000000000000L});
-    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1027 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1033 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PRIMARIA__in_expressaoUnaria1045 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria1047 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SUBTRACAO_UNARIA__in_expressaoUnaria1054 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria1056 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_NEGACAO_in_expressaoUnaria1063 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria1065 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_expressao_in_expressaoPrimaria1077 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VALOR_BOOLEANO_in_expressaoPrimaria1082 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VALOR_NULO_in_expressaoPrimaria1087 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTANTE_INTEIRA_in_expressaoPrimaria1092 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTANTE_REAL_in_expressaoPrimaria1097 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LITERAL_CARACTERE_in_expressaoPrimaria1102 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LITERAL_TEXTO_in_expressaoPrimaria1107 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_comando_in_expressaoPrimaria1112 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_COMANDO__in_comando1124 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_referencia_in_comando1126 = new BitSet(new long[]{0x0000000000000C08L});
-    public static final BitSet FOLLOW_chamada_in_comando1129 = new BitSet(new long[]{0x0000000000000C08L});
-    public static final BitSet FOLLOW_REFERENCIA__in_referencia1144 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ESSE_in_referencia1146 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_REFERENCIA__in_referencia1153 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_ESSA_in_referencia1155 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_REFERENCIA__in_referencia1162 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_instanciacao_in_referencia1164 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_REFERENCIA__in_referencia1171 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_referencia1173 = new BitSet(new long[]{0x0000000000000008L,0x0004000000000000L});
-    public static final BitSet FOLLOW_listaDeParametros_in_referencia1176 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_set_in_chamada1191 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_chamada1199 = new BitSet(new long[]{0x0000000000000008L,0x0004000000000000L});
-    public static final BitSet FOLLOW_listaDeParametros_in_chamada1202 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INSTANCIACAO__in_instanciacao1217 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_tipo_in_instanciacao1219 = new BitSet(new long[]{0x0000000000000000L,0x0004000000000000L});
-    public static final BitSet FOLLOW_listaDeParametros_in_instanciacao1221 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_DESTRUICAO__in_destruicao1234 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressao_in_destruicao1236 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_RETORNO__in_retorno1250 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressao_in_retorno1252 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_SE__in_se1265 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressao_in_se1267 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_se1269 = new BitSet(new long[]{0x0000000000000008L,0x0000080000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_se1271 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_PARA__in_para1285 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressao_in_para1287 = new BitSet(new long[]{0x004DE0100D000010L,0x0810000000000308L});
-    public static final BitSet FOLLOW_expressao_in_para1289 = new BitSet(new long[]{0x004DE0100D000010L,0x0810000000000308L});
-    public static final BitSet FOLLOW_expressao_in_para1291 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_REPITA__in_repita1304 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_declaracao_in_repita1306 = new BitSet(new long[]{0x004DE0100D000010L,0x0810000000000308L});
-    public static final BitSet FOLLOW_expressao_in_repita1308 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_repita1310 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_ENQUANTO__in_enquanto1323 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressao_in_enquanto1325 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_enquanto1327 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_TENTE__in_tente1340 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_tente1342 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
-    public static final BitSet FOLLOW_listaDeCapturas_in_tente1344 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_CAPTURE__in_capture1357 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_declaracao_in_capture1359 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_capture1361 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_LANCE__in_lance1374 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_expressao_in_lance1376 = new BitSet(new long[]{0x0000000000000008L});
-    public static final BitSet FOLLOW_INSTRUCOES__in_blocoDeInstrucoes1389 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_metodo_in_topdown80 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_declaracao_in_topdown85 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_bloco_in_topdown90 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_se_in_topdown95 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_para_in_topdown100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_repita_in_topdown105 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_terminaClasse_in_bottomup116 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_terminarConstrutor_in_bottomup121 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_terminarDestrutor_in_bottomup126 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_terminarMetodo_in_bottomup131 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_terminarBloco_in_bottomup136 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_terminarSe_in_bottomup141 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_terminarPara_in_bottomup146 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_terminarRepita_in_bottomup151 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PROGRAMA__in_programa163 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_unicadeDeCompilacao_in_programa166 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000000000002L});
+    public static final BitSet FOLLOW_UNIDADE__in_unicadeDeCompilacao181 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_cabecalho_in_unicadeDeCompilacao183 = new BitSet(new long[]{0x0000000000000000L,0x0000000010000000L});
+    public static final BitSet FOLLOW_classe_in_unicadeDeCompilacao185 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_UNIDADE__in_unicadeDeCompilacao192 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_cabecalho_in_unicadeDeCompilacao194 = new BitSet(new long[]{0x0000000000000000L,0x0000200000000000L});
+    public static final BitSet FOLLOW_interfaces_in_unicadeDeCompilacao196 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CABECALHO__in_cabecalho209 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_pacote_in_cabecalho211 = new BitSet(new long[]{0x0000000000000000L,0x0000020000000000L});
+    public static final BitSet FOLLOW_importacoes_in_cabecalho213 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_PACOTE__in_pacote226 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_pacote228 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IMPORTACOES__in_importacoes241 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_importacao_in_importacoes244 = new BitSet(new long[]{0x0000000000000008L,0x0000010000000000L});
+    public static final BitSet FOLLOW_IMPORTACAO__in_importacao259 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_importacao261 = new BitSet(new long[]{0x0000000800000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao263 = new BitSet(new long[]{0x0000000400000008L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_importacao266 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_IMPORTACAO__in_importacao275 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao277 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CLASSE__in_classe290 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoFeminino_in_classe292 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_classe294 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000000L});
+    public static final BitSet FOLLOW_listaDeTiposGenericos_in_classe296 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_listaDeInterfaces_in_classe298 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_CLASSE__in_terminaClasse317 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoFeminino_in_terminaClasse319 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_terminaClasse321 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000000L});
+    public static final BitSet FOLLOW_listaDeTiposGenericos_in_terminaClasse323 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_listaDeInterfaces_in_terminaClasse325 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_INTERFACE__in_interfaces344 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoFeminino_in_interfaces346 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_interfaces348 = new BitSet(new long[]{0x0000000000000000L,0x4000000000000000L});
+    public static final BitSet FOLLOW_listaDeTiposGenericos_in_interfaces350 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_listaDeInterfaces_in_interfaces352 = new BitSet(new long[]{0x0000000000000000L,0x0000000100000000L});
+    public static final BitSet FOLLOW_corpoDaInterface_in_interfaces354 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CORPO__in_corpoDaClasse367 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_atributos_in_corpoDaClasse369 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
+    public static final BitSet FOLLOW_construtores_in_corpoDaClasse371 = new BitSet(new long[]{0x0000000000000000L,0x0000002000000000L});
+    public static final BitSet FOLLOW_destrutor_in_corpoDaClasse373 = new BitSet(new long[]{0x0000000000000000L,0x0000800000000000L});
+    public static final BitSet FOLLOW_metodos_in_corpoDaClasse375 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CORPO__in_corpoDaInterface388 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_atributos_in_corpoDaInterface390 = new BitSet(new long[]{0x0000000000000000L,0x0000000000020000L});
+    public static final BitSet FOLLOW_assinaturasDeMetodos_in_corpoDaInterface392 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_ATRIBUTOS__in_atributos405 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_atributo_in_atributos408 = new BitSet(new long[]{0x0000000000000008L,0x0000000000400000L});
+    public static final BitSet FOLLOW_CONSTRUTORES__in_construtores423 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_construtor_in_construtores426 = new BitSet(new long[]{0x0000000000000008L,0x0000000080000000L});
+    public static final BitSet FOLLOW_METODOS__in_metodos441 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_metodo_in_metodos444 = new BitSet(new long[]{0x0000000000000008L,0x0001000000000000L});
+    public static final BitSet FOLLOW_ASSINATURAS_DE_METODOS__in_assinaturasDeMetodos459 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ASSINATURA__in_assinaturasDeMetodos463 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturasDeMetodos465 = new BitSet(new long[]{0x0000000100000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_ESTATICO_in_assinaturasDeMetodos468 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_tipo_in_assinaturasDeMetodos472 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturasDeMetodos474 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_ATRIBUTO__in_atributo492 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_atributo494 = new BitSet(new long[]{0x0000000100000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_ESTATICO_in_atributo497 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_tipo_in_atributo501 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_atributo503 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF8L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_CONSTRUTOR__in_construtor525 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ASSINATURA__in_construtor529 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_construtor531 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_construtor533 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_CONSTRUTOR__in_terminarConstrutor555 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ASSINATURA__in_terminarConstrutor559 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_terminarConstrutor561 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_terminarConstrutor563 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_DESTRUTOR__in_destrutor585 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ASSINATURA__in_destrutor588 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_destrutor590 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_destrutor592 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_DESTRUTOR__in_terminarDestrutor614 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ASSINATURA__in_terminarDestrutor617 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_terminarDestrutor619 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_terminarDestrutor621 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_METODO__in_metodo643 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ASSINATURA__in_metodo646 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_metodo648 = new BitSet(new long[]{0x0000000100000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_ESTATICO_in_metodo651 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_tipo_in_metodo655 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_metodo657 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_METODO__in_terminarMetodo679 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ASSINATURA__in_terminarMetodo682 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_terminarMetodo684 = new BitSet(new long[]{0x0000000100000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_ESTATICO_in_terminarMetodo687 = new BitSet(new long[]{0x0000000000000000L,0x8000000000000000L});
+    public static final BitSet FOLLOW_tipo_in_terminarMetodo691 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_terminarMetodo693 = new BitSet(new long[]{0xFFFFFFFFFFFFFFF0L,0xFFFFFFFFFFFFFFFFL,0x0000000000000003L});
+    public static final BitSet FOLLOW_PARAMETROS__in_listaDeParametros757 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressao_in_listaDeParametros760 = new BitSet(new long[]{0x004DE0100D000018L,0x0810000000000308L});
+    public static final BitSet FOLLOW_ARGUMENTOS__in_listaDeArgumentosVazia774 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ARGUMENTOS__in_listaDeArgumentos786 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_INTERFACES__in_listaDeInterfaces804 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces807 = new BitSet(new long[]{0x0000000000000008L,0x8000000000000000L});
+    public static final BitSet FOLLOW_TIPOS_GENERICOS__in_listaDeTiposGenericos822 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_tipoGenerico_in_listaDeTiposGenericos825 = new BitSet(new long[]{0x0000000000000008L,0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_TIPOS__in_listaDeTipos840 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_tipo_in_listaDeTipos843 = new BitSet(new long[]{0x0000000000000008L,0x8000000000000000L});
+    public static final BitSet FOLLOW_CAPTURAS__in_listaDeCapturas858 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_capture_in_listaDeCapturas861 = new BitSet(new long[]{0x0000000000000008L,0x0000000002000000L});
+    public static final BitSet FOLLOW_TIPO_GENERICO__in_tipoGenerico876 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_tipoGenerico878 = new BitSet(new long[]{0x0000000000000000L,0x0000100000000000L});
+    public static final BitSet FOLLOW_listaDeInterfaces_in_tipoGenerico880 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_TIPO__in_tipo897 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_tipo899 = new BitSet(new long[]{0x0000000000000000L,0x2000000000000000L});
+    public static final BitSet FOLLOW_listaDeTipos_in_tipo901 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_DECLARACAO__in_declaracao918 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_tipo_in_declaracao920 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_declaracao922 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_ATRIBUICAO__in_atribuicao939 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoOuLogico_in_atribuicao941 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_DECLARACAO_COM_ATRIBUICAO_OPICIONAL__in_declaracaoComAtribuicaoOpcional954 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_atribuicao_in_declaracaoComAtribuicaoOpcional959 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_ATRIBUIDOR_in_expressao974 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao976 = new BitSet(new long[]{0x004DE0100D000000L,0x0810000000000308L});
+    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao978 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao984 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_OU_in_expressaoOuLogico996 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico998 = new BitSet(new long[]{0x000DE0100D000000L,0x0810000000000308L});
+    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico1000 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico1006 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_E_in_expressaoELogico1018 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico1020 = new BitSet(new long[]{0x000DE01005000000L,0x0810000000000308L});
+    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico1022 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico1028 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_expressaoComparacaoLogica1040 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica1064 = new BitSet(new long[]{0x000C000004000000L,0x0810000000000308L});
+    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica1066 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica1072 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_expressaoAditiva1084 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1092 = new BitSet(new long[]{0x000C000004000000L,0x0810000000000008L});
+    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1094 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1100 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_expressaoMultiplicativa1112 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1124 = new BitSet(new long[]{0x0008000000000000L,0x0810000000000000L});
+    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1126 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PRIMARIA__in_expressaoUnaria1144 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria1146 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SUBTRACAO_UNARIA__in_expressaoUnaria1153 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria1155 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_NEGACAO_in_expressaoUnaria1162 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria1164 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_expressao_in_expressaoPrimaria1176 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VALOR_BOOLEANO_in_expressaoPrimaria1181 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VALOR_NULO_in_expressaoPrimaria1186 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTANTE_INTEIRA_in_expressaoPrimaria1191 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTANTE_REAL_in_expressaoPrimaria1196 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LITERAL_CARACTERE_in_expressaoPrimaria1201 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LITERAL_TEXTO_in_expressaoPrimaria1206 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_comando_in_expressaoPrimaria1211 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_COMANDO__in_comando1223 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_referencia_in_comando1225 = new BitSet(new long[]{0x0000000000000C08L});
+    public static final BitSet FOLLOW_chamada_in_comando1228 = new BitSet(new long[]{0x0000000000000C08L});
+    public static final BitSet FOLLOW_REFERENCIA__in_referencia1243 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ESSE_in_referencia1245 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_REFERENCIA__in_referencia1252 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ESSA_in_referencia1254 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_REFERENCIA__in_referencia1261 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_instanciacao_in_referencia1263 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_REFERENCIA__in_referencia1270 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_referencia1272 = new BitSet(new long[]{0x0000000000000008L,0x0004000000000000L});
+    public static final BitSet FOLLOW_listaDeParametros_in_referencia1275 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_set_in_chamada1290 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_chamada1298 = new BitSet(new long[]{0x0000000000000008L,0x0004000000000000L});
+    public static final BitSet FOLLOW_listaDeParametros_in_chamada1301 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INSTANCIACAO__in_instanciacao1316 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_tipo_in_instanciacao1318 = new BitSet(new long[]{0x0000000000000000L,0x0004000000000000L});
+    public static final BitSet FOLLOW_listaDeParametros_in_instanciacao1320 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_DESTRUICAO__in_destruicao1333 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressao_in_destruicao1335 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_RETORNO__in_retorno1349 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressao_in_retorno1351 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_SE__in_se1364 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_SE__in_terminarSe1388 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_PARA__in_para1412 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_PARA__in_terminarPara1437 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_REPITA__in_repita1462 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_REPITA__in_terminarRepita1485 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_ENQUANTO__in_enquanto1508 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressao_in_enquanto1510 = new BitSet(new long[]{0x0000000000000000L,0x0000080000000000L});
+    public static final BitSet FOLLOW_bloco_in_enquanto1512 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_TENTE__in_tente1525 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bloco_in_tente1527 = new BitSet(new long[]{0x0000000000000000L,0x0000000001000000L});
+    public static final BitSet FOLLOW_listaDeCapturas_in_tente1529 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_CAPTURE__in_capture1542 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_bloco_in_capture1546 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_LANCE__in_lance1559 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_expressao_in_lance1561 = new BitSet(new long[]{0x0000000000000008L});
+    public static final BitSet FOLLOW_INSTRUCOES__in_bloco1574 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_INSTRUCOES__in_terminarBloco1596 = new BitSet(new long[]{0x0000000000000004L});
 
 }

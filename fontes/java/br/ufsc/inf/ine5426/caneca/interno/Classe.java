@@ -39,7 +39,13 @@ public final class Classe implements Simbolo {
 			Reporter.instancia().reportarErroDeDefinicaoDeNomeErradoDeConstrutor(construtor);
 			return false;
 		}
-		/*
+		construtores.add(construtor);
+		Reporter.instancia().reportarDefinicaoDeConstrutor(construtor);
+		return true;
+	}
+	
+	public boolean verificarAssinaturaDeConstrutor(Construtor construtor) {
+		construtores.remove(construtor);
 		Iterator<Construtor> iteradorDeConstrutores = construtores.iterator();
 		while (iteradorDeConstrutores.hasNext()) {
 			if (iteradorDeConstrutores.next().mesmaAssinatura(construtor)) {
@@ -47,9 +53,7 @@ public final class Classe implements Simbolo {
 				return false;
 			}
 		}
-		*/
 		construtores.add(construtor);
-		Reporter.instancia().reportarDefinicaoDeConstrutor(construtor);
 		return true;
 	}
 	
@@ -88,4 +92,3 @@ public final class Classe implements Simbolo {
 		return coluna;
 	}
 }
-

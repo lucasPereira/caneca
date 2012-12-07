@@ -313,7 +313,7 @@ se
 	;
 
 para
-	: PARA PARENTESE_ESQUERDO expressao TERMINADOR expressao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes -> ^(PARA_ expressao expressao expressao)
+	: PARA PARENTESE_ESQUERDO expressao TERMINADOR expressao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes -> ^(PARA_ expressao expressao expressao blocoDeInstrucoes)
 	;
 
 repita

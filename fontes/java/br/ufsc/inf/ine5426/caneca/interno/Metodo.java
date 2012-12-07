@@ -8,4 +8,3 @@ public final class Metodo extends Procedimento<Metodo> {
 		this.tipo = tipo;
 	}
 }
-

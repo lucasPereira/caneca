@@ -5,4 +5,3 @@ public final class Construtor extends Procedimento<Construtor> {
 		super(classe, nome, linha, coluna);
 	}
 }
-
