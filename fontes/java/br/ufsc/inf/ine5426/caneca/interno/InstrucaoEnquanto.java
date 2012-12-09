@@ -23,7 +23,7 @@ public final class InstrucaoEnquanto extends EscopoAbstrato implements Instrucao
 	}
 	
 	@Override
-	public String fornecerNome() {
+	public String comoTexto() {
 		return "enquanto";
 	}
 }

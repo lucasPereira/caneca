@@ -15,7 +15,7 @@ public final class InstrucaoLance extends EscopoAbstrato implements Instrucao {
 	}
 
 	@Override
-	public String fornecerNome() {
+	public String comoTexto() {
 		return "lance";
 	}
 }

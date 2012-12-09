@@ -20,4 +20,6 @@ public interface Escopo {
 	public boolean definirExpressao(Expressao expressao);
 	
 	public Escopo fornecerEscopoPai();
+	
+	public String comoTexto();
 }

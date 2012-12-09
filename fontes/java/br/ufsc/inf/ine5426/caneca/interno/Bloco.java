@@ -39,4 +39,9 @@ public final class Bloco extends EscopoAbstrato {
 		Reporter.instancia().reportarDefinicaoDeExpressao(expressao);
 		return true;
 	}
+	
+	@Override
+	public String comoTexto() {
+		return "bloco";
+	}
 }

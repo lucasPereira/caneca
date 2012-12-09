@@ -31,7 +31,7 @@ public final class InstrucaoRepita extends EscopoAbstrato implements Instrucao {
 	}
 
 	@Override
-	public String fornecerNome() {
+	public String comoTexto() {
 		return "repita";
 	}
 }

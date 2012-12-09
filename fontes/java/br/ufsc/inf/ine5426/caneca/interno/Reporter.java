@@ -13,114 +13,122 @@ public final class Reporter {
 	}
 	
 	public void reportarDefinicaoDeClasse(Classe classe) {
-		mostrarMensagem("Definição de classe.",
-				classe.fornecerNome(), classe.fornecerLinha(), classe.fornecerColuna());
+		mostrarMensagemDeSucesoDeDefinicao(classe.comoTexto(),
+				classe.fornecerLinha(), classe.fornecerColuna(),
+				classe.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarDefinicaoDeAtributo(Atributo atributo) {
-		mostrarMensagem("Definição de atributo.",
-				atributo.fornecerNome(), atributo.fornecerLinha(), atributo.fornecerColuna());
+		mostrarMensagemDeSucesoDeDefinicao(atributo.comoTexto(),
+				atributo.fornecerLinha(), atributo.fornecerColuna(),
+				atributo.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarDefinicaoDeMetodo(Metodo metodo) {
-		mostrarMensagem("Definição de método.",
-				metodo.fornecerNome(), metodo.fornecerLinha(), metodo.fornecerColuna());
+		mostrarMensagemDeSucesoDeDefinicao(metodo.comoTexto(),
+				metodo.fornecerLinha(), metodo.fornecerColuna(),
+				metodo.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarDefinicaoDeConstrutor(Construtor construtor) {
-		mostrarMensagem("Definição de construtor.",
-				construtor.fornecerNome(), construtor.fornecerLinha(), construtor.fornecerColuna());
+		mostrarMensagemDeSucesoDeDefinicao(construtor.comoTexto(),
+				construtor.fornecerLinha(), construtor.fornecerColuna(),
+				construtor.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarDefinicaoDeDestrutor(Destrutor destrutor) {
-		mostrarMensagem("Definição de destrutor.",
-				destrutor.fornecerNome(), destrutor.fornecerLinha(), destrutor.fornecerColuna());
+		mostrarMensagemDeSucesoDeDefinicao(destrutor.comoTexto(),
+				destrutor.fornecerLinha(), destrutor.fornecerColuna(),
+				destrutor.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarDefinicaoDeVariavel(Variavel variavel) {
-		mostrarMensagem("Definição de variável.",
-				variavel.fornecerNome(), variavel.fornecerLinha(), variavel.fornecerColuna());
+		mostrarMensagemDeSucesoDeDefinicao(variavel.comoTexto(),
+				variavel.fornecerLinha(), variavel.fornecerColuna(),
+				variavel.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarDefinicaoDeBloco(Bloco bloco) {
-		mostrarMensagem("Definição de bloco.");
+		mostrarMensagemDeSucesoDeDefinicao(bloco.comoTexto(), bloco.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarDefinicaoDeInstrucao(Instrucao instrucao) {
-		mostrarMensagem("Definição de instrução.", instrucao.fornecerNome());
+		mostrarMensagemDeSucesoDeDefinicao(instrucao.comoTexto(), instrucao.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarDefinicaoDeExpressao(Expressao expressao) {
-		mostrarMensagem("Definição de expressão.");
+		mostrarMensagemDeSucesoDeDefinicao(expressao.comoTexto(), expressao.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarErroDeDefinicaoRepetidaDeClasse(Classe classe) {
 		errosDeDefinicao++;
-		mostrarMensagemDeErro("Definição repetida de classe.",
-				classe.fornecerNome(), classe.fornecerLinha(), classe.fornecerColuna());
+		mostrarMensagemDeErroDeDefinicao("definição repetida de classe.",
+				classe.comoTexto(), classe.fornecerLinha(), classe.fornecerColuna(),
+				classe.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarErroDeDefinicaoRepetidaDeAtributo(Atributo atributo) {
 		errosDeDefinicao++;
-		mostrarMensagemDeErro("Definição repetida de atributo.",
-				atributo.fornecerNome(), atributo.fornecerLinha(), atributo.fornecerColuna());
+		mostrarMensagemDeErroDeDefinicao("definição repetida de atributo.",
+				atributo.comoTexto(), atributo.fornecerLinha(), atributo.fornecerColuna(),
+				atributo.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarErroDeDefinicaoRepetidaDeMetodo(Metodo metodo) {
 		errosDeDefinicao++;
-		mostrarMensagemDeErro("Definição repetida de método.",
-				metodo.fornecerNome(), metodo.fornecerLinha(), metodo.fornecerColuna());
+		mostrarMensagemDeErroDeDefinicao("definição repetida de método.",
+				metodo.comoTexto(), metodo.fornecerLinha(), metodo.fornecerColuna(),
+				metodo.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarErroDeDefinicaoRepetidaDeConstrutor(Construtor construtor) {
 		errosDeDefinicao++;
-		mostrarMensagemDeErro("Definição repetida de construtor.",
-				construtor.fornecerNome(), construtor.fornecerLinha(), construtor.fornecerColuna());
+		mostrarMensagemDeErroDeDefinicao("definição repetida de construtor.",
+				construtor.comoTexto(), construtor.fornecerLinha(), construtor.fornecerColuna(),
+				construtor.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarErroDeDefinicaoRepetidaDeVariavel(Variavel variavel) {
 		errosDeDefinicao++;
-		mostrarMensagemDeErro("Definição repetida de variável.",
-				variavel.fornecerNome(), variavel.fornecerLinha(), variavel.fornecerColuna());
+		mostrarMensagemDeErroDeDefinicao("definição repetida de variável.",
+				variavel.comoTexto(), variavel.fornecerLinha(), variavel.fornecerColuna(),
+				variavel.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarErroDeDefinicaoDeNomeErradoDeConstrutor(Construtor construtor) {
 		errosDeDefinicao++;
-		mostrarMensagemDeErro("Definição de nome errado do construtor.",
-				construtor.fornecerNome(), construtor.fornecerLinha(), construtor.fornecerColuna());
+		mostrarMensagemDeErroDeDefinicao("definição de nome errado do construtor.",
+				construtor.comoTexto(), construtor.fornecerLinha(), construtor.fornecerColuna(),
+				construtor.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarErroDeDefinicaoDeNomeErradoDeDestrutor(Destrutor destrutor) {
 		errosDeDefinicao++;
-		mostrarMensagemDeErro("Definição de nome errado do destrutor.",
-				destrutor.fornecerNome(), destrutor.fornecerLinha(), destrutor.fornecerColuna());
+		mostrarMensagemDeErroDeDefinicao("definição de nome errado do destrutor.",
+				destrutor.comoTexto(), destrutor.fornecerLinha(), destrutor.fornecerColuna(),
+				destrutor.fornecerEscopoPai().comoTexto());
 	}
 	
 	public void reportarErroLexicoSintatico() {
 		mostrarMensagemDeErro("Existem erros léxicos e/ou sintáticos. Corrija os erros antes de continuar a análise semântica.");
 	}
 	
-	private void mostrarMensagemDeErro(String mensagem, String nome, int linha, int coluna) {
-		System.out.println(String.format("[Erro] [%s] [%s, %s] %s", nome, linha, coluna, mensagem));
-	}
-	
 	private void mostrarMensagemDeErro(String mensagem) {
 		System.out.println(String.format("[Erro] %s", mensagem));
 	}
 	
-	private void mostrarMensagem(String mensagem, String nome, int linha, int coluna) {
-		System.out.println(String.format("[Sucesso] [%s] [%s, %s] %s", nome, linha, coluna, mensagem));
+	private void mostrarMensagemDeErroDeDefinicao(String mensagem, String nome, int linha, int coluna, String escopo) {
+		System.out.println(String.format("[Erro] [%s, %s] Definição de [%s] em [%s]. Problema: %s",
+				linha, coluna, nome, escopo, mensagem));
 	}
 	
-	private void mostrarMensagem(String mensagem, int linha, int coluna) {
-		System.out.println(String.format("[Sucesso] [%s, %s] %s", linha, coluna, mensagem));
+	private void mostrarMensagemDeSucesoDeDefinicao(String nome, int linha, int coluna, String escopo) {
+		System.out.println(String.format("[Sucesso] [%s, %s] Definição de [%s] em [%s]",
+				linha, coluna, nome, escopo));
 	}
 	
-	private void mostrarMensagem(String mensagem, String nome) {
-		System.out.println(String.format("[Sucesso] [%s] %s", nome, mensagem));
-	}
-	
-	private void mostrarMensagem(String mensagem) {
-		System.out.println(String.format("[Sucesso] %s", mensagem));
+	private void mostrarMensagemDeSucesoDeDefinicao(String nome, String escopo) {
+		System.out.println(String.format("[Sucesso] Definição de [%s] em [%s]",
+				nome, escopo));
 	}
 }

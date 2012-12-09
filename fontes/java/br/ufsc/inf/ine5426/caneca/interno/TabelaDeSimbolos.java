@@ -21,4 +21,9 @@ public final class TabelaDeSimbolos extends EscopoAbstrato {
 		Reporter.instancia().reportarDefinicaoDeClasse(classe);
 		return true;
 	}
+	
+	@Override
+	public String comoTexto() {
+		return "tabelaDeSimbolos";
+	}
 }

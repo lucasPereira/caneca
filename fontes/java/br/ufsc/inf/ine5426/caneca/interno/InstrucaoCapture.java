@@ -26,7 +26,7 @@ public final class InstrucaoCapture extends EscopoAbstrato implements Instrucao 
 	}
 	
 	@Override
-	public String fornecerNome() {
+	public String comoTexto() {
 		return "capture";
 	}
 }

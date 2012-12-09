@@ -7,4 +7,9 @@ public final class Metodo extends Procedimento<Metodo> {
 		super(escopoPai, nome, linha, coluna);
 		this.tipo = tipo;
 	}
+	
+	@Override
+	public String comoTexto() {
+		return String.format("m:%s", fornecerNome());
+	}
 }

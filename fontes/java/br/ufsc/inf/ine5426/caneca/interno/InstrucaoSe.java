@@ -28,7 +28,7 @@ public final class InstrucaoSe extends EscopoAbstrato implements Instrucao {
 	}
 	
 	@Override
-	public String fornecerNome() {
+	public String comoTexto() {
 		return "se";
 	}
 }

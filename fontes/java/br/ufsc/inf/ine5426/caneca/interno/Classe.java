@@ -47,8 +47,8 @@ public final class Classe extends EscopoAbstrato implements Simbolo {
 		return true;
 	}
 	
-	//TODO
 	public boolean verificarAssinaturaDeConstrutor(Construtor construtor) {
+		//TODO
 		construtores.remove(construtor);
 		Iterator<Construtor> iteradorDeConstrutores = construtores.iterator();
 		while (iteradorDeConstrutores.hasNext()) {
@@ -81,6 +81,11 @@ public final class Classe extends EscopoAbstrato implements Simbolo {
 		metodos.put(metodo.fornecerNome(), metodo);
 		Reporter.instancia().reportarDefinicaoDeMetodo(metodo);
 		return true;
+	}
+	
+	@Override
+	public String comoTexto() {
+		return nome;
 	}
 	
 	@Override
