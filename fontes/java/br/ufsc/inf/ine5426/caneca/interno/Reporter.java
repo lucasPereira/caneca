@@ -47,7 +47,7 @@ public final class Reporter {
 	}
 	
 	public void reportarDefinicaoDeInstrucao(Instrucao instrucao) {
-		mostrarMensagem("Definição de instrução.");
+		mostrarMensagem("Definição de instrução.", instrucao.fornecerNome());
 	}
 	
 	public void reportarDefinicaoDeExpressao(Expressao expressao) {

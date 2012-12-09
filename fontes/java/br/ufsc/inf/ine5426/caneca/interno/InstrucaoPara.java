@@ -12,7 +12,7 @@ public final class InstrucaoPara extends EscopoAbstrato implements Instrucao {
 	
 	@Override
 	public boolean definirBloco(Bloco bloco) {
-		bloco = bloco;
+		this.bloco = bloco;
 		Reporter.instancia().reportarDefinicaoDeBloco(bloco);
 		return true;
 	}
@@ -28,5 +28,10 @@ public final class InstrucaoPara extends EscopoAbstrato implements Instrucao {
 		}
 		Reporter.instancia().reportarDefinicaoDeExpressao(expressao);
 		return true;
+	}
+
+	@Override
+	public String fornecerNome() {
+		return "para";
 	}
 }

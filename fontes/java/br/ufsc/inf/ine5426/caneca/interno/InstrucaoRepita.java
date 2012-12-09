@@ -29,4 +29,9 @@ public final class InstrucaoRepita extends EscopoAbstrato implements Instrucao {
 		Reporter.instancia().reportarDefinicaoDeExpressao(expressao);
 		return true;
 	}
+
+	@Override
+	public String fornecerNome() {
+		return "repita";
+	}
 }

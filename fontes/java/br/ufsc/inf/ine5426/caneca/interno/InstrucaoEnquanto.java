@@ -1,21 +1,16 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-public final class InstrucaoSe extends EscopoAbstrato implements Instrucao {
+public final class InstrucaoEnquanto extends EscopoAbstrato implements Instrucao {
 	private Expressao condicao;
-	private Bloco blocoSe;
-	private Bloco blocoSenao;
+	private Bloco bloco;
 	
-	public InstrucaoSe(Escopo escopoPai) {
+	public InstrucaoEnquanto(Escopo escopoPai) {
 		super(escopoPai);
 	}
 	
 	@Override
 	public boolean definirBloco(Bloco bloco) {
-		if (blocoSe == null) {
-			blocoSe = bloco;
-		} else if (blocoSenao == null) {
-			blocoSenao = bloco;
-		}
+		this.bloco = bloco;
 		Reporter.instancia().reportarDefinicaoDeBloco(bloco);
 		return true;
 	}
@@ -29,6 +24,6 @@ public final class InstrucaoSe extends EscopoAbstrato implements Instrucao {
 	
 	@Override
 	public String fornecerNome() {
-		return "se";
+		return "enquanto";
 	}
 }

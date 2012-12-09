@@ -7,6 +7,26 @@ public abstract class EscopoAbstrato implements Escopo {
 		this.escopoPai = escopoPai;
 	}
 	
+	public boolean definirClasse(Classe classe) {
+		throw new UnsupportedOperationException();
+	}
+
+	public boolean definirAtributo(Atributo atributo) {
+		throw new UnsupportedOperationException();
+	}
+	
+	public boolean definirConstrutor(Construtor construtor) {
+		throw new UnsupportedOperationException();
+	}
+	
+	public boolean definirDestrutor(Destrutor destrutor) {
+		throw new UnsupportedOperationException();
+	}
+	
+	public boolean definirMetodo(Metodo metodo) {
+		throw new UnsupportedOperationException();
+	}
+
 	@Override
 	public boolean definirVariavel(Variavel variavel) {
 		throw new UnsupportedOperationException();

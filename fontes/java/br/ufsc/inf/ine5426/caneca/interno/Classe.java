@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-public final class Classe implements Simbolo {
+public final class Classe extends EscopoAbstrato implements Simbolo {
 	private Map<String, Atributo> atributos;
 	private Map<String, Metodo> metodos;
 	private List<Construtor> construtores;
@@ -15,7 +15,8 @@ public final class Classe implements Simbolo {
 	private int linha;
 	private int coluna;
 	
-	public Classe(String nome, int linha, int coluna) {
+	public Classe(Escopo escopoPai, String nome, int linha, int coluna) {
+		super(escopoPai);
 		this.nome = nome;
 		this.linha = linha;
 		this.coluna = coluna;
@@ -24,6 +25,7 @@ public final class Classe implements Simbolo {
 		construtores = new LinkedList<Construtor>();
 	}
 	
+	@Override
 	public boolean definirAtributo(Atributo atributo) {
 		if (atributos.containsKey(atributo.fornecerNome())) {
 			Reporter.instancia().reportarErroDeDefinicaoRepetidaDeAtributo(atributo);
@@ -34,6 +36,7 @@ public final class Classe implements Simbolo {
 		return true;
 	}
 	
+	@Override
 	public boolean definirConstrutor(Construtor construtor) {
 		if (!nome.equals(construtor.fornecerNome())) {
 			Reporter.instancia().reportarErroDeDefinicaoDeNomeErradoDeConstrutor(construtor);
@@ -44,6 +47,7 @@ public final class Classe implements Simbolo {
 		return true;
 	}
 	
+	//TODO
 	public boolean verificarAssinaturaDeConstrutor(Construtor construtor) {
 		construtores.remove(construtor);
 		Iterator<Construtor> iteradorDeConstrutores = construtores.iterator();
@@ -57,6 +61,7 @@ public final class Classe implements Simbolo {
 		return true;
 	}
 	
+	@Override
 	public boolean definirDestrutor(Destrutor destrutor) {
 		if (!nome.equals(destrutor.fornecerNome())) {
 			Reporter.instancia().reportarErroDeDefinicaoDeNomeErradoDeDestrutor(destrutor);
@@ -67,6 +72,7 @@ public final class Classe implements Simbolo {
 		return true;
 	}
 	
+	@Override
 	public boolean definirMetodo(Metodo metodo) {
 		if (metodos.containsKey(metodo.fornecerNome())) {
 			Reporter.instancia().reportarErroDeDefinicaoRepetidaDeMetodo(metodo);

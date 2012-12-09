@@ -4,16 +4,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public abstract class Procedimento<T> implements Escopo, Simbolo {
+public abstract class Procedimento<T> extends EscopoAbstrato implements Simbolo {
 	private Map<String, Variavel> argumentos;
-	private Classe classe;
 	private Bloco bloco;
 	private String nome;
 	private int linha;
 	private int coluna;
 	
-	public Procedimento(Classe classe, String nome, int linha, int coluna) {
-		this.classe = classe;
+	public Procedimento(Escopo escopoPai, String nome, int linha, int coluna) {
+		super(escopoPai);
 		this.nome = nome;
 		this.linha = linha;
 		this.coluna = coluna;
@@ -51,21 +50,6 @@ public abstract class Procedimento<T> implements Escopo, Simbolo {
 		bloco = bloco;
 		Reporter.instancia().reportarDefinicaoDeBloco(bloco);
 		return true;
-	}
-	
-	@Override
-	public final boolean definirInstrucao(Instrucao instrucao) {
-		throw new UnsupportedOperationException();
-	}
-	
-	@Override
-	public final boolean definirExpressao(Expressao expressao) {
-		throw new UnsupportedOperationException();
-	}
-	
-	@Override
-	public final Escopo fornecerEscopoPai() {
-		return null;
 	}
 	
 	@Override

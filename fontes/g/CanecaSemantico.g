@@ -17,9 +17,13 @@ options {
 	import br.ufsc.inf.ine5426.caneca.interno.Escopo;
 	import br.ufsc.inf.ine5426.caneca.interno.Expressao;
 	import br.ufsc.inf.ine5426.caneca.interno.Instrucao;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoCapture;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoEnquanto;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoLance;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoPara;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoRepita;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoSe;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoTente;
 	import br.ufsc.inf.ine5426.caneca.interno.Metodo;
 	import br.ufsc.inf.ine5426.caneca.interno.TabelaDeSimbolos;
 	import br.ufsc.inf.ine5426.caneca.interno.Tipo;
@@ -28,18 +32,12 @@ options {
 
 @members {
 	private TabelaDeSimbolos tabelaDeSimbolos;
-	private Classe classeAtual;
-	private Construtor construtorAtual;
-	private Destrutor destrutorAtual;
-	private Metodo metodoAtual;
-	private Bloco blocoAtual;
-	private Instrucao instrucaoAtual;
-	private Expressao expressaoAtual;
 	private Escopo escopoAtual;
 	private boolean debug = false;
 	
 	public void fixarTabelaDeSimbolos(TabelaDeSimbolos tabelaDeSimbolos) {
 		this.tabelaDeSimbolos = tabelaDeSimbolos;
+		this.escopoAtual = tabelaDeSimbolos;
 	}
 	
 	public void mostrar(String mensagem) {
@@ -66,6 +64,10 @@ topdown
 	| se
 	| para
 	| repita
+	| enquanto
+	| tente
+	| capture
+	| lance
 	;
 
 bottomup
@@ -77,6 +79,10 @@ bottomup
 	| terminarSe
 	| terminarPara
 	| terminarRepita
+	| terminarEnquanto
+	| terminarTente
+	| terminarCapture
+	| terminarLance
 	;
 
 programa
@@ -109,9 +115,9 @@ classe
 	: ^(CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces .)
 		{
 			mostrar("classe");
-			Classe classe = new Classe($IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
-			tabelaDeSimbolos.definirClasse(classe);
-			classeAtual = classe;
+			Classe classe = new Classe(escopoAtual, $IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			escopoAtual.definirClasse(classe);
+			escopoAtual = classe;
 		}
 	;
 
@@ -119,7 +125,7 @@ terminaClasse
 	: ^(CLASSE_ modificadorDeAcessoFeminino IDENTIFICADOR listaDeTiposGenericos listaDeInterfaces .)
 		{
 			mostrar("terminarClasse");
-			classeAtual = null;
+			escopoAtual = escopoAtual.fornecerEscopoPai();
 		}
 	;
 
@@ -155,8 +161,8 @@ atributo
 	: ^(ATRIBUTO_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (.)?)
 		{
 			mostrar("atributo");
-			Atributo atributo = new Atributo(classeAtual, $tipo.tipo, $IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
-			classeAtual.definirAtributo(atributo);
+			Atributo atributo = new Atributo(escopoAtual, $tipo.tipo, $IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			escopoAtual.definirAtributo(atributo);
 		}
 	;
 
@@ -164,10 +170,9 @@ construtor
 	: ^(CONSTRUTOR_  ^(ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR .) .)
 		{
 			mostrar("construtor");
-			Construtor construtor = new Construtor(classeAtual, $IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
-			classeAtual.definirConstrutor(construtor);
+			Construtor construtor = new Construtor(escopoAtual, $IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			escopoAtual.definirConstrutor(construtor);
 			escopoAtual = construtor;
-			construtorAtual = construtor;
 		}
 	;
 
@@ -175,9 +180,7 @@ terminarConstrutor
 	: ^(CONSTRUTOR_  ^(ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR .) .)
 		{
 			mostrar("terminarConstrutor");
-			classeAtual.verificarAssinaturaDeConstrutor(construtorAtual);
-			escopoAtual = construtorAtual.fornecerEscopoPai();
-			construtorAtual = null;
+			escopoAtual = escopoAtual.fornecerEscopoPai();
 		}
 	;
 
@@ -185,10 +188,9 @@ destrutor
 	: ^(DESTRUTOR_ ^(ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR .) .)
 		{
 			mostrar("destrutor");
-			Destrutor destrutor = new Destrutor(classeAtual, $IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
-			classeAtual.definirDestrutor(destrutor);
+			Destrutor destrutor = new Destrutor(escopoAtual, $IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			escopoAtual.definirDestrutor(destrutor);
 			escopoAtual = destrutor;
-			destrutorAtual = destrutor;
 		}
 	;
 
@@ -196,8 +198,7 @@ terminarDestrutor
 	: ^(DESTRUTOR_ ^(ASSINATURA_ modificadorDeAcessoMasculino IDENTIFICADOR .) .)
 		{
 			mostrar("terminarDestrutor");
-			escopoAtual = destrutorAtual.fornecerEscopoPai();
-			destrutorAtual = null;
+			escopoAtual = escopoAtual.fornecerEscopoPai();
 		}
 	;
 
@@ -205,10 +206,9 @@ metodo
 	: ^(METODO_ ^(ASSINATURA_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR .) .)
 		{
 			mostrar("metodo");
-			Metodo metodo = new Metodo(classeAtual, $tipo.tipo, $IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
-			classeAtual.definirMetodo(metodo);
+			Metodo metodo = new Metodo(escopoAtual, $tipo.tipo, $IDENTIFICADOR.text, $IDENTIFICADOR.getLine(), $IDENTIFICADOR.getCharPositionInLine());
+			escopoAtual.definirMetodo(metodo);
 			escopoAtual = metodo;
-			metodoAtual = metodo;
 		}
 	;
 
@@ -216,8 +216,7 @@ terminarMetodo
 	: ^(METODO_ ^(ASSINATURA_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR .) .)
 		{
 			mostrar("terminarMetodo");
-			escopoAtual = metodoAtual.fornecerEscopoPai();
-			metodoAtual = null;
+			escopoAtual = escopoAtual.fornecerEscopoPai();
 		}
 	;
 
@@ -370,7 +369,6 @@ se
 			InstrucaoSe instrucao = new InstrucaoSe(escopoAtual);
 			escopoAtual.definirInstrucao(instrucao);
 			escopoAtual = instrucao;
-			instrucaoAtual = instrucao;
 		}
 	;
 
@@ -378,8 +376,7 @@ terminarSe
 	: ^(SE_ . . .?)
 		{
 			mostrar("terminarSe");
-			escopoAtual = instrucaoAtual.fornecerEscopoPai();
-			instrucaoAtual = null;
+			escopoAtual = escopoAtual.fornecerEscopoPai();
 		}
 	;
 
@@ -390,7 +387,6 @@ para
 			InstrucaoPara instrucao = new InstrucaoPara(escopoAtual);
 			escopoAtual.definirInstrucao(instrucao);
 			escopoAtual = instrucao;
-			instrucaoAtual = instrucao;
 		}
 	;
 
@@ -398,8 +394,7 @@ terminarPara
 	: ^(PARA_ . . . .)
 		{
 			mostrar("terminarPara");
-			escopoAtual = instrucaoAtual.fornecerEscopoPai();
-			instrucaoAtual = null;
+			escopoAtual = escopoAtual.fornecerEscopoPai();
 		}
 	;
 
@@ -410,7 +405,6 @@ repita
 			InstrucaoRepita instrucao = new InstrucaoRepita(escopoAtual);
 			escopoAtual.definirInstrucao(instrucao);
 			escopoAtual = instrucao;
-			instrucaoAtual = instrucao;
 		}
 	;
 
@@ -418,25 +412,80 @@ terminarRepita
 	: ^(REPITA_ . . .)
 		{
 			mostrar("terminarRepita");
-			escopoAtual = instrucaoAtual.fornecerEscopoPai();
-			instrucaoAtual = null;
+			escopoAtual = escopoAtual.fornecerEscopoPai();
 		}
 	;
 
 enquanto
-	: ^(ENQUANTO_ expressao bloco)
+	: ^(ENQUANTO_ . .)
+		{
+			mostrar("enquanto");
+			InstrucaoEnquanto instrucao = new InstrucaoEnquanto(escopoAtual);
+			escopoAtual.definirInstrucao(instrucao);
+			escopoAtual = instrucao;
+		}
+	;
+
+terminarEnquanto
+	: ^(ENQUANTO_ . .)
+		{
+			mostrar("terminarEnquanto");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
 tente
-	: ^(TENTE_ bloco listaDeCapturas)
+	: ^(TENTE_ . .)
+		{
+			mostrar("tente");
+			InstrucaoTente instrucao = new InstrucaoTente(escopoAtual);
+			escopoAtual.definirInstrucao(instrucao);
+			escopoAtual = instrucao;
+		}
+	;
+
+terminarTente
+	: ^(TENTE_ . .)
+		{
+			mostrar("terminarTente");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
 capture
-	: ^(CAPTURE_ . bloco)
+	: ^(CAPTURE_ . .)
+		{
+			mostrar("capture");
+			InstrucaoCapture instrucao = new InstrucaoCapture(escopoAtual);
+			escopoAtual.definirInstrucao(instrucao);
+			escopoAtual = instrucao;
+		}
+	;
+
+terminarCapture
+	: ^(CAPTURE_ . .)
+		{
+			mostrar("terminarCapture");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
 lance
-	: ^(LANCE_ expressao)
+	: ^(LANCE_ .)
+		{
+			mostrar("lance");
+			InstrucaoLance instrucao = new InstrucaoLance(escopoAtual);
+			escopoAtual.definirInstrucao(instrucao);
+			escopoAtual = instrucao;
+		}
+	;
+
+terminarLance
+	: ^(LANCE_ .)
+		{
+			mostrar("terminarLance");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
 bloco
@@ -446,7 +495,6 @@ bloco
 			Bloco bloco = new Bloco(escopoAtual);
 			escopoAtual.definirBloco(bloco);
 			escopoAtual = bloco;
-			blocoAtual = bloco;
 		}
 	;
 
@@ -454,7 +502,6 @@ terminarBloco
 	: ^(INSTRUCOES_ (.)*)
 		{
 			mostrar("terminarBloco");
-			escopoAtual = blocoAtual.fornecerEscopoPai();
-			blocoAtual = null;
+			escopoAtual = escopoAtual.fornecerEscopoPai();
 		}
 	;

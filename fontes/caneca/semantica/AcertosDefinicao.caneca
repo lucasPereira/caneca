@@ -5,6 +5,44 @@ classe publica MinhaClasse inicio
 	construtor publico MinhaClasse(Texto parametro) inicio fim
 	destrutor publico MinhaClasse() inicio fim
 	metodo publico Real pi(Booleano parametro) inicio
+		Booleano comparacao;
+		comparacao = 1 > 2;
+		se (comparacao) inicio
+			comparacao = verdadeiro;
+		fim
+		
+		se (comparacao) inicio
+			comparacao = verdadeiro;
+		fim senao inicio
+			comparacao = falso;
+		fim
+		
+		Inteiro indice;
+		para (indice = 0; indice < 10; indice = indice + 1) inicio
+			Sistema:saida:imprimir(indice);
+		fim
+		
+		repita(Inteiro contador; 10) inicio
+			Inteiro contador;
+			contador = 20;
+			Sistema:saida:imprimir(contador);
+		fim
+		
+		enquanto (2 < 20) inicio
+			Sistema:saida:imprimir("Loop infinito");
+		fim
+		
+		tente inicio
+			Inteiro divisaoPorZero;
+			divisaoPorZero = 10 / 0;
+		fim capture (Excecao excecao) inicio
+			excecao.imprimir();
+		fim capture (ExcecaoAritmetica excecao) inicio
+			excecao.imprimir();
+		fim
+		
+		lance nova Excecao();
+		
 		retorne esse.pi;
 	fim
 fim
