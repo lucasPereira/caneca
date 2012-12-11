@@ -5,6 +5,7 @@ classe publica MinhaClasse inicio
 	construtor publico MinhaClasse(Texto parametro) inicio fim
 	destrutor publico MinhaClasse() inicio fim
 	metodo publico Real pi(Booleano parametro) inicio
+		Inteiro declaracaoComAtribuicao = 10;
 		Booleano comparacao;
 		comparacao = 1 > 2;
 		se (comparacao) inicio

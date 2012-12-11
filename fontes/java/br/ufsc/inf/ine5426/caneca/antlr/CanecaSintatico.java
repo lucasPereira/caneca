@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaSintatico.g 2012-12-09 02:39:32
+// $ANTLR 3.4 fontes/g/CanecaSintatico.g 2012-12-10 21:58:47
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 	import java.lang.System;
@@ -1548,7 +1548,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "atributo"
-    // fontes/g/CanecaSintatico.g:209:1: atributo : ATRIBUTO modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( atribuicao )? TERMINADOR ;
+    // fontes/g/CanecaSintatico.g:209:1: atributo : ATRIBUTO modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( ATRIBUIDOR expressaoOuLogico )? TERMINADOR ;
     public final CanecaSintatico.atributo_return atributo() throws RecognitionException {
         CanecaSintatico.atributo_return retval = new CanecaSintatico.atributo_return();
         retval.start = input.LT(1);
@@ -1559,22 +1559,24 @@ public TreeAdaptor getTreeAdaptor() {
         Token ATRIBUTO45=null;
         Token ESTATICO47=null;
         Token IDENTIFICADOR49=null;
-        Token TERMINADOR51=null;
+        Token ATRIBUIDOR50=null;
+        Token TERMINADOR52=null;
         CanecaSintatico.modificadorDeAcessoMasculino_return modificadorDeAcessoMasculino46 =null;
 
         CanecaSintatico.tipo_return tipo48 =null;
 
-        CanecaSintatico.atribuicao_return atribuicao50 =null;
+        CanecaSintatico.expressaoOuLogico_return expressaoOuLogico51 =null;
 
 
         Object ATRIBUTO45_tree=null;
         Object ESTATICO47_tree=null;
         Object IDENTIFICADOR49_tree=null;
-        Object TERMINADOR51_tree=null;
+        Object ATRIBUIDOR50_tree=null;
+        Object TERMINADOR52_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:210:2: ( ATRIBUTO modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( atribuicao )? TERMINADOR )
-            // fontes/g/CanecaSintatico.g:210:4: ATRIBUTO modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( atribuicao )? TERMINADOR
+            // fontes/g/CanecaSintatico.g:210:2: ( ATRIBUTO modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( ATRIBUIDOR expressaoOuLogico )? TERMINADOR )
+            // fontes/g/CanecaSintatico.g:210:4: ATRIBUTO modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR ( ATRIBUIDOR expressaoOuLogico )? TERMINADOR
             {
             root_0 = (Object)adaptor.nil();
 
@@ -1631,7 +1633,7 @@ public TreeAdaptor getTreeAdaptor() {
             adaptor.addChild(root_0, IDENTIFICADOR49_tree);
 
 
-            // fontes/g/CanecaSintatico.g:210:73: ( atribuicao )?
+            // fontes/g/CanecaSintatico.g:210:73: ( ATRIBUIDOR expressaoOuLogico )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1640,14 +1642,21 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt11) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:210:74: atribuicao
+                    // fontes/g/CanecaSintatico.g:210:74: ATRIBUIDOR expressaoOuLogico
                     {
-                    pushFollow(FOLLOW_atribuicao_in_atributo333);
-                    atribuicao50=atribuicao();
+                    ATRIBUIDOR50=(Token)match(input,ATRIBUIDOR,FOLLOW_ATRIBUIDOR_in_atributo333); 
+                    ATRIBUIDOR50_tree = 
+                    (Object)adaptor.create(ATRIBUIDOR50)
+                    ;
+                    adaptor.addChild(root_0, ATRIBUIDOR50_tree);
+
+
+                    pushFollow(FOLLOW_expressaoOuLogico_in_atributo335);
+                    expressaoOuLogico51=expressaoOuLogico();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, atribuicao50.getTree());
+                    adaptor.addChild(root_0, expressaoOuLogico51.getTree());
 
                     }
                     break;
@@ -1655,11 +1664,11 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            TERMINADOR51=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_atributo337); 
-            TERMINADOR51_tree = 
-            (Object)adaptor.create(TERMINADOR51)
+            TERMINADOR52=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_atributo339); 
+            TERMINADOR52_tree = 
+            (Object)adaptor.create(TERMINADOR52)
             ;
-            adaptor.addChild(root_0, TERMINADOR51_tree);
+            adaptor.addChild(root_0, TERMINADOR52_tree);
 
 
             }
@@ -1700,9 +1709,9 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        CanecaSintatico.assinaturaDeConstrutor_return assinaturaDeConstrutor52 =null;
+        CanecaSintatico.assinaturaDeConstrutor_return assinaturaDeConstrutor53 =null;
 
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes53 =null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes54 =null;
 
 
 
@@ -1713,19 +1722,19 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_assinaturaDeConstrutor_in_construtor348);
-            assinaturaDeConstrutor52=assinaturaDeConstrutor();
+            pushFollow(FOLLOW_assinaturaDeConstrutor_in_construtor350);
+            assinaturaDeConstrutor53=assinaturaDeConstrutor();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, assinaturaDeConstrutor52.getTree());
+            adaptor.addChild(root_0, assinaturaDeConstrutor53.getTree());
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_construtor350);
-            blocoDeInstrucoes53=blocoDeInstrucoes();
+            pushFollow(FOLLOW_blocoDeInstrucoes_in_construtor352);
+            blocoDeInstrucoes54=blocoDeInstrucoes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, blocoDeInstrucoes53.getTree());
+            adaptor.addChild(root_0, blocoDeInstrucoes54.getTree());
 
             }
 
@@ -1765,9 +1774,9 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        CanecaSintatico.assinaturaDeDestrutor_return assinaturaDeDestrutor54 =null;
+        CanecaSintatico.assinaturaDeDestrutor_return assinaturaDeDestrutor55 =null;
 
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes55 =null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes56 =null;
 
 
 
@@ -1778,19 +1787,19 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_assinaturaDeDestrutor_in_destrutor361);
-            assinaturaDeDestrutor54=assinaturaDeDestrutor();
+            pushFollow(FOLLOW_assinaturaDeDestrutor_in_destrutor363);
+            assinaturaDeDestrutor55=assinaturaDeDestrutor();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, assinaturaDeDestrutor54.getTree());
+            adaptor.addChild(root_0, assinaturaDeDestrutor55.getTree());
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_destrutor363);
-            blocoDeInstrucoes55=blocoDeInstrucoes();
+            pushFollow(FOLLOW_blocoDeInstrucoes_in_destrutor365);
+            blocoDeInstrucoes56=blocoDeInstrucoes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, blocoDeInstrucoes55.getTree());
+            adaptor.addChild(root_0, blocoDeInstrucoes56.getTree());
 
             }
 
@@ -1830,9 +1839,9 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        CanecaSintatico.assinaturaDeMetodo_return assinaturaDeMetodo56 =null;
+        CanecaSintatico.assinaturaDeMetodo_return assinaturaDeMetodo57 =null;
 
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes57 =null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes58 =null;
 
 
 
@@ -1843,19 +1852,19 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_assinaturaDeMetodo_in_metodo374);
-            assinaturaDeMetodo56=assinaturaDeMetodo();
+            pushFollow(FOLLOW_assinaturaDeMetodo_in_metodo376);
+            assinaturaDeMetodo57=assinaturaDeMetodo();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, assinaturaDeMetodo56.getTree());
+            adaptor.addChild(root_0, assinaturaDeMetodo57.getTree());
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_metodo376);
-            blocoDeInstrucoes57=blocoDeInstrucoes();
+            pushFollow(FOLLOW_blocoDeInstrucoes_in_metodo378);
+            blocoDeInstrucoes58=blocoDeInstrucoes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, blocoDeInstrucoes57.getTree());
+            adaptor.addChild(root_0, blocoDeInstrucoes58.getTree());
 
             }
 
@@ -1895,15 +1904,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token CONSTRUTOR58=null;
-        Token IDENTIFICADOR60=null;
-        CanecaSintatico.modificadorDeAcessoMasculino_return modificadorDeAcessoMasculino59 =null;
+        Token CONSTRUTOR59=null;
+        Token IDENTIFICADOR61=null;
+        CanecaSintatico.modificadorDeAcessoMasculino_return modificadorDeAcessoMasculino60 =null;
 
-        CanecaSintatico.listaDeArgumentos_return listaDeArgumentos61 =null;
+        CanecaSintatico.listaDeArgumentos_return listaDeArgumentos62 =null;
 
 
-        Object CONSTRUTOR58_tree=null;
-        Object IDENTIFICADOR60_tree=null;
+        Object CONSTRUTOR59_tree=null;
+        Object IDENTIFICADOR61_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:226:2: ( CONSTRUTOR modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentos )
@@ -1912,33 +1921,33 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            CONSTRUTOR58=(Token)match(input,CONSTRUTOR,FOLLOW_CONSTRUTOR_in_assinaturaDeConstrutor387); 
-            CONSTRUTOR58_tree = 
-            (Object)adaptor.create(CONSTRUTOR58)
+            CONSTRUTOR59=(Token)match(input,CONSTRUTOR,FOLLOW_CONSTRUTOR_in_assinaturaDeConstrutor389); 
+            CONSTRUTOR59_tree = 
+            (Object)adaptor.create(CONSTRUTOR59)
             ;
-            adaptor.addChild(root_0, CONSTRUTOR58_tree);
+            adaptor.addChild(root_0, CONSTRUTOR59_tree);
 
 
-            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeConstrutor389);
-            modificadorDeAcessoMasculino59=modificadorDeAcessoMasculino();
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeConstrutor391);
+            modificadorDeAcessoMasculino60=modificadorDeAcessoMasculino();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, modificadorDeAcessoMasculino59.getTree());
+            adaptor.addChild(root_0, modificadorDeAcessoMasculino60.getTree());
 
-            IDENTIFICADOR60=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_assinaturaDeConstrutor391); 
-            IDENTIFICADOR60_tree = 
-            (Object)adaptor.create(IDENTIFICADOR60)
+            IDENTIFICADOR61=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_assinaturaDeConstrutor393); 
+            IDENTIFICADOR61_tree = 
+            (Object)adaptor.create(IDENTIFICADOR61)
             ;
-            adaptor.addChild(root_0, IDENTIFICADOR60_tree);
+            adaptor.addChild(root_0, IDENTIFICADOR61_tree);
 
 
-            pushFollow(FOLLOW_listaDeArgumentos_in_assinaturaDeConstrutor393);
-            listaDeArgumentos61=listaDeArgumentos();
+            pushFollow(FOLLOW_listaDeArgumentos_in_assinaturaDeConstrutor395);
+            listaDeArgumentos62=listaDeArgumentos();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listaDeArgumentos61.getTree());
+            adaptor.addChild(root_0, listaDeArgumentos62.getTree());
 
             }
 
@@ -1978,15 +1987,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token DESTRUTOR62=null;
-        Token IDENTIFICADOR64=null;
-        CanecaSintatico.modificadorDeAcessoMasculino_return modificadorDeAcessoMasculino63 =null;
+        Token DESTRUTOR63=null;
+        Token IDENTIFICADOR65=null;
+        CanecaSintatico.modificadorDeAcessoMasculino_return modificadorDeAcessoMasculino64 =null;
 
-        CanecaSintatico.listaDeArgumentosVazia_return listaDeArgumentosVazia65 =null;
+        CanecaSintatico.listaDeArgumentosVazia_return listaDeArgumentosVazia66 =null;
 
 
-        Object DESTRUTOR62_tree=null;
-        Object IDENTIFICADOR64_tree=null;
+        Object DESTRUTOR63_tree=null;
+        Object IDENTIFICADOR65_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:230:2: ( DESTRUTOR modificadorDeAcessoMasculino IDENTIFICADOR listaDeArgumentosVazia )
@@ -1995,33 +2004,33 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            DESTRUTOR62=(Token)match(input,DESTRUTOR,FOLLOW_DESTRUTOR_in_assinaturaDeDestrutor404); 
-            DESTRUTOR62_tree = 
-            (Object)adaptor.create(DESTRUTOR62)
+            DESTRUTOR63=(Token)match(input,DESTRUTOR,FOLLOW_DESTRUTOR_in_assinaturaDeDestrutor406); 
+            DESTRUTOR63_tree = 
+            (Object)adaptor.create(DESTRUTOR63)
             ;
-            adaptor.addChild(root_0, DESTRUTOR62_tree);
+            adaptor.addChild(root_0, DESTRUTOR63_tree);
 
 
-            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeDestrutor406);
-            modificadorDeAcessoMasculino63=modificadorDeAcessoMasculino();
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeDestrutor408);
+            modificadorDeAcessoMasculino64=modificadorDeAcessoMasculino();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, modificadorDeAcessoMasculino63.getTree());
+            adaptor.addChild(root_0, modificadorDeAcessoMasculino64.getTree());
 
-            IDENTIFICADOR64=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_assinaturaDeDestrutor408); 
-            IDENTIFICADOR64_tree = 
-            (Object)adaptor.create(IDENTIFICADOR64)
+            IDENTIFICADOR65=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_assinaturaDeDestrutor410); 
+            IDENTIFICADOR65_tree = 
+            (Object)adaptor.create(IDENTIFICADOR65)
             ;
-            adaptor.addChild(root_0, IDENTIFICADOR64_tree);
+            adaptor.addChild(root_0, IDENTIFICADOR65_tree);
 
 
-            pushFollow(FOLLOW_listaDeArgumentosVazia_in_assinaturaDeDestrutor410);
-            listaDeArgumentosVazia65=listaDeArgumentosVazia();
+            pushFollow(FOLLOW_listaDeArgumentosVazia_in_assinaturaDeDestrutor412);
+            listaDeArgumentosVazia66=listaDeArgumentosVazia();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listaDeArgumentosVazia65.getTree());
+            adaptor.addChild(root_0, listaDeArgumentosVazia66.getTree());
 
             }
 
@@ -2061,19 +2070,19 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token METODO66=null;
-        Token ESTATICO68=null;
-        Token IDENTIFICADOR70=null;
-        CanecaSintatico.modificadorDeAcessoMasculino_return modificadorDeAcessoMasculino67 =null;
+        Token METODO67=null;
+        Token ESTATICO69=null;
+        Token IDENTIFICADOR71=null;
+        CanecaSintatico.modificadorDeAcessoMasculino_return modificadorDeAcessoMasculino68 =null;
 
-        CanecaSintatico.tipo_return tipo69 =null;
+        CanecaSintatico.tipo_return tipo70 =null;
 
-        CanecaSintatico.listaDeArgumentos_return listaDeArgumentos71 =null;
+        CanecaSintatico.listaDeArgumentos_return listaDeArgumentos72 =null;
 
 
-        Object METODO66_tree=null;
-        Object ESTATICO68_tree=null;
-        Object IDENTIFICADOR70_tree=null;
+        Object METODO67_tree=null;
+        Object ESTATICO69_tree=null;
+        Object IDENTIFICADOR71_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:234:2: ( METODO modificadorDeAcessoMasculino ( ESTATICO )? tipo IDENTIFICADOR listaDeArgumentos )
@@ -2082,19 +2091,19 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            METODO66=(Token)match(input,METODO,FOLLOW_METODO_in_assinaturaDeMetodo421); 
-            METODO66_tree = 
-            (Object)adaptor.create(METODO66)
+            METODO67=(Token)match(input,METODO,FOLLOW_METODO_in_assinaturaDeMetodo423); 
+            METODO67_tree = 
+            (Object)adaptor.create(METODO67)
             ;
-            adaptor.addChild(root_0, METODO66_tree);
+            adaptor.addChild(root_0, METODO67_tree);
 
 
-            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeMetodo423);
-            modificadorDeAcessoMasculino67=modificadorDeAcessoMasculino();
+            pushFollow(FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeMetodo425);
+            modificadorDeAcessoMasculino68=modificadorDeAcessoMasculino();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, modificadorDeAcessoMasculino67.getTree());
+            adaptor.addChild(root_0, modificadorDeAcessoMasculino68.getTree());
 
             // fontes/g/CanecaSintatico.g:234:40: ( ESTATICO )?
             int alt12=2;
@@ -2107,11 +2116,11 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // fontes/g/CanecaSintatico.g:234:41: ESTATICO
                     {
-                    ESTATICO68=(Token)match(input,ESTATICO,FOLLOW_ESTATICO_in_assinaturaDeMetodo426); 
-                    ESTATICO68_tree = 
-                    (Object)adaptor.create(ESTATICO68)
+                    ESTATICO69=(Token)match(input,ESTATICO,FOLLOW_ESTATICO_in_assinaturaDeMetodo428); 
+                    ESTATICO69_tree = 
+                    (Object)adaptor.create(ESTATICO69)
                     ;
-                    adaptor.addChild(root_0, ESTATICO68_tree);
+                    adaptor.addChild(root_0, ESTATICO69_tree);
 
 
                     }
@@ -2120,26 +2129,26 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_tipo_in_assinaturaDeMetodo430);
-            tipo69=tipo();
+            pushFollow(FOLLOW_tipo_in_assinaturaDeMetodo432);
+            tipo70=tipo();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, tipo69.getTree());
+            adaptor.addChild(root_0, tipo70.getTree());
 
-            IDENTIFICADOR70=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_assinaturaDeMetodo432); 
-            IDENTIFICADOR70_tree = 
-            (Object)adaptor.create(IDENTIFICADOR70)
+            IDENTIFICADOR71=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_assinaturaDeMetodo434); 
+            IDENTIFICADOR71_tree = 
+            (Object)adaptor.create(IDENTIFICADOR71)
             ;
-            adaptor.addChild(root_0, IDENTIFICADOR70_tree);
+            adaptor.addChild(root_0, IDENTIFICADOR71_tree);
 
 
-            pushFollow(FOLLOW_listaDeArgumentos_in_assinaturaDeMetodo434);
-            listaDeArgumentos71=listaDeArgumentos();
+            pushFollow(FOLLOW_listaDeArgumentos_in_assinaturaDeMetodo436);
+            listaDeArgumentos72=listaDeArgumentos();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listaDeArgumentos71.getTree());
+            adaptor.addChild(root_0, listaDeArgumentos72.getTree());
 
             }
 
@@ -2179,9 +2188,9 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set72=null;
+        Token set73=null;
 
-        Object set72_tree=null;
+        Object set73_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:238:2: ( PUBLICO | PRIVADO | PROTEGIDO )
@@ -2190,12 +2199,12 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            set72=(Token)input.LT(1);
+            set73=(Token)input.LT(1);
 
             if ( input.LA(1)==PRIVADO||input.LA(1)==PROTEGIDO||input.LA(1)==PUBLICO ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set72)
+                (Object)adaptor.create(set73)
                 );
                 state.errorRecovery=false;
             }
@@ -2243,9 +2252,9 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set73=null;
+        Token set74=null;
 
-        Object set73_tree=null;
+        Object set74_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:244:2: ( PUBLICA | PRIVADA | PROTEGIDA )
@@ -2254,12 +2263,12 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            set73=(Token)input.LT(1);
+            set74=(Token)input.LT(1);
 
             if ( input.LA(1)==PRIVADA||input.LA(1)==PROTEGIDA||input.LA(1)==PUBLICA ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set73)
+                (Object)adaptor.create(set74)
                 );
                 state.errorRecovery=false;
             }
@@ -2307,17 +2316,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token PARENTESE_ESQUERDO74=null;
-        Token SEPARADOR76=null;
-        Token PARENTESE_DIREITO78=null;
-        CanecaSintatico.expressao_return expressao75 =null;
+        Token PARENTESE_ESQUERDO75=null;
+        Token SEPARADOR77=null;
+        Token PARENTESE_DIREITO79=null;
+        CanecaSintatico.expressao_return expressao76 =null;
 
-        CanecaSintatico.expressao_return expressao77 =null;
+        CanecaSintatico.expressao_return expressao78 =null;
 
 
-        Object PARENTESE_ESQUERDO74_tree=null;
-        Object SEPARADOR76_tree=null;
-        Object PARENTESE_DIREITO78_tree=null;
+        Object PARENTESE_ESQUERDO75_tree=null;
+        Object SEPARADOR77_tree=null;
+        Object PARENTESE_DIREITO79_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:250:2: ( PARENTESE_ESQUERDO ( expressao ( SEPARADOR expressao )* )? PARENTESE_DIREITO )
@@ -2326,11 +2335,11 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            PARENTESE_ESQUERDO74=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_listaDeParametros487); 
-            PARENTESE_ESQUERDO74_tree = 
-            (Object)adaptor.create(PARENTESE_ESQUERDO74)
+            PARENTESE_ESQUERDO75=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_listaDeParametros489); 
+            PARENTESE_ESQUERDO75_tree = 
+            (Object)adaptor.create(PARENTESE_ESQUERDO75)
             ;
-            adaptor.addChild(root_0, PARENTESE_ESQUERDO74_tree);
+            adaptor.addChild(root_0, PARENTESE_ESQUERDO75_tree);
 
 
             // fontes/g/CanecaSintatico.g:250:23: ( expressao ( SEPARADOR expressao )* )?
@@ -2344,12 +2353,12 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // fontes/g/CanecaSintatico.g:250:24: expressao ( SEPARADOR expressao )*
                     {
-                    pushFollow(FOLLOW_expressao_in_listaDeParametros490);
-                    expressao75=expressao();
+                    pushFollow(FOLLOW_expressao_in_listaDeParametros492);
+                    expressao76=expressao();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expressao75.getTree());
+                    adaptor.addChild(root_0, expressao76.getTree());
 
                     // fontes/g/CanecaSintatico.g:250:34: ( SEPARADOR expressao )*
                     loop13:
@@ -2366,19 +2375,19 @@ public TreeAdaptor getTreeAdaptor() {
                     	case 1 :
                     	    // fontes/g/CanecaSintatico.g:250:35: SEPARADOR expressao
                     	    {
-                    	    SEPARADOR76=(Token)match(input,SEPARADOR,FOLLOW_SEPARADOR_in_listaDeParametros493); 
-                    	    SEPARADOR76_tree = 
-                    	    (Object)adaptor.create(SEPARADOR76)
+                    	    SEPARADOR77=(Token)match(input,SEPARADOR,FOLLOW_SEPARADOR_in_listaDeParametros495); 
+                    	    SEPARADOR77_tree = 
+                    	    (Object)adaptor.create(SEPARADOR77)
                     	    ;
-                    	    adaptor.addChild(root_0, SEPARADOR76_tree);
+                    	    adaptor.addChild(root_0, SEPARADOR77_tree);
 
 
-                    	    pushFollow(FOLLOW_expressao_in_listaDeParametros495);
-                    	    expressao77=expressao();
+                    	    pushFollow(FOLLOW_expressao_in_listaDeParametros497);
+                    	    expressao78=expressao();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, expressao77.getTree());
+                    	    adaptor.addChild(root_0, expressao78.getTree());
 
                     	    }
                     	    break;
@@ -2395,11 +2404,11 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            PARENTESE_DIREITO78=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_listaDeParametros501); 
-            PARENTESE_DIREITO78_tree = 
-            (Object)adaptor.create(PARENTESE_DIREITO78)
+            PARENTESE_DIREITO79=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_listaDeParametros503); 
+            PARENTESE_DIREITO79_tree = 
+            (Object)adaptor.create(PARENTESE_DIREITO79)
             ;
-            adaptor.addChild(root_0, PARENTESE_DIREITO78_tree);
+            adaptor.addChild(root_0, PARENTESE_DIREITO79_tree);
 
 
             }
@@ -2440,11 +2449,11 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token PARENTESE_ESQUERDO79=null;
-        Token PARENTESE_DIREITO80=null;
+        Token PARENTESE_ESQUERDO80=null;
+        Token PARENTESE_DIREITO81=null;
 
-        Object PARENTESE_ESQUERDO79_tree=null;
-        Object PARENTESE_DIREITO80_tree=null;
+        Object PARENTESE_ESQUERDO80_tree=null;
+        Object PARENTESE_DIREITO81_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:254:2: ( PARENTESE_ESQUERDO PARENTESE_DIREITO )
@@ -2453,18 +2462,18 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            PARENTESE_ESQUERDO79=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentosVazia512); 
-            PARENTESE_ESQUERDO79_tree = 
-            (Object)adaptor.create(PARENTESE_ESQUERDO79)
+            PARENTESE_ESQUERDO80=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentosVazia514); 
+            PARENTESE_ESQUERDO80_tree = 
+            (Object)adaptor.create(PARENTESE_ESQUERDO80)
             ;
-            adaptor.addChild(root_0, PARENTESE_ESQUERDO79_tree);
+            adaptor.addChild(root_0, PARENTESE_ESQUERDO80_tree);
 
 
-            PARENTESE_DIREITO80=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentosVazia514); 
-            PARENTESE_DIREITO80_tree = 
-            (Object)adaptor.create(PARENTESE_DIREITO80)
+            PARENTESE_DIREITO81=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentosVazia516); 
+            PARENTESE_DIREITO81_tree = 
+            (Object)adaptor.create(PARENTESE_DIREITO81)
             ;
-            adaptor.addChild(root_0, PARENTESE_DIREITO80_tree);
+            adaptor.addChild(root_0, PARENTESE_DIREITO81_tree);
 
 
             }
@@ -2505,17 +2514,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token PARENTESE_ESQUERDO81=null;
-        Token SEPARADOR83=null;
-        Token PARENTESE_DIREITO85=null;
-        CanecaSintatico.declaracao_return declaracao82 =null;
+        Token PARENTESE_ESQUERDO82=null;
+        Token SEPARADOR84=null;
+        Token PARENTESE_DIREITO86=null;
+        CanecaSintatico.declaracao_return declaracao83 =null;
 
-        CanecaSintatico.declaracao_return declaracao84 =null;
+        CanecaSintatico.declaracao_return declaracao85 =null;
 
 
-        Object PARENTESE_ESQUERDO81_tree=null;
-        Object SEPARADOR83_tree=null;
-        Object PARENTESE_DIREITO85_tree=null;
+        Object PARENTESE_ESQUERDO82_tree=null;
+        Object SEPARADOR84_tree=null;
+        Object PARENTESE_DIREITO86_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:258:2: ( PARENTESE_ESQUERDO ( declaracao ( SEPARADOR declaracao )* )? PARENTESE_DIREITO )
@@ -2524,11 +2533,11 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            PARENTESE_ESQUERDO81=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentos525); 
-            PARENTESE_ESQUERDO81_tree = 
-            (Object)adaptor.create(PARENTESE_ESQUERDO81)
+            PARENTESE_ESQUERDO82=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentos527); 
+            PARENTESE_ESQUERDO82_tree = 
+            (Object)adaptor.create(PARENTESE_ESQUERDO82)
             ;
-            adaptor.addChild(root_0, PARENTESE_ESQUERDO81_tree);
+            adaptor.addChild(root_0, PARENTESE_ESQUERDO82_tree);
 
 
             // fontes/g/CanecaSintatico.g:258:23: ( declaracao ( SEPARADOR declaracao )* )?
@@ -2542,12 +2551,12 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // fontes/g/CanecaSintatico.g:258:24: declaracao ( SEPARADOR declaracao )*
                     {
-                    pushFollow(FOLLOW_declaracao_in_listaDeArgumentos528);
-                    declaracao82=declaracao();
+                    pushFollow(FOLLOW_declaracao_in_listaDeArgumentos530);
+                    declaracao83=declaracao();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, declaracao82.getTree());
+                    adaptor.addChild(root_0, declaracao83.getTree());
 
                     // fontes/g/CanecaSintatico.g:258:35: ( SEPARADOR declaracao )*
                     loop15:
@@ -2564,19 +2573,19 @@ public TreeAdaptor getTreeAdaptor() {
                     	case 1 :
                     	    // fontes/g/CanecaSintatico.g:258:36: SEPARADOR declaracao
                     	    {
-                    	    SEPARADOR83=(Token)match(input,SEPARADOR,FOLLOW_SEPARADOR_in_listaDeArgumentos531); 
-                    	    SEPARADOR83_tree = 
-                    	    (Object)adaptor.create(SEPARADOR83)
+                    	    SEPARADOR84=(Token)match(input,SEPARADOR,FOLLOW_SEPARADOR_in_listaDeArgumentos533); 
+                    	    SEPARADOR84_tree = 
+                    	    (Object)adaptor.create(SEPARADOR84)
                     	    ;
-                    	    adaptor.addChild(root_0, SEPARADOR83_tree);
+                    	    adaptor.addChild(root_0, SEPARADOR84_tree);
 
 
-                    	    pushFollow(FOLLOW_declaracao_in_listaDeArgumentos533);
-                    	    declaracao84=declaracao();
+                    	    pushFollow(FOLLOW_declaracao_in_listaDeArgumentos535);
+                    	    declaracao85=declaracao();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, declaracao84.getTree());
+                    	    adaptor.addChild(root_0, declaracao85.getTree());
 
                     	    }
                     	    break;
@@ -2593,11 +2602,11 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            PARENTESE_DIREITO85=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentos539); 
-            PARENTESE_DIREITO85_tree = 
-            (Object)adaptor.create(PARENTESE_DIREITO85)
+            PARENTESE_DIREITO86=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentos541); 
+            PARENTESE_DIREITO86_tree = 
+            (Object)adaptor.create(PARENTESE_DIREITO86)
             ;
-            adaptor.addChild(root_0, PARENTESE_DIREITO85_tree);
+            adaptor.addChild(root_0, PARENTESE_DIREITO86_tree);
 
 
             }
@@ -2638,15 +2647,15 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token IMPLEMENTA86=null;
-        Token SEPARADOR88=null;
-        CanecaSintatico.tipo_return tipo87 =null;
+        Token IMPLEMENTA87=null;
+        Token SEPARADOR89=null;
+        CanecaSintatico.tipo_return tipo88 =null;
 
-        CanecaSintatico.tipo_return tipo89 =null;
+        CanecaSintatico.tipo_return tipo90 =null;
 
 
-        Object IMPLEMENTA86_tree=null;
-        Object SEPARADOR88_tree=null;
+        Object IMPLEMENTA87_tree=null;
+        Object SEPARADOR89_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:262:2: ( ( IMPLEMENTA tipo ( SEPARADOR tipo )* )? )
@@ -2666,19 +2675,19 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // fontes/g/CanecaSintatico.g:262:5: IMPLEMENTA tipo ( SEPARADOR tipo )*
                     {
-                    IMPLEMENTA86=(Token)match(input,IMPLEMENTA,FOLLOW_IMPLEMENTA_in_listaDeInterfaces551); 
-                    IMPLEMENTA86_tree = 
-                    (Object)adaptor.create(IMPLEMENTA86)
+                    IMPLEMENTA87=(Token)match(input,IMPLEMENTA,FOLLOW_IMPLEMENTA_in_listaDeInterfaces553); 
+                    IMPLEMENTA87_tree = 
+                    (Object)adaptor.create(IMPLEMENTA87)
                     ;
-                    adaptor.addChild(root_0, IMPLEMENTA86_tree);
+                    adaptor.addChild(root_0, IMPLEMENTA87_tree);
 
 
-                    pushFollow(FOLLOW_tipo_in_listaDeInterfaces553);
-                    tipo87=tipo();
+                    pushFollow(FOLLOW_tipo_in_listaDeInterfaces555);
+                    tipo88=tipo();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, tipo87.getTree());
+                    adaptor.addChild(root_0, tipo88.getTree());
 
                     // fontes/g/CanecaSintatico.g:262:21: ( SEPARADOR tipo )*
                     loop17:
@@ -2695,19 +2704,19 @@ public TreeAdaptor getTreeAdaptor() {
                     	case 1 :
                     	    // fontes/g/CanecaSintatico.g:262:22: SEPARADOR tipo
                     	    {
-                    	    SEPARADOR88=(Token)match(input,SEPARADOR,FOLLOW_SEPARADOR_in_listaDeInterfaces556); 
-                    	    SEPARADOR88_tree = 
-                    	    (Object)adaptor.create(SEPARADOR88)
+                    	    SEPARADOR89=(Token)match(input,SEPARADOR,FOLLOW_SEPARADOR_in_listaDeInterfaces558); 
+                    	    SEPARADOR89_tree = 
+                    	    (Object)adaptor.create(SEPARADOR89)
                     	    ;
-                    	    adaptor.addChild(root_0, SEPARADOR88_tree);
+                    	    adaptor.addChild(root_0, SEPARADOR89_tree);
 
 
-                    	    pushFollow(FOLLOW_tipo_in_listaDeInterfaces558);
-                    	    tipo89=tipo();
+                    	    pushFollow(FOLLOW_tipo_in_listaDeInterfaces560);
+                    	    tipo90=tipo();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, tipo89.getTree());
+                    	    adaptor.addChild(root_0, tipo90.getTree());
 
                     	    }
                     	    break;
@@ -2762,13 +2771,13 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token COLCHETE_ESQUERDO90=null;
-        Token COLCHETE_DIREITO92=null;
-        CanecaSintatico.tipoGenerico_return tipoGenerico91 =null;
+        Token COLCHETE_ESQUERDO91=null;
+        Token COLCHETE_DIREITO93=null;
+        CanecaSintatico.tipoGenerico_return tipoGenerico92 =null;
 
 
-        Object COLCHETE_ESQUERDO90_tree=null;
-        Object COLCHETE_DIREITO92_tree=null;
+        Object COLCHETE_ESQUERDO91_tree=null;
+        Object COLCHETE_DIREITO93_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:266:2: ( ( COLCHETE_ESQUERDO tipoGenerico COLCHETE_DIREITO )* )
@@ -2792,25 +2801,25 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // fontes/g/CanecaSintatico.g:266:5: COLCHETE_ESQUERDO tipoGenerico COLCHETE_DIREITO
             	    {
-            	    COLCHETE_ESQUERDO90=(Token)match(input,COLCHETE_ESQUERDO,FOLLOW_COLCHETE_ESQUERDO_in_listaDeTiposGenericos574); 
-            	    COLCHETE_ESQUERDO90_tree = 
-            	    (Object)adaptor.create(COLCHETE_ESQUERDO90)
+            	    COLCHETE_ESQUERDO91=(Token)match(input,COLCHETE_ESQUERDO,FOLLOW_COLCHETE_ESQUERDO_in_listaDeTiposGenericos576); 
+            	    COLCHETE_ESQUERDO91_tree = 
+            	    (Object)adaptor.create(COLCHETE_ESQUERDO91)
             	    ;
-            	    adaptor.addChild(root_0, COLCHETE_ESQUERDO90_tree);
+            	    adaptor.addChild(root_0, COLCHETE_ESQUERDO91_tree);
 
 
-            	    pushFollow(FOLLOW_tipoGenerico_in_listaDeTiposGenericos576);
-            	    tipoGenerico91=tipoGenerico();
+            	    pushFollow(FOLLOW_tipoGenerico_in_listaDeTiposGenericos578);
+            	    tipoGenerico92=tipoGenerico();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, tipoGenerico91.getTree());
+            	    adaptor.addChild(root_0, tipoGenerico92.getTree());
 
-            	    COLCHETE_DIREITO92=(Token)match(input,COLCHETE_DIREITO,FOLLOW_COLCHETE_DIREITO_in_listaDeTiposGenericos578); 
-            	    COLCHETE_DIREITO92_tree = 
-            	    (Object)adaptor.create(COLCHETE_DIREITO92)
+            	    COLCHETE_DIREITO93=(Token)match(input,COLCHETE_DIREITO,FOLLOW_COLCHETE_DIREITO_in_listaDeTiposGenericos580); 
+            	    COLCHETE_DIREITO93_tree = 
+            	    (Object)adaptor.create(COLCHETE_DIREITO93)
             	    ;
-            	    adaptor.addChild(root_0, COLCHETE_DIREITO92_tree);
+            	    adaptor.addChild(root_0, COLCHETE_DIREITO93_tree);
 
 
             	    }
@@ -2860,17 +2869,17 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token COLCHETE_ESQUERDO93=null;
-        Token SEPARADOR95=null;
-        Token COLCHETE_DIREITO97=null;
-        CanecaSintatico.tipo_return tipo94 =null;
+        Token COLCHETE_ESQUERDO94=null;
+        Token SEPARADOR96=null;
+        Token COLCHETE_DIREITO98=null;
+        CanecaSintatico.tipo_return tipo95 =null;
 
-        CanecaSintatico.tipo_return tipo96 =null;
+        CanecaSintatico.tipo_return tipo97 =null;
 
 
-        Object COLCHETE_ESQUERDO93_tree=null;
-        Object SEPARADOR95_tree=null;
-        Object COLCHETE_DIREITO97_tree=null;
+        Object COLCHETE_ESQUERDO94_tree=null;
+        Object SEPARADOR96_tree=null;
+        Object COLCHETE_DIREITO98_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:270:2: ( ( COLCHETE_ESQUERDO tipo ( SEPARADOR tipo )* COLCHETE_DIREITO )? )
@@ -2890,19 +2899,19 @@ public TreeAdaptor getTreeAdaptor() {
                 case 1 :
                     // fontes/g/CanecaSintatico.g:270:5: COLCHETE_ESQUERDO tipo ( SEPARADOR tipo )* COLCHETE_DIREITO
                     {
-                    COLCHETE_ESQUERDO93=(Token)match(input,COLCHETE_ESQUERDO,FOLLOW_COLCHETE_ESQUERDO_in_listaDeTipos592); 
-                    COLCHETE_ESQUERDO93_tree = 
-                    (Object)adaptor.create(COLCHETE_ESQUERDO93)
+                    COLCHETE_ESQUERDO94=(Token)match(input,COLCHETE_ESQUERDO,FOLLOW_COLCHETE_ESQUERDO_in_listaDeTipos594); 
+                    COLCHETE_ESQUERDO94_tree = 
+                    (Object)adaptor.create(COLCHETE_ESQUERDO94)
                     ;
-                    adaptor.addChild(root_0, COLCHETE_ESQUERDO93_tree);
+                    adaptor.addChild(root_0, COLCHETE_ESQUERDO94_tree);
 
 
-                    pushFollow(FOLLOW_tipo_in_listaDeTipos594);
-                    tipo94=tipo();
+                    pushFollow(FOLLOW_tipo_in_listaDeTipos596);
+                    tipo95=tipo();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, tipo94.getTree());
+                    adaptor.addChild(root_0, tipo95.getTree());
 
                     // fontes/g/CanecaSintatico.g:270:28: ( SEPARADOR tipo )*
                     loop20:
@@ -2919,19 +2928,19 @@ public TreeAdaptor getTreeAdaptor() {
                     	case 1 :
                     	    // fontes/g/CanecaSintatico.g:270:29: SEPARADOR tipo
                     	    {
-                    	    SEPARADOR95=(Token)match(input,SEPARADOR,FOLLOW_SEPARADOR_in_listaDeTipos597); 
-                    	    SEPARADOR95_tree = 
-                    	    (Object)adaptor.create(SEPARADOR95)
+                    	    SEPARADOR96=(Token)match(input,SEPARADOR,FOLLOW_SEPARADOR_in_listaDeTipos599); 
+                    	    SEPARADOR96_tree = 
+                    	    (Object)adaptor.create(SEPARADOR96)
                     	    ;
-                    	    adaptor.addChild(root_0, SEPARADOR95_tree);
+                    	    adaptor.addChild(root_0, SEPARADOR96_tree);
 
 
-                    	    pushFollow(FOLLOW_tipo_in_listaDeTipos599);
-                    	    tipo96=tipo();
+                    	    pushFollow(FOLLOW_tipo_in_listaDeTipos601);
+                    	    tipo97=tipo();
 
                     	    state._fsp--;
 
-                    	    adaptor.addChild(root_0, tipo96.getTree());
+                    	    adaptor.addChild(root_0, tipo97.getTree());
 
                     	    }
                     	    break;
@@ -2942,11 +2951,11 @@ public TreeAdaptor getTreeAdaptor() {
                     } while (true);
 
 
-                    COLCHETE_DIREITO97=(Token)match(input,COLCHETE_DIREITO,FOLLOW_COLCHETE_DIREITO_in_listaDeTipos603); 
-                    COLCHETE_DIREITO97_tree = 
-                    (Object)adaptor.create(COLCHETE_DIREITO97)
+                    COLCHETE_DIREITO98=(Token)match(input,COLCHETE_DIREITO,FOLLOW_COLCHETE_DIREITO_in_listaDeTipos605); 
+                    COLCHETE_DIREITO98_tree = 
+                    (Object)adaptor.create(COLCHETE_DIREITO98)
                     ;
-                    adaptor.addChild(root_0, COLCHETE_DIREITO97_tree);
+                    adaptor.addChild(root_0, COLCHETE_DIREITO98_tree);
 
 
                     }
@@ -2993,7 +3002,7 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        CanecaSintatico.capture_return capture98 =null;
+        CanecaSintatico.capture_return capture99 =null;
 
 
 
@@ -3020,12 +3029,12 @@ public TreeAdaptor getTreeAdaptor() {
             	case 1 :
             	    // fontes/g/CanecaSintatico.g:274:5: capture
             	    {
-            	    pushFollow(FOLLOW_capture_in_listaDeCapturas617);
-            	    capture98=capture();
+            	    pushFollow(FOLLOW_capture_in_listaDeCapturas619);
+            	    capture99=capture();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, capture98.getTree());
+            	    adaptor.addChild(root_0, capture99.getTree());
 
             	    }
             	    break;
@@ -3078,11 +3087,11 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token IDENTIFICADOR99=null;
-        CanecaSintatico.listaDeInterfaces_return listaDeInterfaces100 =null;
+        Token IDENTIFICADOR100=null;
+        CanecaSintatico.listaDeInterfaces_return listaDeInterfaces101 =null;
 
 
-        Object IDENTIFICADOR99_tree=null;
+        Object IDENTIFICADOR100_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:278:2: ( IDENTIFICADOR listaDeInterfaces )
@@ -3091,19 +3100,19 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            IDENTIFICADOR99=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipoGenerico630); 
-            IDENTIFICADOR99_tree = 
-            (Object)adaptor.create(IDENTIFICADOR99)
+            IDENTIFICADOR100=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipoGenerico632); 
+            IDENTIFICADOR100_tree = 
+            (Object)adaptor.create(IDENTIFICADOR100)
             ;
-            adaptor.addChild(root_0, IDENTIFICADOR99_tree);
+            adaptor.addChild(root_0, IDENTIFICADOR100_tree);
 
 
-            pushFollow(FOLLOW_listaDeInterfaces_in_tipoGenerico632);
-            listaDeInterfaces100=listaDeInterfaces();
+            pushFollow(FOLLOW_listaDeInterfaces_in_tipoGenerico634);
+            listaDeInterfaces101=listaDeInterfaces();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listaDeInterfaces100.getTree());
+            adaptor.addChild(root_0, listaDeInterfaces101.getTree());
 
             }
 
@@ -3143,11 +3152,11 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token IDENTIFICADOR101=null;
-        CanecaSintatico.listaDeTipos_return listaDeTipos102 =null;
+        Token IDENTIFICADOR102=null;
+        CanecaSintatico.listaDeTipos_return listaDeTipos103 =null;
 
 
-        Object IDENTIFICADOR101_tree=null;
+        Object IDENTIFICADOR102_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:282:2: ( IDENTIFICADOR listaDeTipos )
@@ -3156,19 +3165,19 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            IDENTIFICADOR101=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipo643); 
-            IDENTIFICADOR101_tree = 
-            (Object)adaptor.create(IDENTIFICADOR101)
+            IDENTIFICADOR102=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_tipo645); 
+            IDENTIFICADOR102_tree = 
+            (Object)adaptor.create(IDENTIFICADOR102)
             ;
-            adaptor.addChild(root_0, IDENTIFICADOR101_tree);
+            adaptor.addChild(root_0, IDENTIFICADOR102_tree);
 
 
-            pushFollow(FOLLOW_listaDeTipos_in_tipo645);
-            listaDeTipos102=listaDeTipos();
+            pushFollow(FOLLOW_listaDeTipos_in_tipo647);
+            listaDeTipos103=listaDeTipos();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listaDeTipos102.getTree());
+            adaptor.addChild(root_0, listaDeTipos103.getTree());
 
             }
 
@@ -3208,11 +3217,11 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token IDENTIFICADOR104=null;
-        CanecaSintatico.tipo_return tipo103 =null;
+        Token IDENTIFICADOR105=null;
+        CanecaSintatico.tipo_return tipo104 =null;
 
 
-        Object IDENTIFICADOR104_tree=null;
+        Object IDENTIFICADOR105_tree=null;
 
         try {
             // fontes/g/CanecaSintatico.g:286:2: ( tipo IDENTIFICADOR )
@@ -3221,18 +3230,18 @@ public TreeAdaptor getTreeAdaptor() {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_tipo_in_declaracao656);
-            tipo103=tipo();
+            pushFollow(FOLLOW_tipo_in_declaracao658);
+            tipo104=tipo();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, tipo103.getTree());
+            adaptor.addChild(root_0, tipo104.getTree());
 
-            IDENTIFICADOR104=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracao658); 
-            IDENTIFICADOR104_tree = 
-            (Object)adaptor.create(IDENTIFICADOR104)
+            IDENTIFICADOR105=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracao660); 
+            IDENTIFICADOR105_tree = 
+            (Object)adaptor.create(IDENTIFICADOR105)
             ;
-            adaptor.addChild(root_0, IDENTIFICADOR104_tree);
+            adaptor.addChild(root_0, IDENTIFICADOR105_tree);
 
 
             }
@@ -3258,71 +3267,6 @@ public TreeAdaptor getTreeAdaptor() {
     // $ANTLR end "declaracao"
 
 
-    public static class atribuicao_return extends ParserRuleReturnScope {
-        Object tree;
-        public Object getTree() { return tree; }
-    };
-
-
-    // $ANTLR start "atribuicao"
-    // fontes/g/CanecaSintatico.g:289:1: atribuicao : ATRIBUIDOR expressaoOuLogico ;
-    public final CanecaSintatico.atribuicao_return atribuicao() throws RecognitionException {
-        CanecaSintatico.atribuicao_return retval = new CanecaSintatico.atribuicao_return();
-        retval.start = input.LT(1);
-
-
-        Object root_0 = null;
-
-        Token ATRIBUIDOR105=null;
-        CanecaSintatico.expressaoOuLogico_return expressaoOuLogico106 =null;
-
-
-        Object ATRIBUIDOR105_tree=null;
-
-        try {
-            // fontes/g/CanecaSintatico.g:290:2: ( ATRIBUIDOR expressaoOuLogico )
-            // fontes/g/CanecaSintatico.g:290:4: ATRIBUIDOR expressaoOuLogico
-            {
-            root_0 = (Object)adaptor.nil();
-
-
-            ATRIBUIDOR105=(Token)match(input,ATRIBUIDOR,FOLLOW_ATRIBUIDOR_in_atribuicao669); 
-            ATRIBUIDOR105_tree = 
-            (Object)adaptor.create(ATRIBUIDOR105)
-            ;
-            adaptor.addChild(root_0, ATRIBUIDOR105_tree);
-
-
-            pushFollow(FOLLOW_expressaoOuLogico_in_atribuicao671);
-            expressaoOuLogico106=expressaoOuLogico();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, expressaoOuLogico106.getTree());
-
-            }
-
-            retval.stop = input.LT(-1);
-
-
-            retval.tree = (Object)adaptor.rulePostProcessing(root_0);
-            adaptor.setTokenBoundaries(retval.tree, retval.start, retval.stop);
-
-        }
-
-        	catch (RecognitionException erro) {
-        		reportError(erro);
-        		recover(input, erro);
-        	}
-
-        finally {
-        	// do for sure before leaving
-        }
-        return retval;
-    }
-    // $ANTLR end "atribuicao"
-
-
     public static class declaracaoComAtribuicaoOpcional_return extends ParserRuleReturnScope {
         Object tree;
         public Object getTree() { return tree; }
@@ -3330,7 +3274,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "declaracaoComAtribuicaoOpcional"
-    // fontes/g/CanecaSintatico.g:293:1: declaracaoComAtribuicaoOpcional : declaracao ( atribuicao )? ;
+    // fontes/g/CanecaSintatico.g:289:1: declaracaoComAtribuicaoOpcional : tipo IDENTIFICADOR ( ATRIBUIDOR expressaoOuLogico )? ;
     public final CanecaSintatico.declaracaoComAtribuicaoOpcional_return declaracaoComAtribuicaoOpcional() throws RecognitionException {
         CanecaSintatico.declaracaoComAtribuicaoOpcional_return retval = new CanecaSintatico.declaracaoComAtribuicaoOpcional_return();
         retval.start = input.LT(1);
@@ -3338,27 +3282,38 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        CanecaSintatico.declaracao_return declaracao107 =null;
+        Token IDENTIFICADOR107=null;
+        Token ATRIBUIDOR108=null;
+        CanecaSintatico.tipo_return tipo106 =null;
 
-        CanecaSintatico.atribuicao_return atribuicao108 =null;
+        CanecaSintatico.expressaoOuLogico_return expressaoOuLogico109 =null;
 
 
+        Object IDENTIFICADOR107_tree=null;
+        Object ATRIBUIDOR108_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:294:2: ( declaracao ( atribuicao )? )
-            // fontes/g/CanecaSintatico.g:294:4: declaracao ( atribuicao )?
+            // fontes/g/CanecaSintatico.g:290:2: ( tipo IDENTIFICADOR ( ATRIBUIDOR expressaoOuLogico )? )
+            // fontes/g/CanecaSintatico.g:290:4: tipo IDENTIFICADOR ( ATRIBUIDOR expressaoOuLogico )?
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_declaracao_in_declaracaoComAtribuicaoOpcional682);
-            declaracao107=declaracao();
+            pushFollow(FOLLOW_tipo_in_declaracaoComAtribuicaoOpcional671);
+            tipo106=tipo();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, declaracao107.getTree());
+            adaptor.addChild(root_0, tipo106.getTree());
 
-            // fontes/g/CanecaSintatico.g:294:15: ( atribuicao )?
+            IDENTIFICADOR107=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_declaracaoComAtribuicaoOpcional673); 
+            IDENTIFICADOR107_tree = 
+            (Object)adaptor.create(IDENTIFICADOR107)
+            ;
+            adaptor.addChild(root_0, IDENTIFICADOR107_tree);
+
+
+            // fontes/g/CanecaSintatico.g:290:23: ( ATRIBUIDOR expressaoOuLogico )?
             int alt23=2;
             int LA23_0 = input.LA(1);
 
@@ -3367,14 +3322,21 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt23) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:294:16: atribuicao
+                    // fontes/g/CanecaSintatico.g:290:24: ATRIBUIDOR expressaoOuLogico
                     {
-                    pushFollow(FOLLOW_atribuicao_in_declaracaoComAtribuicaoOpcional685);
-                    atribuicao108=atribuicao();
+                    ATRIBUIDOR108=(Token)match(input,ATRIBUIDOR,FOLLOW_ATRIBUIDOR_in_declaracaoComAtribuicaoOpcional676); 
+                    ATRIBUIDOR108_tree = 
+                    (Object)adaptor.create(ATRIBUIDOR108)
+                    ;
+                    adaptor.addChild(root_0, ATRIBUIDOR108_tree);
+
+
+                    pushFollow(FOLLOW_expressaoOuLogico_in_declaracaoComAtribuicaoOpcional678);
+                    expressaoOuLogico109=expressaoOuLogico();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, atribuicao108.getTree());
+                    adaptor.addChild(root_0, expressaoOuLogico109.getTree());
 
                     }
                     break;
@@ -3412,7 +3374,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expressao"
-    // fontes/g/CanecaSintatico.g:297:1: expressao : expressaoOuLogico ( ATRIBUIDOR expressaoOuLogico )? ;
+    // fontes/g/CanecaSintatico.g:293:1: expressao : expressaoOuLogico ( ATRIBUIDOR expressaoOuLogico )? ;
     public final CanecaSintatico.expressao_return expressao() throws RecognitionException {
         CanecaSintatico.expressao_return retval = new CanecaSintatico.expressao_return();
         retval.start = input.LT(1);
@@ -3420,29 +3382,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token ATRIBUIDOR110=null;
-        CanecaSintatico.expressaoOuLogico_return expressaoOuLogico109 =null;
+        Token ATRIBUIDOR111=null;
+        CanecaSintatico.expressaoOuLogico_return expressaoOuLogico110 =null;
 
-        CanecaSintatico.expressaoOuLogico_return expressaoOuLogico111 =null;
+        CanecaSintatico.expressaoOuLogico_return expressaoOuLogico112 =null;
 
 
-        Object ATRIBUIDOR110_tree=null;
+        Object ATRIBUIDOR111_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:298:2: ( expressaoOuLogico ( ATRIBUIDOR expressaoOuLogico )? )
-            // fontes/g/CanecaSintatico.g:298:4: expressaoOuLogico ( ATRIBUIDOR expressaoOuLogico )?
+            // fontes/g/CanecaSintatico.g:294:2: ( expressaoOuLogico ( ATRIBUIDOR expressaoOuLogico )? )
+            // fontes/g/CanecaSintatico.g:294:4: expressaoOuLogico ( ATRIBUIDOR expressaoOuLogico )?
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expressaoOuLogico_in_expressao698);
-            expressaoOuLogico109=expressaoOuLogico();
+            pushFollow(FOLLOW_expressaoOuLogico_in_expressao691);
+            expressaoOuLogico110=expressaoOuLogico();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressaoOuLogico109.getTree());
+            adaptor.addChild(root_0, expressaoOuLogico110.getTree());
 
-            // fontes/g/CanecaSintatico.g:298:22: ( ATRIBUIDOR expressaoOuLogico )?
+            // fontes/g/CanecaSintatico.g:294:22: ( ATRIBUIDOR expressaoOuLogico )?
             int alt24=2;
             int LA24_0 = input.LA(1);
 
@@ -3451,21 +3413,21 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt24) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:298:23: ATRIBUIDOR expressaoOuLogico
+                    // fontes/g/CanecaSintatico.g:294:23: ATRIBUIDOR expressaoOuLogico
                     {
-                    ATRIBUIDOR110=(Token)match(input,ATRIBUIDOR,FOLLOW_ATRIBUIDOR_in_expressao701); 
-                    ATRIBUIDOR110_tree = 
-                    (Object)adaptor.create(ATRIBUIDOR110)
+                    ATRIBUIDOR111=(Token)match(input,ATRIBUIDOR,FOLLOW_ATRIBUIDOR_in_expressao694); 
+                    ATRIBUIDOR111_tree = 
+                    (Object)adaptor.create(ATRIBUIDOR111)
                     ;
-                    adaptor.addChild(root_0, ATRIBUIDOR110_tree);
+                    adaptor.addChild(root_0, ATRIBUIDOR111_tree);
 
 
-                    pushFollow(FOLLOW_expressaoOuLogico_in_expressao703);
-                    expressaoOuLogico111=expressaoOuLogico();
+                    pushFollow(FOLLOW_expressaoOuLogico_in_expressao696);
+                    expressaoOuLogico112=expressaoOuLogico();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expressaoOuLogico111.getTree());
+                    adaptor.addChild(root_0, expressaoOuLogico112.getTree());
 
                     }
                     break;
@@ -3503,7 +3465,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expressaoOuLogico"
-    // fontes/g/CanecaSintatico.g:301:1: expressaoOuLogico : expressaoELogico ( OU expressaoELogico )* ;
+    // fontes/g/CanecaSintatico.g:297:1: expressaoOuLogico : expressaoELogico ( OU expressaoELogico )* ;
     public final CanecaSintatico.expressaoOuLogico_return expressaoOuLogico() throws RecognitionException {
         CanecaSintatico.expressaoOuLogico_return retval = new CanecaSintatico.expressaoOuLogico_return();
         retval.start = input.LT(1);
@@ -3511,29 +3473,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token OU113=null;
-        CanecaSintatico.expressaoELogico_return expressaoELogico112 =null;
+        Token OU114=null;
+        CanecaSintatico.expressaoELogico_return expressaoELogico113 =null;
 
-        CanecaSintatico.expressaoELogico_return expressaoELogico114 =null;
+        CanecaSintatico.expressaoELogico_return expressaoELogico115 =null;
 
 
-        Object OU113_tree=null;
+        Object OU114_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:302:2: ( expressaoELogico ( OU expressaoELogico )* )
-            // fontes/g/CanecaSintatico.g:302:4: expressaoELogico ( OU expressaoELogico )*
+            // fontes/g/CanecaSintatico.g:298:2: ( expressaoELogico ( OU expressaoELogico )* )
+            // fontes/g/CanecaSintatico.g:298:4: expressaoELogico ( OU expressaoELogico )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico716);
-            expressaoELogico112=expressaoELogico();
+            pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico709);
+            expressaoELogico113=expressaoELogico();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressaoELogico112.getTree());
+            adaptor.addChild(root_0, expressaoELogico113.getTree());
 
-            // fontes/g/CanecaSintatico.g:302:21: ( OU expressaoELogico )*
+            // fontes/g/CanecaSintatico.g:298:21: ( OU expressaoELogico )*
             loop25:
             do {
                 int alt25=2;
@@ -3546,21 +3508,21 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt25) {
             	case 1 :
-            	    // fontes/g/CanecaSintatico.g:302:22: OU expressaoELogico
+            	    // fontes/g/CanecaSintatico.g:298:22: OU expressaoELogico
             	    {
-            	    OU113=(Token)match(input,OU,FOLLOW_OU_in_expressaoOuLogico719); 
-            	    OU113_tree = 
-            	    (Object)adaptor.create(OU113)
+            	    OU114=(Token)match(input,OU,FOLLOW_OU_in_expressaoOuLogico712); 
+            	    OU114_tree = 
+            	    (Object)adaptor.create(OU114)
             	    ;
-            	    adaptor.addChild(root_0, OU113_tree);
+            	    adaptor.addChild(root_0, OU114_tree);
 
 
-            	    pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico721);
-            	    expressaoELogico114=expressaoELogico();
+            	    pushFollow(FOLLOW_expressaoELogico_in_expressaoOuLogico714);
+            	    expressaoELogico115=expressaoELogico();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, expressaoELogico114.getTree());
+            	    adaptor.addChild(root_0, expressaoELogico115.getTree());
 
             	    }
             	    break;
@@ -3601,7 +3563,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expressaoELogico"
-    // fontes/g/CanecaSintatico.g:305:1: expressaoELogico : expressaoComparacaoLogica ( E expressaoComparacaoLogica )* ;
+    // fontes/g/CanecaSintatico.g:301:1: expressaoELogico : expressaoComparacaoLogica ( E expressaoComparacaoLogica )* ;
     public final CanecaSintatico.expressaoELogico_return expressaoELogico() throws RecognitionException {
         CanecaSintatico.expressaoELogico_return retval = new CanecaSintatico.expressaoELogico_return();
         retval.start = input.LT(1);
@@ -3609,29 +3571,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token E116=null;
-        CanecaSintatico.expressaoComparacaoLogica_return expressaoComparacaoLogica115 =null;
+        Token E117=null;
+        CanecaSintatico.expressaoComparacaoLogica_return expressaoComparacaoLogica116 =null;
 
-        CanecaSintatico.expressaoComparacaoLogica_return expressaoComparacaoLogica117 =null;
+        CanecaSintatico.expressaoComparacaoLogica_return expressaoComparacaoLogica118 =null;
 
 
-        Object E116_tree=null;
+        Object E117_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:306:2: ( expressaoComparacaoLogica ( E expressaoComparacaoLogica )* )
-            // fontes/g/CanecaSintatico.g:306:4: expressaoComparacaoLogica ( E expressaoComparacaoLogica )*
+            // fontes/g/CanecaSintatico.g:302:2: ( expressaoComparacaoLogica ( E expressaoComparacaoLogica )* )
+            // fontes/g/CanecaSintatico.g:302:4: expressaoComparacaoLogica ( E expressaoComparacaoLogica )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico734);
-            expressaoComparacaoLogica115=expressaoComparacaoLogica();
+            pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico727);
+            expressaoComparacaoLogica116=expressaoComparacaoLogica();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressaoComparacaoLogica115.getTree());
+            adaptor.addChild(root_0, expressaoComparacaoLogica116.getTree());
 
-            // fontes/g/CanecaSintatico.g:306:30: ( E expressaoComparacaoLogica )*
+            // fontes/g/CanecaSintatico.g:302:30: ( E expressaoComparacaoLogica )*
             loop26:
             do {
                 int alt26=2;
@@ -3644,21 +3606,21 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt26) {
             	case 1 :
-            	    // fontes/g/CanecaSintatico.g:306:31: E expressaoComparacaoLogica
+            	    // fontes/g/CanecaSintatico.g:302:31: E expressaoComparacaoLogica
             	    {
-            	    E116=(Token)match(input,E,FOLLOW_E_in_expressaoELogico737); 
-            	    E116_tree = 
-            	    (Object)adaptor.create(E116)
+            	    E117=(Token)match(input,E,FOLLOW_E_in_expressaoELogico730); 
+            	    E117_tree = 
+            	    (Object)adaptor.create(E117)
             	    ;
-            	    adaptor.addChild(root_0, E116_tree);
+            	    adaptor.addChild(root_0, E117_tree);
 
 
-            	    pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico739);
-            	    expressaoComparacaoLogica117=expressaoComparacaoLogica();
+            	    pushFollow(FOLLOW_expressaoComparacaoLogica_in_expressaoELogico732);
+            	    expressaoComparacaoLogica118=expressaoComparacaoLogica();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, expressaoComparacaoLogica117.getTree());
+            	    adaptor.addChild(root_0, expressaoComparacaoLogica118.getTree());
 
             	    }
             	    break;
@@ -3699,7 +3661,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expressaoComparacaoLogica"
-    // fontes/g/CanecaSintatico.g:309:1: expressaoComparacaoLogica : expressaoAditiva ( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva )? ;
+    // fontes/g/CanecaSintatico.g:305:1: expressaoComparacaoLogica : expressaoAditiva ( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva )? ;
     public final CanecaSintatico.expressaoComparacaoLogica_return expressaoComparacaoLogica() throws RecognitionException {
         CanecaSintatico.expressaoComparacaoLogica_return retval = new CanecaSintatico.expressaoComparacaoLogica_return();
         retval.start = input.LT(1);
@@ -3707,29 +3669,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set119=null;
-        CanecaSintatico.expressaoAditiva_return expressaoAditiva118 =null;
+        Token set120=null;
+        CanecaSintatico.expressaoAditiva_return expressaoAditiva119 =null;
 
-        CanecaSintatico.expressaoAditiva_return expressaoAditiva120 =null;
+        CanecaSintatico.expressaoAditiva_return expressaoAditiva121 =null;
 
 
-        Object set119_tree=null;
+        Object set120_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:310:2: ( expressaoAditiva ( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva )? )
-            // fontes/g/CanecaSintatico.g:310:4: expressaoAditiva ( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva )?
+            // fontes/g/CanecaSintatico.g:306:2: ( expressaoAditiva ( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva )? )
+            // fontes/g/CanecaSintatico.g:306:4: expressaoAditiva ( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva )?
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica752);
-            expressaoAditiva118=expressaoAditiva();
+            pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica745);
+            expressaoAditiva119=expressaoAditiva();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressaoAditiva118.getTree());
+            adaptor.addChild(root_0, expressaoAditiva119.getTree());
 
-            // fontes/g/CanecaSintatico.g:310:21: ( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva )?
+            // fontes/g/CanecaSintatico.g:306:21: ( ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva )?
             int alt27=2;
             int LA27_0 = input.LA(1);
 
@@ -3738,14 +3700,14 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt27) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:310:22: ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva
+                    // fontes/g/CanecaSintatico.g:306:22: ( IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL ) expressaoAditiva
                     {
-                    set119=(Token)input.LT(1);
+                    set120=(Token)input.LT(1);
 
                     if ( input.LA(1)==DIFERENTE||input.LA(1)==IGUAL||(input.LA(1) >= MAIOR && input.LA(1) <= MENOR_IGUAL) ) {
                         input.consume();
                         adaptor.addChild(root_0, 
-                        (Object)adaptor.create(set119)
+                        (Object)adaptor.create(set120)
                         );
                         state.errorRecovery=false;
                     }
@@ -3755,12 +3717,12 @@ public TreeAdaptor getTreeAdaptor() {
                     }
 
 
-                    pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica779);
-                    expressaoAditiva120=expressaoAditiva();
+                    pushFollow(FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica772);
+                    expressaoAditiva121=expressaoAditiva();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expressaoAditiva120.getTree());
+                    adaptor.addChild(root_0, expressaoAditiva121.getTree());
 
                     }
                     break;
@@ -3798,7 +3760,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expressaoAditiva"
-    // fontes/g/CanecaSintatico.g:313:1: expressaoAditiva : expressaoMultiplicativa ( ( SOMA | SUBTRACAO ) expressaoMultiplicativa )* ;
+    // fontes/g/CanecaSintatico.g:309:1: expressaoAditiva : expressaoMultiplicativa ( ( SOMA | SUBTRACAO ) expressaoMultiplicativa )* ;
     public final CanecaSintatico.expressaoAditiva_return expressaoAditiva() throws RecognitionException {
         CanecaSintatico.expressaoAditiva_return retval = new CanecaSintatico.expressaoAditiva_return();
         retval.start = input.LT(1);
@@ -3806,29 +3768,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set122=null;
-        CanecaSintatico.expressaoMultiplicativa_return expressaoMultiplicativa121 =null;
+        Token set123=null;
+        CanecaSintatico.expressaoMultiplicativa_return expressaoMultiplicativa122 =null;
 
-        CanecaSintatico.expressaoMultiplicativa_return expressaoMultiplicativa123 =null;
+        CanecaSintatico.expressaoMultiplicativa_return expressaoMultiplicativa124 =null;
 
 
-        Object set122_tree=null;
+        Object set123_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:314:2: ( expressaoMultiplicativa ( ( SOMA | SUBTRACAO ) expressaoMultiplicativa )* )
-            // fontes/g/CanecaSintatico.g:314:4: expressaoMultiplicativa ( ( SOMA | SUBTRACAO ) expressaoMultiplicativa )*
+            // fontes/g/CanecaSintatico.g:310:2: ( expressaoMultiplicativa ( ( SOMA | SUBTRACAO ) expressaoMultiplicativa )* )
+            // fontes/g/CanecaSintatico.g:310:4: expressaoMultiplicativa ( ( SOMA | SUBTRACAO ) expressaoMultiplicativa )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva792);
-            expressaoMultiplicativa121=expressaoMultiplicativa();
+            pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva785);
+            expressaoMultiplicativa122=expressaoMultiplicativa();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressaoMultiplicativa121.getTree());
+            adaptor.addChild(root_0, expressaoMultiplicativa122.getTree());
 
-            // fontes/g/CanecaSintatico.g:314:28: ( ( SOMA | SUBTRACAO ) expressaoMultiplicativa )*
+            // fontes/g/CanecaSintatico.g:310:28: ( ( SOMA | SUBTRACAO ) expressaoMultiplicativa )*
             loop28:
             do {
                 int alt28=2;
@@ -3841,14 +3803,14 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt28) {
             	case 1 :
-            	    // fontes/g/CanecaSintatico.g:314:29: ( SOMA | SUBTRACAO ) expressaoMultiplicativa
+            	    // fontes/g/CanecaSintatico.g:310:29: ( SOMA | SUBTRACAO ) expressaoMultiplicativa
             	    {
-            	    set122=(Token)input.LT(1);
+            	    set123=(Token)input.LT(1);
 
             	    if ( (input.LA(1) >= SOMA && input.LA(1) <= SUBTRACAO) ) {
             	        input.consume();
             	        adaptor.addChild(root_0, 
-            	        (Object)adaptor.create(set122)
+            	        (Object)adaptor.create(set123)
             	        );
             	        state.errorRecovery=false;
             	    }
@@ -3858,12 +3820,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
 
 
-            	    pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva803);
-            	    expressaoMultiplicativa123=expressaoMultiplicativa();
+            	    pushFollow(FOLLOW_expressaoMultiplicativa_in_expressaoAditiva796);
+            	    expressaoMultiplicativa124=expressaoMultiplicativa();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, expressaoMultiplicativa123.getTree());
+            	    adaptor.addChild(root_0, expressaoMultiplicativa124.getTree());
 
             	    }
             	    break;
@@ -3904,7 +3866,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expressaoMultiplicativa"
-    // fontes/g/CanecaSintatico.g:317:1: expressaoMultiplicativa : expressaoUnaria ( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria )* ;
+    // fontes/g/CanecaSintatico.g:313:1: expressaoMultiplicativa : expressaoUnaria ( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria )* ;
     public final CanecaSintatico.expressaoMultiplicativa_return expressaoMultiplicativa() throws RecognitionException {
         CanecaSintatico.expressaoMultiplicativa_return retval = new CanecaSintatico.expressaoMultiplicativa_return();
         retval.start = input.LT(1);
@@ -3912,29 +3874,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set125=null;
-        CanecaSintatico.expressaoUnaria_return expressaoUnaria124 =null;
+        Token set126=null;
+        CanecaSintatico.expressaoUnaria_return expressaoUnaria125 =null;
 
-        CanecaSintatico.expressaoUnaria_return expressaoUnaria126 =null;
+        CanecaSintatico.expressaoUnaria_return expressaoUnaria127 =null;
 
 
-        Object set125_tree=null;
+        Object set126_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:318:2: ( expressaoUnaria ( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria )* )
-            // fontes/g/CanecaSintatico.g:318:4: expressaoUnaria ( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria )*
+            // fontes/g/CanecaSintatico.g:314:2: ( expressaoUnaria ( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria )* )
+            // fontes/g/CanecaSintatico.g:314:4: expressaoUnaria ( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa816);
-            expressaoUnaria124=expressaoUnaria();
+            pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa809);
+            expressaoUnaria125=expressaoUnaria();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressaoUnaria124.getTree());
+            adaptor.addChild(root_0, expressaoUnaria125.getTree());
 
-            // fontes/g/CanecaSintatico.g:318:20: ( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria )*
+            // fontes/g/CanecaSintatico.g:314:20: ( ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria )*
             loop29:
             do {
                 int alt29=2;
@@ -3947,14 +3909,14 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt29) {
             	case 1 :
-            	    // fontes/g/CanecaSintatico.g:318:21: ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria
+            	    // fontes/g/CanecaSintatico.g:314:21: ( MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO ) expressaoUnaria
             	    {
-            	    set125=(Token)input.LT(1);
+            	    set126=(Token)input.LT(1);
 
             	    if ( input.LA(1)==DIVISAO||input.LA(1)==MULTIPLICACAO||input.LA(1)==RESTO_DA_DIVISAO ) {
             	        input.consume();
             	        adaptor.addChild(root_0, 
-            	        (Object)adaptor.create(set125)
+            	        (Object)adaptor.create(set126)
             	        );
             	        state.errorRecovery=false;
             	    }
@@ -3964,12 +3926,12 @@ public TreeAdaptor getTreeAdaptor() {
             	    }
 
 
-            	    pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa831);
-            	    expressaoUnaria126=expressaoUnaria();
+            	    pushFollow(FOLLOW_expressaoUnaria_in_expressaoMultiplicativa824);
+            	    expressaoUnaria127=expressaoUnaria();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, expressaoUnaria126.getTree());
+            	    adaptor.addChild(root_0, expressaoUnaria127.getTree());
 
             	    }
             	    break;
@@ -4010,7 +3972,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expressaoUnaria"
-    // fontes/g/CanecaSintatico.g:321:1: expressaoUnaria : ( expressaoPrimaria | SUBTRACAO expressaoPrimaria | NEGACAO expressaoPrimaria );
+    // fontes/g/CanecaSintatico.g:317:1: expressaoUnaria : ( expressaoPrimaria | SUBTRACAO expressaoPrimaria | NEGACAO expressaoPrimaria );
     public final CanecaSintatico.expressaoUnaria_return expressaoUnaria() throws RecognitionException {
         CanecaSintatico.expressaoUnaria_return retval = new CanecaSintatico.expressaoUnaria_return();
         retval.start = input.LT(1);
@@ -4018,20 +3980,20 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token SUBTRACAO128=null;
-        Token NEGACAO130=null;
-        CanecaSintatico.expressaoPrimaria_return expressaoPrimaria127 =null;
+        Token SUBTRACAO129=null;
+        Token NEGACAO131=null;
+        CanecaSintatico.expressaoPrimaria_return expressaoPrimaria128 =null;
 
-        CanecaSintatico.expressaoPrimaria_return expressaoPrimaria129 =null;
+        CanecaSintatico.expressaoPrimaria_return expressaoPrimaria130 =null;
 
-        CanecaSintatico.expressaoPrimaria_return expressaoPrimaria131 =null;
+        CanecaSintatico.expressaoPrimaria_return expressaoPrimaria132 =null;
 
 
-        Object SUBTRACAO128_tree=null;
-        Object NEGACAO130_tree=null;
+        Object SUBTRACAO129_tree=null;
+        Object NEGACAO131_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:322:2: ( expressaoPrimaria | SUBTRACAO expressaoPrimaria | NEGACAO expressaoPrimaria )
+            // fontes/g/CanecaSintatico.g:318:2: ( expressaoPrimaria | SUBTRACAO expressaoPrimaria | NEGACAO expressaoPrimaria )
             int alt30=3;
             switch ( input.LA(1) ) {
             case CONSTANTE_INTEIRA:
@@ -4070,61 +4032,61 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt30) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:322:4: expressaoPrimaria
+                    // fontes/g/CanecaSintatico.g:318:4: expressaoPrimaria
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria844);
-                    expressaoPrimaria127=expressaoPrimaria();
+                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria837);
+                    expressaoPrimaria128=expressaoPrimaria();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expressaoPrimaria127.getTree());
+                    adaptor.addChild(root_0, expressaoPrimaria128.getTree());
 
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSintatico.g:323:4: SUBTRACAO expressaoPrimaria
+                    // fontes/g/CanecaSintatico.g:319:4: SUBTRACAO expressaoPrimaria
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    SUBTRACAO128=(Token)match(input,SUBTRACAO,FOLLOW_SUBTRACAO_in_expressaoUnaria849); 
-                    SUBTRACAO128_tree = 
-                    (Object)adaptor.create(SUBTRACAO128)
+                    SUBTRACAO129=(Token)match(input,SUBTRACAO,FOLLOW_SUBTRACAO_in_expressaoUnaria842); 
+                    SUBTRACAO129_tree = 
+                    (Object)adaptor.create(SUBTRACAO129)
                     ;
-                    adaptor.addChild(root_0, SUBTRACAO128_tree);
+                    adaptor.addChild(root_0, SUBTRACAO129_tree);
 
 
-                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria851);
-                    expressaoPrimaria129=expressaoPrimaria();
+                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria844);
+                    expressaoPrimaria130=expressaoPrimaria();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expressaoPrimaria129.getTree());
+                    adaptor.addChild(root_0, expressaoPrimaria130.getTree());
 
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaSintatico.g:324:4: NEGACAO expressaoPrimaria
+                    // fontes/g/CanecaSintatico.g:320:4: NEGACAO expressaoPrimaria
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    NEGACAO130=(Token)match(input,NEGACAO,FOLLOW_NEGACAO_in_expressaoUnaria856); 
-                    NEGACAO130_tree = 
-                    (Object)adaptor.create(NEGACAO130)
+                    NEGACAO131=(Token)match(input,NEGACAO,FOLLOW_NEGACAO_in_expressaoUnaria849); 
+                    NEGACAO131_tree = 
+                    (Object)adaptor.create(NEGACAO131)
                     ;
-                    adaptor.addChild(root_0, NEGACAO130_tree);
+                    adaptor.addChild(root_0, NEGACAO131_tree);
 
 
-                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria858);
-                    expressaoPrimaria131=expressaoPrimaria();
+                    pushFollow(FOLLOW_expressaoPrimaria_in_expressaoUnaria851);
+                    expressaoPrimaria132=expressaoPrimaria();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expressaoPrimaria131.getTree());
+                    adaptor.addChild(root_0, expressaoPrimaria132.getTree());
 
                     }
                     break;
@@ -4158,7 +4120,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "expressaoPrimaria"
-    // fontes/g/CanecaSintatico.g:327:1: expressaoPrimaria : ( PARENTESE_ESQUERDO expressao PARENTESE_DIREITO | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | comando );
+    // fontes/g/CanecaSintatico.g:323:1: expressaoPrimaria : ( PARENTESE_ESQUERDO expressao PARENTESE_DIREITO | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | comando );
     public final CanecaSintatico.expressaoPrimaria_return expressaoPrimaria() throws RecognitionException {
         CanecaSintatico.expressaoPrimaria_return retval = new CanecaSintatico.expressaoPrimaria_return();
         retval.start = input.LT(1);
@@ -4166,30 +4128,30 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token PARENTESE_ESQUERDO132=null;
-        Token PARENTESE_DIREITO134=null;
-        Token VALOR_BOOLEANO135=null;
-        Token VALOR_NULO136=null;
-        Token CONSTANTE_INTEIRA137=null;
-        Token CONSTANTE_REAL138=null;
-        Token LITERAL_CARACTERE139=null;
-        Token LITERAL_TEXTO140=null;
-        CanecaSintatico.expressao_return expressao133 =null;
+        Token PARENTESE_ESQUERDO133=null;
+        Token PARENTESE_DIREITO135=null;
+        Token VALOR_BOOLEANO136=null;
+        Token VALOR_NULO137=null;
+        Token CONSTANTE_INTEIRA138=null;
+        Token CONSTANTE_REAL139=null;
+        Token LITERAL_CARACTERE140=null;
+        Token LITERAL_TEXTO141=null;
+        CanecaSintatico.expressao_return expressao134 =null;
 
-        CanecaSintatico.comando_return comando141 =null;
+        CanecaSintatico.comando_return comando142 =null;
 
 
-        Object PARENTESE_ESQUERDO132_tree=null;
-        Object PARENTESE_DIREITO134_tree=null;
-        Object VALOR_BOOLEANO135_tree=null;
-        Object VALOR_NULO136_tree=null;
-        Object CONSTANTE_INTEIRA137_tree=null;
-        Object CONSTANTE_REAL138_tree=null;
-        Object LITERAL_CARACTERE139_tree=null;
-        Object LITERAL_TEXTO140_tree=null;
+        Object PARENTESE_ESQUERDO133_tree=null;
+        Object PARENTESE_DIREITO135_tree=null;
+        Object VALOR_BOOLEANO136_tree=null;
+        Object VALOR_NULO137_tree=null;
+        Object CONSTANTE_INTEIRA138_tree=null;
+        Object CONSTANTE_REAL139_tree=null;
+        Object LITERAL_CARACTERE140_tree=null;
+        Object LITERAL_TEXTO141_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:328:2: ( PARENTESE_ESQUERDO expressao PARENTESE_DIREITO | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | comando )
+            // fontes/g/CanecaSintatico.g:324:2: ( PARENTESE_ESQUERDO expressao PARENTESE_DIREITO | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | comando )
             int alt31=8;
             switch ( input.LA(1) ) {
             case PARENTESE_ESQUERDO:
@@ -4246,136 +4208,136 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt31) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:328:4: PARENTESE_ESQUERDO expressao PARENTESE_DIREITO
+                    // fontes/g/CanecaSintatico.g:324:4: PARENTESE_ESQUERDO expressao PARENTESE_DIREITO
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    PARENTESE_ESQUERDO132=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_expressaoPrimaria869); 
-                    PARENTESE_ESQUERDO132_tree = 
-                    (Object)adaptor.create(PARENTESE_ESQUERDO132)
+                    PARENTESE_ESQUERDO133=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_expressaoPrimaria862); 
+                    PARENTESE_ESQUERDO133_tree = 
+                    (Object)adaptor.create(PARENTESE_ESQUERDO133)
                     ;
-                    adaptor.addChild(root_0, PARENTESE_ESQUERDO132_tree);
+                    adaptor.addChild(root_0, PARENTESE_ESQUERDO133_tree);
 
 
-                    pushFollow(FOLLOW_expressao_in_expressaoPrimaria871);
-                    expressao133=expressao();
+                    pushFollow(FOLLOW_expressao_in_expressaoPrimaria864);
+                    expressao134=expressao();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, expressao133.getTree());
+                    adaptor.addChild(root_0, expressao134.getTree());
 
-                    PARENTESE_DIREITO134=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_expressaoPrimaria873); 
-                    PARENTESE_DIREITO134_tree = 
-                    (Object)adaptor.create(PARENTESE_DIREITO134)
+                    PARENTESE_DIREITO135=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_expressaoPrimaria866); 
+                    PARENTESE_DIREITO135_tree = 
+                    (Object)adaptor.create(PARENTESE_DIREITO135)
                     ;
-                    adaptor.addChild(root_0, PARENTESE_DIREITO134_tree);
+                    adaptor.addChild(root_0, PARENTESE_DIREITO135_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSintatico.g:329:4: VALOR_BOOLEANO
+                    // fontes/g/CanecaSintatico.g:325:4: VALOR_BOOLEANO
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    VALOR_BOOLEANO135=(Token)match(input,VALOR_BOOLEANO,FOLLOW_VALOR_BOOLEANO_in_expressaoPrimaria878); 
-                    VALOR_BOOLEANO135_tree = 
-                    (Object)adaptor.create(VALOR_BOOLEANO135)
+                    VALOR_BOOLEANO136=(Token)match(input,VALOR_BOOLEANO,FOLLOW_VALOR_BOOLEANO_in_expressaoPrimaria871); 
+                    VALOR_BOOLEANO136_tree = 
+                    (Object)adaptor.create(VALOR_BOOLEANO136)
                     ;
-                    adaptor.addChild(root_0, VALOR_BOOLEANO135_tree);
+                    adaptor.addChild(root_0, VALOR_BOOLEANO136_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaSintatico.g:330:4: VALOR_NULO
+                    // fontes/g/CanecaSintatico.g:326:4: VALOR_NULO
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    VALOR_NULO136=(Token)match(input,VALOR_NULO,FOLLOW_VALOR_NULO_in_expressaoPrimaria883); 
-                    VALOR_NULO136_tree = 
-                    (Object)adaptor.create(VALOR_NULO136)
+                    VALOR_NULO137=(Token)match(input,VALOR_NULO,FOLLOW_VALOR_NULO_in_expressaoPrimaria876); 
+                    VALOR_NULO137_tree = 
+                    (Object)adaptor.create(VALOR_NULO137)
                     ;
-                    adaptor.addChild(root_0, VALOR_NULO136_tree);
+                    adaptor.addChild(root_0, VALOR_NULO137_tree);
 
 
                     }
                     break;
                 case 4 :
-                    // fontes/g/CanecaSintatico.g:331:4: CONSTANTE_INTEIRA
+                    // fontes/g/CanecaSintatico.g:327:4: CONSTANTE_INTEIRA
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    CONSTANTE_INTEIRA137=(Token)match(input,CONSTANTE_INTEIRA,FOLLOW_CONSTANTE_INTEIRA_in_expressaoPrimaria888); 
-                    CONSTANTE_INTEIRA137_tree = 
-                    (Object)adaptor.create(CONSTANTE_INTEIRA137)
+                    CONSTANTE_INTEIRA138=(Token)match(input,CONSTANTE_INTEIRA,FOLLOW_CONSTANTE_INTEIRA_in_expressaoPrimaria881); 
+                    CONSTANTE_INTEIRA138_tree = 
+                    (Object)adaptor.create(CONSTANTE_INTEIRA138)
                     ;
-                    adaptor.addChild(root_0, CONSTANTE_INTEIRA137_tree);
+                    adaptor.addChild(root_0, CONSTANTE_INTEIRA138_tree);
 
 
                     }
                     break;
                 case 5 :
-                    // fontes/g/CanecaSintatico.g:332:4: CONSTANTE_REAL
+                    // fontes/g/CanecaSintatico.g:328:4: CONSTANTE_REAL
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    CONSTANTE_REAL138=(Token)match(input,CONSTANTE_REAL,FOLLOW_CONSTANTE_REAL_in_expressaoPrimaria893); 
-                    CONSTANTE_REAL138_tree = 
-                    (Object)adaptor.create(CONSTANTE_REAL138)
+                    CONSTANTE_REAL139=(Token)match(input,CONSTANTE_REAL,FOLLOW_CONSTANTE_REAL_in_expressaoPrimaria886); 
+                    CONSTANTE_REAL139_tree = 
+                    (Object)adaptor.create(CONSTANTE_REAL139)
                     ;
-                    adaptor.addChild(root_0, CONSTANTE_REAL138_tree);
+                    adaptor.addChild(root_0, CONSTANTE_REAL139_tree);
 
 
                     }
                     break;
                 case 6 :
-                    // fontes/g/CanecaSintatico.g:333:4: LITERAL_CARACTERE
+                    // fontes/g/CanecaSintatico.g:329:4: LITERAL_CARACTERE
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    LITERAL_CARACTERE139=(Token)match(input,LITERAL_CARACTERE,FOLLOW_LITERAL_CARACTERE_in_expressaoPrimaria898); 
-                    LITERAL_CARACTERE139_tree = 
-                    (Object)adaptor.create(LITERAL_CARACTERE139)
+                    LITERAL_CARACTERE140=(Token)match(input,LITERAL_CARACTERE,FOLLOW_LITERAL_CARACTERE_in_expressaoPrimaria891); 
+                    LITERAL_CARACTERE140_tree = 
+                    (Object)adaptor.create(LITERAL_CARACTERE140)
                     ;
-                    adaptor.addChild(root_0, LITERAL_CARACTERE139_tree);
+                    adaptor.addChild(root_0, LITERAL_CARACTERE140_tree);
 
 
                     }
                     break;
                 case 7 :
-                    // fontes/g/CanecaSintatico.g:334:4: LITERAL_TEXTO
+                    // fontes/g/CanecaSintatico.g:330:4: LITERAL_TEXTO
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    LITERAL_TEXTO140=(Token)match(input,LITERAL_TEXTO,FOLLOW_LITERAL_TEXTO_in_expressaoPrimaria903); 
-                    LITERAL_TEXTO140_tree = 
-                    (Object)adaptor.create(LITERAL_TEXTO140)
+                    LITERAL_TEXTO141=(Token)match(input,LITERAL_TEXTO,FOLLOW_LITERAL_TEXTO_in_expressaoPrimaria896); 
+                    LITERAL_TEXTO141_tree = 
+                    (Object)adaptor.create(LITERAL_TEXTO141)
                     ;
-                    adaptor.addChild(root_0, LITERAL_TEXTO140_tree);
+                    adaptor.addChild(root_0, LITERAL_TEXTO141_tree);
 
 
                     }
                     break;
                 case 8 :
-                    // fontes/g/CanecaSintatico.g:335:4: comando
+                    // fontes/g/CanecaSintatico.g:331:4: comando
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_comando_in_expressaoPrimaria908);
-                    comando141=comando();
+                    pushFollow(FOLLOW_comando_in_expressaoPrimaria901);
+                    comando142=comando();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, comando141.getTree());
+                    adaptor.addChild(root_0, comando142.getTree());
 
                     }
                     break;
@@ -4409,7 +4371,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "comando"
-    // fontes/g/CanecaSintatico.g:338:1: comando : referencia ( chamada )* ;
+    // fontes/g/CanecaSintatico.g:334:1: comando : referencia ( chamada )* ;
     public final CanecaSintatico.comando_return comando() throws RecognitionException {
         CanecaSintatico.comando_return retval = new CanecaSintatico.comando_return();
         retval.start = input.LT(1);
@@ -4417,27 +4379,27 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        CanecaSintatico.referencia_return referencia142 =null;
+        CanecaSintatico.referencia_return referencia143 =null;
 
-        CanecaSintatico.chamada_return chamada143 =null;
+        CanecaSintatico.chamada_return chamada144 =null;
 
 
 
         try {
-            // fontes/g/CanecaSintatico.g:339:2: ( referencia ( chamada )* )
-            // fontes/g/CanecaSintatico.g:339:4: referencia ( chamada )*
+            // fontes/g/CanecaSintatico.g:335:2: ( referencia ( chamada )* )
+            // fontes/g/CanecaSintatico.g:335:4: referencia ( chamada )*
             {
             root_0 = (Object)adaptor.nil();
 
 
-            pushFollow(FOLLOW_referencia_in_comando919);
-            referencia142=referencia();
+            pushFollow(FOLLOW_referencia_in_comando912);
+            referencia143=referencia();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, referencia142.getTree());
+            adaptor.addChild(root_0, referencia143.getTree());
 
-            // fontes/g/CanecaSintatico.g:339:15: ( chamada )*
+            // fontes/g/CanecaSintatico.g:335:15: ( chamada )*
             loop32:
             do {
                 int alt32=2;
@@ -4450,14 +4412,14 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt32) {
             	case 1 :
-            	    // fontes/g/CanecaSintatico.g:339:16: chamada
+            	    // fontes/g/CanecaSintatico.g:335:16: chamada
             	    {
-            	    pushFollow(FOLLOW_chamada_in_comando922);
-            	    chamada143=chamada();
+            	    pushFollow(FOLLOW_chamada_in_comando915);
+            	    chamada144=chamada();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, chamada143.getTree());
+            	    adaptor.addChild(root_0, chamada144.getTree());
 
             	    }
             	    break;
@@ -4498,7 +4460,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "referencia"
-    // fontes/g/CanecaSintatico.g:342:1: referencia : ( ESSE | ESSA | instanciacao | IDENTIFICADOR ( listaDeParametros )? );
+    // fontes/g/CanecaSintatico.g:338:1: referencia : ( ESSE | ESSA | instanciacao | IDENTIFICADOR ( listaDeParametros )? );
     public final CanecaSintatico.referencia_return referencia() throws RecognitionException {
         CanecaSintatico.referencia_return retval = new CanecaSintatico.referencia_return();
         retval.start = input.LT(1);
@@ -4506,20 +4468,20 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token ESSE144=null;
-        Token ESSA145=null;
-        Token IDENTIFICADOR147=null;
-        CanecaSintatico.instanciacao_return instanciacao146 =null;
+        Token ESSE145=null;
+        Token ESSA146=null;
+        Token IDENTIFICADOR148=null;
+        CanecaSintatico.instanciacao_return instanciacao147 =null;
 
-        CanecaSintatico.listaDeParametros_return listaDeParametros148 =null;
+        CanecaSintatico.listaDeParametros_return listaDeParametros149 =null;
 
 
-        Object ESSE144_tree=null;
-        Object ESSA145_tree=null;
-        Object IDENTIFICADOR147_tree=null;
+        Object ESSE145_tree=null;
+        Object ESSA146_tree=null;
+        Object IDENTIFICADOR148_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:343:2: ( ESSE | ESSA | instanciacao | IDENTIFICADOR ( listaDeParametros )? )
+            // fontes/g/CanecaSintatico.g:339:2: ( ESSE | ESSA | instanciacao | IDENTIFICADOR ( listaDeParametros )? )
             int alt34=4;
             switch ( input.LA(1) ) {
             case ESSE:
@@ -4553,64 +4515,64 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt34) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:343:4: ESSE
+                    // fontes/g/CanecaSintatico.g:339:4: ESSE
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    ESSE144=(Token)match(input,ESSE,FOLLOW_ESSE_in_referencia935); 
-                    ESSE144_tree = 
-                    (Object)adaptor.create(ESSE144)
+                    ESSE145=(Token)match(input,ESSE,FOLLOW_ESSE_in_referencia928); 
+                    ESSE145_tree = 
+                    (Object)adaptor.create(ESSE145)
                     ;
-                    adaptor.addChild(root_0, ESSE144_tree);
+                    adaptor.addChild(root_0, ESSE145_tree);
 
 
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSintatico.g:344:4: ESSA
+                    // fontes/g/CanecaSintatico.g:340:4: ESSA
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    ESSA145=(Token)match(input,ESSA,FOLLOW_ESSA_in_referencia940); 
-                    ESSA145_tree = 
-                    (Object)adaptor.create(ESSA145)
+                    ESSA146=(Token)match(input,ESSA,FOLLOW_ESSA_in_referencia933); 
+                    ESSA146_tree = 
+                    (Object)adaptor.create(ESSA146)
                     ;
-                    adaptor.addChild(root_0, ESSA145_tree);
+                    adaptor.addChild(root_0, ESSA146_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaSintatico.g:345:4: instanciacao
+                    // fontes/g/CanecaSintatico.g:341:4: instanciacao
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_instanciacao_in_referencia945);
-                    instanciacao146=instanciacao();
+                    pushFollow(FOLLOW_instanciacao_in_referencia938);
+                    instanciacao147=instanciacao();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, instanciacao146.getTree());
+                    adaptor.addChild(root_0, instanciacao147.getTree());
 
                     }
                     break;
                 case 4 :
-                    // fontes/g/CanecaSintatico.g:346:4: IDENTIFICADOR ( listaDeParametros )?
+                    // fontes/g/CanecaSintatico.g:342:4: IDENTIFICADOR ( listaDeParametros )?
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    IDENTIFICADOR147=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_referencia950); 
-                    IDENTIFICADOR147_tree = 
-                    (Object)adaptor.create(IDENTIFICADOR147)
+                    IDENTIFICADOR148=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_referencia943); 
+                    IDENTIFICADOR148_tree = 
+                    (Object)adaptor.create(IDENTIFICADOR148)
                     ;
-                    adaptor.addChild(root_0, IDENTIFICADOR147_tree);
+                    adaptor.addChild(root_0, IDENTIFICADOR148_tree);
 
 
-                    // fontes/g/CanecaSintatico.g:346:18: ( listaDeParametros )?
+                    // fontes/g/CanecaSintatico.g:342:18: ( listaDeParametros )?
                     int alt33=2;
                     int LA33_0 = input.LA(1);
 
@@ -4619,14 +4581,14 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     switch (alt33) {
                         case 1 :
-                            // fontes/g/CanecaSintatico.g:346:19: listaDeParametros
+                            // fontes/g/CanecaSintatico.g:342:19: listaDeParametros
                             {
-                            pushFollow(FOLLOW_listaDeParametros_in_referencia953);
-                            listaDeParametros148=listaDeParametros();
+                            pushFollow(FOLLOW_listaDeParametros_in_referencia946);
+                            listaDeParametros149=listaDeParametros();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, listaDeParametros148.getTree());
+                            adaptor.addChild(root_0, listaDeParametros149.getTree());
 
                             }
                             break;
@@ -4666,7 +4628,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "chamada"
-    // fontes/g/CanecaSintatico.g:349:1: chamada : ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? ;
+    // fontes/g/CanecaSintatico.g:345:1: chamada : ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? ;
     public final CanecaSintatico.chamada_return chamada() throws RecognitionException {
         CanecaSintatico.chamada_return retval = new CanecaSintatico.chamada_return();
         retval.start = input.LT(1);
@@ -4674,27 +4636,27 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set149=null;
-        Token IDENTIFICADOR150=null;
-        CanecaSintatico.listaDeParametros_return listaDeParametros151 =null;
+        Token set150=null;
+        Token IDENTIFICADOR151=null;
+        CanecaSintatico.listaDeParametros_return listaDeParametros152 =null;
 
 
-        Object set149_tree=null;
-        Object IDENTIFICADOR150_tree=null;
+        Object set150_tree=null;
+        Object IDENTIFICADOR151_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:350:2: ( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? )
-            // fontes/g/CanecaSintatico.g:350:4: ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )?
+            // fontes/g/CanecaSintatico.g:346:2: ( ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )? )
+            // fontes/g/CanecaSintatico.g:346:4: ( CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO ) IDENTIFICADOR ( listaDeParametros )?
             {
             root_0 = (Object)adaptor.nil();
 
 
-            set149=(Token)input.LT(1);
+            set150=(Token)input.LT(1);
 
             if ( (input.LA(1) >= CHAMADA_DE_CLASSE && input.LA(1) <= CHAMADA_DE_OBJETO) ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set149)
+                (Object)adaptor.create(set150)
                 );
                 state.errorRecovery=false;
             }
@@ -4704,14 +4666,14 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            IDENTIFICADOR150=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_chamada974); 
-            IDENTIFICADOR150_tree = 
-            (Object)adaptor.create(IDENTIFICADOR150)
+            IDENTIFICADOR151=(Token)match(input,IDENTIFICADOR,FOLLOW_IDENTIFICADOR_in_chamada967); 
+            IDENTIFICADOR151_tree = 
+            (Object)adaptor.create(IDENTIFICADOR151)
             ;
-            adaptor.addChild(root_0, IDENTIFICADOR150_tree);
+            adaptor.addChild(root_0, IDENTIFICADOR151_tree);
 
 
-            // fontes/g/CanecaSintatico.g:350:58: ( listaDeParametros )?
+            // fontes/g/CanecaSintatico.g:346:58: ( listaDeParametros )?
             int alt35=2;
             int LA35_0 = input.LA(1);
 
@@ -4720,14 +4682,14 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt35) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:350:59: listaDeParametros
+                    // fontes/g/CanecaSintatico.g:346:59: listaDeParametros
                     {
-                    pushFollow(FOLLOW_listaDeParametros_in_chamada977);
-                    listaDeParametros151=listaDeParametros();
+                    pushFollow(FOLLOW_listaDeParametros_in_chamada970);
+                    listaDeParametros152=listaDeParametros();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, listaDeParametros151.getTree());
+                    adaptor.addChild(root_0, listaDeParametros152.getTree());
 
                     }
                     break;
@@ -4765,7 +4727,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "instanciacao"
-    // fontes/g/CanecaSintatico.g:353:1: instanciacao : ( NOVO | NOVA ) tipo listaDeParametros ;
+    // fontes/g/CanecaSintatico.g:349:1: instanciacao : ( NOVO | NOVA ) tipo listaDeParametros ;
     public final CanecaSintatico.instanciacao_return instanciacao() throws RecognitionException {
         CanecaSintatico.instanciacao_return retval = new CanecaSintatico.instanciacao_return();
         retval.start = input.LT(1);
@@ -4773,27 +4735,27 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token set152=null;
-        CanecaSintatico.tipo_return tipo153 =null;
+        Token set153=null;
+        CanecaSintatico.tipo_return tipo154 =null;
 
-        CanecaSintatico.listaDeParametros_return listaDeParametros154 =null;
+        CanecaSintatico.listaDeParametros_return listaDeParametros155 =null;
 
 
-        Object set152_tree=null;
+        Object set153_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:354:2: ( ( NOVO | NOVA ) tipo listaDeParametros )
-            // fontes/g/CanecaSintatico.g:354:4: ( NOVO | NOVA ) tipo listaDeParametros
+            // fontes/g/CanecaSintatico.g:350:2: ( ( NOVO | NOVA ) tipo listaDeParametros )
+            // fontes/g/CanecaSintatico.g:350:4: ( NOVO | NOVA ) tipo listaDeParametros
             {
             root_0 = (Object)adaptor.nil();
 
 
-            set152=(Token)input.LT(1);
+            set153=(Token)input.LT(1);
 
             if ( (input.LA(1) >= NOVA && input.LA(1) <= NOVO) ) {
                 input.consume();
                 adaptor.addChild(root_0, 
-                (Object)adaptor.create(set152)
+                (Object)adaptor.create(set153)
                 );
                 state.errorRecovery=false;
             }
@@ -4803,19 +4765,19 @@ public TreeAdaptor getTreeAdaptor() {
             }
 
 
-            pushFollow(FOLLOW_tipo_in_instanciacao998);
-            tipo153=tipo();
+            pushFollow(FOLLOW_tipo_in_instanciacao991);
+            tipo154=tipo();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, tipo153.getTree());
+            adaptor.addChild(root_0, tipo154.getTree());
 
-            pushFollow(FOLLOW_listaDeParametros_in_instanciacao1000);
-            listaDeParametros154=listaDeParametros();
+            pushFollow(FOLLOW_listaDeParametros_in_instanciacao993);
+            listaDeParametros155=listaDeParametros();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listaDeParametros154.getTree());
+            adaptor.addChild(root_0, listaDeParametros155.getTree());
 
             }
 
@@ -4847,7 +4809,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "destruicao"
-    // fontes/g/CanecaSintatico.g:357:1: destruicao : DESTRUA expressao ;
+    // fontes/g/CanecaSintatico.g:353:1: destruicao : DESTRUA expressao ;
     public final CanecaSintatico.destruicao_return destruicao() throws RecognitionException {
         CanecaSintatico.destruicao_return retval = new CanecaSintatico.destruicao_return();
         retval.start = input.LT(1);
@@ -4855,32 +4817,32 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token DESTRUA155=null;
-        CanecaSintatico.expressao_return expressao156 =null;
+        Token DESTRUA156=null;
+        CanecaSintatico.expressao_return expressao157 =null;
 
 
-        Object DESTRUA155_tree=null;
+        Object DESTRUA156_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:358:2: ( DESTRUA expressao )
-            // fontes/g/CanecaSintatico.g:358:4: DESTRUA expressao
+            // fontes/g/CanecaSintatico.g:354:2: ( DESTRUA expressao )
+            // fontes/g/CanecaSintatico.g:354:4: DESTRUA expressao
             {
             root_0 = (Object)adaptor.nil();
 
 
-            DESTRUA155=(Token)match(input,DESTRUA,FOLLOW_DESTRUA_in_destruicao1011); 
-            DESTRUA155_tree = 
-            (Object)adaptor.create(DESTRUA155)
+            DESTRUA156=(Token)match(input,DESTRUA,FOLLOW_DESTRUA_in_destruicao1004); 
+            DESTRUA156_tree = 
+            (Object)adaptor.create(DESTRUA156)
             ;
-            adaptor.addChild(root_0, DESTRUA155_tree);
+            adaptor.addChild(root_0, DESTRUA156_tree);
 
 
-            pushFollow(FOLLOW_expressao_in_destruicao1013);
-            expressao156=expressao();
+            pushFollow(FOLLOW_expressao_in_destruicao1006);
+            expressao157=expressao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressao156.getTree());
+            adaptor.addChild(root_0, expressao157.getTree());
 
             }
 
@@ -4912,7 +4874,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "retorno"
-    // fontes/g/CanecaSintatico.g:361:1: retorno : RETORNE expressao ;
+    // fontes/g/CanecaSintatico.g:357:1: retorno : RETORNE expressao ;
     public final CanecaSintatico.retorno_return retorno() throws RecognitionException {
         CanecaSintatico.retorno_return retval = new CanecaSintatico.retorno_return();
         retval.start = input.LT(1);
@@ -4920,32 +4882,32 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token RETORNE157=null;
-        CanecaSintatico.expressao_return expressao158 =null;
+        Token RETORNE158=null;
+        CanecaSintatico.expressao_return expressao159 =null;
 
 
-        Object RETORNE157_tree=null;
+        Object RETORNE158_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:362:2: ( RETORNE expressao )
-            // fontes/g/CanecaSintatico.g:362:4: RETORNE expressao
+            // fontes/g/CanecaSintatico.g:358:2: ( RETORNE expressao )
+            // fontes/g/CanecaSintatico.g:358:4: RETORNE expressao
             {
             root_0 = (Object)adaptor.nil();
 
 
-            RETORNE157=(Token)match(input,RETORNE,FOLLOW_RETORNE_in_retorno1025); 
-            RETORNE157_tree = 
-            (Object)adaptor.create(RETORNE157)
+            RETORNE158=(Token)match(input,RETORNE,FOLLOW_RETORNE_in_retorno1018); 
+            RETORNE158_tree = 
+            (Object)adaptor.create(RETORNE158)
             ;
-            adaptor.addChild(root_0, RETORNE157_tree);
+            adaptor.addChild(root_0, RETORNE158_tree);
 
 
-            pushFollow(FOLLOW_expressao_in_retorno1027);
-            expressao158=expressao();
+            pushFollow(FOLLOW_expressao_in_retorno1020);
+            expressao159=expressao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressao158.getTree());
+            adaptor.addChild(root_0, expressao159.getTree());
 
             }
 
@@ -4977,7 +4939,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "se"
-    // fontes/g/CanecaSintatico.g:365:1: se : SE PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes ( SENAO blocoDeInstrucoes )? ;
+    // fontes/g/CanecaSintatico.g:361:1: se : SE PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes ( SENAO blocoDeInstrucoes )? ;
     public final CanecaSintatico.se_return se() throws RecognitionException {
         CanecaSintatico.se_return retval = new CanecaSintatico.se_return();
         retval.start = input.LT(1);
@@ -4985,65 +4947,65 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token SE159=null;
-        Token PARENTESE_ESQUERDO160=null;
-        Token PARENTESE_DIREITO162=null;
-        Token SENAO164=null;
-        CanecaSintatico.expressao_return expressao161 =null;
+        Token SE160=null;
+        Token PARENTESE_ESQUERDO161=null;
+        Token PARENTESE_DIREITO163=null;
+        Token SENAO165=null;
+        CanecaSintatico.expressao_return expressao162 =null;
 
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes163 =null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes164 =null;
 
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes165 =null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes166 =null;
 
 
-        Object SE159_tree=null;
-        Object PARENTESE_ESQUERDO160_tree=null;
-        Object PARENTESE_DIREITO162_tree=null;
-        Object SENAO164_tree=null;
+        Object SE160_tree=null;
+        Object PARENTESE_ESQUERDO161_tree=null;
+        Object PARENTESE_DIREITO163_tree=null;
+        Object SENAO165_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:366:2: ( SE PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes ( SENAO blocoDeInstrucoes )? )
-            // fontes/g/CanecaSintatico.g:366:4: SE PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes ( SENAO blocoDeInstrucoes )?
+            // fontes/g/CanecaSintatico.g:362:2: ( SE PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes ( SENAO blocoDeInstrucoes )? )
+            // fontes/g/CanecaSintatico.g:362:4: SE PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes ( SENAO blocoDeInstrucoes )?
             {
             root_0 = (Object)adaptor.nil();
 
 
-            SE159=(Token)match(input,SE,FOLLOW_SE_in_se1038); 
-            SE159_tree = 
-            (Object)adaptor.create(SE159)
+            SE160=(Token)match(input,SE,FOLLOW_SE_in_se1031); 
+            SE160_tree = 
+            (Object)adaptor.create(SE160)
             ;
-            adaptor.addChild(root_0, SE159_tree);
+            adaptor.addChild(root_0, SE160_tree);
 
 
-            PARENTESE_ESQUERDO160=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_se1040); 
-            PARENTESE_ESQUERDO160_tree = 
-            (Object)adaptor.create(PARENTESE_ESQUERDO160)
+            PARENTESE_ESQUERDO161=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_se1033); 
+            PARENTESE_ESQUERDO161_tree = 
+            (Object)adaptor.create(PARENTESE_ESQUERDO161)
             ;
-            adaptor.addChild(root_0, PARENTESE_ESQUERDO160_tree);
+            adaptor.addChild(root_0, PARENTESE_ESQUERDO161_tree);
 
 
-            pushFollow(FOLLOW_expressao_in_se1042);
-            expressao161=expressao();
+            pushFollow(FOLLOW_expressao_in_se1035);
+            expressao162=expressao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressao161.getTree());
+            adaptor.addChild(root_0, expressao162.getTree());
 
-            PARENTESE_DIREITO162=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_se1044); 
-            PARENTESE_DIREITO162_tree = 
-            (Object)adaptor.create(PARENTESE_DIREITO162)
+            PARENTESE_DIREITO163=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_se1037); 
+            PARENTESE_DIREITO163_tree = 
+            (Object)adaptor.create(PARENTESE_DIREITO163)
             ;
-            adaptor.addChild(root_0, PARENTESE_DIREITO162_tree);
+            adaptor.addChild(root_0, PARENTESE_DIREITO163_tree);
 
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_se1046);
-            blocoDeInstrucoes163=blocoDeInstrucoes();
+            pushFollow(FOLLOW_blocoDeInstrucoes_in_se1039);
+            blocoDeInstrucoes164=blocoDeInstrucoes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, blocoDeInstrucoes163.getTree());
+            adaptor.addChild(root_0, blocoDeInstrucoes164.getTree());
 
-            // fontes/g/CanecaSintatico.g:366:72: ( SENAO blocoDeInstrucoes )?
+            // fontes/g/CanecaSintatico.g:362:72: ( SENAO blocoDeInstrucoes )?
             int alt36=2;
             int LA36_0 = input.LA(1);
 
@@ -5052,21 +5014,21 @@ public TreeAdaptor getTreeAdaptor() {
             }
             switch (alt36) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:366:73: SENAO blocoDeInstrucoes
+                    // fontes/g/CanecaSintatico.g:362:73: SENAO blocoDeInstrucoes
                     {
-                    SENAO164=(Token)match(input,SENAO,FOLLOW_SENAO_in_se1049); 
-                    SENAO164_tree = 
-                    (Object)adaptor.create(SENAO164)
+                    SENAO165=(Token)match(input,SENAO,FOLLOW_SENAO_in_se1042); 
+                    SENAO165_tree = 
+                    (Object)adaptor.create(SENAO165)
                     ;
-                    adaptor.addChild(root_0, SENAO164_tree);
+                    adaptor.addChild(root_0, SENAO165_tree);
 
 
-                    pushFollow(FOLLOW_blocoDeInstrucoes_in_se1051);
-                    blocoDeInstrucoes165=blocoDeInstrucoes();
+                    pushFollow(FOLLOW_blocoDeInstrucoes_in_se1044);
+                    blocoDeInstrucoes166=blocoDeInstrucoes();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, blocoDeInstrucoes165.getTree());
+                    adaptor.addChild(root_0, blocoDeInstrucoes166.getTree());
 
                     }
                     break;
@@ -5104,7 +5066,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "para"
-    // fontes/g/CanecaSintatico.g:369:1: para : PARA PARENTESE_ESQUERDO expressao TERMINADOR expressao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes ;
+    // fontes/g/CanecaSintatico.g:365:1: para : PARA PARENTESE_ESQUERDO expressao TERMINADOR expressao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes ;
     public final CanecaSintatico.para_return para() throws RecognitionException {
         CanecaSintatico.para_return retval = new CanecaSintatico.para_return();
         retval.start = input.LT(1);
@@ -5112,95 +5074,95 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token PARA166=null;
-        Token PARENTESE_ESQUERDO167=null;
-        Token TERMINADOR169=null;
-        Token TERMINADOR171=null;
-        Token PARENTESE_DIREITO173=null;
-        CanecaSintatico.expressao_return expressao168 =null;
+        Token PARA167=null;
+        Token PARENTESE_ESQUERDO168=null;
+        Token TERMINADOR170=null;
+        Token TERMINADOR172=null;
+        Token PARENTESE_DIREITO174=null;
+        CanecaSintatico.expressao_return expressao169 =null;
 
-        CanecaSintatico.expressao_return expressao170 =null;
+        CanecaSintatico.expressao_return expressao171 =null;
 
-        CanecaSintatico.expressao_return expressao172 =null;
+        CanecaSintatico.expressao_return expressao173 =null;
 
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes174 =null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes175 =null;
 
 
-        Object PARA166_tree=null;
-        Object PARENTESE_ESQUERDO167_tree=null;
-        Object TERMINADOR169_tree=null;
-        Object TERMINADOR171_tree=null;
-        Object PARENTESE_DIREITO173_tree=null;
+        Object PARA167_tree=null;
+        Object PARENTESE_ESQUERDO168_tree=null;
+        Object TERMINADOR170_tree=null;
+        Object TERMINADOR172_tree=null;
+        Object PARENTESE_DIREITO174_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:370:2: ( PARA PARENTESE_ESQUERDO expressao TERMINADOR expressao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes )
-            // fontes/g/CanecaSintatico.g:370:4: PARA PARENTESE_ESQUERDO expressao TERMINADOR expressao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes
+            // fontes/g/CanecaSintatico.g:366:2: ( PARA PARENTESE_ESQUERDO expressao TERMINADOR expressao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes )
+            // fontes/g/CanecaSintatico.g:366:4: PARA PARENTESE_ESQUERDO expressao TERMINADOR expressao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes
             {
             root_0 = (Object)adaptor.nil();
 
 
-            PARA166=(Token)match(input,PARA,FOLLOW_PARA_in_para1064); 
-            PARA166_tree = 
-            (Object)adaptor.create(PARA166)
+            PARA167=(Token)match(input,PARA,FOLLOW_PARA_in_para1057); 
+            PARA167_tree = 
+            (Object)adaptor.create(PARA167)
             ;
-            adaptor.addChild(root_0, PARA166_tree);
+            adaptor.addChild(root_0, PARA167_tree);
 
 
-            PARENTESE_ESQUERDO167=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_para1066); 
-            PARENTESE_ESQUERDO167_tree = 
-            (Object)adaptor.create(PARENTESE_ESQUERDO167)
+            PARENTESE_ESQUERDO168=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_para1059); 
+            PARENTESE_ESQUERDO168_tree = 
+            (Object)adaptor.create(PARENTESE_ESQUERDO168)
             ;
-            adaptor.addChild(root_0, PARENTESE_ESQUERDO167_tree);
+            adaptor.addChild(root_0, PARENTESE_ESQUERDO168_tree);
 
 
-            pushFollow(FOLLOW_expressao_in_para1068);
-            expressao168=expressao();
+            pushFollow(FOLLOW_expressao_in_para1061);
+            expressao169=expressao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressao168.getTree());
+            adaptor.addChild(root_0, expressao169.getTree());
 
-            TERMINADOR169=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_para1070); 
-            TERMINADOR169_tree = 
-            (Object)adaptor.create(TERMINADOR169)
+            TERMINADOR170=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_para1063); 
+            TERMINADOR170_tree = 
+            (Object)adaptor.create(TERMINADOR170)
             ;
-            adaptor.addChild(root_0, TERMINADOR169_tree);
+            adaptor.addChild(root_0, TERMINADOR170_tree);
 
 
-            pushFollow(FOLLOW_expressao_in_para1072);
-            expressao170=expressao();
+            pushFollow(FOLLOW_expressao_in_para1065);
+            expressao171=expressao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressao170.getTree());
+            adaptor.addChild(root_0, expressao171.getTree());
 
-            TERMINADOR171=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_para1074); 
-            TERMINADOR171_tree = 
-            (Object)adaptor.create(TERMINADOR171)
+            TERMINADOR172=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_para1067); 
+            TERMINADOR172_tree = 
+            (Object)adaptor.create(TERMINADOR172)
             ;
-            adaptor.addChild(root_0, TERMINADOR171_tree);
+            adaptor.addChild(root_0, TERMINADOR172_tree);
 
 
-            pushFollow(FOLLOW_expressao_in_para1076);
-            expressao172=expressao();
+            pushFollow(FOLLOW_expressao_in_para1069);
+            expressao173=expressao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressao172.getTree());
+            adaptor.addChild(root_0, expressao173.getTree());
 
-            PARENTESE_DIREITO173=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_para1078); 
-            PARENTESE_DIREITO173_tree = 
-            (Object)adaptor.create(PARENTESE_DIREITO173)
+            PARENTESE_DIREITO174=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_para1071); 
+            PARENTESE_DIREITO174_tree = 
+            (Object)adaptor.create(PARENTESE_DIREITO174)
             ;
-            adaptor.addChild(root_0, PARENTESE_DIREITO173_tree);
+            adaptor.addChild(root_0, PARENTESE_DIREITO174_tree);
 
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_para1080);
-            blocoDeInstrucoes174=blocoDeInstrucoes();
+            pushFollow(FOLLOW_blocoDeInstrucoes_in_para1073);
+            blocoDeInstrucoes175=blocoDeInstrucoes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, blocoDeInstrucoes174.getTree());
+            adaptor.addChild(root_0, blocoDeInstrucoes175.getTree());
 
             }
 
@@ -5232,7 +5194,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "repita"
-    // fontes/g/CanecaSintatico.g:373:1: repita : REPITA PARENTESE_ESQUERDO declaracao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes ;
+    // fontes/g/CanecaSintatico.g:369:1: repita : REPITA PARENTESE_ESQUERDO declaracao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes ;
     public final CanecaSintatico.repita_return repita() throws RecognitionException {
         CanecaSintatico.repita_return retval = new CanecaSintatico.repita_return();
         retval.start = input.LT(1);
@@ -5240,77 +5202,77 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token REPITA175=null;
-        Token PARENTESE_ESQUERDO176=null;
-        Token TERMINADOR178=null;
-        Token PARENTESE_DIREITO180=null;
-        CanecaSintatico.declaracao_return declaracao177 =null;
+        Token REPITA176=null;
+        Token PARENTESE_ESQUERDO177=null;
+        Token TERMINADOR179=null;
+        Token PARENTESE_DIREITO181=null;
+        CanecaSintatico.declaracao_return declaracao178 =null;
 
-        CanecaSintatico.expressao_return expressao179 =null;
+        CanecaSintatico.expressao_return expressao180 =null;
 
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes181 =null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes182 =null;
 
 
-        Object REPITA175_tree=null;
-        Object PARENTESE_ESQUERDO176_tree=null;
-        Object TERMINADOR178_tree=null;
-        Object PARENTESE_DIREITO180_tree=null;
+        Object REPITA176_tree=null;
+        Object PARENTESE_ESQUERDO177_tree=null;
+        Object TERMINADOR179_tree=null;
+        Object PARENTESE_DIREITO181_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:374:2: ( REPITA PARENTESE_ESQUERDO declaracao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes )
-            // fontes/g/CanecaSintatico.g:374:4: REPITA PARENTESE_ESQUERDO declaracao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes
+            // fontes/g/CanecaSintatico.g:370:2: ( REPITA PARENTESE_ESQUERDO declaracao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes )
+            // fontes/g/CanecaSintatico.g:370:4: REPITA PARENTESE_ESQUERDO declaracao TERMINADOR expressao PARENTESE_DIREITO blocoDeInstrucoes
             {
             root_0 = (Object)adaptor.nil();
 
 
-            REPITA175=(Token)match(input,REPITA,FOLLOW_REPITA_in_repita1091); 
-            REPITA175_tree = 
-            (Object)adaptor.create(REPITA175)
+            REPITA176=(Token)match(input,REPITA,FOLLOW_REPITA_in_repita1084); 
+            REPITA176_tree = 
+            (Object)adaptor.create(REPITA176)
             ;
-            adaptor.addChild(root_0, REPITA175_tree);
+            adaptor.addChild(root_0, REPITA176_tree);
 
 
-            PARENTESE_ESQUERDO176=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_repita1093); 
-            PARENTESE_ESQUERDO176_tree = 
-            (Object)adaptor.create(PARENTESE_ESQUERDO176)
+            PARENTESE_ESQUERDO177=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_repita1086); 
+            PARENTESE_ESQUERDO177_tree = 
+            (Object)adaptor.create(PARENTESE_ESQUERDO177)
             ;
-            adaptor.addChild(root_0, PARENTESE_ESQUERDO176_tree);
+            adaptor.addChild(root_0, PARENTESE_ESQUERDO177_tree);
 
 
-            pushFollow(FOLLOW_declaracao_in_repita1095);
-            declaracao177=declaracao();
+            pushFollow(FOLLOW_declaracao_in_repita1088);
+            declaracao178=declaracao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, declaracao177.getTree());
+            adaptor.addChild(root_0, declaracao178.getTree());
 
-            TERMINADOR178=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_repita1097); 
-            TERMINADOR178_tree = 
-            (Object)adaptor.create(TERMINADOR178)
+            TERMINADOR179=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_repita1090); 
+            TERMINADOR179_tree = 
+            (Object)adaptor.create(TERMINADOR179)
             ;
-            adaptor.addChild(root_0, TERMINADOR178_tree);
+            adaptor.addChild(root_0, TERMINADOR179_tree);
 
 
-            pushFollow(FOLLOW_expressao_in_repita1099);
-            expressao179=expressao();
+            pushFollow(FOLLOW_expressao_in_repita1092);
+            expressao180=expressao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressao179.getTree());
+            adaptor.addChild(root_0, expressao180.getTree());
 
-            PARENTESE_DIREITO180=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_repita1101); 
-            PARENTESE_DIREITO180_tree = 
-            (Object)adaptor.create(PARENTESE_DIREITO180)
+            PARENTESE_DIREITO181=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_repita1094); 
+            PARENTESE_DIREITO181_tree = 
+            (Object)adaptor.create(PARENTESE_DIREITO181)
             ;
-            adaptor.addChild(root_0, PARENTESE_DIREITO180_tree);
+            adaptor.addChild(root_0, PARENTESE_DIREITO181_tree);
 
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_repita1103);
-            blocoDeInstrucoes181=blocoDeInstrucoes();
+            pushFollow(FOLLOW_blocoDeInstrucoes_in_repita1096);
+            blocoDeInstrucoes182=blocoDeInstrucoes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, blocoDeInstrucoes181.getTree());
+            adaptor.addChild(root_0, blocoDeInstrucoes182.getTree());
 
             }
 
@@ -5342,7 +5304,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "enquanto"
-    // fontes/g/CanecaSintatico.g:377:1: enquanto : ENQUANTO PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes ;
+    // fontes/g/CanecaSintatico.g:373:1: enquanto : ENQUANTO PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes ;
     public final CanecaSintatico.enquanto_return enquanto() throws RecognitionException {
         CanecaSintatico.enquanto_return retval = new CanecaSintatico.enquanto_return();
         retval.start = input.LT(1);
@@ -5350,59 +5312,59 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token ENQUANTO182=null;
-        Token PARENTESE_ESQUERDO183=null;
-        Token PARENTESE_DIREITO185=null;
-        CanecaSintatico.expressao_return expressao184 =null;
+        Token ENQUANTO183=null;
+        Token PARENTESE_ESQUERDO184=null;
+        Token PARENTESE_DIREITO186=null;
+        CanecaSintatico.expressao_return expressao185 =null;
 
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes186 =null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes187 =null;
 
 
-        Object ENQUANTO182_tree=null;
-        Object PARENTESE_ESQUERDO183_tree=null;
-        Object PARENTESE_DIREITO185_tree=null;
+        Object ENQUANTO183_tree=null;
+        Object PARENTESE_ESQUERDO184_tree=null;
+        Object PARENTESE_DIREITO186_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:378:2: ( ENQUANTO PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes )
-            // fontes/g/CanecaSintatico.g:378:4: ENQUANTO PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes
+            // fontes/g/CanecaSintatico.g:374:2: ( ENQUANTO PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes )
+            // fontes/g/CanecaSintatico.g:374:4: ENQUANTO PARENTESE_ESQUERDO expressao PARENTESE_DIREITO blocoDeInstrucoes
             {
             root_0 = (Object)adaptor.nil();
 
 
-            ENQUANTO182=(Token)match(input,ENQUANTO,FOLLOW_ENQUANTO_in_enquanto1114); 
-            ENQUANTO182_tree = 
-            (Object)adaptor.create(ENQUANTO182)
+            ENQUANTO183=(Token)match(input,ENQUANTO,FOLLOW_ENQUANTO_in_enquanto1107); 
+            ENQUANTO183_tree = 
+            (Object)adaptor.create(ENQUANTO183)
             ;
-            adaptor.addChild(root_0, ENQUANTO182_tree);
+            adaptor.addChild(root_0, ENQUANTO183_tree);
 
 
-            PARENTESE_ESQUERDO183=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_enquanto1116); 
-            PARENTESE_ESQUERDO183_tree = 
-            (Object)adaptor.create(PARENTESE_ESQUERDO183)
+            PARENTESE_ESQUERDO184=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_enquanto1109); 
+            PARENTESE_ESQUERDO184_tree = 
+            (Object)adaptor.create(PARENTESE_ESQUERDO184)
             ;
-            adaptor.addChild(root_0, PARENTESE_ESQUERDO183_tree);
+            adaptor.addChild(root_0, PARENTESE_ESQUERDO184_tree);
 
 
-            pushFollow(FOLLOW_expressao_in_enquanto1118);
-            expressao184=expressao();
+            pushFollow(FOLLOW_expressao_in_enquanto1111);
+            expressao185=expressao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressao184.getTree());
+            adaptor.addChild(root_0, expressao185.getTree());
 
-            PARENTESE_DIREITO185=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_enquanto1120); 
-            PARENTESE_DIREITO185_tree = 
-            (Object)adaptor.create(PARENTESE_DIREITO185)
+            PARENTESE_DIREITO186=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_enquanto1113); 
+            PARENTESE_DIREITO186_tree = 
+            (Object)adaptor.create(PARENTESE_DIREITO186)
             ;
-            adaptor.addChild(root_0, PARENTESE_DIREITO185_tree);
+            adaptor.addChild(root_0, PARENTESE_DIREITO186_tree);
 
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_enquanto1122);
-            blocoDeInstrucoes186=blocoDeInstrucoes();
+            pushFollow(FOLLOW_blocoDeInstrucoes_in_enquanto1115);
+            blocoDeInstrucoes187=blocoDeInstrucoes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, blocoDeInstrucoes186.getTree());
+            adaptor.addChild(root_0, blocoDeInstrucoes187.getTree());
 
             }
 
@@ -5434,7 +5396,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "tente"
-    // fontes/g/CanecaSintatico.g:381:1: tente : TENTE blocoDeInstrucoes listaDeCapturas ;
+    // fontes/g/CanecaSintatico.g:377:1: tente : TENTE blocoDeInstrucoes listaDeCapturas ;
     public final CanecaSintatico.tente_return tente() throws RecognitionException {
         CanecaSintatico.tente_return retval = new CanecaSintatico.tente_return();
         retval.start = input.LT(1);
@@ -5442,41 +5404,41 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token TENTE187=null;
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes188 =null;
+        Token TENTE188=null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes189 =null;
 
-        CanecaSintatico.listaDeCapturas_return listaDeCapturas189 =null;
+        CanecaSintatico.listaDeCapturas_return listaDeCapturas190 =null;
 
 
-        Object TENTE187_tree=null;
+        Object TENTE188_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:382:2: ( TENTE blocoDeInstrucoes listaDeCapturas )
-            // fontes/g/CanecaSintatico.g:382:4: TENTE blocoDeInstrucoes listaDeCapturas
+            // fontes/g/CanecaSintatico.g:378:2: ( TENTE blocoDeInstrucoes listaDeCapturas )
+            // fontes/g/CanecaSintatico.g:378:4: TENTE blocoDeInstrucoes listaDeCapturas
             {
             root_0 = (Object)adaptor.nil();
 
 
-            TENTE187=(Token)match(input,TENTE,FOLLOW_TENTE_in_tente1133); 
-            TENTE187_tree = 
-            (Object)adaptor.create(TENTE187)
+            TENTE188=(Token)match(input,TENTE,FOLLOW_TENTE_in_tente1126); 
+            TENTE188_tree = 
+            (Object)adaptor.create(TENTE188)
             ;
-            adaptor.addChild(root_0, TENTE187_tree);
+            adaptor.addChild(root_0, TENTE188_tree);
 
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_tente1135);
-            blocoDeInstrucoes188=blocoDeInstrucoes();
-
-            state._fsp--;
-
-            adaptor.addChild(root_0, blocoDeInstrucoes188.getTree());
-
-            pushFollow(FOLLOW_listaDeCapturas_in_tente1137);
-            listaDeCapturas189=listaDeCapturas();
+            pushFollow(FOLLOW_blocoDeInstrucoes_in_tente1128);
+            blocoDeInstrucoes189=blocoDeInstrucoes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, listaDeCapturas189.getTree());
+            adaptor.addChild(root_0, blocoDeInstrucoes189.getTree());
+
+            pushFollow(FOLLOW_listaDeCapturas_in_tente1130);
+            listaDeCapturas190=listaDeCapturas();
+
+            state._fsp--;
+
+            adaptor.addChild(root_0, listaDeCapturas190.getTree());
 
             }
 
@@ -5508,7 +5470,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "capture"
-    // fontes/g/CanecaSintatico.g:385:1: capture : CAPTURE PARENTESE_ESQUERDO declaracao PARENTESE_DIREITO blocoDeInstrucoes ;
+    // fontes/g/CanecaSintatico.g:381:1: capture : CAPTURE PARENTESE_ESQUERDO declaracao PARENTESE_DIREITO blocoDeInstrucoes ;
     public final CanecaSintatico.capture_return capture() throws RecognitionException {
         CanecaSintatico.capture_return retval = new CanecaSintatico.capture_return();
         retval.start = input.LT(1);
@@ -5516,59 +5478,59 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token CAPTURE190=null;
-        Token PARENTESE_ESQUERDO191=null;
-        Token PARENTESE_DIREITO193=null;
-        CanecaSintatico.declaracao_return declaracao192 =null;
+        Token CAPTURE191=null;
+        Token PARENTESE_ESQUERDO192=null;
+        Token PARENTESE_DIREITO194=null;
+        CanecaSintatico.declaracao_return declaracao193 =null;
 
-        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes194 =null;
+        CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes195 =null;
 
 
-        Object CAPTURE190_tree=null;
-        Object PARENTESE_ESQUERDO191_tree=null;
-        Object PARENTESE_DIREITO193_tree=null;
+        Object CAPTURE191_tree=null;
+        Object PARENTESE_ESQUERDO192_tree=null;
+        Object PARENTESE_DIREITO194_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:386:2: ( CAPTURE PARENTESE_ESQUERDO declaracao PARENTESE_DIREITO blocoDeInstrucoes )
-            // fontes/g/CanecaSintatico.g:386:4: CAPTURE PARENTESE_ESQUERDO declaracao PARENTESE_DIREITO blocoDeInstrucoes
+            // fontes/g/CanecaSintatico.g:382:2: ( CAPTURE PARENTESE_ESQUERDO declaracao PARENTESE_DIREITO blocoDeInstrucoes )
+            // fontes/g/CanecaSintatico.g:382:4: CAPTURE PARENTESE_ESQUERDO declaracao PARENTESE_DIREITO blocoDeInstrucoes
             {
             root_0 = (Object)adaptor.nil();
 
 
-            CAPTURE190=(Token)match(input,CAPTURE,FOLLOW_CAPTURE_in_capture1148); 
-            CAPTURE190_tree = 
-            (Object)adaptor.create(CAPTURE190)
+            CAPTURE191=(Token)match(input,CAPTURE,FOLLOW_CAPTURE_in_capture1141); 
+            CAPTURE191_tree = 
+            (Object)adaptor.create(CAPTURE191)
             ;
-            adaptor.addChild(root_0, CAPTURE190_tree);
+            adaptor.addChild(root_0, CAPTURE191_tree);
 
 
-            PARENTESE_ESQUERDO191=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_capture1150); 
-            PARENTESE_ESQUERDO191_tree = 
-            (Object)adaptor.create(PARENTESE_ESQUERDO191)
+            PARENTESE_ESQUERDO192=(Token)match(input,PARENTESE_ESQUERDO,FOLLOW_PARENTESE_ESQUERDO_in_capture1143); 
+            PARENTESE_ESQUERDO192_tree = 
+            (Object)adaptor.create(PARENTESE_ESQUERDO192)
             ;
-            adaptor.addChild(root_0, PARENTESE_ESQUERDO191_tree);
+            adaptor.addChild(root_0, PARENTESE_ESQUERDO192_tree);
 
 
-            pushFollow(FOLLOW_declaracao_in_capture1152);
-            declaracao192=declaracao();
+            pushFollow(FOLLOW_declaracao_in_capture1145);
+            declaracao193=declaracao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, declaracao192.getTree());
+            adaptor.addChild(root_0, declaracao193.getTree());
 
-            PARENTESE_DIREITO193=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_capture1154); 
-            PARENTESE_DIREITO193_tree = 
-            (Object)adaptor.create(PARENTESE_DIREITO193)
+            PARENTESE_DIREITO194=(Token)match(input,PARENTESE_DIREITO,FOLLOW_PARENTESE_DIREITO_in_capture1147); 
+            PARENTESE_DIREITO194_tree = 
+            (Object)adaptor.create(PARENTESE_DIREITO194)
             ;
-            adaptor.addChild(root_0, PARENTESE_DIREITO193_tree);
+            adaptor.addChild(root_0, PARENTESE_DIREITO194_tree);
 
 
-            pushFollow(FOLLOW_blocoDeInstrucoes_in_capture1156);
-            blocoDeInstrucoes194=blocoDeInstrucoes();
+            pushFollow(FOLLOW_blocoDeInstrucoes_in_capture1149);
+            blocoDeInstrucoes195=blocoDeInstrucoes();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, blocoDeInstrucoes194.getTree());
+            adaptor.addChild(root_0, blocoDeInstrucoes195.getTree());
 
             }
 
@@ -5600,7 +5562,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "lance"
-    // fontes/g/CanecaSintatico.g:389:1: lance : LANCE expressao ;
+    // fontes/g/CanecaSintatico.g:385:1: lance : LANCE expressao ;
     public final CanecaSintatico.lance_return lance() throws RecognitionException {
         CanecaSintatico.lance_return retval = new CanecaSintatico.lance_return();
         retval.start = input.LT(1);
@@ -5608,32 +5570,32 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token LANCE195=null;
-        CanecaSintatico.expressao_return expressao196 =null;
+        Token LANCE196=null;
+        CanecaSintatico.expressao_return expressao197 =null;
 
 
-        Object LANCE195_tree=null;
+        Object LANCE196_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:390:2: ( LANCE expressao )
-            // fontes/g/CanecaSintatico.g:390:4: LANCE expressao
+            // fontes/g/CanecaSintatico.g:386:2: ( LANCE expressao )
+            // fontes/g/CanecaSintatico.g:386:4: LANCE expressao
             {
             root_0 = (Object)adaptor.nil();
 
 
-            LANCE195=(Token)match(input,LANCE,FOLLOW_LANCE_in_lance1167); 
-            LANCE195_tree = 
-            (Object)adaptor.create(LANCE195)
+            LANCE196=(Token)match(input,LANCE,FOLLOW_LANCE_in_lance1160); 
+            LANCE196_tree = 
+            (Object)adaptor.create(LANCE196)
             ;
-            adaptor.addChild(root_0, LANCE195_tree);
+            adaptor.addChild(root_0, LANCE196_tree);
 
 
-            pushFollow(FOLLOW_expressao_in_lance1169);
-            expressao196=expressao();
+            pushFollow(FOLLOW_expressao_in_lance1162);
+            expressao197=expressao();
 
             state._fsp--;
 
-            adaptor.addChild(root_0, expressao196.getTree());
+            adaptor.addChild(root_0, expressao197.getTree());
 
             }
 
@@ -5665,7 +5627,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "instrucao"
-    // fontes/g/CanecaSintatico.g:393:1: instrucao : ( ( options {k=2; } : expressao TERMINADOR | declaracaoComAtribuicaoOpcional TERMINADOR ) | destruicao TERMINADOR | retorno TERMINADOR | se | para | repita | enquanto | tente | lance TERMINADOR );
+    // fontes/g/CanecaSintatico.g:389:1: instrucao : ( ( options {k=2; } : expressao TERMINADOR | declaracaoComAtribuicaoOpcional TERMINADOR ) | destruicao TERMINADOR | retorno TERMINADOR | se | para | repita | enquanto | tente | lance TERMINADOR );
     public final CanecaSintatico.instrucao_return instrucao() throws RecognitionException {
         CanecaSintatico.instrucao_return retval = new CanecaSintatico.instrucao_return();
         retval.start = input.LT(1);
@@ -5673,40 +5635,40 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token TERMINADOR198=null;
-        Token TERMINADOR200=null;
-        Token TERMINADOR202=null;
-        Token TERMINADOR204=null;
-        Token TERMINADOR211=null;
-        CanecaSintatico.expressao_return expressao197 =null;
+        Token TERMINADOR199=null;
+        Token TERMINADOR201=null;
+        Token TERMINADOR203=null;
+        Token TERMINADOR205=null;
+        Token TERMINADOR212=null;
+        CanecaSintatico.expressao_return expressao198 =null;
 
-        CanecaSintatico.declaracaoComAtribuicaoOpcional_return declaracaoComAtribuicaoOpcional199 =null;
+        CanecaSintatico.declaracaoComAtribuicaoOpcional_return declaracaoComAtribuicaoOpcional200 =null;
 
-        CanecaSintatico.destruicao_return destruicao201 =null;
+        CanecaSintatico.destruicao_return destruicao202 =null;
 
-        CanecaSintatico.retorno_return retorno203 =null;
+        CanecaSintatico.retorno_return retorno204 =null;
 
-        CanecaSintatico.se_return se205 =null;
+        CanecaSintatico.se_return se206 =null;
 
-        CanecaSintatico.para_return para206 =null;
+        CanecaSintatico.para_return para207 =null;
 
-        CanecaSintatico.repita_return repita207 =null;
+        CanecaSintatico.repita_return repita208 =null;
 
-        CanecaSintatico.enquanto_return enquanto208 =null;
+        CanecaSintatico.enquanto_return enquanto209 =null;
 
-        CanecaSintatico.tente_return tente209 =null;
+        CanecaSintatico.tente_return tente210 =null;
 
-        CanecaSintatico.lance_return lance210 =null;
+        CanecaSintatico.lance_return lance211 =null;
 
 
-        Object TERMINADOR198_tree=null;
-        Object TERMINADOR200_tree=null;
-        Object TERMINADOR202_tree=null;
-        Object TERMINADOR204_tree=null;
-        Object TERMINADOR211_tree=null;
+        Object TERMINADOR199_tree=null;
+        Object TERMINADOR201_tree=null;
+        Object TERMINADOR203_tree=null;
+        Object TERMINADOR205_tree=null;
+        Object TERMINADOR212_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:394:2: ( ( options {k=2; } : expressao TERMINADOR | declaracaoComAtribuicaoOpcional TERMINADOR ) | destruicao TERMINADOR | retorno TERMINADOR | se | para | repita | enquanto | tente | lance TERMINADOR )
+            // fontes/g/CanecaSintatico.g:390:2: ( ( options {k=2; } : expressao TERMINADOR | declaracaoComAtribuicaoOpcional TERMINADOR ) | destruicao TERMINADOR | retorno TERMINADOR | se | para | repita | enquanto | tente | lance TERMINADOR )
             int alt38=9;
             switch ( input.LA(1) ) {
             case CONSTANTE_INTEIRA:
@@ -5777,12 +5739,12 @@ public TreeAdaptor getTreeAdaptor() {
 
             switch (alt38) {
                 case 1 :
-                    // fontes/g/CanecaSintatico.g:395:2: ( options {k=2; } : expressao TERMINADOR | declaracaoComAtribuicaoOpcional TERMINADOR )
+                    // fontes/g/CanecaSintatico.g:391:2: ( options {k=2; } : expressao TERMINADOR | declaracaoComAtribuicaoOpcional TERMINADOR )
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    // fontes/g/CanecaSintatico.g:395:2: ( options {k=2; } : expressao TERMINADOR | declaracaoComAtribuicaoOpcional TERMINADOR )
+                    // fontes/g/CanecaSintatico.g:391:2: ( options {k=2; } : expressao TERMINADOR | declaracaoComAtribuicaoOpcional TERMINADOR )
                     int alt37=2;
                     int LA37_0 = input.LA(1);
 
@@ -5815,39 +5777,39 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     switch (alt37) {
                         case 1 :
-                            // fontes/g/CanecaSintatico.g:396:5: expressao TERMINADOR
+                            // fontes/g/CanecaSintatico.g:392:5: expressao TERMINADOR
                             {
-                            pushFollow(FOLLOW_expressao_in_instrucao1197);
-                            expressao197=expressao();
+                            pushFollow(FOLLOW_expressao_in_instrucao1190);
+                            expressao198=expressao();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, expressao197.getTree());
+                            adaptor.addChild(root_0, expressao198.getTree());
 
-                            TERMINADOR198=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1199); 
-                            TERMINADOR198_tree = 
-                            (Object)adaptor.create(TERMINADOR198)
+                            TERMINADOR199=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1192); 
+                            TERMINADOR199_tree = 
+                            (Object)adaptor.create(TERMINADOR199)
                             ;
-                            adaptor.addChild(root_0, TERMINADOR198_tree);
+                            adaptor.addChild(root_0, TERMINADOR199_tree);
 
 
                             }
                             break;
                         case 2 :
-                            // fontes/g/CanecaSintatico.g:397:5: declaracaoComAtribuicaoOpcional TERMINADOR
+                            // fontes/g/CanecaSintatico.g:393:5: declaracaoComAtribuicaoOpcional TERMINADOR
                             {
-                            pushFollow(FOLLOW_declaracaoComAtribuicaoOpcional_in_instrucao1205);
-                            declaracaoComAtribuicaoOpcional199=declaracaoComAtribuicaoOpcional();
+                            pushFollow(FOLLOW_declaracaoComAtribuicaoOpcional_in_instrucao1198);
+                            declaracaoComAtribuicaoOpcional200=declaracaoComAtribuicaoOpcional();
 
                             state._fsp--;
 
-                            adaptor.addChild(root_0, declaracaoComAtribuicaoOpcional199.getTree());
+                            adaptor.addChild(root_0, declaracaoComAtribuicaoOpcional200.getTree());
 
-                            TERMINADOR200=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1207); 
-                            TERMINADOR200_tree = 
-                            (Object)adaptor.create(TERMINADOR200)
+                            TERMINADOR201=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1200); 
+                            TERMINADOR201_tree = 
+                            (Object)adaptor.create(TERMINADOR201)
                             ;
-                            adaptor.addChild(root_0, TERMINADOR200_tree);
+                            adaptor.addChild(root_0, TERMINADOR201_tree);
 
 
                             }
@@ -5859,142 +5821,142 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaSintatico.g:399:4: destruicao TERMINADOR
+                    // fontes/g/CanecaSintatico.g:395:4: destruicao TERMINADOR
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_destruicao_in_instrucao1215);
-                    destruicao201=destruicao();
+                    pushFollow(FOLLOW_destruicao_in_instrucao1208);
+                    destruicao202=destruicao();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, destruicao201.getTree());
+                    adaptor.addChild(root_0, destruicao202.getTree());
 
-                    TERMINADOR202=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1217); 
-                    TERMINADOR202_tree = 
-                    (Object)adaptor.create(TERMINADOR202)
+                    TERMINADOR203=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1210); 
+                    TERMINADOR203_tree = 
+                    (Object)adaptor.create(TERMINADOR203)
                     ;
-                    adaptor.addChild(root_0, TERMINADOR202_tree);
+                    adaptor.addChild(root_0, TERMINADOR203_tree);
 
 
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaSintatico.g:400:4: retorno TERMINADOR
+                    // fontes/g/CanecaSintatico.g:396:4: retorno TERMINADOR
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_retorno_in_instrucao1222);
-                    retorno203=retorno();
+                    pushFollow(FOLLOW_retorno_in_instrucao1215);
+                    retorno204=retorno();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, retorno203.getTree());
+                    adaptor.addChild(root_0, retorno204.getTree());
 
-                    TERMINADOR204=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1224); 
-                    TERMINADOR204_tree = 
-                    (Object)adaptor.create(TERMINADOR204)
+                    TERMINADOR205=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1217); 
+                    TERMINADOR205_tree = 
+                    (Object)adaptor.create(TERMINADOR205)
                     ;
-                    adaptor.addChild(root_0, TERMINADOR204_tree);
+                    adaptor.addChild(root_0, TERMINADOR205_tree);
 
 
                     }
                     break;
                 case 4 :
-                    // fontes/g/CanecaSintatico.g:401:4: se
+                    // fontes/g/CanecaSintatico.g:397:4: se
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_se_in_instrucao1229);
-                    se205=se();
+                    pushFollow(FOLLOW_se_in_instrucao1222);
+                    se206=se();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, se205.getTree());
+                    adaptor.addChild(root_0, se206.getTree());
 
                     }
                     break;
                 case 5 :
-                    // fontes/g/CanecaSintatico.g:402:4: para
+                    // fontes/g/CanecaSintatico.g:398:4: para
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_para_in_instrucao1234);
-                    para206=para();
+                    pushFollow(FOLLOW_para_in_instrucao1227);
+                    para207=para();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, para206.getTree());
+                    adaptor.addChild(root_0, para207.getTree());
 
                     }
                     break;
                 case 6 :
-                    // fontes/g/CanecaSintatico.g:403:4: repita
+                    // fontes/g/CanecaSintatico.g:399:4: repita
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_repita_in_instrucao1239);
-                    repita207=repita();
+                    pushFollow(FOLLOW_repita_in_instrucao1232);
+                    repita208=repita();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, repita207.getTree());
+                    adaptor.addChild(root_0, repita208.getTree());
 
                     }
                     break;
                 case 7 :
-                    // fontes/g/CanecaSintatico.g:404:4: enquanto
+                    // fontes/g/CanecaSintatico.g:400:4: enquanto
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_enquanto_in_instrucao1244);
-                    enquanto208=enquanto();
+                    pushFollow(FOLLOW_enquanto_in_instrucao1237);
+                    enquanto209=enquanto();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, enquanto208.getTree());
+                    adaptor.addChild(root_0, enquanto209.getTree());
 
                     }
                     break;
                 case 8 :
-                    // fontes/g/CanecaSintatico.g:405:4: tente
+                    // fontes/g/CanecaSintatico.g:401:4: tente
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_tente_in_instrucao1249);
-                    tente209=tente();
+                    pushFollow(FOLLOW_tente_in_instrucao1242);
+                    tente210=tente();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, tente209.getTree());
+                    adaptor.addChild(root_0, tente210.getTree());
 
                     }
                     break;
                 case 9 :
-                    // fontes/g/CanecaSintatico.g:406:4: lance TERMINADOR
+                    // fontes/g/CanecaSintatico.g:402:4: lance TERMINADOR
                     {
                     root_0 = (Object)adaptor.nil();
 
 
-                    pushFollow(FOLLOW_lance_in_instrucao1254);
-                    lance210=lance();
+                    pushFollow(FOLLOW_lance_in_instrucao1247);
+                    lance211=lance();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, lance210.getTree());
+                    adaptor.addChild(root_0, lance211.getTree());
 
-                    TERMINADOR211=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1256); 
-                    TERMINADOR211_tree = 
-                    (Object)adaptor.create(TERMINADOR211)
+                    TERMINADOR212=(Token)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao1249); 
+                    TERMINADOR212_tree = 
+                    (Object)adaptor.create(TERMINADOR212)
                     ;
-                    adaptor.addChild(root_0, TERMINADOR211_tree);
+                    adaptor.addChild(root_0, TERMINADOR212_tree);
 
 
                     }
@@ -6029,7 +5991,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "blocoDeInstrucoes"
-    // fontes/g/CanecaSintatico.g:409:1: blocoDeInstrucoes : INICIO ( instrucao )* FIM ;
+    // fontes/g/CanecaSintatico.g:405:1: blocoDeInstrucoes : INICIO ( instrucao )* FIM ;
     public final CanecaSintatico.blocoDeInstrucoes_return blocoDeInstrucoes() throws RecognitionException {
         CanecaSintatico.blocoDeInstrucoes_return retval = new CanecaSintatico.blocoDeInstrucoes_return();
         retval.start = input.LT(1);
@@ -6037,29 +5999,29 @@ public TreeAdaptor getTreeAdaptor() {
 
         Object root_0 = null;
 
-        Token INICIO212=null;
-        Token FIM214=null;
-        CanecaSintatico.instrucao_return instrucao213 =null;
+        Token INICIO213=null;
+        Token FIM215=null;
+        CanecaSintatico.instrucao_return instrucao214 =null;
 
 
-        Object INICIO212_tree=null;
-        Object FIM214_tree=null;
+        Object INICIO213_tree=null;
+        Object FIM215_tree=null;
 
         try {
-            // fontes/g/CanecaSintatico.g:410:2: ( INICIO ( instrucao )* FIM )
-            // fontes/g/CanecaSintatico.g:410:4: INICIO ( instrucao )* FIM
+            // fontes/g/CanecaSintatico.g:406:2: ( INICIO ( instrucao )* FIM )
+            // fontes/g/CanecaSintatico.g:406:4: INICIO ( instrucao )* FIM
             {
             root_0 = (Object)adaptor.nil();
 
 
-            INICIO212=(Token)match(input,INICIO,FOLLOW_INICIO_in_blocoDeInstrucoes1267); 
-            INICIO212_tree = 
-            (Object)adaptor.create(INICIO212)
+            INICIO213=(Token)match(input,INICIO,FOLLOW_INICIO_in_blocoDeInstrucoes1260); 
+            INICIO213_tree = 
+            (Object)adaptor.create(INICIO213)
             ;
-            adaptor.addChild(root_0, INICIO212_tree);
+            adaptor.addChild(root_0, INICIO213_tree);
 
 
-            // fontes/g/CanecaSintatico.g:410:11: ( instrucao )*
+            // fontes/g/CanecaSintatico.g:406:11: ( instrucao )*
             loop39:
             do {
                 int alt39=2;
@@ -6072,14 +6034,14 @@ public TreeAdaptor getTreeAdaptor() {
 
                 switch (alt39) {
             	case 1 :
-            	    // fontes/g/CanecaSintatico.g:410:12: instrucao
+            	    // fontes/g/CanecaSintatico.g:406:12: instrucao
             	    {
-            	    pushFollow(FOLLOW_instrucao_in_blocoDeInstrucoes1270);
-            	    instrucao213=instrucao();
+            	    pushFollow(FOLLOW_instrucao_in_blocoDeInstrucoes1263);
+            	    instrucao214=instrucao();
 
             	    state._fsp--;
 
-            	    adaptor.addChild(root_0, instrucao213.getTree());
+            	    adaptor.addChild(root_0, instrucao214.getTree());
 
             	    }
             	    break;
@@ -6090,11 +6052,11 @@ public TreeAdaptor getTreeAdaptor() {
             } while (true);
 
 
-            FIM214=(Token)match(input,FIM,FOLLOW_FIM_in_blocoDeInstrucoes1274); 
-            FIM214_tree = 
-            (Object)adaptor.create(FIM214)
+            FIM215=(Token)match(input,FIM,FOLLOW_FIM_in_blocoDeInstrucoes1267); 
+            FIM215_tree = 
+            (Object)adaptor.create(FIM215)
             ;
-            adaptor.addChild(root_0, FIM214_tree);
+            adaptor.addChild(root_0, FIM215_tree);
 
 
             }
@@ -6173,168 +6135,169 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_ESTATICO_in_atributo324 = new BitSet(new long[]{0x0000000400000000L});
     public static final BitSet FOLLOW_tipo_in_atributo328 = new BitSet(new long[]{0x0000000400000000L});
     public static final BitSet FOLLOW_IDENTIFICADOR_in_atributo330 = new BitSet(new long[]{0x0000000000000010L,0x0000000000001000L});
-    public static final BitSet FOLLOW_atribuicao_in_atributo333 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_atributo337 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assinaturaDeConstrutor_in_construtor348 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_construtor350 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assinaturaDeDestrutor_in_destrutor361 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_destrutor363 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assinaturaDeMetodo_in_metodo374 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_metodo376 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTRUTOR_in_assinaturaDeConstrutor387 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeConstrutor389 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeConstrutor391 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_listaDeArgumentos_in_assinaturaDeConstrutor393 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DESTRUTOR_in_assinaturaDeDestrutor404 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeDestrutor406 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeDestrutor408 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_listaDeArgumentosVazia_in_assinaturaDeDestrutor410 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_METODO_in_assinaturaDeMetodo421 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
-    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeMetodo423 = new BitSet(new long[]{0x0000000500000000L});
-    public static final BitSet FOLLOW_ESTATICO_in_assinaturaDeMetodo426 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_assinaturaDeMetodo430 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeMetodo432 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_listaDeArgumentos_in_assinaturaDeMetodo434 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeParametros487 = new BitSet(new long[]{0x06381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_listaDeParametros490 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_SEPARADOR_in_listaDeParametros493 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_listaDeParametros495 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_listaDeParametros501 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentosVazia512 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentosVazia514 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentos525 = new BitSet(new long[]{0x0200000400000000L});
-    public static final BitSet FOLLOW_declaracao_in_listaDeArgumentos528 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_SEPARADOR_in_listaDeArgumentos531 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_declaracao_in_listaDeArgumentos533 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentos539 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IMPLEMENTA_in_listaDeInterfaces551 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces553 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_SEPARADOR_in_listaDeInterfaces556 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces558 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
-    public static final BitSet FOLLOW_COLCHETE_ESQUERDO_in_listaDeTiposGenericos574 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipoGenerico_in_listaDeTiposGenericos576 = new BitSet(new long[]{0x0000000000002000L});
-    public static final BitSet FOLLOW_COLCHETE_DIREITO_in_listaDeTiposGenericos578 = new BitSet(new long[]{0x0000000000004002L});
-    public static final BitSet FOLLOW_COLCHETE_ESQUERDO_in_listaDeTipos592 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_listaDeTipos594 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_SEPARADOR_in_listaDeTipos597 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_listaDeTipos599 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_COLCHETE_DIREITO_in_listaDeTipos603 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_capture_in_listaDeCapturas617 = new BitSet(new long[]{0x0000000000000042L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_tipoGenerico630 = new BitSet(new long[]{0x0000002000000000L});
-    public static final BitSet FOLLOW_listaDeInterfaces_in_tipoGenerico632 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_tipo643 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_listaDeTipos_in_tipo645 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_tipo_in_declaracao656 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_declaracao658 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ATRIBUIDOR_in_atribuicao669 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoOuLogico_in_atribuicao671 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declaracao_in_declaracaoComAtribuicaoOpcional682 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_atribuicao_in_declaracaoComAtribuicaoOpcional685 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao698 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_ATRIBUIDOR_in_expressao701 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao703 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico716 = new BitSet(new long[]{0x0040000000000002L});
-    public static final BitSet FOLLOW_OU_in_expressaoOuLogico719 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico721 = new BitSet(new long[]{0x0040000000000002L});
-    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico734 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_E_in_expressaoELogico737 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico739 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica752 = new BitSet(new long[]{0x0001E01001000002L});
-    public static final BitSet FOLLOW_set_in_expressaoComparacaoLogica755 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica779 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva792 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000300L});
-    public static final BitSet FOLLOW_set_in_expressaoAditiva795 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva803 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000300L});
-    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa816 = new BitSet(new long[]{0x0004000004000002L,0x0000000000000008L});
-    public static final BitSet FOLLOW_set_in_expressaoMultiplicativa819 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa831 = new BitSet(new long[]{0x0004000004000002L,0x0000000000000008L});
+    public static final BitSet FOLLOW_ATRIBUIDOR_in_atributo333 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressaoOuLogico_in_atributo335 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_atributo339 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assinaturaDeConstrutor_in_construtor350 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_construtor352 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assinaturaDeDestrutor_in_destrutor363 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_destrutor365 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_assinaturaDeMetodo_in_metodo376 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_metodo378 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTRUTOR_in_assinaturaDeConstrutor389 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeConstrutor391 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeConstrutor393 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_listaDeArgumentos_in_assinaturaDeConstrutor395 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DESTRUTOR_in_assinaturaDeDestrutor406 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeDestrutor408 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeDestrutor410 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_listaDeArgumentosVazia_in_assinaturaDeDestrutor412 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_METODO_in_assinaturaDeMetodo423 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeMetodo425 = new BitSet(new long[]{0x0000000500000000L});
+    public static final BitSet FOLLOW_ESTATICO_in_assinaturaDeMetodo428 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_tipo_in_assinaturaDeMetodo432 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeMetodo434 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_listaDeArgumentos_in_assinaturaDeMetodo436 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeParametros489 = new BitSet(new long[]{0x06381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_listaDeParametros492 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_SEPARADOR_in_listaDeParametros495 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_listaDeParametros497 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_listaDeParametros503 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentosVazia514 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentosVazia516 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentos527 = new BitSet(new long[]{0x0200000400000000L});
+    public static final BitSet FOLLOW_declaracao_in_listaDeArgumentos530 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_SEPARADOR_in_listaDeArgumentos533 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_declaracao_in_listaDeArgumentos535 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentos541 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IMPLEMENTA_in_listaDeInterfaces553 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces555 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_SEPARADOR_in_listaDeInterfaces558 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces560 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_COLCHETE_ESQUERDO_in_listaDeTiposGenericos576 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_tipoGenerico_in_listaDeTiposGenericos578 = new BitSet(new long[]{0x0000000000002000L});
+    public static final BitSet FOLLOW_COLCHETE_DIREITO_in_listaDeTiposGenericos580 = new BitSet(new long[]{0x0000000000004002L});
+    public static final BitSet FOLLOW_COLCHETE_ESQUERDO_in_listaDeTipos594 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_tipo_in_listaDeTipos596 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_SEPARADOR_in_listaDeTipos599 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_tipo_in_listaDeTipos601 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_COLCHETE_DIREITO_in_listaDeTipos605 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_capture_in_listaDeCapturas619 = new BitSet(new long[]{0x0000000000000042L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_tipoGenerico632 = new BitSet(new long[]{0x0000002000000000L});
+    public static final BitSet FOLLOW_listaDeInterfaces_in_tipoGenerico634 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_tipo645 = new BitSet(new long[]{0x0000000000004000L});
+    public static final BitSet FOLLOW_listaDeTipos_in_tipo647 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_tipo_in_declaracao658 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_declaracao660 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_tipo_in_declaracaoComAtribuicaoOpcional671 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_declaracaoComAtribuicaoOpcional673 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_ATRIBUIDOR_in_declaracaoComAtribuicaoOpcional676 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressaoOuLogico_in_declaracaoComAtribuicaoOpcional678 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao691 = new BitSet(new long[]{0x0000000000000012L});
+    public static final BitSet FOLLOW_ATRIBUIDOR_in_expressao694 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressaoOuLogico_in_expressao696 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico709 = new BitSet(new long[]{0x0040000000000002L});
+    public static final BitSet FOLLOW_OU_in_expressaoOuLogico712 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico714 = new BitSet(new long[]{0x0040000000000002L});
+    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico727 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_E_in_expressaoELogico730 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico732 = new BitSet(new long[]{0x0000000008000002L});
+    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica745 = new BitSet(new long[]{0x0001E01001000002L});
+    public static final BitSet FOLLOW_set_in_expressaoComparacaoLogica748 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica772 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva785 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000300L});
+    public static final BitSet FOLLOW_set_in_expressaoAditiva788 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva796 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000300L});
+    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa809 = new BitSet(new long[]{0x0004000004000002L,0x0000000000000008L});
+    public static final BitSet FOLLOW_set_in_expressaoMultiplicativa812 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa824 = new BitSet(new long[]{0x0004000004000002L,0x0000000000000008L});
+    public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria837 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SUBTRACAO_in_expressaoUnaria842 = new BitSet(new long[]{0x04301804C00C0000L,0x000000000000C000L});
     public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria844 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SUBTRACAO_in_expressaoUnaria849 = new BitSet(new long[]{0x04301804C00C0000L,0x000000000000C000L});
+    public static final BitSet FOLLOW_NEGACAO_in_expressaoUnaria849 = new BitSet(new long[]{0x04301804C00C0000L,0x000000000000C000L});
     public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria851 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEGACAO_in_expressaoUnaria856 = new BitSet(new long[]{0x04301804C00C0000L,0x000000000000C000L});
-    public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria858 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_expressaoPrimaria869 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_expressaoPrimaria871 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_expressaoPrimaria873 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VALOR_BOOLEANO_in_expressaoPrimaria878 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_VALOR_NULO_in_expressaoPrimaria883 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTANTE_INTEIRA_in_expressaoPrimaria888 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTANTE_REAL_in_expressaoPrimaria893 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LITERAL_CARACTERE_in_expressaoPrimaria898 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LITERAL_TEXTO_in_expressaoPrimaria903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_comando_in_expressaoPrimaria908 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_referencia_in_comando919 = new BitSet(new long[]{0x0000000000000C02L});
-    public static final BitSet FOLLOW_chamada_in_comando922 = new BitSet(new long[]{0x0000000000000C02L});
-    public static final BitSet FOLLOW_ESSE_in_referencia935 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ESSA_in_referencia940 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_instanciacao_in_referencia945 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_referencia950 = new BitSet(new long[]{0x0400000000000002L});
-    public static final BitSet FOLLOW_listaDeParametros_in_referencia953 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_chamada966 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_chamada974 = new BitSet(new long[]{0x0400000000000002L});
-    public static final BitSet FOLLOW_listaDeParametros_in_chamada977 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_set_in_instanciacao990 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_instanciacao998 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_listaDeParametros_in_instanciacao1000 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DESTRUA_in_destruicao1011 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_destruicao1013 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RETORNE_in_retorno1025 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_retorno1027 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SE_in_se1038 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_se1040 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_se1042 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_se1044 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_se1046 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_SENAO_in_se1049 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_se1051 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARA_in_para1064 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_para1066 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_para1068 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_para1070 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_para1072 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_para1074 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_para1076 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_para1078 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_para1080 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_REPITA_in_repita1091 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_repita1093 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_declaracao_in_repita1095 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_repita1097 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_repita1099 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_repita1101 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_repita1103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ENQUANTO_in_enquanto1114 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_enquanto1116 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_enquanto1118 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_enquanto1120 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_enquanto1122 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TENTE_in_tente1133 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_tente1135 = new BitSet(new long[]{0x0000000000000040L});
-    public static final BitSet FOLLOW_listaDeCapturas_in_tente1137 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CAPTURE_in_capture1148 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_capture1150 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_declaracao_in_capture1152 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_capture1154 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_capture1156 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LANCE_in_lance1167 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_lance1169 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expressao_in_instrucao1197 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_instrucao1199 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declaracaoComAtribuicaoOpcional_in_instrucao1205 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_instrucao1207 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_destruicao_in_instrucao1215 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_expressaoPrimaria862 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_expressaoPrimaria864 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_expressaoPrimaria866 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VALOR_BOOLEANO_in_expressaoPrimaria871 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_VALOR_NULO_in_expressaoPrimaria876 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTANTE_INTEIRA_in_expressaoPrimaria881 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CONSTANTE_REAL_in_expressaoPrimaria886 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LITERAL_CARACTERE_in_expressaoPrimaria891 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LITERAL_TEXTO_in_expressaoPrimaria896 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_comando_in_expressaoPrimaria901 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_referencia_in_comando912 = new BitSet(new long[]{0x0000000000000C02L});
+    public static final BitSet FOLLOW_chamada_in_comando915 = new BitSet(new long[]{0x0000000000000C02L});
+    public static final BitSet FOLLOW_ESSE_in_referencia928 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ESSA_in_referencia933 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_instanciacao_in_referencia938 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_referencia943 = new BitSet(new long[]{0x0400000000000002L});
+    public static final BitSet FOLLOW_listaDeParametros_in_referencia946 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_chamada959 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_chamada967 = new BitSet(new long[]{0x0400000000000002L});
+    public static final BitSet FOLLOW_listaDeParametros_in_chamada970 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_set_in_instanciacao983 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_tipo_in_instanciacao991 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_listaDeParametros_in_instanciacao993 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_DESTRUA_in_destruicao1004 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_destruicao1006 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_RETORNE_in_retorno1018 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_retorno1020 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_SE_in_se1031 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_se1033 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_se1035 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_se1037 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_se1039 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
+    public static final BitSet FOLLOW_SENAO_in_se1042 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_se1044 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_PARA_in_para1057 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_para1059 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_para1061 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_para1063 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_para1065 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_para1067 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_para1069 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_para1071 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_para1073 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_REPITA_in_repita1084 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_repita1086 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_declaracao_in_repita1088 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_repita1090 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_repita1092 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_repita1094 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_repita1096 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_ENQUANTO_in_enquanto1107 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_enquanto1109 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_enquanto1111 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_enquanto1113 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_enquanto1115 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_TENTE_in_tente1126 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_tente1128 = new BitSet(new long[]{0x0000000000000040L});
+    public static final BitSet FOLLOW_listaDeCapturas_in_tente1130 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_CAPTURE_in_capture1141 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_capture1143 = new BitSet(new long[]{0x0000000400000000L});
+    public static final BitSet FOLLOW_declaracao_in_capture1145 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_capture1147 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_capture1149 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_LANCE_in_lance1160 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressao_in_lance1162 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expressao_in_instrucao1190 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_instrucao1192 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_declaracaoComAtribuicaoOpcional_in_instrucao1198 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_instrucao1200 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_destruicao_in_instrucao1208 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_instrucao1210 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_retorno_in_instrucao1215 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
     public static final BitSet FOLLOW_TERMINADOR_in_instrucao1217 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_retorno_in_instrucao1222 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_instrucao1224 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_se_in_instrucao1229 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_para_in_instrucao1234 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_repita_in_instrucao1239 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_enquanto_in_instrucao1244 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_tente_in_instrucao1249 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_lance_in_instrucao1254 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_instrucao1256 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INICIO_in_blocoDeInstrucoes1267 = new BitSet(new long[]{0x05381A06D04C0000L,0x000000000000CA34L});
-    public static final BitSet FOLLOW_instrucao_in_blocoDeInstrucoes1270 = new BitSet(new long[]{0x05381A06D04C0000L,0x000000000000CA34L});
-    public static final BitSet FOLLOW_FIM_in_blocoDeInstrucoes1274 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_se_in_instrucao1222 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_para_in_instrucao1227 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_repita_in_instrucao1232 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_enquanto_in_instrucao1237 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_tente_in_instrucao1242 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_lance_in_instrucao1247 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_instrucao1249 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INICIO_in_blocoDeInstrucoes1260 = new BitSet(new long[]{0x05381A06D04C0000L,0x000000000000CA34L});
+    public static final BitSet FOLLOW_instrucao_in_blocoDeInstrucoes1263 = new BitSet(new long[]{0x05381A06D04C0000L,0x000000000000CA34L});
+    public static final BitSet FOLLOW_FIM_in_blocoDeInstrucoes1267 = new BitSet(new long[]{0x0000000000000002L});
 
 }

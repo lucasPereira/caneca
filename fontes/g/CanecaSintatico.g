@@ -207,7 +207,7 @@ assinaturasDeMetodos
 	;
 
 atributo
-	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (atribuicao)? TERMINADOR
+	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (ATRIBUIDOR expressaoOuLogico)? TERMINADOR
 	;
 
 construtor
@@ -286,12 +286,8 @@ declaracao
 	: tipo IDENTIFICADOR
 	;
 
-atribuicao
-	: ATRIBUIDOR expressaoOuLogico
-	;
-
 declaracaoComAtribuicaoOpcional
-	: declaracao (atribuicao)?
+	: tipo IDENTIFICADOR (ATRIBUIDOR expressaoOuLogico)?
 	;
 
 expressao

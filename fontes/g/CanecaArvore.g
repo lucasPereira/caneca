@@ -153,7 +153,10 @@ assinaturasDeMetodos
 	;
 
 atributo
-	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (atribuicao)? TERMINADOR -> ^(ATRIBUTO_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR (atribuicao)?)
+	: ATRIBUTO modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR 
+		( -> ^(ATRIBUTO_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR)
+		| ATRIBUIDOR expressaoOuLogico -> ^(ATRIBUTO_ modificadorDeAcessoMasculino (ESTATICO)? tipo IDENTIFICADOR) ^(ATRIBUIDOR ^(PRIMARIA_ ^(COMANDO_ ^(REFERENCIA_ IDENTIFICADOR)))  expressaoOuLogico)
+		) TERMINADOR
 	;
 
 construtor
@@ -232,12 +235,11 @@ declaracao
 	: tipo IDENTIFICADOR -> ^(DECLARACAO_ tipo IDENTIFICADOR)
 	;
 
-atribuicao
-	: ATRIBUIDOR expressaoOuLogico -> ^(ATRIBUICAO_ expressaoOuLogico)
-	;
-
 declaracaoComAtribuicaoOpcional
-	: declaracao (atribuicao)? -> ^(DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ declaracao (atribuicao)?)
+	: tipo IDENTIFICADOR 
+		( -> ^(DECLARACAO_ tipo IDENTIFICADOR)
+		| ATRIBUIDOR expressaoOuLogico -> ^(DECLARACAO_ tipo IDENTIFICADOR) ^(ATRIBUIDOR ^(PRIMARIA_ ^(COMANDO_ ^(REFERENCIA_ IDENTIFICADOR))) expressaoOuLogico)
+		)
 	;
 
 expressao
