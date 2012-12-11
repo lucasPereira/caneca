@@ -280,14 +280,6 @@ declaracao
 		}
 	;
 
-atribuicao
-	: ^(ATRIBUICAO_ expressaoOuLogico)
-	;
-
-declaracaoComAtribuicaoOpcional
-	: ^(DECLARACAO_COM_ATRIBUICAO_OPICIONAL_ . (atribuicao)?)
-	;
-
 expressao
 	: ^(ATRIBUIDOR expressaoOuLogico expressaoOuLogico)
 	| expressaoOuLogico
