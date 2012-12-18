@@ -8,7 +8,7 @@ options {
 
 @header {
 	package br.ufsc.inf.ine5426.caneca.antlr;
-	
+
 	import br.ufsc.inf.ine5426.caneca.interno.Atributo;
 	import br.ufsc.inf.ine5426.caneca.interno.Bloco;
 	import br.ufsc.inf.ine5426.caneca.interno.Classe;
@@ -16,33 +16,65 @@ options {
 	import br.ufsc.inf.ine5426.caneca.interno.Destrutor;
 	import br.ufsc.inf.ine5426.caneca.interno.Escopo;
 	import br.ufsc.inf.ine5426.caneca.interno.Expressao;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoAtribuicao;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoChamadaDeMetodo;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoComando;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoConstanteInteira;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoConstanteReal;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoDiferente;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoDivisao;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoE;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoIgual;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoInstanciacao;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoLiteralCaractere;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoLiteralTexto;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoMaior;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoMaiorIgual;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoMenor;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoMenorIgual;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoMultiplicacao;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoNegacao;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoNegativacao;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoOu;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoReferencia;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoRestoDaDivisao;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoSoma;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoSubtracao;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoValorBooleano;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoValorNulo;
 	import br.ufsc.inf.ine5426.caneca.interno.Instrucao;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoCapture;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoDestrua;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoEnquanto;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoLance;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoPara;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoRepita;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoRetorne;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoSe;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoTente;
 	import br.ufsc.inf.ine5426.caneca.interno.Metodo;
 	import br.ufsc.inf.ine5426.caneca.interno.TabelaDeSimbolos;
 	import br.ufsc.inf.ine5426.caneca.interno.Tipo;
 	import br.ufsc.inf.ine5426.caneca.interno.Variavel;
+	
+	import java.util.Stack;
 }
 
 @members {
 	private TabelaDeSimbolos tabelaDeSimbolos;
 	private Escopo escopoAtual;
+	private Stack<Expressao> escoposDonos;
 	private boolean debug = false;
 	
 	public void fixarTabelaDeSimbolos(TabelaDeSimbolos tabelaDeSimbolos) {
 		this.tabelaDeSimbolos = tabelaDeSimbolos;
 		this.escopoAtual = tabelaDeSimbolos;
+		this.escoposDonos = new Stack<Expressao>();
 	}
 	
 	public void mostrar(String mensagem) {
 		if (debug) {
-			System.out.println(">> " + mensagem);
+			System.out.println("......... " + mensagem);
 		}
 	}
 }
@@ -68,6 +100,31 @@ topdown
 	| tente
 	| capture
 	| lance
+	| destruicao
+	| retorno
+	| expressaoAtribuicao
+	| expressaoOu
+	| expressaoE
+	| expressaoIgual
+	| expressaoDiferente
+	| expressaoMaior
+	| expressaoMaiorIgual
+	| expressaoMenor
+	| expressaoMenorIgual
+	| expressaoSoma
+	| expressaoSubtracao
+	| expressaoMultiplicacao
+	| expressaoDivisao
+	| expressaoRestoDaDivisao
+	| expressaoNegativacao
+	| expressaoNegacao
+	| expressaoPrimaria
+	| comando
+	| referencia
+	| referenciaDeMetodo
+	| instanciacao
+	| chamada
+	| chamadaDeMetodo
 	;
 
 bottomup
@@ -83,6 +140,28 @@ bottomup
 	| terminarTente
 	| terminarCapture
 	| terminarLance
+	| terminarDestruicao
+	| terminarRetorno
+	| terminarExpressaoAtribuicao
+	| terminarExpressaoOu
+	| terminarExpressaoE
+	| terminarExpressaoIgual
+	| terminarExpressaoDiferente
+	| terminarExpressaoMaior
+	| terminarExpressaoMaiorIgual
+	| terminarExpressaoMenor
+	| terminarExpressaoMenorIgual
+	| terminarExpressaoSoma
+	| terminarExpressaoSubtracao
+	| terminarExpressaoMultiplicacao
+	| terminarExpressaoDivisao
+	| terminarExpressaoRestoDaDivisao
+	| terminarExpressaoNegativacao
+	| terminarExpressaoNegacao
+	| terminarComando
+	| terminarReferenciaDeMetodo
+	| terminarInstanciacao
+	| terminarChamadaDeMetodo
 	;
 
 programa
@@ -233,7 +312,7 @@ modificadorDeAcessoFeminino
 	;
 
 listaDeParametros
-	: ^(PARAMETROS_ (expressao)*)
+	: ^(PARAMETROS_ (.)*)
 	;
 
 listaDeArgumentosVazia
@@ -280,78 +359,471 @@ declaracao
 		}
 	;
 
-expressao
-	: ^(ATRIBUIDOR expressaoOuLogico expressaoOuLogico)
-	| expressaoOuLogico
+expressaoAtribuicao
+	: ^(ATRIBUIDOR . .)
+		{
+			mostrar("=");
+			ExpressaoAtribuicao expressao = new ExpressaoAtribuicao(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
 	;
 
-expressaoOuLogico
-	: ^(OU expressaoELogico expressaoELogico)
-	| expressaoELogico
+terminarExpressaoAtribuicao
+	: ^(ATRIBUIDOR . .)
+		{
+			mostrar("terminar =");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
-expressaoELogico
-	: ^(E expressaoComparacaoLogica expressaoComparacaoLogica)
-	| expressaoComparacaoLogica
+expressaoOu
+	: ^(OU . .)
+		{
+			mostrar("||");
+			ExpressaoOu expressao = new ExpressaoOu(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
 	;
 
-expressaoComparacaoLogica
-	: ^((IGUAL | DIFERENTE | MAIOR | MAIOR_IGUAL | MENOR | MENOR_IGUAL) expressaoAditiva expressaoAditiva)
-	| expressaoAditiva
+terminarExpressaoOu
+	: ^(OU . .)
+		{
+			mostrar("terminar ||");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
-expressaoAditiva
-	: ^((SOMA | SUBTRACAO) expressaoMultiplicativa expressaoMultiplicativa)
-	| expressaoMultiplicativa
+expressaoE
+	: ^(E . .)
+		{
+			mostrar("&&");
+			ExpressaoE expressao = new ExpressaoE(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
 	;
 
-expressaoMultiplicativa
-	: ^((MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO) expressaoUnaria expressaoUnaria)
-	| expressaoUnaria
+terminarExpressaoE
+	: ^(E . .)
+		{
+			mostrar("terminar &&");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
-expressaoUnaria
-	: ^(PRIMARIA_ expressaoPrimaria)
-	| ^(SUBTRACAO_UNARIA_ expressaoPrimaria)
-	| ^(NEGACAO expressaoPrimaria)
+expressaoIgual
+	: ^(IGUAL . .)
+		{
+			mostrar("==");
+			ExpressaoIgual expressao = new ExpressaoIgual(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoIgual
+	: ^(IGUAL . .)
+		{
+			mostrar("terminar ==");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoDiferente
+	: ^(DIFERENTE . .)
+		{
+			mostrar("!=");
+			ExpressaoDiferente expressao = new ExpressaoDiferente(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoDiferente
+	: ^(DIFERENTE . .)
+		{
+			mostrar("terminar !=");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoMaior
+	: ^(MAIOR . .)
+		{
+			mostrar(">");
+			ExpressaoMaior expressao = new ExpressaoMaior(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoMaior
+	: ^(MAIOR . .)
+		{
+			mostrar("terminar >");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoMaiorIgual
+	: ^(MAIOR_IGUAL . .)
+		{
+			mostrar(">=");
+			ExpressaoMaiorIgual expressao = new ExpressaoMaiorIgual(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoMaiorIgual
+	: ^(MAIOR_IGUAL . .)
+		{
+			mostrar("terminar >=");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoMenor
+	: ^(MENOR . .)
+		{
+			mostrar("<");
+			ExpressaoMenor expressao = new ExpressaoMenor(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoMenor
+	: ^(MENOR . .)
+		{
+			mostrar("terminar <");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoMenorIgual
+	: ^(MENOR_IGUAL . .)
+		{
+			mostrar("<=");
+			ExpressaoMenorIgual expressao = new ExpressaoMenorIgual(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoMenorIgual
+	: ^(MENOR_IGUAL . .)
+		{
+			mostrar("terminar <=");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoSoma
+	: ^(SOMA . .)
+		{
+			mostrar("+");
+			ExpressaoSoma expressao = new ExpressaoSoma(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoSoma
+	: ^(SOMA . .)
+		{
+			mostrar("terminar +");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoSubtracao
+	: ^(SUBTRACAO . .)
+		{
+			mostrar("-");
+			ExpressaoSubtracao expressao = new ExpressaoSubtracao(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoSubtracao
+	: ^(SUBTRACAO . .)
+		{
+			mostrar("terminar -");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoMultiplicacao
+	: ^(MULTIPLICACAO . .)
+		{
+			mostrar("*");
+			ExpressaoMultiplicacao expressao = new ExpressaoMultiplicacao(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoMultiplicacao
+	: ^(MULTIPLICACAO . .)
+		{
+			mostrar("terminar *");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoDivisao
+	: ^(DIVISAO . .)
+		{
+			mostrar("/");
+			ExpressaoDivisao expressao = new ExpressaoDivisao(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoDivisao
+	: ^(DIVISAO . .)
+		{
+			mostrar("terminar /");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoRestoDaDivisao
+	: ^(RESTO_DA_DIVISAO . .)
+		{
+			mostrar("\%");
+			ExpressaoRestoDaDivisao expressao = new ExpressaoRestoDaDivisao(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoRestoDaDivisao
+	: ^(RESTO_DA_DIVISAO . .)
+		{
+			mostrar("terminar \%");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoNegativacao
+	: ^(NEGATIVACAO_ .)
+		{
+			mostrar("-");
+			ExpressaoNegativacao expressao = new ExpressaoNegativacao(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoNegativacao
+	: ^(NEGATIVACAO_ .)
+		{
+			mostrar("terminar -");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+expressaoNegacao
+	: ^(NEGACAO .)
+		{
+			mostrar("~");
+			ExpressaoNegacao expressao = new ExpressaoNegacao(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarExpressaoNegacao
+	: ^(NEGACAO .)
+		{
+			mostrar("terminar ~");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
 expressaoPrimaria
-	: expressao
-	| VALOR_BOOLEANO
+	: VALOR_BOOLEANO
+		{
+			mostrar($VALOR_BOOLEANO.text);
+			escopoAtual.definirExpressao(new ExpressaoValorBooleano(escopoAtual, $VALOR_BOOLEANO.text));
+		}
 	| VALOR_NULO
+		{
+			mostrar($VALOR_NULO.text);
+			escopoAtual.definirExpressao(new ExpressaoValorNulo(escopoAtual, $VALOR_NULO.text));
+		}
 	| CONSTANTE_INTEIRA
+		{
+			mostrar($CONSTANTE_INTEIRA.text);
+			escopoAtual.definirExpressao(new ExpressaoConstanteInteira(escopoAtual, $CONSTANTE_INTEIRA.text));
+		}
 	| CONSTANTE_REAL
+		{
+			mostrar($CONSTANTE_REAL.text);
+			escopoAtual.definirExpressao(new ExpressaoConstanteReal(escopoAtual, $CONSTANTE_REAL.text));
+		}
 	| LITERAL_CARACTERE
+		{
+			mostrar($LITERAL_CARACTERE.text);
+			escopoAtual.definirExpressao(new ExpressaoLiteralCaractere(escopoAtual, $LITERAL_CARACTERE.text));
+		}
 	| LITERAL_TEXTO
-	| comando
+		{
+			mostrar($LITERAL_TEXTO.text);
+			escopoAtual.definirExpressao(new ExpressaoLiteralTexto(escopoAtual, $LITERAL_TEXTO.text));
+		}
 	;
 
 comando
-	: ^(COMANDO_ referencia (chamada)*)
+	: ^(COMANDO_ . (.)*)
+		{
+			mostrar("comando");
+			ExpressaoComando expressao = new ExpressaoComando(escopoAtual);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+		}
+	;
+
+terminarComando
+	: ^(COMANDO_ . (.)*)
+		{
+			mostrar("terminarComando");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+			escoposDonos.pop();
+		}
 	;
 
 referencia
 	: ^(REFERENCIA_ ESSE)
+		{
+			mostrar($ESSE.text);
+			ExpressaoReferencia expressao = new ExpressaoReferencia(escopoAtual, escopoAtual, $ESSE.text);
+			escopoAtual.definirExpressao(expressao);
+			escoposDonos.push(expressao);
+		}
 	| ^(REFERENCIA_ ESSA)
-	| ^(REFERENCIA_ instanciacao)
-	| ^(REFERENCIA_ IDENTIFICADOR (listaDeParametros)?)
+		{
+			mostrar($ESSA.text);
+			ExpressaoReferencia expressao = new ExpressaoReferencia(escopoAtual, escopoAtual, $ESSA.text);
+			escopoAtual.definirExpressao(expressao);
+			escoposDonos.push(expressao);
+		}
+	| ^(REFERENCIA_ IDENTIFICADOR)
+		{
+			mostrar($IDENTIFICADOR.text);
+			ExpressaoReferencia expressao = new ExpressaoReferencia(escopoAtual, escopoAtual, $IDENTIFICADOR.text);
+			escopoAtual.definirExpressao(expressao);
+			escoposDonos.push(expressao);
+		}
 	;
 
-chamada
-	: ^((CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO) IDENTIFICADOR (listaDeParametros)?)
+referenciaDeMetodo
+	: ^(REFERENCIA_ IDENTIFICADOR .+)
+		{
+			mostrar("referenciaDeMetodo");
+			ExpressaoChamadaDeMetodo expressao = new ExpressaoChamadaDeMetodo(escopoAtual, escopoAtual, $IDENTIFICADOR.text);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+			escoposDonos.push(expressao);
+		}
+	;
+
+terminarReferenciaDeMetodo
+	: ^(REFERENCIA_ IDENTIFICADOR .+)
+		{
+			mostrar("terminarReferenciaDeMetodo");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
 instanciacao
-	: ^(INSTANCIACAO_ tipo listaDeParametros)
+	: ^(INSTANCIACAO_ tipo .)
+		{
+			mostrar("instanciacao");
+			ExpressaoInstanciacao expressao = new ExpressaoInstanciacao(escopoAtual, $tipo.tipo);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+			escoposDonos.push(expressao);
+		}
+	;
+
+terminarInstanciacao
+	: ^(INSTANCIACAO_ tipo .)
+		{
+			mostrar("terminarInstanciacao");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+chamada
+	: ^((CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO) IDENTIFICADOR)
+		{
+			mostrar("." + $IDENTIFICADOR.text);
+			ExpressaoReferencia expressao = new ExpressaoReferencia(escopoAtual, escoposDonos.pop(), $IDENTIFICADOR.text);
+			escopoAtual.definirExpressao(expressao);
+			escoposDonos.push(expressao);
+		}
+	;
+
+chamadaDeMetodo
+	: ^((CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO) IDENTIFICADOR .+)
+		{
+			mostrar("chamadaDeMetodo");
+			ExpressaoChamadaDeMetodo expressao = new ExpressaoChamadaDeMetodo(escopoAtual, escoposDonos.pop(), $IDENTIFICADOR.text);
+			escopoAtual.definirExpressao(expressao);
+			escopoAtual = expressao;
+			escoposDonos.push(expressao);
+		}
+	;
+
+terminarChamadaDeMetodo
+	: ^((CHAMADA_DE_CLASSE | CHAMADA_DE_OBJETO) IDENTIFICADOR .+)
+		{
+			mostrar("terminarChamadaDeMetodo");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
 destruicao
-	: ^(DESTRUICAO_ expressao)
+	: ^(DESTRUICAO_ .)
+		{
+			mostrar("destrua");
+			InstrucaoDestrua instrucao = new InstrucaoDestrua(escopoAtual);
+			escopoAtual.definirInstrucao(instrucao);
+			escopoAtual = instrucao;
+		}
+	;
+
+terminarDestruicao
+	: ^(DESTRUICAO_ .)
+		{
+			mostrar("terminarDestruicao");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
 retorno 
-	: ^(RETORNO_ expressao)
+	: ^(RETORNO_ .)
+		{
+			mostrar("retorne");
+			InstrucaoRetorne instrucao = new InstrucaoRetorne(escopoAtual);
+			escopoAtual.definirInstrucao(instrucao);
+			escopoAtual = instrucao;
+		}
+	;
+
+terminarRetorno
+	: ^(RETORNO_ .)
+		{
+			mostrar("terminarRetorne");
+			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
 	;
 
 se

@@ -25,7 +25,7 @@ public final class InstrucaoTente extends EscopoAbstrato implements Instrucao {
 		Reporter.instancia().reportarDefinicaoDeInstrucao(instrucao);
 		return true;
 	}
-
+	
 	@Override
 	public String comoTexto() {
 		return "tente";

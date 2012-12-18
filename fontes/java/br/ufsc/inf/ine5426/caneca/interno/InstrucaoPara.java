@@ -29,7 +29,7 @@ public final class InstrucaoPara extends EscopoAbstrato implements Instrucao {
 		Reporter.instancia().reportarDefinicaoDeExpressao(expressao);
 		return true;
 	}
-
+	
 	@Override
 	public String comoTexto() {
 		return "para";

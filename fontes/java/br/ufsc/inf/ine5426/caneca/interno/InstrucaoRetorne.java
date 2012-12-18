@@ -1,9 +1,9 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-public final class InstrucaoLance extends EscopoAbstrato implements Instrucao {
+public final class InstrucaoRetorne extends EscopoAbstrato implements Instrucao {
 	private Expressao excecao;
 	
-	public InstrucaoLance(Escopo escopoPai) {
+	public InstrucaoRetorne(Escopo escopoPai) {
 		super(escopoPai);
 	}
 	
@@ -16,6 +16,6 @@ public final class InstrucaoLance extends EscopoAbstrato implements Instrucao {
 	
 	@Override
 	public String comoTexto() {
-		return "lance";
+		return "retorne";
 	}
 }

@@ -1,21 +1,29 @@
 pacote @pacoteQualquer;
 classe publica MinhaClasse inicio
-	atributo publico Real pi = 3.14;
+	atributo publico Real pi;
+	?atributo publico Real pi = 3.14;
 	construtor publico MinhaClasse() inicio fim
 	construtor publico MinhaClasse(Texto parametro) inicio fim
 	destrutor publico MinhaClasse() inicio fim
 	metodo publico Real pi(Booleano parametro) inicio
-		Inteiro declaracaoComAtribuicao = 10;
+		Inteiro declaracaoComAtribuicaoA = 10 + -20 - 2 * 3 / 4 % 5;
+		Inteiro declaracaoComAtribuicaoB = (10 + -20) - (((2 * 3) / 4) % 5);
+		Inteiro declaracaoComAtribuicaoC = (10 + (-20 - (((2 * 3) / 4) % 5)));
 		Booleano comparacao;
 		comparacao = 1 > 2;
+		Inteiro negativavel = 10;
+		Inteiro negativando = -negativavel;
+		Booleano negavel = verdadeiro;
+		Booleano negando = ~negavel;
+		
 		se (comparacao) inicio
 			comparacao = verdadeiro;
 		fim
 		
 		se (comparacao) inicio
-			comparacao = verdadeiro;
+			comparacao = verdadeiro || falso;
 		fim senao inicio
-			comparacao = falso;
+			comparacao = falso && verdadeiro;
 		fim
 		
 		Inteiro indice;
@@ -29,7 +37,7 @@ classe publica MinhaClasse inicio
 			Sistema:saida:imprimir(contador);
 		fim
 		
-		enquanto (2 < 20) inicio
+		enquanto (2 < 20 && 2 <= 20 && 20 > 2 && 20 >= 2 && 20 != 2 && 2 == 2) inicio
 			Sistema:saida:imprimir("Loop infinito");
 		fim
 		
@@ -41,6 +49,9 @@ classe publica MinhaClasse inicio
 		fim capture (ExcecaoAritmetica excecao) inicio
 			excecao.imprimir();
 		fim
+		
+		novo MinhaClasse(10, pi(verdadeiro)).pi(falso).comoTexto();
+		novo MinhaClasse(10, pi(verdadeiro)).pi(falso).comoTexto;
 		
 		lance nova Excecao();
 		

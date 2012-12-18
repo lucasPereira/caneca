@@ -6,6 +6,7 @@ public final class Tipo {
 	public static final Tipo BOOLEANO = new Tipo("Booleano");
 	public static final Tipo CARACTERE = new Tipo("Caractere");
 	public static final Tipo TEXTO = new Tipo("Texto");
+	public static final Tipo OBJETO = new Tipo("Objeto");
 	public static final Tipo NADA = new Tipo("Nada");
 	private String nomeDaClasse;
 	
@@ -19,6 +20,10 @@ public final class Tipo {
 	
 	public boolean mesmoQueIndireto(Tipo outroTipo) {
 		return mesmoQue(outroTipo);
+	}
+	
+	public String comoTexto() {
+		return nomeDaClasse;
 	}
 }
 

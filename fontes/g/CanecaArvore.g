@@ -53,7 +53,7 @@ tokens {
 	RETORNO_;
 	SE_;
 	SELECAO_;
-	SUBTRACAO_UNARIA_;
+	NEGATIVACAO_;
 	TENTE_;
 	TIPO_;
 	TIPO_GENERICO_;
@@ -267,9 +267,9 @@ expressaoMultiplicativa
 	;
 
 expressaoUnaria
-	: expressaoPrimaria ->  ^(PRIMARIA_ expressaoPrimaria)
-	| SUBTRACAO expressaoPrimaria -> ^(SUBTRACAO_UNARIA_ expressaoPrimaria)
-	| NEGACAO^ expressaoPrimaria
+	: expressaoPrimaria
+	| SUBTRACAO expressaoPrimaria -> ^(NEGATIVACAO_ expressaoPrimaria)
+	| NEGACAO expressaoPrimaria -> ^(NEGACAO expressaoPrimaria)
 	;
 
 expressaoPrimaria
