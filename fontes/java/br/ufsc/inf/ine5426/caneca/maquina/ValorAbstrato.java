@@ -27,7 +27,7 @@ public abstract class ValorAbstrato implements Valor {
 	}
 	
 	@Override
-	public String fornecerComoIdentificador() {
+	public Contexto fornecerComoContexto() {
 		throw new UnsupportedOperationException();
 	}
 }

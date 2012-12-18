@@ -8,7 +8,7 @@ public class Empurar implements Codigo {
 	}
 	
 	@Override
-	public void executar(Stack<Comando> pilhaDeExecucao, Stack<Valor> pilhaDeDados, Contexto contexto) {
+	public void executar(Stack<Valor> pilhaDeDados, Stack<Comando> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
 		pilhaDeDados.push(valor);
 	}
 	

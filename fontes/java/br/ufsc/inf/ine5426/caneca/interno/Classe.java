@@ -26,6 +26,17 @@ public final class Classe extends EscopoAbstrato implements Simbolo {
 	}
 	
 	@Override
+	public void gerarCodigo(List<Codigo> codigo) {
+		codigo.add(new CodigoCriarContexto());
+		codigo.add(new CodigoDefinirContexto(nome));
+		construtores.getFirst().gerarCodigo(codigo));
+		destrutor.gerarCodigo(codigo));
+		for (Map.Entry<String, Metodo> metodo : metodos) {
+			meuContexto.definirProcedimento(metodo.key, metodo.value.gerarCodigo(meuContexto));
+		}
+	}
+	
+	@Override
 	public boolean definirAtributo(Atributo atributo) {
 		if (atributos.containsKey(atributo.fornecerNome())) {
 			Reporter.instancia().reportarErroDeDefinicaoRepetidaDeAtributo(atributo);

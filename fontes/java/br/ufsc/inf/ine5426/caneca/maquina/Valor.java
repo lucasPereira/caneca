@@ -11,5 +11,5 @@ public interface Valor {
 	
 	public double fornecerComoReal();
 	
-	public String fornecerComoIdentificador();
+	public Contexto fornecerComoContexto();
 }

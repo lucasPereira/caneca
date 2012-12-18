@@ -22,4 +22,6 @@ public interface Escopo {
 	public Escopo fornecerEscopoPai();
 	
 	public String comoTexto();
+	
+	public void gerarCodigo(List<Codigo> codigo)
 }

@@ -5,13 +5,14 @@ import java.util.Map;
 import java.util.Stack;
 
 public class MaquinaCaneca {
-	private Stack<Valor> pilha;
+	private Stack<Valor> pilhaDeDados;
 	private Stack<Codigo> pilhaDeExecucao;
-	private Map<String, Classe> classes;
-
+	private Stack<Contexto> pilhaDeContextos;
+	
 	public MaquinaCaneca() {
-		pilha = new Stack<Valor>();
+		pilhaDeDados = new Stack<Valor>();
 		pilhaDeExecucao = new Stack<Codigo>();
-		classes = new HashMap<String, Classe>();
+		pilhaDeContextos = new Stack<Contexto>();
+		pilhaDeContextos.push(new Contexto());
 	}
 }

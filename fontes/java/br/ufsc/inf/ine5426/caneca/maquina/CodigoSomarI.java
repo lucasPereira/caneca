@@ -6,7 +6,7 @@ public class SomarI implements Codigo {
 	}
 	
 	@Override
-	public void executar(Stack<Comando> pilhaDeExecucao, Stack<Valor> pilhaDeDados, Contexto contexto) {
+	public void executar(Stack<Valor> pilhaDeDados, Stack<Comando> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
 		int operandoA = pilhaDeDados.pop().fornecerComoInteiro();
 		int operandoB = pilhaDeDados.pop().fornecerComoInteiro();
 		pilhaDeDados.push(new ValorInteiro(operandoA + operandoB));
@@ -14,6 +14,6 @@ public class SomarI implements Codigo {
 	
 	@Override
 	public String comoTexto() {
-		return "somarI";
+		return String.format("somarI");
 	}
 }

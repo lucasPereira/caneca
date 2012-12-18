@@ -6,14 +6,14 @@ public class SomarR implements Codigo {
 	}
 	
 	@Override
-	public void executar(Stack<Comando> pilhaDeDadosDeExecucao, Stack<Valor> pilhaDeDadosDeDados, Contexto contexto) {
+	public void executar(Stack<Valor> pilhaDeDados, Stack<Comando> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
 		double operandoA = pilhaDeDados.pop().fornecerComoReal();
 		double operandoB = pilhaDeDados.pop().fornecerComoReal();
 		pilhaDeDados.push(new Valor(operandoA + operandoB));
 	}
-
+	
 	@Override
 	public String comoTexto() {
-		return "somarR";
+		return String.format("somarR");
 	}
 }
