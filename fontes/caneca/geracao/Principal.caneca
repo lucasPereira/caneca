@@ -7,10 +7,17 @@ classe publica Principal inicio
 		imprimir;
 		nome;
 		imprimir;
+		continuar("Teste", "Parametro");
 	fim
 	destrutor publico Principal() inicio fim
 	metodo publico Nada iniciar(Numero parametro) inicio fim
 	metodo publico Nada continuar(Texto parametroA, Texto parametroB) inicio
+		10;
+		imprimir;
+		parametroA;
+		imprimir;
+		parametroB;
+		imprimir;
 		?nome.chamar().maisUm(verdadeiro);
 		?umMetodo(10, "texto").nome.chamar('a');
 		?umMetodo(10.5).nome.umAtributo;
