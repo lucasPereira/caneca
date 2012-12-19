@@ -1,5 +1,13 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
+import br.ufsc.inf.ine5426.caneca.maquina.Valor;
+import br.ufsc.inf.ine5426.caneca.maquina.ValorBooleano;
+import br.ufsc.inf.ine5426.caneca.maquina.ValorCaractere;
+import br.ufsc.inf.ine5426.caneca.maquina.ValorInteiro;
+import br.ufsc.inf.ine5426.caneca.maquina.ValorNulo;
+import br.ufsc.inf.ine5426.caneca.maquina.ValorReal;
+import br.ufsc.inf.ine5426.caneca.maquina.ValorTexto;
+
 public final class Tipo {
 	public static final Tipo INTEIRO = new Tipo("Inteiro");
 	public static final Tipo REAL = new Tipo("Real");
@@ -25,5 +33,23 @@ public final class Tipo {
 	public String comoTexto() {
 		return nomeDaClasse;
 	}
+	
+	public Valor fornecerValorPadrao() {
+		if (this.mesmoQue(INTEIRO)) {
+			return ValorInteiro.PADRAO;
+		} else if (this.mesmoQue(REAL)) {
+			return ValorReal.PADRAO;
+		} else if (this.mesmoQue(BOOLEANO)) {
+			return ValorBooleano.PADRAO;
+		} else if (this.mesmoQue(CARACTERE)) {
+			return ValorCaractere.PADRAO;
+		} else if (this.mesmoQue(TEXTO)) {
+			return ValorTexto.PADRAO;
+		} 
+		return ValorNulo.PADRAO;
+	}
+	
+	public String fornecerNomeDaClasse() {
+		return nomeDaClasse;
+	}
 }
-

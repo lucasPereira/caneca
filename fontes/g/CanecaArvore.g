@@ -344,6 +344,7 @@ instrucao
 		: expressao TERMINADOR!
 		| declaracaoComAtribuicaoOpcional TERMINADOR!
 	)
+	| IMPRIMIR TERMINADOR!
 	| destruicao TERMINADOR!
 	| retorno TERMINADOR!
 	| se

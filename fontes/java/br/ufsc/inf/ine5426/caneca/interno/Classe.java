@@ -1,5 +1,10 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
+import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
+import br.ufsc.inf.ine5426.caneca.maquina.CodigoCriarContexto;
+import br.ufsc.inf.ine5426.caneca.maquina.CodigoDefinirContexto;
+import br.ufsc.inf.ine5426.caneca.maquina.CodigoFecharContexto;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -23,17 +28,24 @@ public final class Classe extends EscopoAbstrato implements Simbolo {
 		atributos = new HashMap<String, Atributo>();
 		metodos = new HashMap<String, Metodo>();
 		construtores = new LinkedList<Construtor>();
+		//TODO: atributir valor na geração de código
+		definirAtributo(new Atributo(this, new Tipo(nome), "esse", 0, 0));
+		definirAtributo(new Atributo(this, new Tipo(nome), "essa", 0, 0));
 	}
 	
 	@Override
 	public void gerarCodigo(List<Codigo> codigo) {
 		codigo.add(new CodigoCriarContexto());
 		codigo.add(new CodigoDefinirContexto(nome));
-		construtores.getFirst().gerarCodigo(codigo));
-		destrutor.gerarCodigo(codigo));
-		for (Map.Entry<String, Metodo> metodo : metodos) {
-			meuContexto.definirProcedimento(metodo.key, metodo.value.gerarCodigo(meuContexto));
+		for (Map.Entry<String, Atributo> atributo : atributos.entrySet()) {
+			atributo.getValue().gerarCodigo(codigo);
 		}
+		construtores.get(0).gerarCodigo(codigo);
+		destrutor.gerarCodigo(codigo);
+		for (Map.Entry<String, Metodo> metodo : metodos.entrySet()) {
+			metodo.getValue().gerarCodigo(codigo);
+		}
+		codigo.add(new CodigoFecharContexto());
 	}
 	
 	@Override

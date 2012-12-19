@@ -1,6 +1,12 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
+import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
+
+import java.util.List;
+
 public interface Escopo {
+	public void gerarCodigo(List<Codigo> codigo);
+	
 	public boolean definirClasse(Classe classe);
 	
 	public boolean definirAtributo(Atributo atributo);
@@ -22,6 +28,4 @@ public interface Escopo {
 	public Escopo fornecerEscopoPai();
 	
 	public String comoTexto();
-	
-	public void gerarCodigo(List<Codigo> codigo)
 }

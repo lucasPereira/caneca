@@ -6,49 +6,66 @@ import java.util.List;
 import java.util.Map;
 import java.util.Stack;
 
-public class Contexto {
+public final class Contexto {
+	private Contexto contextoPai;
 	private Map<String, Valor> simbolos;
-	private Map<String, Contexto> procedimentos;
+	private Map<String, Contexto> contextos;
 	private List<Codigo> codigos;
 	
-	public Contexto(Contexto escopoPai) {
+	public Contexto(Contexto contextoPai) {
+		this.contextoPai = contextoPai;
 		simbolos = new HashMap<String, Valor>();
-		procedimentos = new HashMap<String, List<Codigo>>();
+		contextos = new HashMap<String, Contexto>();
+		codigos = new LinkedList<Codigo>();
 	}
 	
-	public void definirSimbolo(String nome, Valor valor) {
-		simbolos.put(nome, valor);
-	}
-	
-	public void atualizarSimbolo(String nome, Valor valor) {
-		if (simbolos.containsKey(nome)) {
-			simbolos.put(nome, valor);
-		} else if (escopoPai != null) {
-			escopoPai.atualizarSimbolo(nome, valor);
-		}
-	}
-	
-	public Valor resolverSimbolo(String nome) {
-		Valor valor = simbolos.get(nome);
-		if (valor == null && escopoPai != null) {
-			valor = escopoPai.resolverSimbolo(nome);
-		}
-		return valor;
-	}
-	
-	public void definirProcedimento(String nome) {
-		procedimentos.put(nome, new LinkedList<Codigo>());
+	public Contexto() {
+		this(null);
 	}
 	
 	public void adicionarCodigo(Codigo codigo) {
 		codigos.add(codigo);
 	}
 	
-	public List<Codigo> resolverProcedimento(String nome) {
-		List<Codigo> procedimento = procedimentos.get(nome);
-		if (procedimento == null && escopoPai != null) {
-			procedimento = escopoPai.resolverProcedimento(nome);
+	public void definirSimbolo(String nome, Valor valor) {
+		simbolos.put(nome, valor);
+		valor.fixarNome(nome);
+		valor.fixarContextoPai(this);
+	}
+	
+	public void atualizarSimbolo(String nome, Valor valor) {
+		if (simbolos.containsKey(nome)) {
+			simbolos.put(nome, valor);
+		} else if (contextoPai != null) {
+			contextoPai.atualizarSimbolo(nome, valor);
 		}
-		return procedimento;
+	}
+	
+	public Valor resolverSimbolo(String nome) {
+		Valor valor = simbolos.get(nome);
+		if (valor == null && contextoPai != null) {
+			valor = contextoPai.resolverSimbolo(nome);
+		}
+		return valor;
+	}
+	
+	public void definirContexto(String nome, Contexto contexto) {
+		contextos.put(nome, contexto);
+	}
+	
+	public Contexto resolverContexto(String nome) {
+		Contexto contexto = contextos.get(nome);
+		if (contexto == null && contextoPai != null) {
+			contexto = contextoPai.resolverContexto(nome);
+		}
+		return contexto;
+	}
+	
+	public List<Codigo> fornecerCodigos() {
+		return codigos;
+	}
+	
+	public Map<String, Valor> fornecerSimbolos() {
+		return simbolos;
 	}
 }

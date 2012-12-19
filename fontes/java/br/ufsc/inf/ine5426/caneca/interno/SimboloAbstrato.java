@@ -34,6 +34,10 @@ public abstract class SimboloAbstrato implements Simbolo {
 		return nome;
 	}
 	
+	public Tipo fornecerTipo() {
+		return tipo;
+	}
+	
 	@Override
 	public int fornecerLinha() {
 		return linha;

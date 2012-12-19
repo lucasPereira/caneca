@@ -1,5 +1,9 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
+import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
+
+import java.util.List;
+
 public abstract class EscopoAbstrato implements Escopo {
 	private Escopo escopoPai;
 	
@@ -7,22 +11,33 @@ public abstract class EscopoAbstrato implements Escopo {
 		this.escopoPai = escopoPai;
 	}
 	
+	@Override
+	public void gerarCodigo(List<Codigo> codigo) {
+		//TODO
+		//throw new UnsupportedOperationException();
+	}
+	
+	@Override
 	public boolean definirClasse(Classe classe) {
 		throw new UnsupportedOperationException();
 	}
-
+	
+	@Override
 	public boolean definirAtributo(Atributo atributo) {
 		throw new UnsupportedOperationException();
 	}
 	
+	@Override
 	public boolean definirConstrutor(Construtor construtor) {
 		throw new UnsupportedOperationException();
 	}
 	
+	@Override
 	public boolean definirDestrutor(Destrutor destrutor) {
 		throw new UnsupportedOperationException();
 	}
 	
+	@Override
 	public boolean definirMetodo(Metodo metodo) {
 		throw new UnsupportedOperationException();
 	}

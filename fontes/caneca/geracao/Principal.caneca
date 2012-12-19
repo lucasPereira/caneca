@@ -1,0 +1,18 @@
+pacote @caneca.exemplos;
+classe publica Principal inicio
+	atributo publico Texto nome;
+	construtor publico Principal() inicio
+		Texto nome;
+		nome = "Caneca";
+		imprimir;
+		nome;
+		imprimir;
+	fim
+	destrutor publico Principal() inicio fim
+	metodo publico Nada iniciar(Numero parametro) inicio fim
+	metodo publico Nada continuar(Texto parametroA, Texto parametroB) inicio
+		?nome.chamar().maisUm(verdadeiro);
+		?umMetodo(10, "texto").nome.chamar('a');
+		?umMetodo(10.5).nome.umAtributo;
+	fim
+fim

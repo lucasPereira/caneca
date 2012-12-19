@@ -132,6 +132,10 @@ options {
 	}
 }
 
+IMPRIMIR
+	: 'imprimir'
+	;
+
 INICIO
 	: 'inicio'
 	;

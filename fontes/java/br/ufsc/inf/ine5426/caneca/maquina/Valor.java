@@ -1,6 +1,10 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
 public interface Valor {
+	public void fixarNome(String nome);
+	
+	public void fixarContextoPai(Contexto contextoPai);
+	
 	public String fornecerComoTexto();
 	
 	public char fornecerComoCaractere();
@@ -11,5 +15,7 @@ public interface Valor {
 	
 	public double fornecerComoReal();
 	
-	public Contexto fornecerComoContexto();
+	public Referencia fornecerComoReferencia();
+	
+	public String comoTexto();
 }

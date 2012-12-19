@@ -1,14 +1,16 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
-public class CodigoEncapsulado implements Codigo {
+import java.util.Stack;
+
+public final class CodigoEncapsulado extends CodigoAbstrato {
 	private Codigo codigo;
 	
-	public CodigoEncapsulado(codigo codigo) {
+	public CodigoEncapsulado(Codigo codigo) {
 		this.codigo = codigo;
 	}
 	
 	@Override
-	public void executar(Stack<Valor> pilhaDeDados, Stack<Comando> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
+	public void executar(Stack<Valor> pilhaDeDados, Stack<Codigo> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
 		pilhaDeContextos.peek().adicionarCodigo(codigo);
 	}
 	

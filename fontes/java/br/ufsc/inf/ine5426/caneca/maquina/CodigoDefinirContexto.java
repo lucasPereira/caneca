@@ -1,6 +1,8 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
-public class CodigoDefinirContexto implements Codigo {
+import java.util.Stack;
+
+public final class CodigoDefinirContexto extends CodigoAbstrato {
 	String nome;
 	
 	public CodigoDefinirContexto(String nome) {
@@ -8,7 +10,7 @@ public class CodigoDefinirContexto implements Codigo {
 	}
 	
 	@Override
-	public void executar(Stack<Valor> pilhaDeDados, Stack<Comando> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
+	public void executar(Stack<Valor> pilhaDeDados, Stack<Codigo> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
 		Contexto contextoFilho = pilhaDeContextos.pop();
 		pilhaDeContextos.peek().definirContexto(nome, contextoFilho);
 		pilhaDeContextos.push(contextoFilho);

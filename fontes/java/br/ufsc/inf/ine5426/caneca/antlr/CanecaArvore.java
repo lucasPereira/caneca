@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaArvore.g 2012-12-18 14:58:45
+// $ANTLR 3.4 fontes/g/CanecaArvore.g 2012-12-19 04:42:26
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 @SuppressWarnings({"all", "warnings", "unchecked"})
 public class CanecaArvore extends TreeParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ATRIBUIDOR", "ATRIBUTO", "CAPTURE", "CARACTERE", "CARACTERE_DE_ESCAPE", "CARACTERE_NAO_IMPRIMIVEL", "CHAMADA_DE_CLASSE", "CHAMADA_DE_OBJETO", "CLASSE", "COLCHETE_DIREITO", "COLCHETE_ESQUERDO", "COMENTARIO_EM_BLOCO", "COMENTARIO_EM_LINHA", "COMO", "CONSTANTE_INTEIRA", "CONSTANTE_REAL", "CONSTRUTOR", "DECLARE", "DESTRUA", "DESTRUTOR", "DIFERENTE", "DIGITO", "DIVISAO", "E", "ENQUANTO", "ESPACO_EM_BRANCO", "ESSA", "ESSE", "ESTATICO", "FIM", "IDENTIFICADOR", "IDENTIFICADOR_DE_PACOTE", "IGUAL", "IMPLEMENTA", "IMPORTE", "INICIO", "INTERFACE", "LANCE", "LETRA", "LITERAL_CARACTERE", "LITERAL_TEXTO", "MAIOR", "MAIOR_IGUAL", "MENOR", "MENOR_IGUAL", "METODO", "MULTIPLICACAO", "NEGACAO", "NOVA", "NOVO", "OU", "PACOTE", "PARA", "PARENTESE_DIREITO", "PARENTESE_ESQUERDO", "PRIVADA", "PRIVADO", "PROTEGIDA", "PROTEGIDO", "PUBLICA", "PUBLICO", "QUEBRA_DE_LINHA", "REPITA", "RESTO_DA_DIVISAO", "RETORNE", "SE", "SENAO", "SEPARADOR", "SOMA", "SUBTRACAO", "TABULACAO", "TENTE", "TERMINADOR", "USADO_EM_TEXTO", "VALOR_BOOLEANO", "VALOR_NULO", "ARGUMENTOS_", "ASSINATURAS_DE_METODOS_", "ASSINATURA_", "ASSINATURA_DE_METODO_", "ATRIBUICAO_", "ATRIBUTOS_", "ATRIBUTO_", "CABECALHO_", "CAPTURAS_", "CAPTURE_", "CHAMADA_DE_CLASSE_", "CHAMADA_DE_OBJETO_", "CLASSE_", "COMANDO_", "CONSTRUTORES_", "CONSTRUTOR_", "CORPO_", "DECLARACAO_", "DECLARACAO_COM_ATRIBUICAO_OPICIONAL_", "DESTRUICAO_", "DESTRUTORES_", "DESTRUTOR_", "ENQUANTO_", "EXPRESSAO_", "IMPORTACAO_", "IMPORTACOES_", "INSTANCIACAO_", "INSTRUCOES_", "INTERFACES_", "INTERFACE_", "LANCE_", "METODOS_", "METODO_", "NEGATIVACAO_", "PACOTE_", "PARAMETROS_", "PARA_", "PRIMARIA_", "PROGRAMA_", "REFERENCIA_", "REPITA_", "RETORNO_", "SELECAO_", "SE_", "TENTE_", "TIPOS_", "TIPOS_GENERICOS_", "TIPO_", "TIPO_GENERICO_", "UNIDADE_"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "ATRIBUIDOR", "ATRIBUTO", "CAPTURE", "CARACTERE", "CARACTERE_DE_ESCAPE", "CARACTERE_NAO_IMPRIMIVEL", "CHAMADA_DE_CLASSE", "CHAMADA_DE_OBJETO", "CLASSE", "COLCHETE_DIREITO", "COLCHETE_ESQUERDO", "COMENTARIO_EM_BLOCO", "COMENTARIO_EM_LINHA", "COMO", "CONSTANTE_INTEIRA", "CONSTANTE_REAL", "CONSTRUTOR", "DECLARE", "DESTRUA", "DESTRUTOR", "DIFERENTE", "DIGITO", "DIVISAO", "E", "ENQUANTO", "ESPACO_EM_BRANCO", "ESSA", "ESSE", "ESTATICO", "FIM", "IDENTIFICADOR", "IDENTIFICADOR_DE_PACOTE", "IGUAL", "IMPLEMENTA", "IMPORTE", "IMPRIMIR", "INICIO", "INTERFACE", "LANCE", "LETRA", "LITERAL_CARACTERE", "LITERAL_TEXTO", "MAIOR", "MAIOR_IGUAL", "MENOR", "MENOR_IGUAL", "METODO", "MULTIPLICACAO", "NEGACAO", "NOVA", "NOVO", "OU", "PACOTE", "PARA", "PARENTESE_DIREITO", "PARENTESE_ESQUERDO", "PRIVADA", "PRIVADO", "PROTEGIDA", "PROTEGIDO", "PUBLICA", "PUBLICO", "QUEBRA_DE_LINHA", "REPITA", "RESTO_DA_DIVISAO", "RETORNE", "SE", "SENAO", "SEPARADOR", "SOMA", "SUBTRACAO", "TABULACAO", "TENTE", "TERMINADOR", "USADO_EM_TEXTO", "VALOR_BOOLEANO", "VALOR_NULO", "ARGUMENTOS_", "ASSINATURAS_DE_METODOS_", "ASSINATURA_", "ASSINATURA_DE_METODO_", "ATRIBUICAO_", "ATRIBUTOS_", "ATRIBUTO_", "CABECALHO_", "CAPTURAS_", "CAPTURE_", "CHAMADA_DE_CLASSE_", "CHAMADA_DE_OBJETO_", "CLASSE_", "COMANDO_", "CONSTRUTORES_", "CONSTRUTOR_", "CORPO_", "DECLARACAO_", "DECLARACAO_COM_ATRIBUICAO_OPICIONAL_", "DESTRUICAO_", "DESTRUTORES_", "DESTRUTOR_", "ENQUANTO_", "EXPRESSAO_", "IMPORTACAO_", "IMPORTACOES_", "INSTANCIACAO_", "INSTRUCOES_", "INTERFACES_", "INTERFACE_", "LANCE_", "METODOS_", "METODO_", "NEGATIVACAO_", "PACOTE_", "PARAMETROS_", "PARA_", "PRIMARIA_", "PROGRAMA_", "REFERENCIA_", "REPITA_", "RETORNO_", "SELECAO_", "SE_", "TENTE_", "TIPOS_", "TIPOS_GENERICOS_", "TIPO_", "TIPO_GENERICO_", "UNIDADE_"
     };
 
     public static final int EOF=-1;
@@ -52,97 +52,98 @@ public class CanecaArvore extends TreeParser {
     public static final int IGUAL=36;
     public static final int IMPLEMENTA=37;
     public static final int IMPORTE=38;
-    public static final int INICIO=39;
-    public static final int INTERFACE=40;
-    public static final int LANCE=41;
-    public static final int LETRA=42;
-    public static final int LITERAL_CARACTERE=43;
-    public static final int LITERAL_TEXTO=44;
-    public static final int MAIOR=45;
-    public static final int MAIOR_IGUAL=46;
-    public static final int MENOR=47;
-    public static final int MENOR_IGUAL=48;
-    public static final int METODO=49;
-    public static final int MULTIPLICACAO=50;
-    public static final int NEGACAO=51;
-    public static final int NOVA=52;
-    public static final int NOVO=53;
-    public static final int OU=54;
-    public static final int PACOTE=55;
-    public static final int PARA=56;
-    public static final int PARENTESE_DIREITO=57;
-    public static final int PARENTESE_ESQUERDO=58;
-    public static final int PRIVADA=59;
-    public static final int PRIVADO=60;
-    public static final int PROTEGIDA=61;
-    public static final int PROTEGIDO=62;
-    public static final int PUBLICA=63;
-    public static final int PUBLICO=64;
-    public static final int QUEBRA_DE_LINHA=65;
-    public static final int REPITA=66;
-    public static final int RESTO_DA_DIVISAO=67;
-    public static final int RETORNE=68;
-    public static final int SE=69;
-    public static final int SENAO=70;
-    public static final int SEPARADOR=71;
-    public static final int SOMA=72;
-    public static final int SUBTRACAO=73;
-    public static final int TABULACAO=74;
-    public static final int TENTE=75;
-    public static final int TERMINADOR=76;
-    public static final int USADO_EM_TEXTO=77;
-    public static final int VALOR_BOOLEANO=78;
-    public static final int VALOR_NULO=79;
-    public static final int ARGUMENTOS_=80;
-    public static final int ASSINATURAS_DE_METODOS_=81;
-    public static final int ASSINATURA_=82;
-    public static final int ASSINATURA_DE_METODO_=83;
-    public static final int ATRIBUICAO_=84;
-    public static final int ATRIBUTOS_=85;
-    public static final int ATRIBUTO_=86;
-    public static final int CABECALHO_=87;
-    public static final int CAPTURAS_=88;
-    public static final int CAPTURE_=89;
-    public static final int CHAMADA_DE_CLASSE_=90;
-    public static final int CHAMADA_DE_OBJETO_=91;
-    public static final int CLASSE_=92;
-    public static final int COMANDO_=93;
-    public static final int CONSTRUTORES_=94;
-    public static final int CONSTRUTOR_=95;
-    public static final int CORPO_=96;
-    public static final int DECLARACAO_=97;
-    public static final int DECLARACAO_COM_ATRIBUICAO_OPICIONAL_=98;
-    public static final int DESTRUICAO_=99;
-    public static final int DESTRUTORES_=100;
-    public static final int DESTRUTOR_=101;
-    public static final int ENQUANTO_=102;
-    public static final int EXPRESSAO_=103;
-    public static final int IMPORTACAO_=104;
-    public static final int IMPORTACOES_=105;
-    public static final int INSTANCIACAO_=106;
-    public static final int INSTRUCOES_=107;
-    public static final int INTERFACES_=108;
-    public static final int INTERFACE_=109;
-    public static final int LANCE_=110;
-    public static final int METODOS_=111;
-    public static final int METODO_=112;
-    public static final int NEGATIVACAO_=113;
-    public static final int PACOTE_=114;
-    public static final int PARAMETROS_=115;
-    public static final int PARA_=116;
-    public static final int PRIMARIA_=117;
-    public static final int PROGRAMA_=118;
-    public static final int REFERENCIA_=119;
-    public static final int REPITA_=120;
-    public static final int RETORNO_=121;
-    public static final int SELECAO_=122;
-    public static final int SE_=123;
-    public static final int TENTE_=124;
-    public static final int TIPOS_=125;
-    public static final int TIPOS_GENERICOS_=126;
-    public static final int TIPO_=127;
-    public static final int TIPO_GENERICO_=128;
-    public static final int UNIDADE_=129;
+    public static final int IMPRIMIR=39;
+    public static final int INICIO=40;
+    public static final int INTERFACE=41;
+    public static final int LANCE=42;
+    public static final int LETRA=43;
+    public static final int LITERAL_CARACTERE=44;
+    public static final int LITERAL_TEXTO=45;
+    public static final int MAIOR=46;
+    public static final int MAIOR_IGUAL=47;
+    public static final int MENOR=48;
+    public static final int MENOR_IGUAL=49;
+    public static final int METODO=50;
+    public static final int MULTIPLICACAO=51;
+    public static final int NEGACAO=52;
+    public static final int NOVA=53;
+    public static final int NOVO=54;
+    public static final int OU=55;
+    public static final int PACOTE=56;
+    public static final int PARA=57;
+    public static final int PARENTESE_DIREITO=58;
+    public static final int PARENTESE_ESQUERDO=59;
+    public static final int PRIVADA=60;
+    public static final int PRIVADO=61;
+    public static final int PROTEGIDA=62;
+    public static final int PROTEGIDO=63;
+    public static final int PUBLICA=64;
+    public static final int PUBLICO=65;
+    public static final int QUEBRA_DE_LINHA=66;
+    public static final int REPITA=67;
+    public static final int RESTO_DA_DIVISAO=68;
+    public static final int RETORNE=69;
+    public static final int SE=70;
+    public static final int SENAO=71;
+    public static final int SEPARADOR=72;
+    public static final int SOMA=73;
+    public static final int SUBTRACAO=74;
+    public static final int TABULACAO=75;
+    public static final int TENTE=76;
+    public static final int TERMINADOR=77;
+    public static final int USADO_EM_TEXTO=78;
+    public static final int VALOR_BOOLEANO=79;
+    public static final int VALOR_NULO=80;
+    public static final int ARGUMENTOS_=81;
+    public static final int ASSINATURAS_DE_METODOS_=82;
+    public static final int ASSINATURA_=83;
+    public static final int ASSINATURA_DE_METODO_=84;
+    public static final int ATRIBUICAO_=85;
+    public static final int ATRIBUTOS_=86;
+    public static final int ATRIBUTO_=87;
+    public static final int CABECALHO_=88;
+    public static final int CAPTURAS_=89;
+    public static final int CAPTURE_=90;
+    public static final int CHAMADA_DE_CLASSE_=91;
+    public static final int CHAMADA_DE_OBJETO_=92;
+    public static final int CLASSE_=93;
+    public static final int COMANDO_=94;
+    public static final int CONSTRUTORES_=95;
+    public static final int CONSTRUTOR_=96;
+    public static final int CORPO_=97;
+    public static final int DECLARACAO_=98;
+    public static final int DECLARACAO_COM_ATRIBUICAO_OPICIONAL_=99;
+    public static final int DESTRUICAO_=100;
+    public static final int DESTRUTORES_=101;
+    public static final int DESTRUTOR_=102;
+    public static final int ENQUANTO_=103;
+    public static final int EXPRESSAO_=104;
+    public static final int IMPORTACAO_=105;
+    public static final int IMPORTACOES_=106;
+    public static final int INSTANCIACAO_=107;
+    public static final int INSTRUCOES_=108;
+    public static final int INTERFACES_=109;
+    public static final int INTERFACE_=110;
+    public static final int LANCE_=111;
+    public static final int METODOS_=112;
+    public static final int METODO_=113;
+    public static final int NEGATIVACAO_=114;
+    public static final int PACOTE_=115;
+    public static final int PARAMETROS_=116;
+    public static final int PARA_=117;
+    public static final int PRIMARIA_=118;
+    public static final int PROGRAMA_=119;
+    public static final int REFERENCIA_=120;
+    public static final int REPITA_=121;
+    public static final int RETORNO_=122;
+    public static final int SELECAO_=123;
+    public static final int SE_=124;
+    public static final int TENTE_=125;
+    public static final int TIPOS_=126;
+    public static final int TIPOS_GENERICOS_=127;
+    public static final int TIPO_=128;
+    public static final int TIPO_GENERICO_=129;
+    public static final int UNIDADE_=130;
 
     // delegates
     public TreeParser[] getDelegates() {
@@ -375,7 +376,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_classe.add(classe3.getTree());
 
                     // AST REWRITE
-                    // elements: cabecalho, classe
+                    // elements: classe, cabecalho
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -420,7 +421,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_interfaces.add(interfaces4.getTree());
 
                     // AST REWRITE
-                    // elements: interfaces, cabecalho
+                    // elements: cabecalho, interfaces
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -521,7 +522,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_importacoes.add(importacoes6.getTree());
 
             // AST REWRITE
-            // elements: importacoes, pacote
+            // elements: pacote, importacoes
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -886,7 +887,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
                     // AST REWRITE
-                    // elements: IDENTIFICADOR_DE_PACOTE, IDENTIFICADOR, IDENTIFICADOR
+                    // elements: IDENTIFICADOR, IDENTIFICADOR, IDENTIFICADOR_DE_PACOTE
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -1085,7 +1086,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_corpoDaClasse.add(corpoDaClasse23.getTree());
 
             // AST REWRITE
-            // elements: modificadorDeAcessoFeminino, listaDeInterfaces, IDENTIFICADOR, listaDeTiposGenericos, corpoDaClasse
+            // elements: listaDeTiposGenericos, modificadorDeAcessoFeminino, IDENTIFICADOR, listaDeInterfaces, corpoDaClasse
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1226,7 +1227,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_corpoDaInterface.add(corpoDaInterface29.getTree());
 
             // AST REWRITE
-            // elements: corpoDaInterface, modificadorDeAcessoFeminino, listaDeInterfaces, IDENTIFICADOR, listaDeTiposGenericos
+            // elements: listaDeInterfaces, modificadorDeAcessoFeminino, listaDeTiposGenericos, corpoDaInterface, IDENTIFICADOR
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1367,7 +1368,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: destrutor, atributos, metodos, construtores
+            // elements: metodos, construtores, destrutor, atributos
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -1482,7 +1483,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: atributos, assinaturasDeMetodos
+            // elements: assinaturasDeMetodos, atributos
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2107,7 +2108,7 @@ public TreeAdaptor getTreeAdaptor() {
                     // fontes/g/CanecaArvore.g:157:5: 
                     {
                     // AST REWRITE
-                    // elements: ESTATICO, IDENTIFICADOR, modificadorDeAcessoMasculino, tipo
+                    // elements: ESTATICO, IDENTIFICADOR, tipo, modificadorDeAcessoMasculino
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2170,7 +2171,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_expressaoOuLogico.add(expressaoOuLogico51.getTree());
 
                     // AST REWRITE
-                    // elements: tipo, IDENTIFICADOR, IDENTIFICADOR, ESTATICO, modificadorDeAcessoMasculino, expressaoOuLogico, ATRIBUIDOR
+                    // elements: IDENTIFICADOR, tipo, IDENTIFICADOR, ATRIBUIDOR, modificadorDeAcessoMasculino, ESTATICO, expressaoOuLogico
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -2335,7 +2336,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_blocoDeInstrucoes.add(blocoDeInstrucoes54.getTree());
 
             // AST REWRITE
-            // elements: assinaturaDeConstrutor, blocoDeInstrucoes
+            // elements: blocoDeInstrucoes, assinaturaDeConstrutor
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2430,7 +2431,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_blocoDeInstrucoes.add(blocoDeInstrucoes56.getTree());
 
             // AST REWRITE
-            // elements: blocoDeInstrucoes, assinaturaDeDestrutor
+            // elements: assinaturaDeDestrutor, blocoDeInstrucoes
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2636,7 +2637,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeArgumentos.add(listaDeArgumentos62.getTree());
 
             // AST REWRITE
-            // elements: modificadorDeAcessoMasculino, IDENTIFICADOR, listaDeArgumentos
+            // elements: IDENTIFICADOR, listaDeArgumentos, modificadorDeAcessoMasculino
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2751,7 +2752,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeArgumentosVazia.add(listaDeArgumentosVazia66.getTree());
 
             // AST REWRITE
-            // elements: listaDeArgumentosVazia, modificadorDeAcessoMasculino, IDENTIFICADOR
+            // elements: modificadorDeAcessoMasculino, IDENTIFICADOR, listaDeArgumentosVazia
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -2902,7 +2903,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeArgumentos.add(listaDeArgumentos72.getTree());
 
             // AST REWRITE
-            // elements: IDENTIFICADOR, listaDeArgumentos, modificadorDeAcessoMasculino, ESTATICO, tipo
+            // elements: modificadorDeAcessoMasculino, listaDeArgumentos, ESTATICO, tipo, IDENTIFICADOR
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4112,7 +4113,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeInterfaces.add(listaDeInterfaces101.getTree());
 
             // AST REWRITE
-            // elements: IDENTIFICADOR, listaDeInterfaces
+            // elements: listaDeInterfaces, IDENTIFICADOR
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4300,7 +4301,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: tipo, IDENTIFICADOR
+            // elements: IDENTIFICADOR, tipo
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -4473,7 +4474,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_expressaoOuLogico.add(expressaoOuLogico109.getTree());
 
                     // AST REWRITE
-                    // elements: expressaoOuLogico, ATRIBUIDOR, IDENTIFICADOR, IDENTIFICADOR, tipo
+                    // elements: IDENTIFICADOR, IDENTIFICADOR, tipo, expressaoOuLogico, ATRIBUIDOR
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -5348,7 +5349,7 @@ public TreeAdaptor getTreeAdaptor() {
                     stream_expressaoPrimaria.add(expressaoPrimaria132.getTree());
 
                     // AST REWRITE
-                    // elements: NEGACAO, expressaoPrimaria
+                    // elements: expressaoPrimaria, NEGACAO
                     // token labels: 
                     // rule labels: retval
                     // token list labels: 
@@ -6611,7 +6612,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             // AST REWRITE
-            // elements: blocoDeInstrucoes, expressao, blocoDeInstrucoes
+            // elements: blocoDeInstrucoes, blocoDeInstrucoes, expressao
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -6914,7 +6915,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_blocoDeInstrucoes.add(blocoDeInstrucoes183.getTree());
 
             // AST REWRITE
-            // elements: declaracao, blocoDeInstrucoes, expressao
+            // elements: expressao, blocoDeInstrucoes, declaracao
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -7138,7 +7139,7 @@ public TreeAdaptor getTreeAdaptor() {
             stream_listaDeCapturas.add(listaDeCapturas191.getTree());
 
             // AST REWRITE
-            // elements: listaDeCapturas, blocoDeInstrucoes
+            // elements: blocoDeInstrucoes, listaDeCapturas
             // token labels: 
             // rule labels: retval
             // token list labels: 
@@ -7403,7 +7404,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "instrucao"
-    // fontes/g/CanecaArvore.g:341:1: instrucao : ( ( options {k=2; } : expressao TERMINADOR !| declaracaoComAtribuicaoOpcional TERMINADOR !) | destruicao TERMINADOR !| retorno TERMINADOR !| se | para | repita | enquanto | tente | lance TERMINADOR !);
+    // fontes/g/CanecaArvore.g:341:1: instrucao : ( ( options {k=2; } : expressao TERMINADOR !| declaracaoComAtribuicaoOpcional TERMINADOR !) | IMPRIMIR TERMINADOR !| destruicao TERMINADOR !| retorno TERMINADOR !| se | para | repita | enquanto | tente | lance TERMINADOR !);
     public final CanecaArvore.instrucao_return instrucao() throws RecognitionException {
         CanecaArvore.instrucao_return retval = new CanecaArvore.instrucao_return();
         retval.start = input.LT(1);
@@ -7416,39 +7417,43 @@ public TreeAdaptor getTreeAdaptor() {
 
         CommonTree TERMINADOR200=null;
         CommonTree TERMINADOR202=null;
+        CommonTree IMPRIMIR203=null;
         CommonTree TERMINADOR204=null;
         CommonTree TERMINADOR206=null;
-        CommonTree TERMINADOR213=null;
+        CommonTree TERMINADOR208=null;
+        CommonTree TERMINADOR215=null;
         CanecaArvore.expressao_return expressao199 =null;
 
         CanecaArvore.declaracaoComAtribuicaoOpcional_return declaracaoComAtribuicaoOpcional201 =null;
 
-        CanecaArvore.destruicao_return destruicao203 =null;
+        CanecaArvore.destruicao_return destruicao205 =null;
 
-        CanecaArvore.retorno_return retorno205 =null;
+        CanecaArvore.retorno_return retorno207 =null;
 
-        CanecaArvore.se_return se207 =null;
+        CanecaArvore.se_return se209 =null;
 
-        CanecaArvore.para_return para208 =null;
+        CanecaArvore.para_return para210 =null;
 
-        CanecaArvore.repita_return repita209 =null;
+        CanecaArvore.repita_return repita211 =null;
 
-        CanecaArvore.enquanto_return enquanto210 =null;
+        CanecaArvore.enquanto_return enquanto212 =null;
 
-        CanecaArvore.tente_return tente211 =null;
+        CanecaArvore.tente_return tente213 =null;
 
-        CanecaArvore.lance_return lance212 =null;
+        CanecaArvore.lance_return lance214 =null;
 
 
         CommonTree TERMINADOR200_tree=null;
         CommonTree TERMINADOR202_tree=null;
+        CommonTree IMPRIMIR203_tree=null;
         CommonTree TERMINADOR204_tree=null;
         CommonTree TERMINADOR206_tree=null;
-        CommonTree TERMINADOR213_tree=null;
+        CommonTree TERMINADOR208_tree=null;
+        CommonTree TERMINADOR215_tree=null;
 
         try {
-            // fontes/g/CanecaArvore.g:342:2: ( ( options {k=2; } : expressao TERMINADOR !| declaracaoComAtribuicaoOpcional TERMINADOR !) | destruicao TERMINADOR !| retorno TERMINADOR !| se | para | repita | enquanto | tente | lance TERMINADOR !)
-            int alt39=9;
+            // fontes/g/CanecaArvore.g:342:2: ( ( options {k=2; } : expressao TERMINADOR !| declaracaoComAtribuicaoOpcional TERMINADOR !) | IMPRIMIR TERMINADOR !| destruicao TERMINADOR !| retorno TERMINADOR !| se | para | repita | enquanto | tente | lance TERMINADOR !)
+            int alt39=10;
             switch ( input.LA(1) ) {
             case CONSTANTE_INTEIRA:
             case CONSTANTE_REAL:
@@ -7468,44 +7473,49 @@ public TreeAdaptor getTreeAdaptor() {
                 alt39=1;
                 }
                 break;
-            case DESTRUA:
+            case IMPRIMIR:
                 {
                 alt39=2;
                 }
                 break;
-            case RETORNE:
+            case DESTRUA:
                 {
                 alt39=3;
                 }
                 break;
-            case SE:
+            case RETORNE:
                 {
                 alt39=4;
                 }
                 break;
-            case PARA:
+            case SE:
                 {
                 alt39=5;
                 }
                 break;
-            case REPITA:
+            case PARA:
                 {
                 alt39=6;
                 }
                 break;
-            case ENQUANTO:
+            case REPITA:
                 {
                 alt39=7;
                 }
                 break;
-            case TENTE:
+            case ENQUANTO:
                 {
                 alt39=8;
                 }
                 break;
-            case LANCE:
+            case TENTE:
                 {
                 alt39=9;
+                }
+                break;
+            case LANCE:
+                {
+                alt39=10;
                 }
                 break;
             default:
@@ -7596,18 +7606,17 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaArvore.g:347:4: destruicao TERMINADOR !
+                    // fontes/g/CanecaArvore.g:347:4: IMPRIMIR TERMINADOR !
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_destruicao_in_instrucao2093);
-                    destruicao203=destruicao();
+                    IMPRIMIR203=(CommonTree)match(input,IMPRIMIR,FOLLOW_IMPRIMIR_in_instrucao2093); 
+                    IMPRIMIR203_tree = (CommonTree)adaptor.dupNode(IMPRIMIR203);
 
-                    state._fsp--;
 
-                    adaptor.addChild(root_0, destruicao203.getTree());
+                    adaptor.addChild(root_0, IMPRIMIR203_tree);
 
 
                     _last = (CommonTree)input.LT(1);
@@ -7616,18 +7625,18 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 3 :
-                    // fontes/g/CanecaArvore.g:348:4: retorno TERMINADOR !
+                    // fontes/g/CanecaArvore.g:348:4: destruicao TERMINADOR !
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_retorno_in_instrucao2101);
-                    retorno205=retorno();
+                    pushFollow(FOLLOW_destruicao_in_instrucao2101);
+                    destruicao205=destruicao();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, retorno205.getTree());
+                    adaptor.addChild(root_0, destruicao205.getTree());
 
 
                     _last = (CommonTree)input.LT(1);
@@ -7636,107 +7645,127 @@ public TreeAdaptor getTreeAdaptor() {
                     }
                     break;
                 case 4 :
-                    // fontes/g/CanecaArvore.g:349:4: se
+                    // fontes/g/CanecaArvore.g:349:4: retorno TERMINADOR !
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_se_in_instrucao2109);
-                    se207=se();
+                    pushFollow(FOLLOW_retorno_in_instrucao2109);
+                    retorno207=retorno();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, se207.getTree());
+                    adaptor.addChild(root_0, retorno207.getTree());
 
+
+                    _last = (CommonTree)input.LT(1);
+                    TERMINADOR208=(CommonTree)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao2111); 
 
                     }
                     break;
                 case 5 :
-                    // fontes/g/CanecaArvore.g:350:4: para
+                    // fontes/g/CanecaArvore.g:350:4: se
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_para_in_instrucao2114);
-                    para208=para();
+                    pushFollow(FOLLOW_se_in_instrucao2117);
+                    se209=se();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, para208.getTree());
+                    adaptor.addChild(root_0, se209.getTree());
 
 
                     }
                     break;
                 case 6 :
-                    // fontes/g/CanecaArvore.g:351:4: repita
+                    // fontes/g/CanecaArvore.g:351:4: para
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_repita_in_instrucao2119);
-                    repita209=repita();
+                    pushFollow(FOLLOW_para_in_instrucao2122);
+                    para210=para();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, repita209.getTree());
+                    adaptor.addChild(root_0, para210.getTree());
 
 
                     }
                     break;
                 case 7 :
-                    // fontes/g/CanecaArvore.g:352:4: enquanto
+                    // fontes/g/CanecaArvore.g:352:4: repita
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_enquanto_in_instrucao2124);
-                    enquanto210=enquanto();
+                    pushFollow(FOLLOW_repita_in_instrucao2127);
+                    repita211=repita();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, enquanto210.getTree());
+                    adaptor.addChild(root_0, repita211.getTree());
 
 
                     }
                     break;
                 case 8 :
-                    // fontes/g/CanecaArvore.g:353:4: tente
+                    // fontes/g/CanecaArvore.g:353:4: enquanto
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_tente_in_instrucao2129);
-                    tente211=tente();
+                    pushFollow(FOLLOW_enquanto_in_instrucao2132);
+                    enquanto212=enquanto();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, tente211.getTree());
+                    adaptor.addChild(root_0, enquanto212.getTree());
 
 
                     }
                     break;
                 case 9 :
-                    // fontes/g/CanecaArvore.g:354:4: lance TERMINADOR !
+                    // fontes/g/CanecaArvore.g:354:4: tente
                     {
                     root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    pushFollow(FOLLOW_lance_in_instrucao2134);
-                    lance212=lance();
+                    pushFollow(FOLLOW_tente_in_instrucao2137);
+                    tente213=tente();
 
                     state._fsp--;
 
-                    adaptor.addChild(root_0, lance212.getTree());
+                    adaptor.addChild(root_0, tente213.getTree());
+
+
+                    }
+                    break;
+                case 10 :
+                    // fontes/g/CanecaArvore.g:355:4: lance TERMINADOR !
+                    {
+                    root_0 = (CommonTree)adaptor.nil();
 
 
                     _last = (CommonTree)input.LT(1);
-                    TERMINADOR213=(CommonTree)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao2136); 
+                    pushFollow(FOLLOW_lance_in_instrucao2142);
+                    lance214=lance();
+
+                    state._fsp--;
+
+                    adaptor.addChild(root_0, lance214.getTree());
+
+
+                    _last = (CommonTree)input.LT(1);
+                    TERMINADOR215=(CommonTree)match(input,TERMINADOR,FOLLOW_TERMINADOR_in_instrucao2144); 
 
                     }
                     break;
@@ -7765,7 +7794,7 @@ public TreeAdaptor getTreeAdaptor() {
 
 
     // $ANTLR start "blocoDeInstrucoes"
-    // fontes/g/CanecaArvore.g:357:1: blocoDeInstrucoes : INICIO ( instrucao )* FIM -> ^( INSTRUCOES_ ( instrucao )* ) ;
+    // fontes/g/CanecaArvore.g:358:1: blocoDeInstrucoes : INICIO ( instrucao )* FIM -> ^( INSTRUCOES_ ( instrucao )* ) ;
     public final CanecaArvore.blocoDeInstrucoes_return blocoDeInstrucoes() throws RecognitionException {
         CanecaArvore.blocoDeInstrucoes_return retval = new CanecaArvore.blocoDeInstrucoes_return();
         retval.start = input.LT(1);
@@ -7776,47 +7805,47 @@ public TreeAdaptor getTreeAdaptor() {
         CommonTree _first_0 = null;
         CommonTree _last = null;
 
-        CommonTree INICIO214=null;
-        CommonTree FIM216=null;
-        CanecaArvore.instrucao_return instrucao215 =null;
+        CommonTree INICIO216=null;
+        CommonTree FIM218=null;
+        CanecaArvore.instrucao_return instrucao217 =null;
 
 
-        CommonTree INICIO214_tree=null;
-        CommonTree FIM216_tree=null;
+        CommonTree INICIO216_tree=null;
+        CommonTree FIM218_tree=null;
         RewriteRuleNodeStream stream_INICIO=new RewriteRuleNodeStream(adaptor,"token INICIO");
         RewriteRuleNodeStream stream_FIM=new RewriteRuleNodeStream(adaptor,"token FIM");
         RewriteRuleSubtreeStream stream_instrucao=new RewriteRuleSubtreeStream(adaptor,"rule instrucao");
         try {
-            // fontes/g/CanecaArvore.g:358:2: ( INICIO ( instrucao )* FIM -> ^( INSTRUCOES_ ( instrucao )* ) )
-            // fontes/g/CanecaArvore.g:358:4: INICIO ( instrucao )* FIM
+            // fontes/g/CanecaArvore.g:359:2: ( INICIO ( instrucao )* FIM -> ^( INSTRUCOES_ ( instrucao )* ) )
+            // fontes/g/CanecaArvore.g:359:4: INICIO ( instrucao )* FIM
             {
             _last = (CommonTree)input.LT(1);
-            INICIO214=(CommonTree)match(input,INICIO,FOLLOW_INICIO_in_blocoDeInstrucoes2148);  
-            stream_INICIO.add(INICIO214);
+            INICIO216=(CommonTree)match(input,INICIO,FOLLOW_INICIO_in_blocoDeInstrucoes2156);  
+            stream_INICIO.add(INICIO216);
 
 
-            // fontes/g/CanecaArvore.g:358:11: ( instrucao )*
+            // fontes/g/CanecaArvore.g:359:11: ( instrucao )*
             loop40:
             do {
                 int alt40=2;
                 int LA40_0 = input.LA(1);
 
-                if ( ((LA40_0 >= CONSTANTE_INTEIRA && LA40_0 <= CONSTANTE_REAL)||LA40_0==DESTRUA||LA40_0==ENQUANTO||(LA40_0 >= ESSA && LA40_0 <= ESSE)||LA40_0==IDENTIFICADOR||LA40_0==LANCE||(LA40_0 >= LITERAL_CARACTERE && LA40_0 <= LITERAL_TEXTO)||(LA40_0 >= NEGACAO && LA40_0 <= NOVO)||LA40_0==PARA||LA40_0==PARENTESE_ESQUERDO||LA40_0==REPITA||(LA40_0 >= RETORNE && LA40_0 <= SE)||LA40_0==SUBTRACAO||LA40_0==TENTE||(LA40_0 >= VALOR_BOOLEANO && LA40_0 <= VALOR_NULO)) ) {
+                if ( ((LA40_0 >= CONSTANTE_INTEIRA && LA40_0 <= CONSTANTE_REAL)||LA40_0==DESTRUA||LA40_0==ENQUANTO||(LA40_0 >= ESSA && LA40_0 <= ESSE)||LA40_0==IDENTIFICADOR||LA40_0==IMPRIMIR||LA40_0==LANCE||(LA40_0 >= LITERAL_CARACTERE && LA40_0 <= LITERAL_TEXTO)||(LA40_0 >= NEGACAO && LA40_0 <= NOVO)||LA40_0==PARA||LA40_0==PARENTESE_ESQUERDO||LA40_0==REPITA||(LA40_0 >= RETORNE && LA40_0 <= SE)||LA40_0==SUBTRACAO||LA40_0==TENTE||(LA40_0 >= VALOR_BOOLEANO && LA40_0 <= VALOR_NULO)) ) {
                     alt40=1;
                 }
 
 
                 switch (alt40) {
             	case 1 :
-            	    // fontes/g/CanecaArvore.g:358:12: instrucao
+            	    // fontes/g/CanecaArvore.g:359:12: instrucao
             	    {
             	    _last = (CommonTree)input.LT(1);
-            	    pushFollow(FOLLOW_instrucao_in_blocoDeInstrucoes2151);
-            	    instrucao215=instrucao();
+            	    pushFollow(FOLLOW_instrucao_in_blocoDeInstrucoes2159);
+            	    instrucao217=instrucao();
 
             	    state._fsp--;
 
-            	    stream_instrucao.add(instrucao215.getTree());
+            	    stream_instrucao.add(instrucao217.getTree());
 
             	    }
             	    break;
@@ -7828,8 +7857,8 @@ public TreeAdaptor getTreeAdaptor() {
 
 
             _last = (CommonTree)input.LT(1);
-            FIM216=(CommonTree)match(input,FIM,FOLLOW_FIM_in_blocoDeInstrucoes2155);  
-            stream_FIM.add(FIM216);
+            FIM218=(CommonTree)match(input,FIM,FOLLOW_FIM_in_blocoDeInstrucoes2163);  
+            stream_FIM.add(FIM218);
 
 
             // AST REWRITE
@@ -7843,16 +7872,16 @@ public TreeAdaptor getTreeAdaptor() {
             RewriteRuleSubtreeStream stream_retval=new RewriteRuleSubtreeStream(adaptor,"rule retval",retval!=null?retval.tree:null);
 
             root_0 = (CommonTree)adaptor.nil();
-            // 358:28: -> ^( INSTRUCOES_ ( instrucao )* )
+            // 359:28: -> ^( INSTRUCOES_ ( instrucao )* )
             {
-                // fontes/g/CanecaArvore.g:358:31: ^( INSTRUCOES_ ( instrucao )* )
+                // fontes/g/CanecaArvore.g:359:31: ^( INSTRUCOES_ ( instrucao )* )
                 {
                 CommonTree root_1 = (CommonTree)adaptor.nil();
                 root_1 = (CommonTree)adaptor.becomeRoot(
                 (CommonTree)adaptor.create(INSTRUCOES_, "INSTRUCOES_")
                 , root_1);
 
-                // fontes/g/CanecaArvore.g:358:45: ( instrucao )*
+                // fontes/g/CanecaArvore.g:359:45: ( instrucao )*
                 while ( stream_instrucao.hasNext() ) {
                     adaptor.addChild(root_1, stream_instrucao.nextTree());
 
@@ -7889,101 +7918,101 @@ public TreeAdaptor getTreeAdaptor() {
 
  
 
-    public static final BitSet FOLLOW_unicadeDeCompilacao_in_programa291 = new BitSet(new long[]{0x0080000000000002L});
-    public static final BitSet FOLLOW_cabecalho_in_unicadeDeCompilacao315 = new BitSet(new long[]{0x0000010000001000L});
+    public static final BitSet FOLLOW_unicadeDeCompilacao_in_programa291 = new BitSet(new long[]{0x0100000000000002L});
+    public static final BitSet FOLLOW_cabecalho_in_unicadeDeCompilacao315 = new BitSet(new long[]{0x0000020000001000L});
     public static final BitSet FOLLOW_classe_in_unicadeDeCompilacao321 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_interfaces_in_unicadeDeCompilacao337 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_pacote_in_cabecalho362 = new BitSet(new long[]{0x0000004000000000L});
     public static final BitSet FOLLOW_importacoes_in_cabecalho364 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_PACOTE_in_pacote385 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_pacote387 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_pacote387 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_TERMINADOR_in_pacote389 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_importacao_in_importacoes409 = new BitSet(new long[]{0x0000004000000002L});
     public static final BitSet FOLLOW_IMPORTE_in_importacao433 = new BitSet(new long[]{0x0000000C00000000L});
     public static final BitSet FOLLOW_IDENTIFICADOR_in_importacao439 = new BitSet(new long[]{0x0000000800000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao441 = new BitSet(new long[]{0x0000000000020000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao441 = new BitSet(new long[]{0x0000000000020000L,0x0000000000002000L});
     public static final BitSet FOLLOW_COMO_in_importacao444 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_importacao446 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao469 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_importacao446 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_DE_PACOTE_in_importacao469 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_TERMINADOR_in_importacao483 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CLASSE_in_classe494 = new BitSet(new long[]{0xA800000000000000L});
+    public static final BitSet FOLLOW_CLASSE_in_classe494 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
     public static final BitSet FOLLOW_modificadorDeAcessoFeminino_in_classe496 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_classe498 = new BitSet(new long[]{0x000000A000004000L});
-    public static final BitSet FOLLOW_listaDeTiposGenericos_in_classe500 = new BitSet(new long[]{0x000000A000000000L});
-    public static final BitSet FOLLOW_listaDeInterfaces_in_classe502 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_classe498 = new BitSet(new long[]{0x0000012000004000L});
+    public static final BitSet FOLLOW_listaDeTiposGenericos_in_classe500 = new BitSet(new long[]{0x0000012000000000L});
+    public static final BitSet FOLLOW_listaDeInterfaces_in_classe502 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_corpoDaClasse_in_classe504 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INTERFACE_in_interfaces531 = new BitSet(new long[]{0xA800000000000000L});
+    public static final BitSet FOLLOW_INTERFACE_in_interfaces531 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
     public static final BitSet FOLLOW_modificadorDeAcessoFeminino_in_interfaces533 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_interfaces535 = new BitSet(new long[]{0x000000A000004000L});
-    public static final BitSet FOLLOW_listaDeTiposGenericos_in_interfaces537 = new BitSet(new long[]{0x000000A000000000L});
-    public static final BitSet FOLLOW_listaDeInterfaces_in_interfaces539 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_interfaces535 = new BitSet(new long[]{0x0000012000004000L});
+    public static final BitSet FOLLOW_listaDeTiposGenericos_in_interfaces537 = new BitSet(new long[]{0x0000012000000000L});
+    public static final BitSet FOLLOW_listaDeInterfaces_in_interfaces539 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_corpoDaInterface_in_interfaces541 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_INICIO_in_corpoDaClasse568 = new BitSet(new long[]{0x0000000000100020L});
     public static final BitSet FOLLOW_atributos_in_corpoDaClasse570 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_construtores_in_corpoDaClasse572 = new BitSet(new long[]{0x0000000000800000L});
-    public static final BitSet FOLLOW_destrutor_in_corpoDaClasse574 = new BitSet(new long[]{0x0002000200000000L});
+    public static final BitSet FOLLOW_destrutor_in_corpoDaClasse574 = new BitSet(new long[]{0x0004000200000000L});
     public static final BitSet FOLLOW_metodos_in_corpoDaClasse576 = new BitSet(new long[]{0x0000000200000000L});
     public static final BitSet FOLLOW_FIM_in_corpoDaClasse578 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INICIO_in_corpoDaInterface603 = new BitSet(new long[]{0x0002000200000020L});
-    public static final BitSet FOLLOW_atributos_in_corpoDaInterface605 = new BitSet(new long[]{0x0002000200000000L});
+    public static final BitSet FOLLOW_INICIO_in_corpoDaInterface603 = new BitSet(new long[]{0x0004000200000020L});
+    public static final BitSet FOLLOW_atributos_in_corpoDaInterface605 = new BitSet(new long[]{0x0004000200000000L});
     public static final BitSet FOLLOW_assinaturasDeMetodos_in_corpoDaInterface607 = new BitSet(new long[]{0x0000000200000000L});
     public static final BitSet FOLLOW_FIM_in_corpoDaInterface609 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_atributo_in_atributos631 = new BitSet(new long[]{0x0000000000000022L});
     public static final BitSet FOLLOW_construtor_in_construtores656 = new BitSet(new long[]{0x0000000000100002L});
-    public static final BitSet FOLLOW_metodo_in_metodos681 = new BitSet(new long[]{0x0002000000000002L});
-    public static final BitSet FOLLOW_assinaturaDeMetodo_in_assinaturasDeMetodos706 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_assinaturasDeMetodos708 = new BitSet(new long[]{0x0002000000000002L});
-    public static final BitSet FOLLOW_ATRIBUTO_in_atributo732 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_metodo_in_metodos681 = new BitSet(new long[]{0x0004000000000002L});
+    public static final BitSet FOLLOW_assinaturaDeMetodo_in_assinaturasDeMetodos706 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_assinaturasDeMetodos708 = new BitSet(new long[]{0x0004000000000002L});
+    public static final BitSet FOLLOW_ATRIBUTO_in_atributo732 = new BitSet(new long[]{0xA000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_atributo734 = new BitSet(new long[]{0x0000000500000000L});
     public static final BitSet FOLLOW_ESTATICO_in_atributo737 = new BitSet(new long[]{0x0000000400000000L});
     public static final BitSet FOLLOW_tipo_in_atributo741 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_atributo743 = new BitSet(new long[]{0x0000000000000010L,0x0000000000001000L});
-    public static final BitSet FOLLOW_ATRIBUIDOR_in_atributo771 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoOuLogico_in_atributo773 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_atributo743 = new BitSet(new long[]{0x0000000000000010L,0x0000000000002000L});
+    public static final BitSet FOLLOW_ATRIBUIDOR_in_atributo771 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressaoOuLogico_in_atributo773 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_TERMINADOR_in_atributo817 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assinaturaDeConstrutor_in_construtor828 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_assinaturaDeConstrutor_in_construtor828 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_blocoDeInstrucoes_in_construtor830 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assinaturaDeDestrutor_in_destrutor851 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_assinaturaDeDestrutor_in_destrutor851 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_blocoDeInstrucoes_in_destrutor853 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_assinaturaDeMetodo_in_metodo874 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_assinaturaDeMetodo_in_metodo874 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_blocoDeInstrucoes_in_metodo876 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CONSTRUTOR_in_assinaturaDeConstrutor897 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_CONSTRUTOR_in_assinaturaDeConstrutor897 = new BitSet(new long[]{0xA000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeConstrutor899 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeConstrutor901 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeConstrutor901 = new BitSet(new long[]{0x0800000000000000L});
     public static final BitSet FOLLOW_listaDeArgumentos_in_assinaturaDeConstrutor903 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DESTRUTOR_in_assinaturaDeDestrutor926 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_DESTRUTOR_in_assinaturaDeDestrutor926 = new BitSet(new long[]{0xA000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeDestrutor928 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeDestrutor930 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeDestrutor930 = new BitSet(new long[]{0x0800000000000000L});
     public static final BitSet FOLLOW_listaDeArgumentosVazia_in_assinaturaDeDestrutor932 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_METODO_in_assinaturaDeMetodo955 = new BitSet(new long[]{0x5000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_METODO_in_assinaturaDeMetodo955 = new BitSet(new long[]{0xA000000000000000L,0x0000000000000002L});
     public static final BitSet FOLLOW_modificadorDeAcessoMasculino_in_assinaturaDeMetodo957 = new BitSet(new long[]{0x0000000500000000L});
     public static final BitSet FOLLOW_ESTATICO_in_assinaturaDeMetodo960 = new BitSet(new long[]{0x0000000400000000L});
     public static final BitSet FOLLOW_tipo_in_assinaturaDeMetodo964 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeMetodo966 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_assinaturaDeMetodo966 = new BitSet(new long[]{0x0800000000000000L});
     public static final BitSet FOLLOW_listaDeArgumentos_in_assinaturaDeMetodo968 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeParametros1040 = new BitSet(new long[]{0x06381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_listaDeParametros1043 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
-    public static final BitSet FOLLOW_SEPARADOR_in_listaDeParametros1046 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_listaDeParametros1048 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeParametros1040 = new BitSet(new long[]{0x0C703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressao_in_listaDeParametros1043 = new BitSet(new long[]{0x0400000000000000L,0x0000000000000100L});
+    public static final BitSet FOLLOW_SEPARADOR_in_listaDeParametros1046 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressao_in_listaDeParametros1048 = new BitSet(new long[]{0x0400000000000000L,0x0000000000000100L});
     public static final BitSet FOLLOW_PARENTESE_DIREITO_in_listaDeParametros1054 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentosVazia1076 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentosVazia1076 = new BitSet(new long[]{0x0400000000000000L});
     public static final BitSet FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentosVazia1078 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentos1095 = new BitSet(new long[]{0x0200000400000000L});
-    public static final BitSet FOLLOW_declaracao_in_listaDeArgumentos1098 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_listaDeArgumentos1095 = new BitSet(new long[]{0x0400000400000000L});
+    public static final BitSet FOLLOW_declaracao_in_listaDeArgumentos1098 = new BitSet(new long[]{0x0400000000000000L,0x0000000000000100L});
     public static final BitSet FOLLOW_SEPARADOR_in_listaDeArgumentos1101 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_declaracao_in_listaDeArgumentos1103 = new BitSet(new long[]{0x0200000000000000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_declaracao_in_listaDeArgumentos1103 = new BitSet(new long[]{0x0400000000000000L,0x0000000000000100L});
     public static final BitSet FOLLOW_PARENTESE_DIREITO_in_listaDeArgumentos1109 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_IMPLEMENTA_in_listaDeInterfaces1132 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces1134 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces1134 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
     public static final BitSet FOLLOW_SEPARADOR_in_listaDeInterfaces1137 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces1139 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_tipo_in_listaDeInterfaces1139 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000100L});
     public static final BitSet FOLLOW_COLCHETE_ESQUERDO_in_listaDeTiposGenericos1166 = new BitSet(new long[]{0x0000000400000000L});
     public static final BitSet FOLLOW_tipoGenerico_in_listaDeTiposGenericos1168 = new BitSet(new long[]{0x0000000000002000L});
     public static final BitSet FOLLOW_COLCHETE_DIREITO_in_listaDeTiposGenericos1170 = new BitSet(new long[]{0x0000000000004002L});
     public static final BitSet FOLLOW_COLCHETE_ESQUERDO_in_listaDeTipos1195 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_listaDeTipos1197 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_tipo_in_listaDeTipos1197 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000100L});
     public static final BitSet FOLLOW_SEPARADOR_in_listaDeTipos1200 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_listaDeTipos1202 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000080L});
+    public static final BitSet FOLLOW_tipo_in_listaDeTipos1202 = new BitSet(new long[]{0x0000000000002000L,0x0000000000000100L});
     public static final BitSet FOLLOW_COLCHETE_DIREITO_in_listaDeTipos1206 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_capture_in_listaDeCapturas1231 = new BitSet(new long[]{0x0000000000000042L});
     public static final BitSet FOLLOW_IDENTIFICADOR_in_tipoGenerico1255 = new BitSet(new long[]{0x0000002000000000L});
@@ -7994,33 +8023,33 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_IDENTIFICADOR_in_declaracao1303 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_tipo_in_declaracaoComAtribuicaoOpcional1324 = new BitSet(new long[]{0x0000000400000000L});
     public static final BitSet FOLLOW_IDENTIFICADOR_in_declaracaoComAtribuicaoOpcional1326 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_ATRIBUIDOR_in_declaracaoComAtribuicaoOpcional1347 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_ATRIBUIDOR_in_declaracaoComAtribuicaoOpcional1347 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
     public static final BitSet FOLLOW_expressaoOuLogico_in_declaracaoComAtribuicaoOpcional1349 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expressaoOuLogico_in_expressao1394 = new BitSet(new long[]{0x0000000000000012L});
-    public static final BitSet FOLLOW_ATRIBUIDOR_in_expressao1397 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_ATRIBUIDOR_in_expressao1397 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
     public static final BitSet FOLLOW_expressaoOuLogico_in_expressao1400 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico1413 = new BitSet(new long[]{0x0040000000000002L});
-    public static final BitSet FOLLOW_OU_in_expressaoOuLogico1416 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico1419 = new BitSet(new long[]{0x0040000000000002L});
+    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico1413 = new BitSet(new long[]{0x0080000000000002L});
+    public static final BitSet FOLLOW_OU_in_expressaoOuLogico1416 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressaoELogico_in_expressaoOuLogico1419 = new BitSet(new long[]{0x0080000000000002L});
     public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico1432 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_E_in_expressaoELogico1435 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_E_in_expressaoELogico1435 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
     public static final BitSet FOLLOW_expressaoComparacaoLogica_in_expressaoELogico1438 = new BitSet(new long[]{0x0000000008000002L});
-    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica1451 = new BitSet(new long[]{0x0001E01001000002L});
-    public static final BitSet FOLLOW_set_in_expressaoComparacaoLogica1454 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica1451 = new BitSet(new long[]{0x0003C01001000002L});
+    public static final BitSet FOLLOW_set_in_expressaoComparacaoLogica1454 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
     public static final BitSet FOLLOW_expressaoAditiva_in_expressaoComparacaoLogica1479 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1492 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000300L});
-    public static final BitSet FOLLOW_set_in_expressaoAditiva1495 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1504 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000300L});
-    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1517 = new BitSet(new long[]{0x0004000004000002L,0x0000000000000008L});
-    public static final BitSet FOLLOW_set_in_expressaoMultiplicativa1520 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1533 = new BitSet(new long[]{0x0004000004000002L,0x0000000000000008L});
+    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1492 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000600L});
+    public static final BitSet FOLLOW_set_in_expressaoAditiva1495 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressaoMultiplicativa_in_expressaoAditiva1504 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000600L});
+    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1517 = new BitSet(new long[]{0x0008000004000002L,0x0000000000000010L});
+    public static final BitSet FOLLOW_set_in_expressaoMultiplicativa1520 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressaoUnaria_in_expressaoMultiplicativa1533 = new BitSet(new long[]{0x0008000004000002L,0x0000000000000010L});
     public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria1546 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SUBTRACAO_in_expressaoUnaria1551 = new BitSet(new long[]{0x04301804C00C0000L,0x000000000000C000L});
+    public static final BitSet FOLLOW_SUBTRACAO_in_expressaoUnaria1551 = new BitSet(new long[]{0x08603004C00C0000L,0x0000000000018000L});
     public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria1553 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_NEGACAO_in_expressaoUnaria1566 = new BitSet(new long[]{0x04301804C00C0000L,0x000000000000C000L});
+    public static final BitSet FOLLOW_NEGACAO_in_expressaoUnaria1566 = new BitSet(new long[]{0x08603004C00C0000L,0x0000000000018000L});
     public static final BitSet FOLLOW_expressaoPrimaria_in_expressaoUnaria1568 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_expressaoPrimaria1587 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_expressaoPrimaria1589 = new BitSet(new long[]{0x0200000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_expressaoPrimaria1587 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressao_in_expressaoPrimaria1589 = new BitSet(new long[]{0x0400000000000000L});
     public static final BitSet FOLLOW_PARENTESE_DIREITO_in_expressaoPrimaria1591 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_VALOR_BOOLEANO_in_expressaoPrimaria1600 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_VALOR_NULO_in_expressaoPrimaria1605 = new BitSet(new long[]{0x0000000000000002L});
@@ -8034,74 +8063,76 @@ public TreeAdaptor getTreeAdaptor() {
     public static final BitSet FOLLOW_ESSE_in_referencia1670 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_ESSA_in_referencia1683 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_instanciacao_in_referencia1696 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_referencia1709 = new BitSet(new long[]{0x0400000000000002L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_referencia1709 = new BitSet(new long[]{0x0800000000000002L});
     public static final BitSet FOLLOW_listaDeParametros_in_referencia1712 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_set_in_chamada1738 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_IDENTIFICADOR_in_chamada1747 = new BitSet(new long[]{0x0400000000000002L});
+    public static final BitSet FOLLOW_IDENTIFICADOR_in_chamada1747 = new BitSet(new long[]{0x0800000000000002L});
     public static final BitSet FOLLOW_listaDeParametros_in_chamada1750 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_NOVO_in_instanciacao1764 = new BitSet(new long[]{0x0000000400000000L});
     public static final BitSet FOLLOW_NOVA_in_instanciacao1768 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_tipo_in_instanciacao1771 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_tipo_in_instanciacao1771 = new BitSet(new long[]{0x0800000000000000L});
     public static final BitSet FOLLOW_listaDeParametros_in_instanciacao1773 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_DESTRUA_in_destruicao1794 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_DESTRUA_in_destruicao1794 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
     public static final BitSet FOLLOW_expressao_in_destruicao1796 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_RETORNE_in_retorno1816 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_RETORNE_in_retorno1816 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
     public static final BitSet FOLLOW_expressao_in_retorno1818 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_SE_in_se1837 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_se1839 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_se1841 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_se1843 = new BitSet(new long[]{0x0000008000000000L});
-    public static final BitSet FOLLOW_blocoDeInstrucoes_in_se1845 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000040L});
-    public static final BitSet FOLLOW_SENAO_in_se1848 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_SE_in_se1837 = new BitSet(new long[]{0x0800000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_se1839 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressao_in_se1841 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_se1843 = new BitSet(new long[]{0x0000010000000000L});
+    public static final BitSet FOLLOW_blocoDeInstrucoes_in_se1845 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000080L});
+    public static final BitSet FOLLOW_SENAO_in_se1848 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_blocoDeInstrucoes_in_se1850 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_PARA_in_para1876 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_para1878 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_para1880 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_para1882 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_para1884 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_para1886 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_para1888 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_para1890 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_PARA_in_para1876 = new BitSet(new long[]{0x0800000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_para1878 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressao_in_para1880 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_para1882 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressao_in_para1884 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_para1886 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressao_in_para1888 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_para1890 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_blocoDeInstrucoes_in_para1892 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_REPITA_in_repita1917 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_REPITA_in_repita1917 = new BitSet(new long[]{0x0800000000000000L});
     public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_repita1919 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_declaracao_in_repita1921 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_repita1923 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_repita1925 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_repita1927 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_declaracao_in_repita1921 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_repita1923 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressao_in_repita1925 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_repita1927 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_blocoDeInstrucoes_in_repita1929 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_ENQUANTO_in_enquanto1952 = new BitSet(new long[]{0x0400000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_enquanto1954 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
-    public static final BitSet FOLLOW_expressao_in_enquanto1956 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_enquanto1958 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_ENQUANTO_in_enquanto1952 = new BitSet(new long[]{0x0800000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_enquanto1954 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
+    public static final BitSet FOLLOW_expressao_in_enquanto1956 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_enquanto1958 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_blocoDeInstrucoes_in_enquanto1960 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_TENTE_in_tente1981 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_TENTE_in_tente1981 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_blocoDeInstrucoes_in_tente1983 = new BitSet(new long[]{0x0000000000000040L});
     public static final BitSet FOLLOW_listaDeCapturas_in_tente1985 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_CAPTURE_in_capture2006 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_CAPTURE_in_capture2006 = new BitSet(new long[]{0x0800000000000000L});
     public static final BitSet FOLLOW_PARENTESE_ESQUERDO_in_capture2008 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_declaracao_in_capture2010 = new BitSet(new long[]{0x0200000000000000L});
-    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_capture2012 = new BitSet(new long[]{0x0000008000000000L});
+    public static final BitSet FOLLOW_declaracao_in_capture2010 = new BitSet(new long[]{0x0400000000000000L});
+    public static final BitSet FOLLOW_PARENTESE_DIREITO_in_capture2012 = new BitSet(new long[]{0x0000010000000000L});
     public static final BitSet FOLLOW_blocoDeInstrucoes_in_capture2014 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_LANCE_in_lance2035 = new BitSet(new long[]{0x04381804C00C0000L,0x000000000000C200L});
+    public static final BitSet FOLLOW_LANCE_in_lance2035 = new BitSet(new long[]{0x08703004C00C0000L,0x0000000000018400L});
     public static final BitSet FOLLOW_expressao_in_lance2037 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expressao_in_instrucao2073 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_expressao_in_instrucao2073 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_TERMINADOR_in_instrucao2075 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_declaracaoComAtribuicaoOpcional_in_instrucao2082 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_declaracaoComAtribuicaoOpcional_in_instrucao2082 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_TERMINADOR_in_instrucao2084 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_destruicao_in_instrucao2093 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_IMPRIMIR_in_instrucao2093 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_TERMINADOR_in_instrucao2095 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_retorno_in_instrucao2101 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
+    public static final BitSet FOLLOW_destruicao_in_instrucao2101 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
     public static final BitSet FOLLOW_TERMINADOR_in_instrucao2103 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_se_in_instrucao2109 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_para_in_instrucao2114 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_repita_in_instrucao2119 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_enquanto_in_instrucao2124 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_tente_in_instrucao2129 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_lance_in_instrucao2134 = new BitSet(new long[]{0x0000000000000000L,0x0000000000001000L});
-    public static final BitSet FOLLOW_TERMINADOR_in_instrucao2136 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_INICIO_in_blocoDeInstrucoes2148 = new BitSet(new long[]{0x05381A06D04C0000L,0x000000000000CA34L});
-    public static final BitSet FOLLOW_instrucao_in_blocoDeInstrucoes2151 = new BitSet(new long[]{0x05381A06D04C0000L,0x000000000000CA34L});
-    public static final BitSet FOLLOW_FIM_in_blocoDeInstrucoes2155 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_retorno_in_instrucao2109 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_instrucao2111 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_se_in_instrucao2117 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_para_in_instrucao2122 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_repita_in_instrucao2127 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_enquanto_in_instrucao2132 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_tente_in_instrucao2137 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_lance_in_instrucao2142 = new BitSet(new long[]{0x0000000000000000L,0x0000000000002000L});
+    public static final BitSet FOLLOW_TERMINADOR_in_instrucao2144 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_INICIO_in_blocoDeInstrucoes2156 = new BitSet(new long[]{0x0A703486D04C0000L,0x0000000000019468L});
+    public static final BitSet FOLLOW_instrucao_in_blocoDeInstrucoes2159 = new BitSet(new long[]{0x0A703486D04C0000L,0x0000000000019468L});
+    public static final BitSet FOLLOW_FIM_in_blocoDeInstrucoes2163 = new BitSet(new long[]{0x0000000000000002L});
 
 }

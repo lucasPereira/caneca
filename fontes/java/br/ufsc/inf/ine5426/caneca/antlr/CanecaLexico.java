@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaLexico.g 2012-12-18 14:58:43
+// $ANTLR 3.4 fontes/g/CanecaLexico.g 2012-12-19 04:42:23
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 	import java.lang.System;
@@ -49,47 +49,48 @@ public class CanecaLexico extends Lexer {
     public static final int IGUAL=36;
     public static final int IMPLEMENTA=37;
     public static final int IMPORTE=38;
-    public static final int INICIO=39;
-    public static final int INTERFACE=40;
-    public static final int LANCE=41;
-    public static final int LETRA=42;
-    public static final int LITERAL_CARACTERE=43;
-    public static final int LITERAL_TEXTO=44;
-    public static final int MAIOR=45;
-    public static final int MAIOR_IGUAL=46;
-    public static final int MENOR=47;
-    public static final int MENOR_IGUAL=48;
-    public static final int METODO=49;
-    public static final int MULTIPLICACAO=50;
-    public static final int NEGACAO=51;
-    public static final int NOVA=52;
-    public static final int NOVO=53;
-    public static final int OU=54;
-    public static final int PACOTE=55;
-    public static final int PARA=56;
-    public static final int PARENTESE_DIREITO=57;
-    public static final int PARENTESE_ESQUERDO=58;
-    public static final int PRIVADA=59;
-    public static final int PRIVADO=60;
-    public static final int PROTEGIDA=61;
-    public static final int PROTEGIDO=62;
-    public static final int PUBLICA=63;
-    public static final int PUBLICO=64;
-    public static final int QUEBRA_DE_LINHA=65;
-    public static final int REPITA=66;
-    public static final int RESTO_DA_DIVISAO=67;
-    public static final int RETORNE=68;
-    public static final int SE=69;
-    public static final int SENAO=70;
-    public static final int SEPARADOR=71;
-    public static final int SOMA=72;
-    public static final int SUBTRACAO=73;
-    public static final int TABULACAO=74;
-    public static final int TENTE=75;
-    public static final int TERMINADOR=76;
-    public static final int USADO_EM_TEXTO=77;
-    public static final int VALOR_BOOLEANO=78;
-    public static final int VALOR_NULO=79;
+    public static final int IMPRIMIR=39;
+    public static final int INICIO=40;
+    public static final int INTERFACE=41;
+    public static final int LANCE=42;
+    public static final int LETRA=43;
+    public static final int LITERAL_CARACTERE=44;
+    public static final int LITERAL_TEXTO=45;
+    public static final int MAIOR=46;
+    public static final int MAIOR_IGUAL=47;
+    public static final int MENOR=48;
+    public static final int MENOR_IGUAL=49;
+    public static final int METODO=50;
+    public static final int MULTIPLICACAO=51;
+    public static final int NEGACAO=52;
+    public static final int NOVA=53;
+    public static final int NOVO=54;
+    public static final int OU=55;
+    public static final int PACOTE=56;
+    public static final int PARA=57;
+    public static final int PARENTESE_DIREITO=58;
+    public static final int PARENTESE_ESQUERDO=59;
+    public static final int PRIVADA=60;
+    public static final int PRIVADO=61;
+    public static final int PROTEGIDA=62;
+    public static final int PROTEGIDO=63;
+    public static final int PUBLICA=64;
+    public static final int PUBLICO=65;
+    public static final int QUEBRA_DE_LINHA=66;
+    public static final int REPITA=67;
+    public static final int RESTO_DA_DIVISAO=68;
+    public static final int RETORNE=69;
+    public static final int SE=70;
+    public static final int SENAO=71;
+    public static final int SEPARADOR=72;
+    public static final int SOMA=73;
+    public static final int SUBTRACAO=74;
+    public static final int TABULACAO=75;
+    public static final int TENTE=76;
+    public static final int TERMINADOR=77;
+    public static final int USADO_EM_TEXTO=78;
+    public static final int VALOR_BOOLEANO=79;
+    public static final int VALOR_NULO=80;
 
     	private boolean mostrarErros = true;
     	private List<RecognitionException> erros = new LinkedList<RecognitionException>();
@@ -226,13 +227,36 @@ public class CanecaLexico extends Lexer {
     }
     public String getGrammarFileName() { return "fontes/g/CanecaLexico.g"; }
 
+    // $ANTLR start "IMPRIMIR"
+    public final void mIMPRIMIR() throws RecognitionException {
+        try {
+            int _type = IMPRIMIR;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // fontes/g/CanecaLexico.g:136:2: ( 'imprimir' )
+            // fontes/g/CanecaLexico.g:136:4: 'imprimir'
+            {
+            match("imprimir"); 
+
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        	// do for sure before leaving
+        }
+    }
+    // $ANTLR end "IMPRIMIR"
+
     // $ANTLR start "INICIO"
     public final void mINICIO() throws RecognitionException {
         try {
             int _type = INICIO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:136:2: ( 'inicio' )
-            // fontes/g/CanecaLexico.g:136:4: 'inicio'
+            // fontes/g/CanecaLexico.g:140:2: ( 'inicio' )
+            // fontes/g/CanecaLexico.g:140:4: 'inicio'
             {
             match("inicio"); 
 
@@ -254,8 +278,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = FIM;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:140:2: ( 'fim' )
-            // fontes/g/CanecaLexico.g:140:4: 'fim'
+            // fontes/g/CanecaLexico.g:144:2: ( 'fim' )
+            // fontes/g/CanecaLexico.g:144:4: 'fim'
             {
             match("fim"); 
 
@@ -277,8 +301,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = SE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:144:2: ( 'se' )
-            // fontes/g/CanecaLexico.g:144:4: 'se'
+            // fontes/g/CanecaLexico.g:148:2: ( 'se' )
+            // fontes/g/CanecaLexico.g:148:4: 'se'
             {
             match("se"); 
 
@@ -300,8 +324,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = SENAO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:148:2: ( 'senao' )
-            // fontes/g/CanecaLexico.g:148:4: 'senao'
+            // fontes/g/CanecaLexico.g:152:2: ( 'senao' )
+            // fontes/g/CanecaLexico.g:152:4: 'senao'
             {
             match("senao"); 
 
@@ -323,8 +347,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PARA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:152:2: ( 'para' )
-            // fontes/g/CanecaLexico.g:152:4: 'para'
+            // fontes/g/CanecaLexico.g:156:2: ( 'para' )
+            // fontes/g/CanecaLexico.g:156:4: 'para'
             {
             match("para"); 
 
@@ -346,8 +370,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = REPITA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:156:2: ( 'repita' )
-            // fontes/g/CanecaLexico.g:156:4: 'repita'
+            // fontes/g/CanecaLexico.g:160:2: ( 'repita' )
+            // fontes/g/CanecaLexico.g:160:4: 'repita'
             {
             match("repita"); 
 
@@ -369,8 +393,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = ENQUANTO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:160:2: ( 'enquanto' )
-            // fontes/g/CanecaLexico.g:160:4: 'enquanto'
+            // fontes/g/CanecaLexico.g:164:2: ( 'enquanto' )
+            // fontes/g/CanecaLexico.g:164:4: 'enquanto'
             {
             match("enquanto"); 
 
@@ -392,8 +416,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = TENTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:164:2: ( 'tente' )
-            // fontes/g/CanecaLexico.g:164:4: 'tente'
+            // fontes/g/CanecaLexico.g:168:2: ( 'tente' )
+            // fontes/g/CanecaLexico.g:168:4: 'tente'
             {
             match("tente"); 
 
@@ -415,8 +439,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = LANCE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:168:2: ( 'lance' )
-            // fontes/g/CanecaLexico.g:168:4: 'lance'
+            // fontes/g/CanecaLexico.g:172:2: ( 'lance' )
+            // fontes/g/CanecaLexico.g:172:4: 'lance'
             {
             match("lance"); 
 
@@ -438,8 +462,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = CAPTURE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:172:2: ( 'capture' )
-            // fontes/g/CanecaLexico.g:172:4: 'capture'
+            // fontes/g/CanecaLexico.g:176:2: ( 'capture' )
+            // fontes/g/CanecaLexico.g:176:4: 'capture'
             {
             match("capture"); 
 
@@ -461,8 +485,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = RETORNE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:176:2: ( 'retorne' )
-            // fontes/g/CanecaLexico.g:176:4: 'retorne'
+            // fontes/g/CanecaLexico.g:180:2: ( 'retorne' )
+            // fontes/g/CanecaLexico.g:180:4: 'retorne'
             {
             match("retorne"); 
 
@@ -484,8 +508,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = DESTRUA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:180:2: ( 'destrua' )
-            // fontes/g/CanecaLexico.g:180:4: 'destrua'
+            // fontes/g/CanecaLexico.g:184:2: ( 'destrua' )
+            // fontes/g/CanecaLexico.g:184:4: 'destrua'
             {
             match("destrua"); 
 
@@ -507,8 +531,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = DECLARE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:184:2: ( 'declare' )
-            // fontes/g/CanecaLexico.g:184:4: 'declare'
+            // fontes/g/CanecaLexico.g:188:2: ( 'declare' )
+            // fontes/g/CanecaLexico.g:188:4: 'declare'
             {
             match("declare"); 
 
@@ -530,8 +554,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PACOTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:188:2: ( 'pacote' )
-            // fontes/g/CanecaLexico.g:188:4: 'pacote'
+            // fontes/g/CanecaLexico.g:192:2: ( 'pacote' )
+            // fontes/g/CanecaLexico.g:192:4: 'pacote'
             {
             match("pacote"); 
 
@@ -553,8 +577,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = IMPORTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:192:2: ( 'importe' )
-            // fontes/g/CanecaLexico.g:192:4: 'importe'
+            // fontes/g/CanecaLexico.g:196:2: ( 'importe' )
+            // fontes/g/CanecaLexico.g:196:4: 'importe'
             {
             match("importe"); 
 
@@ -576,8 +600,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = COMO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:196:2: ( 'como' )
-            // fontes/g/CanecaLexico.g:196:4: 'como'
+            // fontes/g/CanecaLexico.g:200:2: ( 'como' )
+            // fontes/g/CanecaLexico.g:200:4: 'como'
             {
             match("como"); 
 
@@ -599,8 +623,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = CLASSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:200:2: ( 'classe' )
-            // fontes/g/CanecaLexico.g:200:4: 'classe'
+            // fontes/g/CanecaLexico.g:204:2: ( 'classe' )
+            // fontes/g/CanecaLexico.g:204:4: 'classe'
             {
             match("classe"); 
 
@@ -622,8 +646,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = INTERFACE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:204:2: ( 'interface' )
-            // fontes/g/CanecaLexico.g:204:4: 'interface'
+            // fontes/g/CanecaLexico.g:208:2: ( 'interface' )
+            // fontes/g/CanecaLexico.g:208:4: 'interface'
             {
             match("interface"); 
 
@@ -645,8 +669,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = METODO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:208:2: ( 'metodo' )
-            // fontes/g/CanecaLexico.g:208:4: 'metodo'
+            // fontes/g/CanecaLexico.g:212:2: ( 'metodo' )
+            // fontes/g/CanecaLexico.g:212:4: 'metodo'
             {
             match("metodo"); 
 
@@ -668,8 +692,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = ATRIBUTO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:212:2: ( 'atributo' )
-            // fontes/g/CanecaLexico.g:212:4: 'atributo'
+            // fontes/g/CanecaLexico.g:216:2: ( 'atributo' )
+            // fontes/g/CanecaLexico.g:216:4: 'atributo'
             {
             match("atributo"); 
 
@@ -691,8 +715,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = CONSTRUTOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:216:2: ( 'construtor' )
-            // fontes/g/CanecaLexico.g:216:4: 'construtor'
+            // fontes/g/CanecaLexico.g:220:2: ( 'construtor' )
+            // fontes/g/CanecaLexico.g:220:4: 'construtor'
             {
             match("construtor"); 
 
@@ -714,8 +738,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = DESTRUTOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:220:2: ( 'destrutor' )
-            // fontes/g/CanecaLexico.g:220:4: 'destrutor'
+            // fontes/g/CanecaLexico.g:224:2: ( 'destrutor' )
+            // fontes/g/CanecaLexico.g:224:4: 'destrutor'
             {
             match("destrutor"); 
 
@@ -737,8 +761,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = ESTATICO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:224:2: ( 'estatico' )
-            // fontes/g/CanecaLexico.g:224:4: 'estatico'
+            // fontes/g/CanecaLexico.g:228:2: ( 'estatico' )
+            // fontes/g/CanecaLexico.g:228:4: 'estatico'
             {
             match("estatico"); 
 
@@ -760,8 +784,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = IMPLEMENTA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:228:2: ( 'implementa' )
-            // fontes/g/CanecaLexico.g:228:4: 'implementa'
+            // fontes/g/CanecaLexico.g:232:2: ( 'implementa' )
+            // fontes/g/CanecaLexico.g:232:4: 'implementa'
             {
             match("implementa"); 
 
@@ -783,8 +807,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PRIVADO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:232:2: ( 'privado' )
-            // fontes/g/CanecaLexico.g:232:4: 'privado'
+            // fontes/g/CanecaLexico.g:236:2: ( 'privado' )
+            // fontes/g/CanecaLexico.g:236:4: 'privado'
             {
             match("privado"); 
 
@@ -806,8 +830,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PUBLICO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:236:2: ( 'publico' )
-            // fontes/g/CanecaLexico.g:236:4: 'publico'
+            // fontes/g/CanecaLexico.g:240:2: ( 'publico' )
+            // fontes/g/CanecaLexico.g:240:4: 'publico'
             {
             match("publico"); 
 
@@ -829,8 +853,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PROTEGIDO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:240:2: ( 'protegido' )
-            // fontes/g/CanecaLexico.g:240:4: 'protegido'
+            // fontes/g/CanecaLexico.g:244:2: ( 'protegido' )
+            // fontes/g/CanecaLexico.g:244:4: 'protegido'
             {
             match("protegido"); 
 
@@ -852,8 +876,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PRIVADA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:244:2: ( 'privada' )
-            // fontes/g/CanecaLexico.g:244:4: 'privada'
+            // fontes/g/CanecaLexico.g:248:2: ( 'privada' )
+            // fontes/g/CanecaLexico.g:248:4: 'privada'
             {
             match("privada"); 
 
@@ -875,8 +899,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PUBLICA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:248:2: ( 'publica' )
-            // fontes/g/CanecaLexico.g:248:4: 'publica'
+            // fontes/g/CanecaLexico.g:252:2: ( 'publica' )
+            // fontes/g/CanecaLexico.g:252:4: 'publica'
             {
             match("publica"); 
 
@@ -898,8 +922,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PROTEGIDA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:252:2: ( 'protegida' )
-            // fontes/g/CanecaLexico.g:252:4: 'protegida'
+            // fontes/g/CanecaLexico.g:256:2: ( 'protegida' )
+            // fontes/g/CanecaLexico.g:256:4: 'protegida'
             {
             match("protegida"); 
 
@@ -921,8 +945,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = NOVO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:256:2: ( 'novo' )
-            // fontes/g/CanecaLexico.g:256:4: 'novo'
+            // fontes/g/CanecaLexico.g:260:2: ( 'novo' )
+            // fontes/g/CanecaLexico.g:260:4: 'novo'
             {
             match("novo"); 
 
@@ -944,8 +968,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = NOVA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:260:2: ( 'nova' )
-            // fontes/g/CanecaLexico.g:260:4: 'nova'
+            // fontes/g/CanecaLexico.g:264:2: ( 'nova' )
+            // fontes/g/CanecaLexico.g:264:4: 'nova'
             {
             match("nova"); 
 
@@ -967,8 +991,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = ESSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:264:2: ( 'esse' )
-            // fontes/g/CanecaLexico.g:264:4: 'esse'
+            // fontes/g/CanecaLexico.g:268:2: ( 'esse' )
+            // fontes/g/CanecaLexico.g:268:4: 'esse'
             {
             match("esse"); 
 
@@ -990,8 +1014,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = ESSA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:268:2: ( 'essa' )
-            // fontes/g/CanecaLexico.g:268:4: 'essa'
+            // fontes/g/CanecaLexico.g:272:2: ( 'essa' )
+            // fontes/g/CanecaLexico.g:272:4: 'essa'
             {
             match("essa"); 
 
@@ -1013,8 +1037,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = CHAMADA_DE_OBJETO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:272:2: ( '.' )
-            // fontes/g/CanecaLexico.g:272:4: '.'
+            // fontes/g/CanecaLexico.g:276:2: ( '.' )
+            // fontes/g/CanecaLexico.g:276:4: '.'
             {
             match('.'); 
 
@@ -1034,8 +1058,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = CHAMADA_DE_CLASSE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:276:2: ( ':' )
-            // fontes/g/CanecaLexico.g:276:4: ':'
+            // fontes/g/CanecaLexico.g:280:2: ( ':' )
+            // fontes/g/CanecaLexico.g:280:4: ':'
             {
             match(':'); 
 
@@ -1055,8 +1079,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PARENTESE_ESQUERDO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:280:2: ( '(' )
-            // fontes/g/CanecaLexico.g:280:4: '('
+            // fontes/g/CanecaLexico.g:284:2: ( '(' )
+            // fontes/g/CanecaLexico.g:284:4: '('
             {
             match('('); 
 
@@ -1076,8 +1100,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = PARENTESE_DIREITO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:284:2: ( ')' )
-            // fontes/g/CanecaLexico.g:284:4: ')'
+            // fontes/g/CanecaLexico.g:288:2: ( ')' )
+            // fontes/g/CanecaLexico.g:288:4: ')'
             {
             match(')'); 
 
@@ -1097,8 +1121,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = COLCHETE_ESQUERDO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:288:2: ( '[' )
-            // fontes/g/CanecaLexico.g:288:4: '['
+            // fontes/g/CanecaLexico.g:292:2: ( '[' )
+            // fontes/g/CanecaLexico.g:292:4: '['
             {
             match('['); 
 
@@ -1118,8 +1142,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = COLCHETE_DIREITO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:292:2: ( ']' )
-            // fontes/g/CanecaLexico.g:292:4: ']'
+            // fontes/g/CanecaLexico.g:296:2: ( ']' )
+            // fontes/g/CanecaLexico.g:296:4: ']'
             {
             match(']'); 
 
@@ -1139,8 +1163,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = SEPARADOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:296:2: ( ',' )
-            // fontes/g/CanecaLexico.g:296:4: ','
+            // fontes/g/CanecaLexico.g:300:2: ( ',' )
+            // fontes/g/CanecaLexico.g:300:4: ','
             {
             match(','); 
 
@@ -1160,8 +1184,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = TERMINADOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:300:2: ( ';' )
-            // fontes/g/CanecaLexico.g:300:4: ';'
+            // fontes/g/CanecaLexico.g:304:2: ( ';' )
+            // fontes/g/CanecaLexico.g:304:4: ';'
             {
             match(';'); 
 
@@ -1181,8 +1205,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = ATRIBUIDOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:304:2: ( '=' )
-            // fontes/g/CanecaLexico.g:304:4: '='
+            // fontes/g/CanecaLexico.g:308:2: ( '=' )
+            // fontes/g/CanecaLexico.g:308:4: '='
             {
             match('='); 
 
@@ -1202,8 +1226,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = SOMA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:308:2: ( '+' )
-            // fontes/g/CanecaLexico.g:308:4: '+'
+            // fontes/g/CanecaLexico.g:312:2: ( '+' )
+            // fontes/g/CanecaLexico.g:312:4: '+'
             {
             match('+'); 
 
@@ -1223,8 +1247,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = SUBTRACAO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:312:2: ( '-' )
-            // fontes/g/CanecaLexico.g:312:4: '-'
+            // fontes/g/CanecaLexico.g:316:2: ( '-' )
+            // fontes/g/CanecaLexico.g:316:4: '-'
             {
             match('-'); 
 
@@ -1244,8 +1268,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = MULTIPLICACAO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:316:2: ( '*' )
-            // fontes/g/CanecaLexico.g:316:4: '*'
+            // fontes/g/CanecaLexico.g:320:2: ( '*' )
+            // fontes/g/CanecaLexico.g:320:4: '*'
             {
             match('*'); 
 
@@ -1265,8 +1289,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = DIVISAO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:320:2: ( '/' )
-            // fontes/g/CanecaLexico.g:320:4: '/'
+            // fontes/g/CanecaLexico.g:324:2: ( '/' )
+            // fontes/g/CanecaLexico.g:324:4: '/'
             {
             match('/'); 
 
@@ -1286,8 +1310,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = RESTO_DA_DIVISAO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:324:2: ( '%' )
-            // fontes/g/CanecaLexico.g:324:4: '%'
+            // fontes/g/CanecaLexico.g:328:2: ( '%' )
+            // fontes/g/CanecaLexico.g:328:4: '%'
             {
             match('%'); 
 
@@ -1307,8 +1331,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = NEGACAO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:328:2: ( '~' )
-            // fontes/g/CanecaLexico.g:328:4: '~'
+            // fontes/g/CanecaLexico.g:332:2: ( '~' )
+            // fontes/g/CanecaLexico.g:332:4: '~'
             {
             match('~'); 
 
@@ -1328,8 +1352,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = E;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:332:2: ( '&&' )
-            // fontes/g/CanecaLexico.g:332:4: '&&'
+            // fontes/g/CanecaLexico.g:336:2: ( '&&' )
+            // fontes/g/CanecaLexico.g:336:4: '&&'
             {
             match("&&"); 
 
@@ -1351,8 +1375,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = OU;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:336:2: ( '||' )
-            // fontes/g/CanecaLexico.g:336:4: '||'
+            // fontes/g/CanecaLexico.g:340:2: ( '||' )
+            // fontes/g/CanecaLexico.g:340:4: '||'
             {
             match("||"); 
 
@@ -1374,8 +1398,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = MENOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:340:2: ( '<' )
-            // fontes/g/CanecaLexico.g:340:4: '<'
+            // fontes/g/CanecaLexico.g:344:2: ( '<' )
+            // fontes/g/CanecaLexico.g:344:4: '<'
             {
             match('<'); 
 
@@ -1395,8 +1419,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = MAIOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:344:2: ( '>' )
-            // fontes/g/CanecaLexico.g:344:4: '>'
+            // fontes/g/CanecaLexico.g:348:2: ( '>' )
+            // fontes/g/CanecaLexico.g:348:4: '>'
             {
             match('>'); 
 
@@ -1416,8 +1440,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = MENOR_IGUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:348:2: ( '<=' )
-            // fontes/g/CanecaLexico.g:348:4: '<='
+            // fontes/g/CanecaLexico.g:352:2: ( '<=' )
+            // fontes/g/CanecaLexico.g:352:4: '<='
             {
             match("<="); 
 
@@ -1439,8 +1463,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = MAIOR_IGUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:352:2: ( '>=' )
-            // fontes/g/CanecaLexico.g:352:4: '>='
+            // fontes/g/CanecaLexico.g:356:2: ( '>=' )
+            // fontes/g/CanecaLexico.g:356:4: '>='
             {
             match(">="); 
 
@@ -1462,8 +1486,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = IGUAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:356:2: ( '==' )
-            // fontes/g/CanecaLexico.g:356:4: '=='
+            // fontes/g/CanecaLexico.g:360:2: ( '==' )
+            // fontes/g/CanecaLexico.g:360:4: '=='
             {
             match("=="); 
 
@@ -1485,8 +1509,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = DIFERENTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:360:2: ( '!=' )
-            // fontes/g/CanecaLexico.g:360:4: '!='
+            // fontes/g/CanecaLexico.g:364:2: ( '!=' )
+            // fontes/g/CanecaLexico.g:364:4: '!='
             {
             match("!="); 
 
@@ -1508,7 +1532,7 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = VALOR_BOOLEANO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:364:2: ( 'verdadeiro' | 'falso' )
+            // fontes/g/CanecaLexico.g:368:2: ( 'verdadeiro' | 'falso' )
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -1527,7 +1551,7 @@ public class CanecaLexico extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // fontes/g/CanecaLexico.g:364:4: 'verdadeiro'
+                    // fontes/g/CanecaLexico.g:368:4: 'verdadeiro'
                     {
                     match("verdadeiro"); 
 
@@ -1536,7 +1560,7 @@ public class CanecaLexico extends Lexer {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaLexico.g:365:4: 'falso'
+                    // fontes/g/CanecaLexico.g:369:4: 'falso'
                     {
                     match("falso"); 
 
@@ -1560,8 +1584,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = VALOR_NULO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:369:2: ( 'nulo' )
-            // fontes/g/CanecaLexico.g:369:4: 'nulo'
+            // fontes/g/CanecaLexico.g:373:2: ( 'nulo' )
+            // fontes/g/CanecaLexico.g:373:4: 'nulo'
             {
             match("nulo"); 
 
@@ -1583,10 +1607,10 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = CONSTANTE_INTEIRA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:373:2: ( ( '-' )? ( DIGITO )+ )
-            // fontes/g/CanecaLexico.g:373:4: ( '-' )? ( DIGITO )+
+            // fontes/g/CanecaLexico.g:377:2: ( ( '-' )? ( DIGITO )+ )
+            // fontes/g/CanecaLexico.g:377:4: ( '-' )? ( DIGITO )+
             {
-            // fontes/g/CanecaLexico.g:373:4: ( '-' )?
+            // fontes/g/CanecaLexico.g:377:4: ( '-' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -1595,7 +1619,7 @@ public class CanecaLexico extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // fontes/g/CanecaLexico.g:373:5: '-'
+                    // fontes/g/CanecaLexico.g:377:5: '-'
                     {
                     match('-'); 
 
@@ -1605,7 +1629,7 @@ public class CanecaLexico extends Lexer {
             }
 
 
-            // fontes/g/CanecaLexico.g:373:11: ( DIGITO )+
+            // fontes/g/CanecaLexico.g:377:11: ( DIGITO )+
             int cnt3=0;
             loop3:
             do {
@@ -1660,10 +1684,10 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = CONSTANTE_REAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:377:2: ( ( '-' )? ( DIGITO )+ '.' ( DIGITO )+ )
-            // fontes/g/CanecaLexico.g:377:4: ( '-' )? ( DIGITO )+ '.' ( DIGITO )+
+            // fontes/g/CanecaLexico.g:381:2: ( ( '-' )? ( DIGITO )+ '.' ( DIGITO )+ )
+            // fontes/g/CanecaLexico.g:381:4: ( '-' )? ( DIGITO )+ '.' ( DIGITO )+
             {
-            // fontes/g/CanecaLexico.g:377:4: ( '-' )?
+            // fontes/g/CanecaLexico.g:381:4: ( '-' )?
             int alt4=2;
             int LA4_0 = input.LA(1);
 
@@ -1672,7 +1696,7 @@ public class CanecaLexico extends Lexer {
             }
             switch (alt4) {
                 case 1 :
-                    // fontes/g/CanecaLexico.g:377:5: '-'
+                    // fontes/g/CanecaLexico.g:381:5: '-'
                     {
                     match('-'); 
 
@@ -1682,7 +1706,7 @@ public class CanecaLexico extends Lexer {
             }
 
 
-            // fontes/g/CanecaLexico.g:377:11: ( DIGITO )+
+            // fontes/g/CanecaLexico.g:381:11: ( DIGITO )+
             int cnt5=0;
             loop5:
             do {
@@ -1723,7 +1747,7 @@ public class CanecaLexico extends Lexer {
 
             match('.'); 
 
-            // fontes/g/CanecaLexico.g:377:23: ( DIGITO )+
+            // fontes/g/CanecaLexico.g:381:23: ( DIGITO )+
             int cnt6=0;
             loop6:
             do {
@@ -1778,8 +1802,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = LITERAL_CARACTERE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:381:2: ( '\\'' CARACTERE '\\'' )
-            // fontes/g/CanecaLexico.g:381:4: '\\'' CARACTERE '\\''
+            // fontes/g/CanecaLexico.g:385:2: ( '\\'' CARACTERE '\\'' )
+            // fontes/g/CanecaLexico.g:385:4: '\\'' CARACTERE '\\''
             {
             match('\''); 
 
@@ -1804,12 +1828,12 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = LITERAL_TEXTO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:385:2: ( '\"' ( CARACTERE )* '\"' )
-            // fontes/g/CanecaLexico.g:385:4: '\"' ( CARACTERE )* '\"'
+            // fontes/g/CanecaLexico.g:389:2: ( '\"' ( CARACTERE )* '\"' )
+            // fontes/g/CanecaLexico.g:389:4: '\"' ( CARACTERE )* '\"'
             {
             match('\"'); 
 
-            // fontes/g/CanecaLexico.g:385:8: ( CARACTERE )*
+            // fontes/g/CanecaLexico.g:389:8: ( CARACTERE )*
             loop7:
             do {
                 int alt7=2;
@@ -1822,7 +1846,7 @@ public class CanecaLexico extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // fontes/g/CanecaLexico.g:385:9: CARACTERE
+            	    // fontes/g/CanecaLexico.g:389:9: CARACTERE
             	    {
             	    mCARACTERE(); 
 
@@ -1854,13 +1878,13 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = IDENTIFICADOR;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:389:2: ( LETRA ( LETRA | DIGITO | '_' )* )
-            // fontes/g/CanecaLexico.g:389:4: LETRA ( LETRA | DIGITO | '_' )*
+            // fontes/g/CanecaLexico.g:393:2: ( LETRA ( LETRA | DIGITO | '_' )* )
+            // fontes/g/CanecaLexico.g:393:4: LETRA ( LETRA | DIGITO | '_' )*
             {
             mLETRA(); 
 
 
-            // fontes/g/CanecaLexico.g:389:10: ( LETRA | DIGITO | '_' )*
+            // fontes/g/CanecaLexico.g:393:10: ( LETRA | DIGITO | '_' )*
             loop8:
             do {
                 int alt8=2;
@@ -1910,15 +1934,15 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = IDENTIFICADOR_DE_PACOTE;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:393:2: ( '@' IDENTIFICADOR ( '.' IDENTIFICADOR )* )
-            // fontes/g/CanecaLexico.g:393:4: '@' IDENTIFICADOR ( '.' IDENTIFICADOR )*
+            // fontes/g/CanecaLexico.g:397:2: ( '@' IDENTIFICADOR ( '.' IDENTIFICADOR )* )
+            // fontes/g/CanecaLexico.g:397:4: '@' IDENTIFICADOR ( '.' IDENTIFICADOR )*
             {
             match('@'); 
 
             mIDENTIFICADOR(); 
 
 
-            // fontes/g/CanecaLexico.g:393:22: ( '.' IDENTIFICADOR )*
+            // fontes/g/CanecaLexico.g:397:22: ( '.' IDENTIFICADOR )*
             loop9:
             do {
                 int alt9=2;
@@ -1931,7 +1955,7 @@ public class CanecaLexico extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // fontes/g/CanecaLexico.g:393:23: '.' IDENTIFICADOR
+            	    // fontes/g/CanecaLexico.g:397:23: '.' IDENTIFICADOR
             	    {
             	    match('.'); 
 
@@ -1963,8 +1987,8 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = ESPACO_EM_BRANCO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:397:2: ( ( ' ' | TABULACAO | QUEBRA_DE_LINHA ) )
-            // fontes/g/CanecaLexico.g:397:4: ( ' ' | TABULACAO | QUEBRA_DE_LINHA )
+            // fontes/g/CanecaLexico.g:401:2: ( ( ' ' | TABULACAO | QUEBRA_DE_LINHA ) )
+            // fontes/g/CanecaLexico.g:401:4: ( ' ' | TABULACAO | QUEBRA_DE_LINHA )
             {
             if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||(input.LA(1) >= '\f' && input.LA(1) <= '\r')||input.LA(1)==' ' ) {
                 input.consume();
@@ -1994,15 +2018,15 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = COMENTARIO_EM_LINHA;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:401:2: ( ( '?' (~ ( QUEBRA_DE_LINHA ) )* ) )
-            // fontes/g/CanecaLexico.g:401:4: ( '?' (~ ( QUEBRA_DE_LINHA ) )* )
+            // fontes/g/CanecaLexico.g:405:2: ( ( '?' (~ ( QUEBRA_DE_LINHA ) )* ) )
+            // fontes/g/CanecaLexico.g:405:4: ( '?' (~ ( QUEBRA_DE_LINHA ) )* )
             {
-            // fontes/g/CanecaLexico.g:401:4: ( '?' (~ ( QUEBRA_DE_LINHA ) )* )
-            // fontes/g/CanecaLexico.g:401:5: '?' (~ ( QUEBRA_DE_LINHA ) )*
+            // fontes/g/CanecaLexico.g:405:4: ( '?' (~ ( QUEBRA_DE_LINHA ) )* )
+            // fontes/g/CanecaLexico.g:405:5: '?' (~ ( QUEBRA_DE_LINHA ) )*
             {
             match('?'); 
 
-            // fontes/g/CanecaLexico.g:401:9: (~ ( QUEBRA_DE_LINHA ) )*
+            // fontes/g/CanecaLexico.g:405:9: (~ ( QUEBRA_DE_LINHA ) )*
             loop10:
             do {
                 int alt10=2;
@@ -2057,17 +2081,17 @@ public class CanecaLexico extends Lexer {
         try {
             int _type = COMENTARIO_EM_BLOCO;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // fontes/g/CanecaLexico.g:405:2: ( ( '#?' ( options {greedy=false; } : . )* '?#' ) )
-            // fontes/g/CanecaLexico.g:405:4: ( '#?' ( options {greedy=false; } : . )* '?#' )
+            // fontes/g/CanecaLexico.g:409:2: ( ( '#?' ( options {greedy=false; } : . )* '?#' ) )
+            // fontes/g/CanecaLexico.g:409:4: ( '#?' ( options {greedy=false; } : . )* '?#' )
             {
-            // fontes/g/CanecaLexico.g:405:4: ( '#?' ( options {greedy=false; } : . )* '?#' )
-            // fontes/g/CanecaLexico.g:405:5: '#?' ( options {greedy=false; } : . )* '?#'
+            // fontes/g/CanecaLexico.g:409:4: ( '#?' ( options {greedy=false; } : . )* '?#' )
+            // fontes/g/CanecaLexico.g:409:5: '#?' ( options {greedy=false; } : . )* '?#'
             {
             match("#?"); 
 
 
 
-            // fontes/g/CanecaLexico.g:405:10: ( options {greedy=false; } : . )*
+            // fontes/g/CanecaLexico.g:409:10: ( options {greedy=false; } : . )*
             loop11:
             do {
                 int alt11=2;
@@ -2092,7 +2116,7 @@ public class CanecaLexico extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // fontes/g/CanecaLexico.g:405:36: .
+            	    // fontes/g/CanecaLexico.g:409:36: .
             	    {
             	    matchAny(); 
 
@@ -2128,7 +2152,7 @@ public class CanecaLexico extends Lexer {
     // $ANTLR start "CARACTERE"
     public final void mCARACTERE() throws RecognitionException {
         try {
-            // fontes/g/CanecaLexico.g:409:2: ( CARACTERE_DE_ESCAPE |~ ( CARACTERE_NAO_IMPRIMIVEL ) )
+            // fontes/g/CanecaLexico.g:413:2: ( CARACTERE_DE_ESCAPE |~ ( CARACTERE_NAO_IMPRIMIVEL ) )
             int alt12=2;
             int LA12_0 = input.LA(1);
 
@@ -2147,7 +2171,7 @@ public class CanecaLexico extends Lexer {
             }
             switch (alt12) {
                 case 1 :
-                    // fontes/g/CanecaLexico.g:409:4: CARACTERE_DE_ESCAPE
+                    // fontes/g/CanecaLexico.g:413:4: CARACTERE_DE_ESCAPE
                     {
                     mCARACTERE_DE_ESCAPE(); 
 
@@ -2155,7 +2179,7 @@ public class CanecaLexico extends Lexer {
                     }
                     break;
                 case 2 :
-                    // fontes/g/CanecaLexico.g:410:4: ~ ( CARACTERE_NAO_IMPRIMIVEL )
+                    // fontes/g/CanecaLexico.g:414:4: ~ ( CARACTERE_NAO_IMPRIMIVEL )
                     {
                     if ( (input.LA(1) >= '\u0000' && input.LA(1) <= '\b')||input.LA(1)=='\u000B'||(input.LA(1) >= '\u000E' && input.LA(1) <= '!')||(input.LA(1) >= '#' && input.LA(1) <= '&')||(input.LA(1) >= '(' && input.LA(1) <= '[')||(input.LA(1) >= ']' && input.LA(1) <= '\uFFFF') ) {
                         input.consume();
@@ -2182,7 +2206,7 @@ public class CanecaLexico extends Lexer {
     // $ANTLR start "CARACTERE_NAO_IMPRIMIVEL"
     public final void mCARACTERE_NAO_IMPRIMIVEL() throws RecognitionException {
         try {
-            // fontes/g/CanecaLexico.g:414:2: ( USADO_EM_TEXTO | TABULACAO | QUEBRA_DE_LINHA )
+            // fontes/g/CanecaLexico.g:418:2: ( USADO_EM_TEXTO | TABULACAO | QUEBRA_DE_LINHA )
             // fontes/g/CanecaLexico.g:
             {
             if ( (input.LA(1) >= '\t' && input.LA(1) <= '\n')||(input.LA(1) >= '\f' && input.LA(1) <= '\r')||input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\' ) {
@@ -2208,8 +2232,8 @@ public class CanecaLexico extends Lexer {
     // $ANTLR start "CARACTERE_DE_ESCAPE"
     public final void mCARACTERE_DE_ESCAPE() throws RecognitionException {
         try {
-            // fontes/g/CanecaLexico.g:420:2: ( '\\\\' ( 'n' | 'r' | 't' | 'f' | '\\\\' | '\\'' | '\"' ) )
-            // fontes/g/CanecaLexico.g:420:4: '\\\\' ( 'n' | 'r' | 't' | 'f' | '\\\\' | '\\'' | '\"' )
+            // fontes/g/CanecaLexico.g:424:2: ( '\\\\' ( 'n' | 'r' | 't' | 'f' | '\\\\' | '\\'' | '\"' ) )
+            // fontes/g/CanecaLexico.g:424:4: '\\\\' ( 'n' | 'r' | 't' | 'f' | '\\\\' | '\\'' | '\"' )
             {
             match('\\'); 
 
@@ -2236,7 +2260,7 @@ public class CanecaLexico extends Lexer {
     // $ANTLR start "QUEBRA_DE_LINHA"
     public final void mQUEBRA_DE_LINHA() throws RecognitionException {
         try {
-            // fontes/g/CanecaLexico.g:424:2: ( '\\n' | '\\r' )
+            // fontes/g/CanecaLexico.g:428:2: ( '\\n' | '\\r' )
             // fontes/g/CanecaLexico.g:
             {
             if ( input.LA(1)=='\n'||input.LA(1)=='\r' ) {
@@ -2262,7 +2286,7 @@ public class CanecaLexico extends Lexer {
     // $ANTLR start "TABULACAO"
     public final void mTABULACAO() throws RecognitionException {
         try {
-            // fontes/g/CanecaLexico.g:429:2: ( '\\t' | '\\f' )
+            // fontes/g/CanecaLexico.g:433:2: ( '\\t' | '\\f' )
             // fontes/g/CanecaLexico.g:
             {
             if ( input.LA(1)=='\t'||input.LA(1)=='\f' ) {
@@ -2288,7 +2312,7 @@ public class CanecaLexico extends Lexer {
     // $ANTLR start "USADO_EM_TEXTO"
     public final void mUSADO_EM_TEXTO() throws RecognitionException {
         try {
-            // fontes/g/CanecaLexico.g:434:2: ( '\\\\' | '\\'' | '\"' )
+            // fontes/g/CanecaLexico.g:438:2: ( '\\\\' | '\\'' | '\"' )
             // fontes/g/CanecaLexico.g:
             {
             if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\' ) {
@@ -2314,7 +2338,7 @@ public class CanecaLexico extends Lexer {
     // $ANTLR start "LETRA"
     public final void mLETRA() throws RecognitionException {
         try {
-            // fontes/g/CanecaLexico.g:440:2: ( 'A' .. 'Z' | 'a' .. 'z' )
+            // fontes/g/CanecaLexico.g:444:2: ( 'A' .. 'Z' | 'a' .. 'z' )
             // fontes/g/CanecaLexico.g:
             {
             if ( (input.LA(1) >= 'A' && input.LA(1) <= 'Z')||(input.LA(1) >= 'a' && input.LA(1) <= 'z') ) {
@@ -2340,7 +2364,7 @@ public class CanecaLexico extends Lexer {
     // $ANTLR start "DIGITO"
     public final void mDIGITO() throws RecognitionException {
         try {
-            // fontes/g/CanecaLexico.g:445:2: ( '0' .. '9' )
+            // fontes/g/CanecaLexico.g:449:2: ( '0' .. '9' )
             // fontes/g/CanecaLexico.g:
             {
             if ( (input.LA(1) >= '0' && input.LA(1) <= '9') ) {
@@ -2364,548 +2388,556 @@ public class CanecaLexico extends Lexer {
     // $ANTLR end "DIGITO"
 
     public void mTokens() throws RecognitionException {
-        // fontes/g/CanecaLexico.g:1:8: ( INICIO | FIM | SE | SENAO | PARA | REPITA | ENQUANTO | TENTE | LANCE | CAPTURE | RETORNE | DESTRUA | DECLARE | PACOTE | IMPORTE | COMO | CLASSE | INTERFACE | METODO | ATRIBUTO | CONSTRUTOR | DESTRUTOR | ESTATICO | IMPLEMENTA | PRIVADO | PUBLICO | PROTEGIDO | PRIVADA | PUBLICA | PROTEGIDA | NOVO | NOVA | ESSE | ESSA | CHAMADA_DE_OBJETO | CHAMADA_DE_CLASSE | PARENTESE_ESQUERDO | PARENTESE_DIREITO | COLCHETE_ESQUERDO | COLCHETE_DIREITO | SEPARADOR | TERMINADOR | ATRIBUIDOR | SOMA | SUBTRACAO | MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO | NEGACAO | E | OU | MENOR | MAIOR | MENOR_IGUAL | MAIOR_IGUAL | IGUAL | DIFERENTE | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | IDENTIFICADOR | IDENTIFICADOR_DE_PACOTE | ESPACO_EM_BRANCO | COMENTARIO_EM_LINHA | COMENTARIO_EM_BLOCO )
-        int alt13=68;
+        // fontes/g/CanecaLexico.g:1:8: ( IMPRIMIR | INICIO | FIM | SE | SENAO | PARA | REPITA | ENQUANTO | TENTE | LANCE | CAPTURE | RETORNE | DESTRUA | DECLARE | PACOTE | IMPORTE | COMO | CLASSE | INTERFACE | METODO | ATRIBUTO | CONSTRUTOR | DESTRUTOR | ESTATICO | IMPLEMENTA | PRIVADO | PUBLICO | PROTEGIDO | PRIVADA | PUBLICA | PROTEGIDA | NOVO | NOVA | ESSE | ESSA | CHAMADA_DE_OBJETO | CHAMADA_DE_CLASSE | PARENTESE_ESQUERDO | PARENTESE_DIREITO | COLCHETE_ESQUERDO | COLCHETE_DIREITO | SEPARADOR | TERMINADOR | ATRIBUIDOR | SOMA | SUBTRACAO | MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO | NEGACAO | E | OU | MENOR | MAIOR | MENOR_IGUAL | MAIOR_IGUAL | IGUAL | DIFERENTE | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | IDENTIFICADOR | IDENTIFICADOR_DE_PACOTE | ESPACO_EM_BRANCO | COMENTARIO_EM_LINHA | COMENTARIO_EM_BLOCO )
+        int alt13=69;
         alt13 = dfa13.predict(input);
         switch (alt13) {
             case 1 :
-                // fontes/g/CanecaLexico.g:1:10: INICIO
+                // fontes/g/CanecaLexico.g:1:10: IMPRIMIR
+                {
+                mIMPRIMIR(); 
+
+
+                }
+                break;
+            case 2 :
+                // fontes/g/CanecaLexico.g:1:19: INICIO
                 {
                 mINICIO(); 
 
 
                 }
                 break;
-            case 2 :
-                // fontes/g/CanecaLexico.g:1:17: FIM
+            case 3 :
+                // fontes/g/CanecaLexico.g:1:26: FIM
                 {
                 mFIM(); 
 
 
                 }
                 break;
-            case 3 :
-                // fontes/g/CanecaLexico.g:1:21: SE
+            case 4 :
+                // fontes/g/CanecaLexico.g:1:30: SE
                 {
                 mSE(); 
 
 
                 }
                 break;
-            case 4 :
-                // fontes/g/CanecaLexico.g:1:24: SENAO
+            case 5 :
+                // fontes/g/CanecaLexico.g:1:33: SENAO
                 {
                 mSENAO(); 
 
 
                 }
                 break;
-            case 5 :
-                // fontes/g/CanecaLexico.g:1:30: PARA
+            case 6 :
+                // fontes/g/CanecaLexico.g:1:39: PARA
                 {
                 mPARA(); 
 
 
                 }
                 break;
-            case 6 :
-                // fontes/g/CanecaLexico.g:1:35: REPITA
+            case 7 :
+                // fontes/g/CanecaLexico.g:1:44: REPITA
                 {
                 mREPITA(); 
 
 
                 }
                 break;
-            case 7 :
-                // fontes/g/CanecaLexico.g:1:42: ENQUANTO
+            case 8 :
+                // fontes/g/CanecaLexico.g:1:51: ENQUANTO
                 {
                 mENQUANTO(); 
 
 
                 }
                 break;
-            case 8 :
-                // fontes/g/CanecaLexico.g:1:51: TENTE
+            case 9 :
+                // fontes/g/CanecaLexico.g:1:60: TENTE
                 {
                 mTENTE(); 
 
 
                 }
                 break;
-            case 9 :
-                // fontes/g/CanecaLexico.g:1:57: LANCE
+            case 10 :
+                // fontes/g/CanecaLexico.g:1:66: LANCE
                 {
                 mLANCE(); 
 
 
                 }
                 break;
-            case 10 :
-                // fontes/g/CanecaLexico.g:1:63: CAPTURE
+            case 11 :
+                // fontes/g/CanecaLexico.g:1:72: CAPTURE
                 {
                 mCAPTURE(); 
 
 
                 }
                 break;
-            case 11 :
-                // fontes/g/CanecaLexico.g:1:71: RETORNE
+            case 12 :
+                // fontes/g/CanecaLexico.g:1:80: RETORNE
                 {
                 mRETORNE(); 
 
 
                 }
                 break;
-            case 12 :
-                // fontes/g/CanecaLexico.g:1:79: DESTRUA
+            case 13 :
+                // fontes/g/CanecaLexico.g:1:88: DESTRUA
                 {
                 mDESTRUA(); 
 
 
                 }
                 break;
-            case 13 :
-                // fontes/g/CanecaLexico.g:1:87: DECLARE
+            case 14 :
+                // fontes/g/CanecaLexico.g:1:96: DECLARE
                 {
                 mDECLARE(); 
 
 
                 }
                 break;
-            case 14 :
-                // fontes/g/CanecaLexico.g:1:95: PACOTE
+            case 15 :
+                // fontes/g/CanecaLexico.g:1:104: PACOTE
                 {
                 mPACOTE(); 
 
 
                 }
                 break;
-            case 15 :
-                // fontes/g/CanecaLexico.g:1:102: IMPORTE
+            case 16 :
+                // fontes/g/CanecaLexico.g:1:111: IMPORTE
                 {
                 mIMPORTE(); 
 
 
                 }
                 break;
-            case 16 :
-                // fontes/g/CanecaLexico.g:1:110: COMO
+            case 17 :
+                // fontes/g/CanecaLexico.g:1:119: COMO
                 {
                 mCOMO(); 
 
 
                 }
                 break;
-            case 17 :
-                // fontes/g/CanecaLexico.g:1:115: CLASSE
+            case 18 :
+                // fontes/g/CanecaLexico.g:1:124: CLASSE
                 {
                 mCLASSE(); 
 
 
                 }
                 break;
-            case 18 :
-                // fontes/g/CanecaLexico.g:1:122: INTERFACE
+            case 19 :
+                // fontes/g/CanecaLexico.g:1:131: INTERFACE
                 {
                 mINTERFACE(); 
 
 
                 }
                 break;
-            case 19 :
-                // fontes/g/CanecaLexico.g:1:132: METODO
+            case 20 :
+                // fontes/g/CanecaLexico.g:1:141: METODO
                 {
                 mMETODO(); 
 
 
                 }
                 break;
-            case 20 :
-                // fontes/g/CanecaLexico.g:1:139: ATRIBUTO
+            case 21 :
+                // fontes/g/CanecaLexico.g:1:148: ATRIBUTO
                 {
                 mATRIBUTO(); 
 
 
                 }
                 break;
-            case 21 :
-                // fontes/g/CanecaLexico.g:1:148: CONSTRUTOR
+            case 22 :
+                // fontes/g/CanecaLexico.g:1:157: CONSTRUTOR
                 {
                 mCONSTRUTOR(); 
 
 
                 }
                 break;
-            case 22 :
-                // fontes/g/CanecaLexico.g:1:159: DESTRUTOR
+            case 23 :
+                // fontes/g/CanecaLexico.g:1:168: DESTRUTOR
                 {
                 mDESTRUTOR(); 
 
 
                 }
                 break;
-            case 23 :
-                // fontes/g/CanecaLexico.g:1:169: ESTATICO
+            case 24 :
+                // fontes/g/CanecaLexico.g:1:178: ESTATICO
                 {
                 mESTATICO(); 
 
 
                 }
                 break;
-            case 24 :
-                // fontes/g/CanecaLexico.g:1:178: IMPLEMENTA
+            case 25 :
+                // fontes/g/CanecaLexico.g:1:187: IMPLEMENTA
                 {
                 mIMPLEMENTA(); 
 
 
                 }
                 break;
-            case 25 :
-                // fontes/g/CanecaLexico.g:1:189: PRIVADO
+            case 26 :
+                // fontes/g/CanecaLexico.g:1:198: PRIVADO
                 {
                 mPRIVADO(); 
 
 
                 }
                 break;
-            case 26 :
-                // fontes/g/CanecaLexico.g:1:197: PUBLICO
+            case 27 :
+                // fontes/g/CanecaLexico.g:1:206: PUBLICO
                 {
                 mPUBLICO(); 
 
 
                 }
                 break;
-            case 27 :
-                // fontes/g/CanecaLexico.g:1:205: PROTEGIDO
+            case 28 :
+                // fontes/g/CanecaLexico.g:1:214: PROTEGIDO
                 {
                 mPROTEGIDO(); 
 
 
                 }
                 break;
-            case 28 :
-                // fontes/g/CanecaLexico.g:1:215: PRIVADA
+            case 29 :
+                // fontes/g/CanecaLexico.g:1:224: PRIVADA
                 {
                 mPRIVADA(); 
 
 
                 }
                 break;
-            case 29 :
-                // fontes/g/CanecaLexico.g:1:223: PUBLICA
+            case 30 :
+                // fontes/g/CanecaLexico.g:1:232: PUBLICA
                 {
                 mPUBLICA(); 
 
 
                 }
                 break;
-            case 30 :
-                // fontes/g/CanecaLexico.g:1:231: PROTEGIDA
+            case 31 :
+                // fontes/g/CanecaLexico.g:1:240: PROTEGIDA
                 {
                 mPROTEGIDA(); 
 
 
                 }
                 break;
-            case 31 :
-                // fontes/g/CanecaLexico.g:1:241: NOVO
+            case 32 :
+                // fontes/g/CanecaLexico.g:1:250: NOVO
                 {
                 mNOVO(); 
 
 
                 }
                 break;
-            case 32 :
-                // fontes/g/CanecaLexico.g:1:246: NOVA
+            case 33 :
+                // fontes/g/CanecaLexico.g:1:255: NOVA
                 {
                 mNOVA(); 
 
 
                 }
                 break;
-            case 33 :
-                // fontes/g/CanecaLexico.g:1:251: ESSE
+            case 34 :
+                // fontes/g/CanecaLexico.g:1:260: ESSE
                 {
                 mESSE(); 
 
 
                 }
                 break;
-            case 34 :
-                // fontes/g/CanecaLexico.g:1:256: ESSA
+            case 35 :
+                // fontes/g/CanecaLexico.g:1:265: ESSA
                 {
                 mESSA(); 
 
 
                 }
                 break;
-            case 35 :
-                // fontes/g/CanecaLexico.g:1:261: CHAMADA_DE_OBJETO
+            case 36 :
+                // fontes/g/CanecaLexico.g:1:270: CHAMADA_DE_OBJETO
                 {
                 mCHAMADA_DE_OBJETO(); 
 
 
                 }
                 break;
-            case 36 :
-                // fontes/g/CanecaLexico.g:1:279: CHAMADA_DE_CLASSE
+            case 37 :
+                // fontes/g/CanecaLexico.g:1:288: CHAMADA_DE_CLASSE
                 {
                 mCHAMADA_DE_CLASSE(); 
 
 
                 }
                 break;
-            case 37 :
-                // fontes/g/CanecaLexico.g:1:297: PARENTESE_ESQUERDO
+            case 38 :
+                // fontes/g/CanecaLexico.g:1:306: PARENTESE_ESQUERDO
                 {
                 mPARENTESE_ESQUERDO(); 
 
 
                 }
                 break;
-            case 38 :
-                // fontes/g/CanecaLexico.g:1:316: PARENTESE_DIREITO
+            case 39 :
+                // fontes/g/CanecaLexico.g:1:325: PARENTESE_DIREITO
                 {
                 mPARENTESE_DIREITO(); 
 
 
                 }
                 break;
-            case 39 :
-                // fontes/g/CanecaLexico.g:1:334: COLCHETE_ESQUERDO
+            case 40 :
+                // fontes/g/CanecaLexico.g:1:343: COLCHETE_ESQUERDO
                 {
                 mCOLCHETE_ESQUERDO(); 
 
 
                 }
                 break;
-            case 40 :
-                // fontes/g/CanecaLexico.g:1:352: COLCHETE_DIREITO
+            case 41 :
+                // fontes/g/CanecaLexico.g:1:361: COLCHETE_DIREITO
                 {
                 mCOLCHETE_DIREITO(); 
 
 
                 }
                 break;
-            case 41 :
-                // fontes/g/CanecaLexico.g:1:369: SEPARADOR
+            case 42 :
+                // fontes/g/CanecaLexico.g:1:378: SEPARADOR
                 {
                 mSEPARADOR(); 
 
 
                 }
                 break;
-            case 42 :
-                // fontes/g/CanecaLexico.g:1:379: TERMINADOR
+            case 43 :
+                // fontes/g/CanecaLexico.g:1:388: TERMINADOR
                 {
                 mTERMINADOR(); 
 
 
                 }
                 break;
-            case 43 :
-                // fontes/g/CanecaLexico.g:1:390: ATRIBUIDOR
+            case 44 :
+                // fontes/g/CanecaLexico.g:1:399: ATRIBUIDOR
                 {
                 mATRIBUIDOR(); 
 
 
                 }
                 break;
-            case 44 :
-                // fontes/g/CanecaLexico.g:1:401: SOMA
+            case 45 :
+                // fontes/g/CanecaLexico.g:1:410: SOMA
                 {
                 mSOMA(); 
 
 
                 }
                 break;
-            case 45 :
-                // fontes/g/CanecaLexico.g:1:406: SUBTRACAO
+            case 46 :
+                // fontes/g/CanecaLexico.g:1:415: SUBTRACAO
                 {
                 mSUBTRACAO(); 
 
 
                 }
                 break;
-            case 46 :
-                // fontes/g/CanecaLexico.g:1:416: MULTIPLICACAO
+            case 47 :
+                // fontes/g/CanecaLexico.g:1:425: MULTIPLICACAO
                 {
                 mMULTIPLICACAO(); 
 
 
                 }
                 break;
-            case 47 :
-                // fontes/g/CanecaLexico.g:1:430: DIVISAO
+            case 48 :
+                // fontes/g/CanecaLexico.g:1:439: DIVISAO
                 {
                 mDIVISAO(); 
 
 
                 }
                 break;
-            case 48 :
-                // fontes/g/CanecaLexico.g:1:438: RESTO_DA_DIVISAO
+            case 49 :
+                // fontes/g/CanecaLexico.g:1:447: RESTO_DA_DIVISAO
                 {
                 mRESTO_DA_DIVISAO(); 
 
 
                 }
                 break;
-            case 49 :
-                // fontes/g/CanecaLexico.g:1:455: NEGACAO
+            case 50 :
+                // fontes/g/CanecaLexico.g:1:464: NEGACAO
                 {
                 mNEGACAO(); 
 
 
                 }
                 break;
-            case 50 :
-                // fontes/g/CanecaLexico.g:1:463: E
+            case 51 :
+                // fontes/g/CanecaLexico.g:1:472: E
                 {
                 mE(); 
 
 
                 }
                 break;
-            case 51 :
-                // fontes/g/CanecaLexico.g:1:465: OU
+            case 52 :
+                // fontes/g/CanecaLexico.g:1:474: OU
                 {
                 mOU(); 
 
 
                 }
                 break;
-            case 52 :
-                // fontes/g/CanecaLexico.g:1:468: MENOR
+            case 53 :
+                // fontes/g/CanecaLexico.g:1:477: MENOR
                 {
                 mMENOR(); 
 
 
                 }
                 break;
-            case 53 :
-                // fontes/g/CanecaLexico.g:1:474: MAIOR
+            case 54 :
+                // fontes/g/CanecaLexico.g:1:483: MAIOR
                 {
                 mMAIOR(); 
 
 
                 }
                 break;
-            case 54 :
-                // fontes/g/CanecaLexico.g:1:480: MENOR_IGUAL
+            case 55 :
+                // fontes/g/CanecaLexico.g:1:489: MENOR_IGUAL
                 {
                 mMENOR_IGUAL(); 
 
 
                 }
                 break;
-            case 55 :
-                // fontes/g/CanecaLexico.g:1:492: MAIOR_IGUAL
+            case 56 :
+                // fontes/g/CanecaLexico.g:1:501: MAIOR_IGUAL
                 {
                 mMAIOR_IGUAL(); 
 
 
                 }
                 break;
-            case 56 :
-                // fontes/g/CanecaLexico.g:1:504: IGUAL
+            case 57 :
+                // fontes/g/CanecaLexico.g:1:513: IGUAL
                 {
                 mIGUAL(); 
 
 
                 }
                 break;
-            case 57 :
-                // fontes/g/CanecaLexico.g:1:510: DIFERENTE
+            case 58 :
+                // fontes/g/CanecaLexico.g:1:519: DIFERENTE
                 {
                 mDIFERENTE(); 
 
 
                 }
                 break;
-            case 58 :
-                // fontes/g/CanecaLexico.g:1:520: VALOR_BOOLEANO
+            case 59 :
+                // fontes/g/CanecaLexico.g:1:529: VALOR_BOOLEANO
                 {
                 mVALOR_BOOLEANO(); 
 
 
                 }
                 break;
-            case 59 :
-                // fontes/g/CanecaLexico.g:1:535: VALOR_NULO
+            case 60 :
+                // fontes/g/CanecaLexico.g:1:544: VALOR_NULO
                 {
                 mVALOR_NULO(); 
 
 
                 }
                 break;
-            case 60 :
-                // fontes/g/CanecaLexico.g:1:546: CONSTANTE_INTEIRA
+            case 61 :
+                // fontes/g/CanecaLexico.g:1:555: CONSTANTE_INTEIRA
                 {
                 mCONSTANTE_INTEIRA(); 
 
 
                 }
                 break;
-            case 61 :
-                // fontes/g/CanecaLexico.g:1:564: CONSTANTE_REAL
+            case 62 :
+                // fontes/g/CanecaLexico.g:1:573: CONSTANTE_REAL
                 {
                 mCONSTANTE_REAL(); 
 
 
                 }
                 break;
-            case 62 :
-                // fontes/g/CanecaLexico.g:1:579: LITERAL_CARACTERE
+            case 63 :
+                // fontes/g/CanecaLexico.g:1:588: LITERAL_CARACTERE
                 {
                 mLITERAL_CARACTERE(); 
 
 
                 }
                 break;
-            case 63 :
-                // fontes/g/CanecaLexico.g:1:597: LITERAL_TEXTO
+            case 64 :
+                // fontes/g/CanecaLexico.g:1:606: LITERAL_TEXTO
                 {
                 mLITERAL_TEXTO(); 
 
 
                 }
                 break;
-            case 64 :
-                // fontes/g/CanecaLexico.g:1:611: IDENTIFICADOR
+            case 65 :
+                // fontes/g/CanecaLexico.g:1:620: IDENTIFICADOR
                 {
                 mIDENTIFICADOR(); 
 
 
                 }
                 break;
-            case 65 :
-                // fontes/g/CanecaLexico.g:1:625: IDENTIFICADOR_DE_PACOTE
+            case 66 :
+                // fontes/g/CanecaLexico.g:1:634: IDENTIFICADOR_DE_PACOTE
                 {
                 mIDENTIFICADOR_DE_PACOTE(); 
 
 
                 }
                 break;
-            case 66 :
-                // fontes/g/CanecaLexico.g:1:649: ESPACO_EM_BRANCO
+            case 67 :
+                // fontes/g/CanecaLexico.g:1:658: ESPACO_EM_BRANCO
                 {
                 mESPACO_EM_BRANCO(); 
 
 
                 }
                 break;
-            case 67 :
-                // fontes/g/CanecaLexico.g:1:666: COMENTARIO_EM_LINHA
+            case 68 :
+                // fontes/g/CanecaLexico.g:1:675: COMENTARIO_EM_LINHA
                 {
                 mCOMENTARIO_EM_LINHA(); 
 
 
                 }
                 break;
-            case 68 :
-                // fontes/g/CanecaLexico.g:1:686: COMENTARIO_EM_BLOCO
+            case 69 :
+                // fontes/g/CanecaLexico.g:1:695: COMENTARIO_EM_BLOCO
                 {
                 mCOMENTARIO_EM_BLOCO(); 
 
@@ -2922,73 +2954,73 @@ public class CanecaLexico extends Lexer {
     static final String DFA13_eotS =
         "\1\uffff\15\46\10\uffff\1\101\1\uffff\1\102\6\uffff\1\104\1\106"+
         "\1\uffff\1\46\1\110\7\uffff\4\46\1\120\20\46\7\uffff\1\46\2\uffff"+
-        "\3\46\1\154\2\46\1\uffff\33\46\1\uffff\2\46\1\u008e\10\46\1\u0097"+
-        "\1\u0098\3\46\1\u009c\6\46\1\u00a3\1\u00a4\1\u00a5\5\46\1\u00ab"+
-        "\1\u00ac\1\uffff\10\46\2\uffff\1\u00b5\1\u00b6\1\46\1\uffff\6\46"+
-        "\3\uffff\1\46\1\u00bf\3\46\2\uffff\1\u00c3\3\46\1\u00c9\3\46\2\uffff"+
-        "\2\46\1\u00cf\2\46\1\u00d3\2\46\1\uffff\1\46\1\u00d7\1\46\1\uffff"+
-        "\1\u00d9\1\u00da\1\46\1\u00dc\1\u00dd\1\uffff\1\u00de\2\46\1\u00e1"+
-        "\1\46\1\uffff\1\u00e3\1\46\1\u00e5\1\uffff\3\46\1\uffff\1\46\2\uffff"+
-        "\1\46\3\uffff\1\u00ec\1\u00ed\1\uffff\1\46\1\uffff\1\46\1\uffff"+
-        "\1\u00f0\1\46\1\u00f2\1\46\1\u00f4\1\u00f5\2\uffff\1\46\1\u00f7"+
-        "\1\uffff\1\46\1\uffff\1\u00f9\2\uffff\1\u00fa\1\uffff\1\u00ab\2"+
-        "\uffff";
+        "\3\46\1\155\2\46\1\uffff\34\46\1\uffff\2\46\1\u0090\10\46\1\u0099"+
+        "\1\u009a\3\46\1\u009e\6\46\1\u00a5\1\u00a6\1\u00a7\6\46\1\u00ae"+
+        "\1\u00af\1\uffff\10\46\2\uffff\1\u00b8\1\u00b9\1\46\1\uffff\6\46"+
+        "\3\uffff\4\46\1\u00c5\1\46\2\uffff\1\u00c7\3\46\1\u00cd\3\46\2\uffff"+
+        "\2\46\1\u00d3\2\46\1\u00d7\3\46\1\u00db\1\46\1\uffff\1\46\1\uffff"+
+        "\1\u00de\1\u00df\1\46\1\u00e1\1\u00e2\1\uffff\1\u00e3\2\46\1\u00e6"+
+        "\1\46\1\uffff\1\u00e8\1\46\1\u00ea\1\uffff\2\46\1\u00ed\1\uffff"+
+        "\2\46\2\uffff\1\46\3\uffff\1\u00f2\1\u00f3\1\uffff\1\46\1\uffff"+
+        "\1\46\1\uffff\1\u00f6\1\46\1\uffff\1\46\1\u00f9\1\u00fa\1\u00fb"+
+        "\2\uffff\1\46\1\u00fd\1\uffff\1\46\1\u00ff\3\uffff\1\u0100\1\uffff"+
+        "\1\u00ae\2\uffff";
     static final String DFA13_eofS =
-        "\u00fb\uffff";
+        "\u0101\uffff";
     static final String DFA13_minS =
         "\1\11\1\155\1\141\1\145\1\141\1\145\1\156\1\145\2\141\2\145\1\164"+
         "\1\157\10\uffff\1\75\1\uffff\1\60\6\uffff\2\75\1\uffff\1\145\1\56"+
-        "\7\uffff\1\151\1\160\1\155\1\154\1\60\1\143\1\151\1\142\1\160\1"+
+        "\7\uffff\1\160\1\151\1\155\1\154\1\60\1\143\1\151\1\142\1\160\1"+
         "\161\1\163\2\156\1\160\1\155\1\141\1\143\1\164\1\162\1\166\1\154"+
-        "\7\uffff\1\162\2\uffff\1\143\1\145\1\154\1\60\1\163\1\141\1\uffff"+
+        "\7\uffff\1\162\2\uffff\1\154\1\143\1\145\1\60\1\163\1\141\1\uffff"+
         "\1\141\1\157\1\166\1\164\1\154\1\151\1\157\1\165\2\141\1\164\1\143"+
         "\1\164\1\157\2\163\1\164\1\154\1\157\1\151\1\141\1\157\1\144\1\151"+
-        "\2\162\1\145\1\uffff\2\157\1\60\1\164\1\141\1\145\1\151\1\164\1"+
-        "\162\1\141\1\164\2\60\2\145\1\165\1\60\1\164\1\163\1\162\1\141\1"+
-        "\144\1\142\3\60\1\141\1\157\1\146\1\164\1\155\2\60\1\uffff\1\145"+
-        "\1\144\1\147\1\143\1\141\2\156\1\151\2\uffff\2\60\1\162\1\uffff"+
-        "\1\162\1\145\1\165\1\162\1\157\1\165\3\uffff\1\144\1\60\1\141\2"+
-        "\145\2\uffff\1\60\1\141\1\151\1\141\1\60\1\145\1\164\1\143\2\uffff"+
-        "\1\145\1\165\1\60\1\141\1\145\1\60\1\164\1\145\1\uffff\1\143\1\60"+
-        "\1\156\1\uffff\2\60\1\144\2\60\1\uffff\1\60\2\157\1\60\1\164\1\uffff"+
-        "\1\60\1\157\1\60\1\uffff\1\157\1\151\1\145\1\uffff\1\164\2\uffff"+
-        "\1\141\3\uffff\2\60\1\uffff\1\157\1\uffff\1\162\1\uffff\1\60\1\162"+
-        "\1\60\1\141\2\60\2\uffff\1\162\1\60\1\uffff\1\157\1\uffff\1\60\2"+
-        "\uffff\1\60\1\uffff\1\60\2\uffff";
+        "\1\162\1\145\1\151\1\162\1\uffff\2\157\1\60\1\164\1\141\1\145\1"+
+        "\151\1\164\1\162\1\141\1\164\2\60\2\145\1\165\1\60\1\164\1\163\1"+
+        "\162\1\141\1\144\1\142\3\60\1\141\1\155\1\164\1\155\1\157\1\146"+
+        "\2\60\1\uffff\1\145\1\144\1\147\1\143\1\141\2\156\1\151\2\uffff"+
+        "\2\60\1\162\1\uffff\1\162\1\145\1\165\1\162\1\157\1\165\3\uffff"+
+        "\1\144\1\151\2\145\1\60\1\141\2\uffff\1\60\1\141\1\151\1\141\1\60"+
+        "\1\145\1\164\1\143\2\uffff\1\145\1\165\1\60\1\141\1\145\1\60\1\164"+
+        "\1\145\1\162\1\60\1\156\1\uffff\1\143\1\uffff\2\60\1\144\2\60\1"+
+        "\uffff\1\60\2\157\1\60\1\164\1\uffff\1\60\1\157\1\60\1\uffff\1\157"+
+        "\1\151\1\60\1\uffff\1\164\1\145\2\uffff\1\141\3\uffff\2\60\1\uffff"+
+        "\1\157\1\uffff\1\162\1\uffff\1\60\1\162\1\uffff\1\141\3\60\2\uffff"+
+        "\1\162\1\60\1\uffff\1\157\1\60\3\uffff\1\60\1\uffff\1\60\2\uffff";
     static final String DFA13_maxS =
         "\1\176\1\156\1\151\1\145\1\165\1\145\1\163\1\145\1\141\1\157\2\145"+
         "\1\164\1\165\10\uffff\1\75\1\uffff\1\71\6\uffff\2\75\1\uffff\1\145"+
-        "\1\71\7\uffff\1\164\1\160\1\155\1\154\1\172\1\162\1\157\1\142\1"+
+        "\1\71\7\uffff\1\160\1\164\1\155\1\154\1\172\1\162\1\157\1\142\1"+
         "\164\1\161\1\164\2\156\1\160\1\156\1\141\1\163\1\164\1\162\1\166"+
-        "\1\154\7\uffff\1\162\2\uffff\1\143\1\145\1\157\1\172\1\163\1\141"+
+        "\1\154\7\uffff\1\162\2\uffff\1\162\1\143\1\145\1\172\1\163\1\141"+
         "\1\uffff\1\141\1\157\1\166\1\164\1\154\1\151\1\157\1\165\1\141\1"+
         "\145\1\164\1\143\1\164\1\157\2\163\1\164\1\154\1\157\1\151\2\157"+
-        "\1\144\1\151\2\162\1\145\1\uffff\2\157\1\172\1\164\1\141\1\145\1"+
-        "\151\1\164\1\162\1\141\1\164\2\172\2\145\1\165\1\172\1\164\1\163"+
-        "\1\162\1\141\1\144\1\142\3\172\1\141\1\157\1\146\1\164\1\155\2\172"+
-        "\1\uffff\1\145\1\144\1\147\1\143\1\141\2\156\1\151\2\uffff\2\172"+
-        "\1\162\1\uffff\1\162\1\145\1\165\1\162\1\157\1\165\3\uffff\1\144"+
-        "\1\172\1\141\2\145\2\uffff\1\172\1\157\1\151\1\157\1\172\1\145\1"+
-        "\164\1\143\2\uffff\1\145\1\165\1\172\1\164\1\145\1\172\1\164\1\145"+
-        "\1\uffff\1\143\1\172\1\156\1\uffff\2\172\1\144\2\172\1\uffff\1\172"+
-        "\2\157\1\172\1\164\1\uffff\1\172\1\157\1\172\1\uffff\1\157\1\151"+
-        "\1\145\1\uffff\1\164\2\uffff\1\157\3\uffff\2\172\1\uffff\1\157\1"+
-        "\uffff\1\162\1\uffff\1\172\1\162\1\172\1\141\2\172\2\uffff\1\162"+
-        "\1\172\1\uffff\1\157\1\uffff\1\172\2\uffff\1\172\1\uffff\1\172\2"+
-        "\uffff";
+        "\1\144\1\151\1\162\1\145\1\151\1\162\1\uffff\2\157\1\172\1\164\1"+
+        "\141\1\145\1\151\1\164\1\162\1\141\1\164\2\172\2\145\1\165\1\172"+
+        "\1\164\1\163\1\162\1\141\1\144\1\142\3\172\1\141\1\155\1\164\1\155"+
+        "\1\157\1\146\2\172\1\uffff\1\145\1\144\1\147\1\143\1\141\2\156\1"+
+        "\151\2\uffff\2\172\1\162\1\uffff\1\162\1\145\1\165\1\162\1\157\1"+
+        "\165\3\uffff\1\144\1\151\2\145\1\172\1\141\2\uffff\1\172\1\157\1"+
+        "\151\1\157\1\172\1\145\1\164\1\143\2\uffff\1\145\1\165\1\172\1\164"+
+        "\1\145\1\172\1\164\1\145\1\162\1\172\1\156\1\uffff\1\143\1\uffff"+
+        "\2\172\1\144\2\172\1\uffff\1\172\2\157\1\172\1\164\1\uffff\1\172"+
+        "\1\157\1\172\1\uffff\1\157\1\151\1\172\1\uffff\1\164\1\145\2\uffff"+
+        "\1\157\3\uffff\2\172\1\uffff\1\157\1\uffff\1\162\1\uffff\1\172\1"+
+        "\162\1\uffff\1\141\3\172\2\uffff\1\162\1\172\1\uffff\1\157\1\172"+
+        "\3\uffff\1\172\1\uffff\1\172\2\uffff";
     static final String DFA13_acceptS =
-        "\16\uffff\1\43\1\44\1\45\1\46\1\47\1\50\1\51\1\52\1\uffff\1\54\1"+
-        "\uffff\1\56\1\57\1\60\1\61\1\62\1\63\2\uffff\1\71\2\uffff\1\76\1"+
-        "\77\1\100\1\101\1\102\1\103\1\104\25\uffff\1\70\1\53\1\55\1\66\1"+
-        "\64\1\67\1\65\1\uffff\1\74\1\75\6\uffff\1\3\33\uffff\1\2\41\uffff"+
-        "\1\5\10\uffff\1\41\1\42\3\uffff\1\20\6\uffff\1\37\1\40\1\73\5\uffff"+
-        "\1\72\1\4\10\uffff\1\10\1\11\10\uffff\1\1\3\uffff\1\16\5\uffff\1"+
-        "\6\5\uffff\1\21\3\uffff\1\23\3\uffff\1\17\1\uffff\1\31\1\34\1\uffff"+
-        "\1\32\1\35\1\13\2\uffff\1\12\1\uffff\1\14\1\uffff\1\15\6\uffff\1"+
-        "\7\1\27\2\uffff\1\24\1\uffff\1\22\1\uffff\1\33\1\36\1\uffff\1\26"+
-        "\1\uffff\1\30\1\25";
+        "\16\uffff\1\44\1\45\1\46\1\47\1\50\1\51\1\52\1\53\1\uffff\1\55\1"+
+        "\uffff\1\57\1\60\1\61\1\62\1\63\1\64\2\uffff\1\72\2\uffff\1\77\1"+
+        "\100\1\101\1\102\1\103\1\104\1\105\25\uffff\1\71\1\54\1\56\1\67"+
+        "\1\65\1\70\1\66\1\uffff\1\75\1\76\6\uffff\1\4\34\uffff\1\3\42\uffff"+
+        "\1\6\10\uffff\1\42\1\43\3\uffff\1\21\6\uffff\1\40\1\41\1\74\6\uffff"+
+        "\1\73\1\5\10\uffff\1\11\1\12\13\uffff\1\2\1\uffff\1\17\5\uffff\1"+
+        "\7\5\uffff\1\22\3\uffff\1\24\3\uffff\1\20\2\uffff\1\32\1\35\1\uffff"+
+        "\1\33\1\36\1\14\2\uffff\1\13\1\uffff\1\15\1\uffff\1\16\2\uffff\1"+
+        "\1\4\uffff\1\10\1\30\2\uffff\1\25\2\uffff\1\23\1\34\1\37\1\uffff"+
+        "\1\27\1\uffff\1\31\1\26";
     static final String DFA13_specialS =
-        "\u00fb\uffff}>";
+        "\u0101\uffff}>";
     static final String[] DFA13_transitionS = {
             "\2\50\1\uffff\2\50\22\uffff\1\50\1\41\1\45\1\52\1\uffff\1\33"+
             "\1\35\1\44\1\20\1\21\1\31\1\27\1\24\1\30\1\16\1\32\12\43\1\17"+
@@ -2996,7 +3028,7 @@ public class CanecaLexico extends Lexer {
             "\1\14\1\46\1\11\1\12\1\6\1\2\2\46\1\1\2\46\1\10\1\13\1\15\1"+
             "\46\1\4\1\46\1\5\1\3\1\7\1\46\1\42\4\46\1\uffff\1\36\1\uffff"+
             "\1\34",
-            "\1\54\1\53",
+            "\1\53\1\54",
             "\1\56\7\uffff\1\55",
             "\1\57",
             "\1\60\20\uffff\1\61\2\uffff\1\62",
@@ -3038,8 +3070,8 @@ public class CanecaLexico extends Lexer {
             "",
             "",
             "",
-            "\1\112\12\uffff\1\113",
-            "\1\114",
+            "\1\112",
+            "\1\113\12\uffff\1\114",
             "\1\115",
             "\1\116",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\15\46\1\117\14\46",
@@ -3069,14 +3101,13 @@ public class CanecaLexico extends Lexer {
             "\1\147",
             "",
             "",
-            "\1\150",
-            "\1\151",
-            "\1\153\2\uffff\1\152",
+            "\1\152\2\uffff\1\151\2\uffff\1\150",
+            "\1\153",
+            "\1\154",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\155",
             "\1\156",
-            "",
             "\1\157",
+            "",
             "\1\160",
             "\1\161",
             "\1\162",
@@ -3085,8 +3116,8 @@ public class CanecaLexico extends Lexer {
             "\1\165",
             "\1\166",
             "\1\167",
-            "\1\171\3\uffff\1\170",
-            "\1\172",
+            "\1\170",
+            "\1\172\3\uffff\1\171",
             "\1\173",
             "\1\174",
             "\1\175",
@@ -3096,149 +3127,156 @@ public class CanecaLexico extends Lexer {
             "\1\u0081",
             "\1\u0082",
             "\1\u0083",
-            "\1\u0085\15\uffff\1\u0084",
-            "\1\u0086",
+            "\1\u0084",
+            "\1\u0086\15\uffff\1\u0085",
             "\1\u0087",
             "\1\u0088",
             "\1\u0089",
             "\1\u008a",
             "\1\u008b",
-            "",
             "\1\u008c",
             "\1\u008d",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "",
+            "\1\u008e",
             "\1\u008f",
-            "\1\u0090",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\1\u0091",
             "\1\u0092",
             "\1\u0093",
             "\1\u0094",
             "\1\u0095",
             "\1\u0096",
+            "\1\u0097",
+            "\1\u0098",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u0099",
-            "\1\u009a",
             "\1\u009b",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\u009c",
             "\1\u009d",
-            "\1\u009e",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\1\u009f",
             "\1\u00a0",
             "\1\u00a1",
             "\1\u00a2",
+            "\1\u00a3",
+            "\1\u00a4",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u00a6",
-            "\1\u00a7",
             "\1\u00a8",
             "\1\u00a9",
             "\1\u00aa",
+            "\1\u00ab",
+            "\1\u00ac",
+            "\1\u00ad",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "",
-            "\1\u00ad",
-            "\1\u00ae",
-            "\1\u00af",
             "\1\u00b0",
             "\1\u00b1",
             "\1\u00b2",
             "\1\u00b3",
             "\1\u00b4",
-            "",
-            "",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\u00b5",
+            "\1\u00b6",
             "\1\u00b7",
             "",
-            "\1\u00b8",
-            "\1\u00b9",
+            "",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\1\u00ba",
+            "",
             "\1\u00bb",
             "\1\u00bc",
             "\1\u00bd",
-            "",
-            "",
-            "",
             "\1\u00be",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\u00bf",
             "\1\u00c0",
+            "",
+            "",
+            "",
             "\1\u00c1",
             "\1\u00c2",
-            "",
-            "",
+            "\1\u00c3",
+            "\1\u00c4",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u00c5\15\uffff\1\u00c4",
             "\1\u00c6",
-            "\1\u00c8\15\uffff\1\u00c7",
+            "",
+            "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\u00c9\15\uffff\1\u00c8",
             "\1\u00ca",
-            "\1\u00cb",
-            "\1\u00cc",
-            "",
-            "",
-            "\1\u00cd",
-            "\1\u00ce",
+            "\1\u00cc\15\uffff\1\u00cb",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u00d0\22\uffff\1\u00d1",
+            "\1\u00ce",
+            "\1\u00cf",
+            "\1\u00d0",
+            "",
+            "",
+            "\1\u00d1",
             "\1\u00d2",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u00d4",
-            "\1\u00d5",
-            "",
+            "\1\u00d4\22\uffff\1\u00d5",
             "\1\u00d6",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\1\u00d8",
+            "\1\u00d9",
+            "\1\u00da",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\u00dc",
+            "",
+            "\1\u00dd",
             "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u00db",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u00df",
             "\1\u00e0",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u00e2",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\1\u00e4",
+            "\1\u00e5",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "",
-            "\1\u00e6",
             "\1\u00e7",
-            "\1\u00e8",
-            "",
-            "\1\u00e9",
-            "",
-            "",
-            "\1\u00eb\15\uffff\1\u00ea",
-            "",
-            "",
             "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\u00e9",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "",
+            "\1\u00eb",
+            "\1\u00ec",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "",
             "\1\u00ee",
-            "",
             "\1\u00ef",
             "",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u00f1",
-            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
-            "\1\u00f3",
+            "",
+            "\1\u00f1\15\uffff\1\u00f0",
+            "",
+            "",
+            "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
             "",
+            "\1\u00f4",
             "",
-            "\1\u00f6",
+            "\1\u00f5",
+            "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\1\u00f7",
             "",
             "\1\u00f8",
-            "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "",
+            "",
+            "\1\u00fc",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "",
+            "\1\u00fe",
+            "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
+            "",
             "",
             "",
             "\12\46\7\uffff\32\46\4\uffff\1\46\1\uffff\32\46",
@@ -3278,7 +3316,7 @@ public class CanecaLexico extends Lexer {
             this.transition = DFA13_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( INICIO | FIM | SE | SENAO | PARA | REPITA | ENQUANTO | TENTE | LANCE | CAPTURE | RETORNE | DESTRUA | DECLARE | PACOTE | IMPORTE | COMO | CLASSE | INTERFACE | METODO | ATRIBUTO | CONSTRUTOR | DESTRUTOR | ESTATICO | IMPLEMENTA | PRIVADO | PUBLICO | PROTEGIDO | PRIVADA | PUBLICA | PROTEGIDA | NOVO | NOVA | ESSE | ESSA | CHAMADA_DE_OBJETO | CHAMADA_DE_CLASSE | PARENTESE_ESQUERDO | PARENTESE_DIREITO | COLCHETE_ESQUERDO | COLCHETE_DIREITO | SEPARADOR | TERMINADOR | ATRIBUIDOR | SOMA | SUBTRACAO | MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO | NEGACAO | E | OU | MENOR | MAIOR | MENOR_IGUAL | MAIOR_IGUAL | IGUAL | DIFERENTE | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | IDENTIFICADOR | IDENTIFICADOR_DE_PACOTE | ESPACO_EM_BRANCO | COMENTARIO_EM_LINHA | COMENTARIO_EM_BLOCO );";
+            return "1:1: Tokens : ( IMPRIMIR | INICIO | FIM | SE | SENAO | PARA | REPITA | ENQUANTO | TENTE | LANCE | CAPTURE | RETORNE | DESTRUA | DECLARE | PACOTE | IMPORTE | COMO | CLASSE | INTERFACE | METODO | ATRIBUTO | CONSTRUTOR | DESTRUTOR | ESTATICO | IMPLEMENTA | PRIVADO | PUBLICO | PROTEGIDO | PRIVADA | PUBLICA | PROTEGIDA | NOVO | NOVA | ESSE | ESSA | CHAMADA_DE_OBJETO | CHAMADA_DE_CLASSE | PARENTESE_ESQUERDO | PARENTESE_DIREITO | COLCHETE_ESQUERDO | COLCHETE_DIREITO | SEPARADOR | TERMINADOR | ATRIBUIDOR | SOMA | SUBTRACAO | MULTIPLICACAO | DIVISAO | RESTO_DA_DIVISAO | NEGACAO | E | OU | MENOR | MAIOR | MENOR_IGUAL | MAIOR_IGUAL | IGUAL | DIFERENTE | VALOR_BOOLEANO | VALOR_NULO | CONSTANTE_INTEIRA | CONSTANTE_REAL | LITERAL_CARACTERE | LITERAL_TEXTO | IDENTIFICADOR | IDENTIFICADOR_DE_PACOTE | ESPACO_EM_BRANCO | COMENTARIO_EM_LINHA | COMENTARIO_EM_BLOCO );";
         }
     }
  

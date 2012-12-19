@@ -1,15 +1,17 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
-public class SomarR implements Codigo {
-	public SomarR() {
+import java.util.Stack;
+
+public final class CodigoSomarR extends CodigoAbstrato {
+	public CodigoSomarR() {
 		
 	}
 	
 	@Override
-	public void executar(Stack<Valor> pilhaDeDados, Stack<Comando> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
-		double operandoA = pilhaDeDados.pop().fornecerComoReal();
+	public void executar(Stack<Valor> pilhaDeDados, Stack<Codigo> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
 		double operandoB = pilhaDeDados.pop().fornecerComoReal();
-		pilhaDeDados.push(new Valor(operandoA + operandoB));
+		double operandoA = pilhaDeDados.pop().fornecerComoReal();
+		pilhaDeDados.push(new ValorReal(operandoA + operandoB));
 	}
 	
 	@Override

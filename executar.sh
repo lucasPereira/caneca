@@ -42,13 +42,8 @@ construir() {
 executar() {
 	echo ":executar";
 	echo "";
-	java -classpath ${binariosJava}:${bibliotecaJavaAntlr} ${classePrincipal} $1 $2;
+	java -classpath ${binariosJava}:${bibliotecaJavaAntlr} ${classePrincipal} $1 $2 $3;
 	echo "";
 }
 
-if [ -n "$3" ]
-then
-	$3;
-fi
-executar $1 $2;
-
+executar $1 $2 $3;

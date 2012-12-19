@@ -46,6 +46,7 @@ options {
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoCapture;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoDestrua;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoEnquanto;
+	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoImprimir;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoLance;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoPara;
 	import br.ufsc.inf.ine5426.caneca.interno.InstrucaoRepita;
@@ -93,6 +94,7 @@ topdown
 	| metodo
 	| declaracao
 	| bloco
+	| imprimir
 	| se
 	| para
 	| repita
@@ -949,6 +951,15 @@ terminarLance
 		{
 			mostrar("terminarLance");
 			escopoAtual = escopoAtual.fornecerEscopoPai();
+		}
+	;
+
+imprimir
+	: IMPRIMIR
+		{
+			mostrar("imprimir");
+			InstrucaoImprimir instrucao = new InstrucaoImprimir(escopoAtual);
+			escopoAtual.definirInstrucao(instrucao);
 		}
 	;
 

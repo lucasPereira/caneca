@@ -1,12 +1,14 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
-public class CodigoCriarContexto implements Codigo {
+import java.util.Stack;
+
+public final class CodigoCriarContexto extends CodigoAbstrato {
 	public CodigoCriarContexto() {
 		
 	}
 	
 	@Override
-	public void executar(Stack<Valor> pilhaDeDados, Stack<Comando> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
+	public void executar(Stack<Valor> pilhaDeDados, Stack<Codigo> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
 		pilhaDeContextos.push(new Contexto(pilhaDeContextos.peek()));
 	}
 	
