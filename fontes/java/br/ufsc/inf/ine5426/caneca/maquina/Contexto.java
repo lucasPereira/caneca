@@ -36,6 +36,8 @@ public final class Contexto {
 	public void atualizarSimbolo(String nome, Valor valor) {
 		if (simbolos.containsKey(nome)) {
 			simbolos.put(nome, valor);
+			valor.fixarNome(nome);
+			valor.fixarContextoPai(this);
 		} else if (contextoPai != null) {
 			contextoPai.atualizarSimbolo(nome, valor);
 		}

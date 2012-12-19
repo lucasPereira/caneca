@@ -19,8 +19,9 @@ public final class CodigoInstanciar extends CodigoAbstrato {
 		for (Map.Entry<String, Valor> simbolo : contextoDaClasse.fornecerSimbolos().entrySet()) {
 			contextoDoObjeto.definirSimbolo(simbolo.getKey(), simbolo.getValue());
 		}
-		pilhaDeDados.push(new ValorReferencia(contextoDoObjeto));
-		pilhaDeDados.push(new ValorReferencia(contextoDoObjeto));
+		Referencia referencia = new ValorReferencia(contextoDoObjeto);
+		pilhaDeDados.push(referencia);
+		pilhaDeDados.push(referencia);
 	}
 	
 	@Override
