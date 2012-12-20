@@ -1,8 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoEmpilhar;
-import br.ufsc.inf.ine5426.caneca.maquina.ValorTexto;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.List;
 
@@ -14,10 +12,9 @@ public final class ExpressaoLiteralTexto extends ExpressaoPrimaria {
 		valor = valorTextual.substring(1, valorTextual.length() - 1);
 	}
 	
-	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		codigo.add(new CodigoEmpilhar(new ValorTexto(valor)).encapsular());
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		areaDeCodigo.add(new CodigoEmpilhar(new ValorTexto(valor)));
 	}
 	
 	@Override

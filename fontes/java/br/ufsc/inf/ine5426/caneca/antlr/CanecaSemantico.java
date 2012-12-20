@@ -1,4 +1,4 @@
-// $ANTLR 3.4 fontes/g/CanecaSemantico.g 2012-12-20 15:04:39
+// $ANTLR 3.4 fontes/g/CanecaSemantico.g 2012-12-20 18:13:04
 
 	package br.ufsc.inf.ine5426.caneca.antlr;
 
@@ -31,7 +31,7 @@
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoOu;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoReferencia;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoRestoDaDivisao;
-	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoSoma;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoAdicao;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoSubtracao;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoValorBooleano;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoValorNulo;
@@ -236,10 +236,10 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "topdown"
-    // fontes/g/CanecaSemantico.g:89:1: topdown : ( classe | atributo | construtor | destrutor | metodo | declaracao | bloco | imprimir | se | para | repita | enquanto | tente | capture | lance | destruicao | retorno | expressaoAtribuicao | expressaoOu | expressaoE | expressaoIgual | expressaoDiferente | expressaoMaior | expressaoMaiorIgual | expressaoMenor | expressaoMenorIgual | expressaoSoma | expressaoSubtracao | expressaoMultiplicacao | expressaoDivisao | expressaoRestoDaDivisao | expressaoNegativacao | expressaoNegacao | expressaoPrimaria | comando | referencia | referenciaDeMetodo | instanciacao | chamada | chamadaDeMetodo );
+    // fontes/g/CanecaSemantico.g:89:1: topdown : ( classe | atributo | construtor | destrutor | metodo | declaracao | bloco | imprimir | se | para | repita | enquanto | tente | capture | lance | destruicao | retorno | expressaoAtribuicao | expressaoOu | expressaoE | expressaoIgual | expressaoDiferente | expressaoMaior | expressaoMaiorIgual | expressaoMenor | expressaoMenorIgual | expressaoAdicao | expressaoSubtracao | expressaoMultiplicacao | expressaoDivisao | expressaoRestoDaDivisao | expressaoNegativacao | expressaoNegacao | expressaoPrimaria | comando | referencia | referenciaDeMetodo | instanciacao | chamada | chamadaDeMetodo );
     public final void topdown() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:90:2: ( classe | atributo | construtor | destrutor | metodo | declaracao | bloco | imprimir | se | para | repita | enquanto | tente | capture | lance | destruicao | retorno | expressaoAtribuicao | expressaoOu | expressaoE | expressaoIgual | expressaoDiferente | expressaoMaior | expressaoMaiorIgual | expressaoMenor | expressaoMenorIgual | expressaoSoma | expressaoSubtracao | expressaoMultiplicacao | expressaoDivisao | expressaoRestoDaDivisao | expressaoNegativacao | expressaoNegacao | expressaoPrimaria | comando | referencia | referenciaDeMetodo | instanciacao | chamada | chamadaDeMetodo )
+            // fontes/g/CanecaSemantico.g:90:2: ( classe | atributo | construtor | destrutor | metodo | declaracao | bloco | imprimir | se | para | repita | enquanto | tente | capture | lance | destruicao | retorno | expressaoAtribuicao | expressaoOu | expressaoE | expressaoIgual | expressaoDiferente | expressaoMaior | expressaoMaiorIgual | expressaoMenor | expressaoMenorIgual | expressaoAdicao | expressaoSubtracao | expressaoMultiplicacao | expressaoDivisao | expressaoRestoDaDivisao | expressaoNegativacao | expressaoNegacao | expressaoPrimaria | comando | referencia | referenciaDeMetodo | instanciacao | chamada | chamadaDeMetodo )
             int alt1=40;
             switch ( input.LA(1) ) {
             case CLASSE_:
@@ -816,10 +816,10 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 27 :
-                    // fontes/g/CanecaSemantico.g:116:4: expressaoSoma
+                    // fontes/g/CanecaSemantico.g:116:4: expressaoAdicao
                     {
-                    pushFollow(FOLLOW_expressaoSoma_in_topdown190);
-                    expressaoSoma();
+                    pushFollow(FOLLOW_expressaoAdicao_in_topdown190);
+                    expressaoAdicao();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -987,10 +987,10 @@ public class CanecaSemantico extends TreeFilter {
 
 
     // $ANTLR start "bottomup"
-    // fontes/g/CanecaSemantico.g:132:1: bottomup : ( terminaClasse | terminarConstrutor | terminarDestrutor | terminarMetodo | terminarBloco | terminarSe | terminarPara | terminarRepita | terminarEnquanto | terminarTente | terminarCapture | terminarLance | terminarDestruicao | terminarRetorno | terminarExpressaoAtribuicao | terminarExpressaoOu | terminarExpressaoE | terminarExpressaoIgual | terminarExpressaoDiferente | terminarExpressaoMaior | terminarExpressaoMaiorIgual | terminarExpressaoMenor | terminarExpressaoMenorIgual | terminarExpressaoSoma | terminarExpressaoSubtracao | terminarExpressaoMultiplicacao | terminarExpressaoDivisao | terminarExpressaoRestoDaDivisao | terminarExpressaoNegativacao | terminarExpressaoNegacao | terminarComando | terminarReferenciaDeMetodo | terminarInstanciacao | terminarChamadaDeMetodo );
+    // fontes/g/CanecaSemantico.g:132:1: bottomup : ( terminaClasse | terminarConstrutor | terminarDestrutor | terminarMetodo | terminarBloco | terminarSe | terminarPara | terminarRepita | terminarEnquanto | terminarTente | terminarCapture | terminarLance | terminarDestruicao | terminarRetorno | terminarExpressaoAtribuicao | terminarExpressaoOu | terminarExpressaoE | terminarExpressaoIgual | terminarExpressaoDiferente | terminarExpressaoMaior | terminarExpressaoMaiorIgual | terminarExpressaoMenor | terminarExpressaoMenorIgual | terminarExpressaoAdicao | terminarExpressaoSubtracao | terminarExpressaoMultiplicacao | terminarExpressaoDivisao | terminarExpressaoRestoDaDivisao | terminarExpressaoNegativacao | terminarExpressaoNegacao | terminarComando | terminarReferenciaDeMetodo | terminarInstanciacao | terminarChamadaDeMetodo );
     public final void bottomup() throws RecognitionException {
         try {
-            // fontes/g/CanecaSemantico.g:133:2: ( terminaClasse | terminarConstrutor | terminarDestrutor | terminarMetodo | terminarBloco | terminarSe | terminarPara | terminarRepita | terminarEnquanto | terminarTente | terminarCapture | terminarLance | terminarDestruicao | terminarRetorno | terminarExpressaoAtribuicao | terminarExpressaoOu | terminarExpressaoE | terminarExpressaoIgual | terminarExpressaoDiferente | terminarExpressaoMaior | terminarExpressaoMaiorIgual | terminarExpressaoMenor | terminarExpressaoMenorIgual | terminarExpressaoSoma | terminarExpressaoSubtracao | terminarExpressaoMultiplicacao | terminarExpressaoDivisao | terminarExpressaoRestoDaDivisao | terminarExpressaoNegativacao | terminarExpressaoNegacao | terminarComando | terminarReferenciaDeMetodo | terminarInstanciacao | terminarChamadaDeMetodo )
+            // fontes/g/CanecaSemantico.g:133:2: ( terminaClasse | terminarConstrutor | terminarDestrutor | terminarMetodo | terminarBloco | terminarSe | terminarPara | terminarRepita | terminarEnquanto | terminarTente | terminarCapture | terminarLance | terminarDestruicao | terminarRetorno | terminarExpressaoAtribuicao | terminarExpressaoOu | terminarExpressaoE | terminarExpressaoIgual | terminarExpressaoDiferente | terminarExpressaoMaior | terminarExpressaoMaiorIgual | terminarExpressaoMenor | terminarExpressaoMenorIgual | terminarExpressaoAdicao | terminarExpressaoSubtracao | terminarExpressaoMultiplicacao | terminarExpressaoDivisao | terminarExpressaoRestoDaDivisao | terminarExpressaoNegativacao | terminarExpressaoNegacao | terminarComando | terminarReferenciaDeMetodo | terminarInstanciacao | terminarChamadaDeMetodo )
             int alt2=34;
             switch ( input.LA(1) ) {
             case CLASSE_:
@@ -1428,10 +1428,10 @@ public class CanecaSemantico extends TreeFilter {
                     }
                     break;
                 case 24 :
-                    // fontes/g/CanecaSemantico.g:156:4: terminarExpressaoSoma
+                    // fontes/g/CanecaSemantico.g:156:4: terminarExpressaoAdicao
                     {
-                    pushFollow(FOLLOW_terminarExpressaoSoma_in_bottomup381);
-                    terminarExpressaoSoma();
+                    pushFollow(FOLLOW_terminarExpressaoAdicao_in_bottomup381);
+                    terminarExpressaoAdicao();
 
                     state._fsp--;
                     if (state.failed) return ;
@@ -4305,14 +4305,14 @@ public class CanecaSemantico extends TreeFilter {
 
 
 
-    // $ANTLR start "expressaoSoma"
-    // fontes/g/CanecaSemantico.g:526:1: expressaoSoma : ^( SOMA . . ) ;
-    public final void expressaoSoma() throws RecognitionException {
+    // $ANTLR start "expressaoAdicao"
+    // fontes/g/CanecaSemantico.g:526:1: expressaoAdicao : ^( SOMA . . ) ;
+    public final void expressaoAdicao() throws RecognitionException {
         try {
             // fontes/g/CanecaSemantico.g:527:2: ( ^( SOMA . . ) )
             // fontes/g/CanecaSemantico.g:527:4: ^( SOMA . . )
             {
-            match(input,SOMA,FOLLOW_SOMA_in_expressaoSoma1597); if (state.failed) return ;
+            match(input,SOMA,FOLLOW_SOMA_in_expressaoAdicao1597); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
             matchAny(input); if (state.failed) return ;
@@ -4324,7 +4324,7 @@ public class CanecaSemantico extends TreeFilter {
 
             if ( state.backtracking==1 ) {
             			mostrar("+");
-            			ExpressaoSoma expressao = new ExpressaoSoma(escopoAtual);
+            			ExpressaoAdicao expressao = new ExpressaoAdicao(escopoAtual);
             			escopoAtual.definirExpressao(expressao);
             			escopoAtual = expressao;
             		}
@@ -4342,18 +4342,18 @@ public class CanecaSemantico extends TreeFilter {
         }
         return ;
     }
-    // $ANTLR end "expressaoSoma"
+    // $ANTLR end "expressaoAdicao"
 
 
 
-    // $ANTLR start "terminarExpressaoSoma"
-    // fontes/g/CanecaSemantico.g:536:1: terminarExpressaoSoma : ^( SOMA . . ) ;
-    public final void terminarExpressaoSoma() throws RecognitionException {
+    // $ANTLR start "terminarExpressaoAdicao"
+    // fontes/g/CanecaSemantico.g:536:1: terminarExpressaoAdicao : ^( SOMA . . ) ;
+    public final void terminarExpressaoAdicao() throws RecognitionException {
         try {
             // fontes/g/CanecaSemantico.g:537:2: ( ^( SOMA . . ) )
             // fontes/g/CanecaSemantico.g:537:4: ^( SOMA . . )
             {
-            match(input,SOMA,FOLLOW_SOMA_in_terminarExpressaoSoma1618); if (state.failed) return ;
+            match(input,SOMA,FOLLOW_SOMA_in_terminarExpressaoAdicao1618); if (state.failed) return ;
 
             match(input, Token.DOWN, null); if (state.failed) return ;
             matchAny(input); if (state.failed) return ;
@@ -4381,7 +4381,7 @@ public class CanecaSemantico extends TreeFilter {
         }
         return ;
     }
-    // $ANTLR end "terminarExpressaoSoma"
+    // $ANTLR end "terminarExpressaoAdicao"
 
 
 
@@ -6760,7 +6760,7 @@ public class CanecaSemantico extends TreeFilter {
     public static final BitSet FOLLOW_expressaoMaiorIgual_in_topdown175 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expressaoMenor_in_topdown180 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expressaoMenorIgual_in_topdown185 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_expressaoSoma_in_topdown190 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_expressaoAdicao_in_topdown190 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expressaoSubtracao_in_topdown195 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expressaoMultiplicacao_in_topdown200 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_expressaoDivisao_in_topdown205 = new BitSet(new long[]{0x0000000000000002L});
@@ -6797,7 +6797,7 @@ public class CanecaSemantico extends TreeFilter {
     public static final BitSet FOLLOW_terminarExpressaoMaiorIgual_in_bottomup366 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_terminarExpressaoMenor_in_bottomup371 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_terminarExpressaoMenorIgual_in_bottomup376 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_terminarExpressaoSoma_in_bottomup381 = new BitSet(new long[]{0x0000000000000002L});
+    public static final BitSet FOLLOW_terminarExpressaoAdicao_in_bottomup381 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_terminarExpressaoSubtracao_in_bottomup386 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_terminarExpressaoMultiplicacao_in_bottomup391 = new BitSet(new long[]{0x0000000000000002L});
     public static final BitSet FOLLOW_terminarExpressaoDivisao_in_bottomup396 = new BitSet(new long[]{0x0000000000000002L});
@@ -6936,8 +6936,8 @@ public class CanecaSemantico extends TreeFilter {
     public static final BitSet FOLLOW_MENOR_in_terminarExpressaoMenor1534 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_MENOR_IGUAL_in_expressaoMenorIgual1555 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_MENOR_IGUAL_in_terminarExpressaoMenorIgual1576 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_SOMA_in_expressaoSoma1597 = new BitSet(new long[]{0x0000000000000004L});
-    public static final BitSet FOLLOW_SOMA_in_terminarExpressaoSoma1618 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_SOMA_in_expressaoAdicao1597 = new BitSet(new long[]{0x0000000000000004L});
+    public static final BitSet FOLLOW_SOMA_in_terminarExpressaoAdicao1618 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_SUBTRACAO_in_expressaoSubtracao1639 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_SUBTRACAO_in_terminarExpressaoSubtracao1660 = new BitSet(new long[]{0x0000000000000004L});
     public static final BitSet FOLLOW_MULTIPLICACAO_in_expressaoMultiplicacao1681 = new BitSet(new long[]{0x0000000000000004L});

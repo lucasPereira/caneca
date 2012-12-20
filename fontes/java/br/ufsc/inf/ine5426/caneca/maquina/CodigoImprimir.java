@@ -4,14 +4,14 @@ import java.util.List;
 import java.util.ListIterator;
 import java.util.Stack;
 
-public final class CodigoImprimir extends CodigoAbstrato {
+public final class CodigoImprimir implements Codigo {
 	public CodigoImprimir() {
 		
 	}
 	
 	@Override
-	public void executar(Stack<Valor> pilhaDeDados, Stack<Codigo> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
-		System.out.println("[saida] " + pilhaDeDados.pop().comoTexto());
+	public void executar(MaquinaCaneca maquina) {
+		System.out.println("[saida] " + maquina.pilhaDeDados.pop().comoTexto());
 	}
 	
 	@Override

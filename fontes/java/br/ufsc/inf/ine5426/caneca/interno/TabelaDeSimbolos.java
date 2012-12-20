@@ -1,8 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoCriarContexto;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoDefinirContexto;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,9 +15,9 @@ public final class TabelaDeSimbolos extends EscopoAbstrato {
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
 		for (Map.Entry<String, Classe> classe : classes.entrySet()) {
-			classe.getValue().gerarCodigo(codigo);
+			classe.getValue().gerarCodigo(areaDeCodigo, areaDeDados);
 		}
 	}
 	

@@ -1,8 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoAtualizarSimbolo;
-
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 import java.util.List;
 
 public final class ExpressaoAtribuicao extends ExpressaoBinaria {
@@ -13,10 +11,10 @@ public final class ExpressaoAtribuicao extends ExpressaoBinaria {
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		fornecerOperandoEsquerdo().gerarCodigo(codigo);
-		fornecerOperandoDireito().gerarCodigo(codigo);
-		codigo.add(new CodigoAtualizarSimbolo().encapsular());
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		fornecerOperandoEsquerdo().gerarCodigo(areaDeCodigo, areaDeDados);
+		fornecerOperandoDireito().gerarCodigo(areaDeCodigo, areaDeDados);
+		//TODO
 	}
 	
 	@Override

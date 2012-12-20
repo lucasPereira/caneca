@@ -3,7 +3,7 @@ package br.ufsc.inf.ine5426.caneca.maquina;
 public interface Valor {
 	public void fixarNome(String nome);
 	
-	public void fixarContextoPai(Contexto contextoPai);
+	public void fixarContexto(Contexto contexto);
 	
 	public String fornecerComoTexto();
 	

@@ -1,8 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoSomarI;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoSomarR;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.List;
 
@@ -12,13 +10,13 @@ public final class ExpressaoAdicao extends ExpressaoAritmetica {
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		fornecerOperandoEsquerdo().gerarCodigo(codigo);
-		fornecerOperandoDireito().gerarCodigo(codigo);
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		fornecerOperandoEsquerdo().gerarCodigo(areaDeCodigo, areaDeDados);
+		fornecerOperandoDireito().gerarCodigo(areaDeCodigo, areaDeDados);
 		if (fornecerTipo().mesmoQue(Tipo.INTEIRO)) {
-			codigo.add(new CodigoSomarI().encapsular());
+			areaDeCodigo.add(new CodigoSomarI());
 		} else if (fornecerTipo().mesmoQue(Tipo.REAL)) {
-			codigo.add(new CodigoSomarR().encapsular());
+			areaDeCodigo.add(new CodigoSomarR());
 		}
 	}
 	

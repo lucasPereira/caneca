@@ -1,8 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoEmpilhar;
-import br.ufsc.inf.ine5426.caneca.maquina.ValorNulo;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.List;
 
@@ -12,10 +10,10 @@ public final class ExpressaoValorNulo extends ExpressaoPrimaria {
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		codigo.add(new CodigoEmpilhar(new ValorNulo()).encapsular());
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		areaDeCodigo.add(new CodigoEmpilhar(new ValorNulo()));
 	}
-
+	
 	@Override
 	public Tipo fornecerTipo() {
 		return Tipo.OBJETO;

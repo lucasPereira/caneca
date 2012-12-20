@@ -1,8 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
-import java.util.Stack;
-
-public final class CodigoResolverSimbolo extends CodigoAbstrato {
+public final class CodigoResolverSimbolo implements Codigo {
 	private String nome;
 	
 	public CodigoResolverSimbolo(String nome) {
@@ -10,8 +8,8 @@ public final class CodigoResolverSimbolo extends CodigoAbstrato {
 	}
 	
 	@Override
-	public void executar(Stack<Valor> pilhaDeDados, Stack<Codigo> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
-		pilhaDeDados.push(pilhaDeContextos.peek().resolverSimbolo(nome));
+	public void executar(MaquinaCaneca maquina) {
+		maquina.pilhaDeDados.push(maquina.pilhaDeContextos.peek().resolverSimbolo(nome));
 	}
 	
 	@Override

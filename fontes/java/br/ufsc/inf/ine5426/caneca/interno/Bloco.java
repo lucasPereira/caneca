@@ -1,9 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoCriarContexto;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoEmpilhar;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoFecharContexto;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -21,16 +18,8 @@ public final class Bloco extends EscopoAbstrato {
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		codigo.add(new CodigoCriarContexto().encapsular());
-		for (Map.Entry<String, Variavel> variavel : variaveis.entrySet()) {
-			codigo.add(new CodigoEmpilhar(variavel.getValue().fornecerTipo().fornecerValorPadrao()).encapsular());
-			variavel.getValue().gerarCodigo(codigo);
-		}
-		for (Instrucao instrucao : instrucoes) {
-			instrucao.gerarCodigo(codigo);
-		}
-		codigo.add(new CodigoFecharContexto().encapsular());
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		//TODO
 	}
 	
 	@Override

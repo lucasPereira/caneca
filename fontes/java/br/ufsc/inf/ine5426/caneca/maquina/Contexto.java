@@ -8,36 +8,36 @@ import java.util.Stack;
 
 public final class Contexto {
 	private Contexto contextoPai;
+	private Integer pontoDeEntrada;
 	private Map<String, Valor> simbolos;
 	private Map<String, Contexto> contextos;
-	private List<Codigo> codigos;
 	
-	public Contexto(Contexto contextoPai) {
+	public Contexto(Contexto contextoPai, Integer pontoDeEntrada) {
 		this.contextoPai = contextoPai;
+		this.pontoDeEntrada = pontoDeEntrada;
 		simbolos = new HashMap<String, Valor>();
 		contextos = new HashMap<String, Contexto>();
-		codigos = new LinkedList<Codigo>();
 	}
 	
 	public Contexto() {
-		this(null);
+		this(null, 0);
 	}
 	
-	public void adicionarCodigo(Codigo codigo) {
-		codigos.add(codigo);
+	public Integer fornecerPontoDeEntrada() {
+		return pontoDeEntrada;
 	}
 	
 	public void definirSimbolo(String nome, Valor valor) {
 		simbolos.put(nome, valor);
 		valor.fixarNome(nome);
-		valor.fixarContextoPai(this);
+		valor.fixarContexto(this);
 	}
 	
 	public void atualizarSimbolo(String nome, Valor valor) {
 		if (simbolos.containsKey(nome)) {
 			simbolos.put(nome, valor);
 			valor.fixarNome(nome);
-			valor.fixarContextoPai(this);
+			valor.fixarContexto(this);
 		} else if (contextoPai != null) {
 			contextoPai.atualizarSimbolo(nome, valor);
 		}
@@ -61,10 +61,6 @@ public final class Contexto {
 			contexto = contextoPai.resolverContexto(nome);
 		}
 		return contexto;
-	}
-	
-	public List<Codigo> fornecerCodigos() {
-		return codigos;
 	}
 	
 	public Map<String, Valor> fornecerSimbolos() {

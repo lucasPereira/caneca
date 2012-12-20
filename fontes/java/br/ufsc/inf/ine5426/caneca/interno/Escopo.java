@@ -1,11 +1,11 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.List;
 
 public interface Escopo {
-	public void gerarCodigo(List<Codigo> codigo);
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados);
 	
 	public boolean definirClasse(Classe classe);
 	

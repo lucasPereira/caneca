@@ -1,8 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoExtrairContexto;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoFecharContexto;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -16,12 +14,10 @@ public final class ExpressaoComando extends EscopoAbstrato implements Expressao 
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		chamadas.removeFirst().gerarCodigo(codigo);
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		chamadas.removeFirst().gerarCodigo(areaDeCodigo, areaDeDados);
 		for (Expressao chamada : chamadas) {
-			codigo.add(new CodigoExtrairContexto().encapsular());
-			chamada.gerarCodigo(codigo);
-			codigo.add(new CodigoFecharContexto().encapsular());
+			//TODO
 		}
 	}
 	

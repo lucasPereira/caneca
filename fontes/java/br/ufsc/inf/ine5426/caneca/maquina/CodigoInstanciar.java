@@ -1,11 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-import java.util.Stack;
-
-public final class CodigoInstanciar extends CodigoAbstrato {
+public final class CodigoInstanciar implements Codigo {
 	String nomeDaClasse;
 	
 	public CodigoInstanciar(String nomeDaClasse) {
@@ -13,15 +8,8 @@ public final class CodigoInstanciar extends CodigoAbstrato {
 	}
 	
 	@Override
-	public void executar(Stack<Valor> pilhaDeDados, Stack<Codigo> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
-		Contexto contextoDaClasse = pilhaDeContextos.peek().resolverContexto(nomeDaClasse);
-		Contexto contextoDoObjeto = new Contexto(contextoDaClasse);
-		for (Map.Entry<String, Valor> simbolo : contextoDaClasse.fornecerSimbolos().entrySet()) {
-			contextoDoObjeto.definirSimbolo(simbolo.getKey(), simbolo.getValue());
-		}
-		ValorReferencia referencia = new ValorReferencia(contextoDoObjeto);
-		pilhaDeDados.push(referencia);
-		pilhaDeDados.push(referencia);
+	public void executar(MaquinaCaneca maquina) {
+		//TODO
 	}
 	
 	@Override

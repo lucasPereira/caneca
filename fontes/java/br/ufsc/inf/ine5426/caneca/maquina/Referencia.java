@@ -13,7 +13,7 @@ public final class Referencia {
 		return nome;
 	}
 	
-	public Contexto fornecerContextoPai() {
+	public Contexto fornecerContexto() {
 		return contexto;
 	}
 }

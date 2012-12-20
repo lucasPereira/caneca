@@ -1,7 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoImprimir;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.List;
 
@@ -11,10 +10,10 @@ public final class InstrucaoImprimir extends EscopoAbstrato implements Instrucao
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		codigo.add(new CodigoImprimir().encapsular());
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		areaDeCodigo.add(new CodigoImprimir());
 	}
-
+	
 	@Override
 	public String comoTexto() {
 		return "imprimir";

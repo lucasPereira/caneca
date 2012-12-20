@@ -1,10 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoChamar;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoExtrairContexto;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoFecharContexto;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoInstanciar;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -20,14 +16,11 @@ public final class ExpressaoInstanciacao extends EscopoAbstrato implements Expre
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
 		for (Expressao parametro : parametros) {
-			parametro.gerarCodigo(codigo);
+			parametro.gerarCodigo(areaDeCodigo, areaDeDados);
 		}
-		codigo.add(new CodigoInstanciar(tipo.fornecerNomeDaClasse()).encapsular());
-		codigo.add(new CodigoExtrairContexto().encapsular());
-		codigo.add(new CodigoChamar("construtor").encapsular());
-		codigo.add(new CodigoFecharContexto().encapsular());
+		//TODO
 	}
 	
 	@Override

@@ -1,9 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoCriarContexto;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoDefinirContexto;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoFecharContexto;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -29,14 +26,18 @@ public abstract class Procedimento<T> extends EscopoAbstrato implements Simbolo 
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		codigo.add(new CodigoCriarContexto());
-		codigo.add(new CodigoDefinirContexto(nome));
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		Contexto contexto = new Contexto(areaDeDados, areaDeCodigo.size());
+		areaDeDados.definirContexto(nome, contexto);
 		while (!argumentosEmPilha.empty()) {
-			argumentosEmPilha.pop().gerarCodigo(codigo);
+			Variavel argumento = argumentosEmPilha.pop();
+			contexto.definirSimbolo(argumento.fornecerNome(), argumento.fornecerTipo().fornecerValorPadrao());
+			areaDeCodigo.add(new CodigoResolverSimbolo(argumento.fornecerNome()));
+			areaDeCodigo.add(new CodigoAtribuir());
+			areaDeCodigo.add(new CodigoDesempilhar());
 		}
-		bloco.gerarCodigo(codigo);
-		codigo.add(new CodigoFecharContexto());
+		bloco.gerarCodigo(areaDeCodigo, areaDeDados);
+		areaDeCodigo.add(new CodigoRetornar());
 	}
 	
 	public final boolean mesmaAssinatura(Procedimento<T> outro) {

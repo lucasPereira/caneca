@@ -1,9 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoCriarContexto;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoDefinirContexto;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoFecharContexto;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -14,7 +11,7 @@ import java.util.Map;
 public final class Classe extends EscopoAbstrato implements Simbolo {
 	private Map<String, Atributo> atributos;
 	private Map<String, Metodo> metodos;
-	private List<Construtor> construtores;
+	private Construtor construtor;
 	private Destrutor destrutor;
 	private String nome;
 	private int linha;
@@ -27,25 +24,23 @@ public final class Classe extends EscopoAbstrato implements Simbolo {
 		this.coluna = coluna;
 		atributos = new HashMap<String, Atributo>();
 		metodos = new HashMap<String, Metodo>();
-		construtores = new LinkedList<Construtor>();
 		//TODO: atributir valor na geração de código
 		definirAtributo(new Atributo(this, new Tipo(nome), "esse", 0, 0));
 		definirAtributo(new Atributo(this, new Tipo(nome), "essa", 0, 0));
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		codigo.add(new CodigoCriarContexto());
-		codigo.add(new CodigoDefinirContexto(nome));
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		Contexto contexto = new Contexto(areaDeDados, areaDeCodigo.size());
+		areaDeDados.definirContexto(nome, contexto);
 		for (Map.Entry<String, Atributo> atributo : atributos.entrySet()) {
-			atributo.getValue().gerarCodigo(codigo);
+			contexto.definirSimbolo(atributo.getKey(), atributo.getValue().fornecerTipo().fornecerValorPadrao());
 		}
-		construtores.get(0).gerarCodigo(codigo);
-		destrutor.gerarCodigo(codigo);
+		construtor.gerarCodigo(areaDeCodigo, contexto);
+		destrutor.gerarCodigo(areaDeCodigo, contexto);
 		for (Map.Entry<String, Metodo> metodo : metodos.entrySet()) {
-			metodo.getValue().gerarCodigo(codigo);
+			metodo.getValue().gerarCodigo(areaDeCodigo, contexto);
 		}
-		codigo.add(new CodigoFecharContexto());
 	}
 	
 	@Override
@@ -65,22 +60,8 @@ public final class Classe extends EscopoAbstrato implements Simbolo {
 			Reporter.instancia().reportarErroDeDefinicaoDeNomeErradoDeConstrutor(construtor);
 			return false;
 		}
-		construtores.add(construtor);
+		this.construtor = construtor;
 		Reporter.instancia().reportarDefinicaoDeConstrutor(construtor);
-		return true;
-	}
-	
-	public boolean verificarAssinaturaDeConstrutor(Construtor construtor) {
-		//TODO
-		construtores.remove(construtor);
-		Iterator<Construtor> iteradorDeConstrutores = construtores.iterator();
-		while (iteradorDeConstrutores.hasNext()) {
-			if (iteradorDeConstrutores.next().mesmaAssinatura(construtor)) {
-				Reporter.instancia().reportarErroDeDefinicaoRepetidaDeConstrutor(construtor);
-				return false;
-			}
-		}
-		construtores.add(construtor);
 		return true;
 	}
 	

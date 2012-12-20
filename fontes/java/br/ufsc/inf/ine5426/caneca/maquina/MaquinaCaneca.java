@@ -4,6 +4,7 @@ import br.ufsc.inf.ine5426.caneca.interno.ExpressaoInstanciacao;
 import br.ufsc.inf.ine5426.caneca.interno.TabelaDeSimbolos;
 import br.ufsc.inf.ine5426.caneca.interno.Tipo;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,39 +13,31 @@ import java.util.Map;
 import java.util.Stack;
 
 public class MaquinaCaneca {
-	private Stack<Valor> pilhaDeDados;
-	private Stack<Codigo> pilhaDeExecucao;
-	private Stack<Contexto> pilhaDeContextos;
+	protected Contexto areaDeDados = new Contexto();
+	protected ArrayList<Codigo> areaDeCodigo;
+	protected Stack<Valor> pilhaDeDados;
+	protected Stack<Contexto> pilhaDeContextos;
+	protected Stack<Integer> pilhaDeExecucao;
+	protected Integer contadorDePrograma;
 	
 	public MaquinaCaneca() {
+		areaDeDados = new Contexto();
+		areaDeCodigo = new ArrayList<Codigo>();
 		pilhaDeDados = new Stack<Valor>();
-		pilhaDeExecucao = new Stack<Codigo>();
+		pilhaDeExecucao = new Stack<Integer>();
 		pilhaDeContextos = new Stack<Contexto>();
+		contadorDePrograma = 0;
 	}
 	
 	public void gerarCodigo(TabelaDeSimbolos tabelaDeSimbolos, String nomeDaClassePrincipal) {
-		List<Codigo> codigoCarregado = new LinkedList<Codigo>();
-		tabelaDeSimbolos.gerarCodigo(codigoCarregado);
-		codigoCarregado.add(new CodigoInstanciar(nomeDaClassePrincipal));
-		codigoCarregado.add(new CodigoExtrairContexto());
-		codigoCarregado.add(new CodigoChamar("construtor"));
-		codigoCarregado.add(new CodigoFecharContexto());
-		for (Codigo codigo : codigoCarregado) {
+		tabelaDeSimbolos.gerarCodigo(areaDeCodigo, areaDeDados);
+		for (Codigo codigo : areaDeCodigo) {
 			System.out.println(codigo.comoTexto());
-		}
-		ListIterator<Codigo> iterador = codigoCarregado.listIterator(codigoCarregado.size());
-		while (iterador.hasPrevious()) {
-			pilhaDeExecucao.push(iterador.previous());
 		}
 	}
 	
 	public void executar() {
-		System.out.println();
-		pilhaDeContextos.push(new Contexto());
-		while (!pilhaDeExecucao.empty()) {
-			Codigo codigo = pilhaDeExecucao.pop();
-			System.out.println(codigo.comoTexto());
-			codigo.executar(pilhaDeDados, pilhaDeExecucao, pilhaDeContextos);
-		}
+		pilhaDeContextos.push(areaDeDados);
+		pilhaDeExecucao.push(0);
 	}
 }

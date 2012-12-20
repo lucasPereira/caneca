@@ -1,6 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.List;
 
@@ -12,7 +12,7 @@ public abstract class EscopoAbstrato implements Escopo {
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
 		//TODO
 		//throw new UnsupportedOperationException();
 	}

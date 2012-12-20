@@ -2,16 +2,16 @@ package br.ufsc.inf.ine5426.caneca.maquina;
 
 import java.util.Stack;
 
-public final class CodigoSomarI extends CodigoAbstrato {
+public final class CodigoSomarI implements Codigo {
 	public CodigoSomarI() {
 		
 	}
 	
 	@Override
-	public void executar(Stack<Valor> pilhaDeDados, Stack<Codigo> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
-		int operandoB = pilhaDeDados.pop().fornecerComoInteiro();
-		int operandoA = pilhaDeDados.pop().fornecerComoInteiro();
-		pilhaDeDados.push(new ValorInteiro(operandoA + operandoB));
+	public void executar(MaquinaCaneca maquina) {
+		int operandoB = maquina.pilhaDeDados.pop().fornecerComoInteiro();
+		int operandoA = maquina.pilhaDeDados.pop().fornecerComoInteiro();
+		maquina.pilhaDeDados.push(new ValorInteiro(operandoA + operandoB));
 	}
 	
 	@Override

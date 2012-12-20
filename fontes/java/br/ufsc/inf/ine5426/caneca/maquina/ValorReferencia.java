@@ -8,7 +8,7 @@ public final class ValorReferencia extends ValorAbstrato {
 		this.nome = nome;
 		this.contexto = contexto;
 		fixarNome(nome);
-		fixarContextoPai(contexto);
+		fixarContexto(contexto);
 	}
 	
 	public ValorReferencia(Contexto contexto) {
@@ -39,7 +39,7 @@ public final class ValorReferencia extends ValorAbstrato {
 	public double fornecerComoReal() {
 		return contexto.resolverSimbolo(nome).fornecerComoReal();
 	}
-
+	
 	@Override
 	public String comoTexto() {
 		return String.format("referencia:%s", nome);

@@ -1,7 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoChamar;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -19,11 +18,11 @@ public final class ExpressaoChamadaDeMetodo extends EscopoAbstrato implements Ex
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
 		for (Expressao parametro : parametros) {
-			parametro.gerarCodigo(codigo);
+			parametro.gerarCodigo(areaDeCodigo, areaDeDados);
 		}
-		codigo.add(new CodigoChamar(nomeDoMetodo).encapsular());
+		//TODO
 	}
 	
 	@Override

@@ -1,7 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoResolverSimbolo;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -17,8 +16,8 @@ public final class ExpressaoReferencia extends EscopoAbstrato implements Express
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		codigo.add(new CodigoResolverSimbolo(nome).encapsular());
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		areaDeCodigo.add(new CodigoResolverSimbolo(nome));
 	}
 	
 	@Override

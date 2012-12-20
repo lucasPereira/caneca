@@ -1,8 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
-import br.ufsc.inf.ine5426.caneca.maquina.Codigo;
-import br.ufsc.inf.ine5426.caneca.maquina.CodigoEmpilhar;
-import br.ufsc.inf.ine5426.caneca.maquina.ValorInteiro;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.util.List;
 
@@ -15,8 +13,8 @@ public final class ExpressaoConstanteInteira extends ExpressaoPrimaria {
 	}
 	
 	@Override
-	public void gerarCodigo(List<Codigo> codigo) {
-		codigo.add(new CodigoEmpilhar(new ValorInteiro(valor)).encapsular());
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		areaDeCodigo.add(new CodigoEmpilhar(new ValorInteiro(valor)));
 	}
 	
 	@Override

@@ -38,7 +38,7 @@ options {
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoOu;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoReferencia;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoRestoDaDivisao;
-	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoSoma;
+	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoAdicao;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoSubtracao;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoValorBooleano;
 	import br.ufsc.inf.ine5426.caneca.interno.ExpressaoValorNulo;
@@ -113,7 +113,7 @@ topdown
 	| expressaoMaiorIgual
 	| expressaoMenor
 	| expressaoMenorIgual
-	| expressaoSoma
+	| expressaoAdicao
 	| expressaoSubtracao
 	| expressaoMultiplicacao
 	| expressaoDivisao
@@ -153,7 +153,7 @@ bottomup
 	| terminarExpressaoMaiorIgual
 	| terminarExpressaoMenor
 	| terminarExpressaoMenorIgual
-	| terminarExpressaoSoma
+	| terminarExpressaoAdicao
 	| terminarExpressaoSubtracao
 	| terminarExpressaoMultiplicacao
 	| terminarExpressaoDivisao
@@ -523,17 +523,17 @@ terminarExpressaoMenorIgual
 		}
 	;
 
-expressaoSoma
+expressaoAdicao
 	: ^(SOMA . .)
 		{
 			mostrar("+");
-			ExpressaoSoma expressao = new ExpressaoSoma(escopoAtual);
+			ExpressaoAdicao expressao = new ExpressaoAdicao(escopoAtual);
 			escopoAtual.definirExpressao(expressao);
 			escopoAtual = expressao;
 		}
 	;
 
-terminarExpressaoSoma
+terminarExpressaoAdicao
 	: ^(SOMA . .)
 		{
 			mostrar("terminar +");

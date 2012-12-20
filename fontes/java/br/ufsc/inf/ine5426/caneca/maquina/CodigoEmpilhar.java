@@ -1,8 +1,6 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
-import java.util.Stack;
-
-public final class CodigoEmpilhar extends CodigoAbstrato {
+public final class CodigoEmpilhar implements Codigo {
 	private Valor valor;
 	
 	public CodigoEmpilhar(Valor valor) {
@@ -10,8 +8,8 @@ public final class CodigoEmpilhar extends CodigoAbstrato {
 	}
 	
 	@Override
-	public void executar(Stack<Valor> pilhaDeDados, Stack<Codigo> pilhaDeExecucao, Stack<Contexto> pilhaDeContextos) {
-		pilhaDeDados.push(valor);
+	public void executar(MaquinaCaneca maquina) {
+		maquina.pilhaDeDados.push(valor);
 	}
 	
 	@Override

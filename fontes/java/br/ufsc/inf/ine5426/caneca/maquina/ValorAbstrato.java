@@ -2,7 +2,7 @@ package br.ufsc.inf.ine5426.caneca.maquina;
 
 public abstract class ValorAbstrato implements Valor {
 	private String nome;
-	private Contexto contextoPai;
+	private Contexto contexto;
 	
 	@Override
 	public void fixarNome(String nome) {
@@ -10,14 +10,14 @@ public abstract class ValorAbstrato implements Valor {
 	}
 	
 	@Override
-	public void fixarContextoPai(Contexto contextoPai) {
-		this.contextoPai = contextoPai;
+	public void fixarContexto(Contexto contexto) {
+		this.contexto = contexto;
 	}
 	
 	@Override
 	public Referencia fornecerComoReferencia() {
-		if (contextoPai != null) {
-			return new Referencia(nome, contextoPai);
+		if (contexto != null) {
+			return new Referencia(nome, contexto);
 		}
 		throw new UnsupportedOperationException();
 	}
