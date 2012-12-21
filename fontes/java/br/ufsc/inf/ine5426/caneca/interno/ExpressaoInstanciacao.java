@@ -20,7 +20,11 @@ public final class ExpressaoInstanciacao extends EscopoAbstrato implements Expre
 		for (Expressao parametro : parametros) {
 			parametro.gerarCodigo(areaDeCodigo, areaDeDados);
 		}
-		//TODO
+		areaDeCodigo.add(new CodigoInstanciar(tipo.fornecerNomeDaClasse()));
+		areaDeCodigo.add(new CodigoExtrairContexto());
+		areaDeCodigo.add(new CodigoChamar("construtor", areaDeCodigo.size()));
+		areaDeCodigo.add(new CodigoResolverSimbolo("esse"));
+		areaDeCodigo.add(new CodigoFecharContexto());
 	}
 	
 	@Override

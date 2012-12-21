@@ -5,13 +5,13 @@ import br.ufsc.inf.ine5426.caneca.antlr.CanecaLexico;
 import br.ufsc.inf.ine5426.caneca.antlr.CanecaSemantico;
 import br.ufsc.inf.ine5426.caneca.antlr.CanecaSintatico;
 
-import br.ufsc.inf.ine5426.caneca.interno.Reporter;
-import br.ufsc.inf.ine5426.caneca.interno.TabelaDeSimbolos;
+import br.ufsc.inf.ine5426.caneca.interno.*;
 
-import br.ufsc.inf.ine5426.caneca.maquina.MaquinaCaneca;
+import br.ufsc.inf.ine5426.caneca.maquina.*;
 
 import java.io.IOException;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -26,6 +26,7 @@ import org.antlr.runtime.tree.CommonTree;
 import org.antlr.runtime.tree.CommonTreeNodeStream;
 
 public class Execucao {
+	private static final String ARQUIVO_DESTINO_CASM = "gerados/casm/%s.casm";
 	private String nomeDoArquivoComCodigo;
 	private String nomeDaClassePrincipal;
 	private CommonTreeNodeStream fluxoDeNodos;
@@ -43,9 +44,19 @@ public class Execucao {
 		analisadorSemantico.fixarTabelaDeSimbolos(tabelaDeSimbolos);
 		analisadorSemantico.downup(arvoreSintaticaReescrita);
 		fluxoDeNodos.reset();
-		MaquinaCaneca maquina = new MaquinaCaneca();
 		System.out.println("");
-		maquina.gerarCodigo(tabelaDeSimbolos, nomeDaClassePrincipal);
+		MaquinaCaneca maquina = new MaquinaCaneca();
+		LeitorEscritor leitorEscritor = new LeitorEscritor();
+		ArrayList<Codigo> areaDeCodigo = maquina.gerarCodigo(tabelaDeSimbolos, nomeDaClassePrincipal);
+		StringBuffer codigoDeMaquina = new StringBuffer();
+		Integer contador = 0;
+		for (Codigo codigo : areaDeCodigo) {
+			String codigoCasm = String.format("[%03d] %s\n", contador++, codigo.comoTexto());
+			System.out.print(codigoCasm);
+			codigoDeMaquina.append(codigoCasm);
+		}
+		leitorEscritor.escreverArquivo(String.format(ARQUIVO_DESTINO_CASM, nomeDaClassePrincipal), codigoDeMaquina.toString());
+		System.out.println("");
 		maquina.executar();
 	}
 	

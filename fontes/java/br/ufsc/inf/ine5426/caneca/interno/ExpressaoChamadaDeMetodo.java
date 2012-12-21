@@ -22,7 +22,7 @@ public final class ExpressaoChamadaDeMetodo extends EscopoAbstrato implements Ex
 		for (Expressao parametro : parametros) {
 			parametro.gerarCodigo(areaDeCodigo, areaDeDados);
 		}
-		//TODO
+		areaDeCodigo.add(new CodigoChamar(nomeDoMetodo, areaDeCodigo.size()));
 	}
 	
 	@Override

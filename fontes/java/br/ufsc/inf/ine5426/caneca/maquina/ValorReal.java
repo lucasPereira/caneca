@@ -9,10 +9,17 @@ public final class ValorReal extends ValorAbstrato {
 	}
 	
 	@Override
+	public ValorReal copiarComNome(String nome) {
+		ValorReal novoValor = new ValorReal(valor);
+		novoValor.fixarNome(nome);
+		return novoValor;
+	}
+	
+	@Override
 	public double fornecerComoReal() {
 		return valor;
 	}
-
+	
 	@Override
 	public String comoTexto() {
 		return valor + "";

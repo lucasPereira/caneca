@@ -17,7 +17,9 @@ public final class ExpressaoComando extends EscopoAbstrato implements Expressao 
 	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
 		chamadas.removeFirst().gerarCodigo(areaDeCodigo, areaDeDados);
 		for (Expressao chamada : chamadas) {
-			//TODO
+			areaDeCodigo.add(new CodigoExtrairContexto());
+			chamada.gerarCodigo(areaDeCodigo, areaDeDados);
+			areaDeCodigo.add(new CodigoFecharContexto());
 		}
 	}
 	
@@ -30,7 +32,8 @@ public final class ExpressaoComando extends EscopoAbstrato implements Expressao 
 	
 	@Override
 	public Tipo fornecerTipo() {
-		return chamadas.getLast().fornecerTipo();
+		return Tipo.INTEIRO;
+		// return chamadas.getLast().fornecerTipo();
 	}
 	
 	@Override

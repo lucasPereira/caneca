@@ -9,6 +9,13 @@ public final class ValorInteiro extends ValorAbstrato {
 	}
 	
 	@Override
+	public ValorInteiro copiarComNome(String nome) {
+		ValorInteiro novoValor = new ValorInteiro(valor);
+		novoValor.fixarNome(nome);
+		return novoValor;
+	}
+	
+	@Override
 	public int fornecerComoInteiro() {
 		return valor;
 	}

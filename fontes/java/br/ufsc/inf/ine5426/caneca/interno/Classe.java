@@ -31,7 +31,7 @@ public final class Classe extends EscopoAbstrato implements Simbolo {
 	
 	@Override
 	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
-		Contexto contexto = new Contexto(areaDeDados, areaDeCodigo.size());
+		Contexto contexto = new Contexto(areaDeDados);
 		areaDeDados.definirContexto(nome, contexto);
 		for (Map.Entry<String, Atributo> atributo : atributos.entrySet()) {
 			contexto.definirSimbolo(atributo.getKey(), atributo.getValue().fornecerTipo().fornecerValorPadrao());

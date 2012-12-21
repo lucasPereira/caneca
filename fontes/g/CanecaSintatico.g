@@ -393,6 +393,7 @@ instrucao
 		| declaracaoComAtribuicaoOpcional TERMINADOR
 	)
 	| IMPRIMIR TERMINADOR
+	| DEPURAR TERMINADOR
 	| destruicao TERMINADOR
 	| retorno TERMINADOR
 	| se

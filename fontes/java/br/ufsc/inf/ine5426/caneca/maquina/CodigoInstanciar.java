@@ -1,5 +1,7 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
+import java.util.Map;
+
 public final class CodigoInstanciar implements Codigo {
 	String nomeDaClasse;
 	
@@ -9,7 +11,15 @@ public final class CodigoInstanciar implements Codigo {
 	
 	@Override
 	public void executar(MaquinaCaneca maquina) {
-		//TODO
+		Contexto contextoDaClasse = maquina.pilhaDeContextos.peek().resolverContexto(nomeDaClasse);
+		Contexto contextoDoObjeto = new Contexto(contextoDaClasse);
+		for (Map.Entry<String, Valor> atributo : contextoDaClasse.fornecerSimbolos().entrySet()) {
+			contextoDoObjeto.definirSimbolo(atributo.getKey(), atributo.getValue());
+		}
+		ValorReferencia objeto = new ValorReferencia(contextoDoObjeto);
+		contextoDoObjeto.definirSimbolo("esse", objeto);
+		contextoDoObjeto.definirSimbolo("essa", objeto);
+		maquina.pilhaDeDados.push(objeto);
 	}
 	
 	@Override

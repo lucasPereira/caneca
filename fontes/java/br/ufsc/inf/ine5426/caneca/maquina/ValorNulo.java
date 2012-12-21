@@ -8,6 +8,13 @@ public final class ValorNulo extends ValorAbstrato {
 	}
 	
 	@Override
+	public ValorNulo copiarComNome(String nome) {
+		ValorNulo novoValor = new ValorNulo();
+		novoValor.fixarNome(nome);
+		return novoValor;
+	}
+	
+	@Override
 	public String comoTexto() {
 		return "nulo";
 	}

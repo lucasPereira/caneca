@@ -1,9 +1,5 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Stack;
-
 public final class CodigoImprimir implements Codigo {
 	public CodigoImprimir() {
 		

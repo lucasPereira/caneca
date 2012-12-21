@@ -136,6 +136,10 @@ IMPRIMIR
 	: 'imprimir'
 	;
 
+DEPURAR
+	: 'depurar'
+	;
+
 INICIO
 	: 'inicio'
 	;

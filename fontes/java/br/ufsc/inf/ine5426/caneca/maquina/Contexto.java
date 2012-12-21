@@ -1,43 +1,32 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Stack;
 
 public final class Contexto {
 	private Contexto contextoPai;
-	private Integer pontoDeEntrada;
 	private Map<String, Valor> simbolos;
 	private Map<String, Contexto> contextos;
+	private Map<String, Integer> pontosDeEntrada;
 	
-	public Contexto(Contexto contextoPai, Integer pontoDeEntrada) {
+	public Contexto(Contexto contextoPai) {
 		this.contextoPai = contextoPai;
-		this.pontoDeEntrada = pontoDeEntrada;
 		simbolos = new HashMap<String, Valor>();
 		contextos = new HashMap<String, Contexto>();
+		pontosDeEntrada = new HashMap<String, Integer>();
 	}
 	
 	public Contexto() {
-		this(null, 0);
-	}
-	
-	public Integer fornecerPontoDeEntrada() {
-		return pontoDeEntrada;
+		this(null);
 	}
 	
 	public void definirSimbolo(String nome, Valor valor) {
 		simbolos.put(nome, valor);
-		valor.fixarNome(nome);
-		valor.fixarContexto(this);
 	}
 	
 	public void atualizarSimbolo(String nome, Valor valor) {
 		if (simbolos.containsKey(nome)) {
 			simbolos.put(nome, valor);
-			valor.fixarNome(nome);
-			valor.fixarContexto(this);
 		} else if (contextoPai != null) {
 			contextoPai.atualizarSimbolo(nome, valor);
 		}
@@ -49,6 +38,18 @@ public final class Contexto {
 			valor = contextoPai.resolverSimbolo(nome);
 		}
 		return valor;
+	}
+	
+	public void definirPontoDeEntrada(String nome, Integer pontoDeEntrada) {
+		pontosDeEntrada.put(nome, pontoDeEntrada);
+	}
+	
+	public Integer resolverPontoDeEntrada(String nome) {
+		Integer pontoDeEntrada = pontosDeEntrada.get(nome);
+		if (pontoDeEntrada == null && contextoPai != null) {
+			pontoDeEntrada = contextoPai.resolverPontoDeEntrada(nome);
+		}
+		return pontoDeEntrada;
 	}
 	
 	public void definirContexto(String nome, Contexto contexto) {

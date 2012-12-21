@@ -9,10 +9,17 @@ public final class ValorCaractere extends ValorAbstrato {
 	}
 	
 	@Override
+	public ValorCaractere copiarComNome(String nome) {
+		ValorCaractere novoValor = new ValorCaractere(valor);
+		novoValor.fixarNome(nome);
+		return novoValor;
+	}
+	
+	@Override
 	public char fornecerComoCaractere() {
 		return valor;
 	}
-
+	
 	@Override
 	public String comoTexto() {
 		return valor + "";

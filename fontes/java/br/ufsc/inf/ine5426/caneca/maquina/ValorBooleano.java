@@ -9,10 +9,17 @@ public final class ValorBooleano extends ValorAbstrato {
 	}
 	
 	@Override
+	public ValorBooleano copiarComNome(String nome) {
+		ValorBooleano novoValor = new ValorBooleano(valor);
+		novoValor.fixarNome(nome);
+		return novoValor;
+	}
+	
+	@Override
 	public boolean fornecerComoBooleano() {
 		return valor;
 	}
-
+	
 	@Override
 	public String comoTexto() {
 		return (valor) ? "verdadeiro" : "falso";

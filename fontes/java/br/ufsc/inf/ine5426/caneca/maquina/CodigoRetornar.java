@@ -7,7 +7,7 @@ public final class CodigoRetornar implements Codigo {
 	
 	@Override
 	public void executar(MaquinaCaneca maquina) {
-		maquina.contadorDePrograma = maquina.pilhaDeExecucao.pop();
+		maquina.contadorDePrograma = maquina.pilhaDeExecucao.pop() + 1;
 	}
 	
 	@Override

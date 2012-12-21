@@ -1,18 +1,22 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
 public final class ValorReferencia extends ValorAbstrato {
-	private String nome;
 	private Contexto contexto;
 	
-	public ValorReferencia(String nome, Contexto contexto) {
-		this.nome = nome;
+	public ValorReferencia(Contexto contexto) {
 		this.contexto = contexto;
-		fixarNome(nome);
-		fixarContexto(contexto);
 	}
 	
-	public ValorReferencia(Contexto contexto) {
-		this(null, contexto);
+	@Override
+	public ValorReferencia copiarComNome(String nome) {
+		ValorReferencia valor = new ValorReferencia(contexto);
+		valor.fixarNome(nome);
+		return valor;
+	}
+	
+	@Override
+	public Contexto fornecerComoReferencia() {
+		return contexto;
 	}
 	
 	@Override

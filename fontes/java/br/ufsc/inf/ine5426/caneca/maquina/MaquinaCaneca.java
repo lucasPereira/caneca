@@ -29,15 +29,24 @@ public class MaquinaCaneca {
 		contadorDePrograma = 0;
 	}
 	
-	public void gerarCodigo(TabelaDeSimbolos tabelaDeSimbolos, String nomeDaClassePrincipal) {
+	public ArrayList<Codigo> gerarCodigo(TabelaDeSimbolos tabelaDeSimbolos, String nomeDaClassePrincipal) {
+		areaDeCodigo.add(new CodigoInstanciar(nomeDaClassePrincipal));
+		areaDeCodigo.add(new CodigoExtrairContexto());
+		areaDeCodigo.add(new CodigoChamar("construtor", 4));
+		areaDeCodigo.add(new CodigoResolverSimbolo("esse"));
+		areaDeCodigo.add(new CodigoFecharContexto());
+		areaDeCodigo.add(new CodigoSair());
 		tabelaDeSimbolos.gerarCodigo(areaDeCodigo, areaDeDados);
-		for (Codigo codigo : areaDeCodigo) {
-			System.out.println(codigo.comoTexto());
-		}
+		return areaDeCodigo;
 	}
 	
 	public void executar() {
+		Integer fimDoCodigo = areaDeCodigo.size();
 		pilhaDeContextos.push(areaDeDados);
-		pilhaDeExecucao.push(0);
+		while (contadorDePrograma < fimDoCodigo) {
+			Codigo codigo = areaDeCodigo.get(contadorDePrograma);
+			contadorDePrograma++;
+			codigo.executar(this);
+		}
 	}
 }

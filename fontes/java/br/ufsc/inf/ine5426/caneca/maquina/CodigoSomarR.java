@@ -1,7 +1,5 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
-import java.util.Stack;
-
 public final class CodigoSomarR implements Codigo {
 	public CodigoSomarR() {
 		

@@ -9,7 +9,7 @@ public final class CodigoResolverSimbolo implements Codigo {
 	
 	@Override
 	public void executar(MaquinaCaneca maquina) {
-		maquina.pilhaDeDados.push(maquina.pilhaDeContextos.peek().resolverSimbolo(nome));
+		maquina.pilhaDeDados.push(maquina.pilhaDeContextos.peek().resolverSimbolo(nome).copiarComNome(nome));
 	}
 	
 	@Override

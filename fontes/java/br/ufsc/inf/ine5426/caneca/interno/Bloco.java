@@ -19,7 +19,15 @@ public final class Bloco extends EscopoAbstrato {
 	
 	@Override
 	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
-		//TODO
+		areaDeCodigo.add(new CodigoAbrirContexto());
+		for (Map.Entry<String, Variavel> variavel : variaveis.entrySet()) {
+			areaDeCodigo.add(new CodigoEmpilhar(variavel.getValue().fornecerTipo().fornecerValorPadrao()));
+			areaDeCodigo.add(new CodigoDefinirSimbolo(variavel.getKey()));
+		}
+		for (Instrucao instrucao : instrucoes) {
+			instrucao.gerarCodigo(areaDeCodigo, areaDeDados);
+		}
+		areaDeCodigo.add(new CodigoFecharContexto());
 	}
 	
 	@Override

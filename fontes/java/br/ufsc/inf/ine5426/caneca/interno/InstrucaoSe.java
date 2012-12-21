@@ -1,5 +1,9 @@
 package br.ufsc.inf.ine5426.caneca.interno;
 
+import br.ufsc.inf.ine5426.caneca.maquina.*;
+
+import java.util.List;
+
 public final class InstrucaoSe extends EscopoAbstrato implements Instrucao {
 	private Expressao condicao;
 	private Bloco blocoSe;
@@ -7,6 +11,23 @@ public final class InstrucaoSe extends EscopoAbstrato implements Instrucao {
 	
 	public InstrucaoSe(Escopo escopoPai) {
 		super(escopoPai);
+	}
+	
+	@Override
+	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
+		CodigoDesviarSeFalso desviarParaSenao = new CodigoDesviarSeFalso();
+		CodigoDesviar desviarParaEntao = new CodigoDesviar();
+		condicao.gerarCodigo(areaDeCodigo, areaDeDados);
+		areaDeCodigo.add(desviarParaSenao);
+		blocoSe.gerarCodigo(areaDeCodigo, areaDeDados);
+		if (blocoSenao != null) {
+			areaDeCodigo.add(desviarParaEntao);
+		}
+		desviarParaSenao.fixarPontoDeDesvio(areaDeCodigo.size());
+		if (blocoSenao != null) {
+			blocoSenao.gerarCodigo(areaDeCodigo, areaDeDados);
+			desviarParaEntao.fixarPontoDeDesvio(areaDeCodigo.size());
+		}
 	}
 	
 	@Override

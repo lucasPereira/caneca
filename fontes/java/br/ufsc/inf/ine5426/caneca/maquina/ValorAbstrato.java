@@ -1,24 +1,19 @@
 package br.ufsc.inf.ine5426.caneca.maquina;
 
 public abstract class ValorAbstrato implements Valor {
-	private String nome;
-	private Contexto contexto;
+	String nome;
 	
-	@Override
 	public void fixarNome(String nome) {
 		this.nome = nome;
 	}
 	
 	@Override
-	public void fixarContexto(Contexto contexto) {
-		this.contexto = contexto;
+	public String fornecerNome() {
+		return nome;
 	}
 	
 	@Override
-	public Referencia fornecerComoReferencia() {
-		if (contexto != null) {
-			return new Referencia(nome, contexto);
-		}
+	public Contexto fornecerComoReferencia() {
 		throw new UnsupportedOperationException();
 	}
 	
@@ -45,5 +40,10 @@ public abstract class ValorAbstrato implements Valor {
 	@Override
 	public double fornecerComoReal() {
 		throw new UnsupportedOperationException();
+	}
+	
+	@Override
+	public String toString() {
+		return comoTexto();
 	}
 }

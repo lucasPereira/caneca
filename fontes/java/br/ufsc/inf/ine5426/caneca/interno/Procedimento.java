@@ -27,16 +27,13 @@ public abstract class Procedimento<T> extends EscopoAbstrato implements Simbolo 
 	
 	@Override
 	public void gerarCodigo(List<Codigo> areaDeCodigo, Contexto areaDeDados) {
-		Contexto contexto = new Contexto(areaDeDados, areaDeCodigo.size());
-		areaDeDados.definirContexto(nome, contexto);
+		areaDeDados.definirPontoDeEntrada(nome, areaDeCodigo.size());
+		areaDeCodigo.add(new CodigoAbrirContextoDeProcedimento(fornecerEscopoPai().comoTexto()));
 		while (!argumentosEmPilha.empty()) {
-			Variavel argumento = argumentosEmPilha.pop();
-			contexto.definirSimbolo(argumento.fornecerNome(), argumento.fornecerTipo().fornecerValorPadrao());
-			areaDeCodigo.add(new CodigoResolverSimbolo(argumento.fornecerNome()));
-			areaDeCodigo.add(new CodigoAtribuir());
-			areaDeCodigo.add(new CodigoDesempilhar());
+			areaDeCodigo.add(new CodigoDefinirSimbolo(argumentosEmPilha.pop().fornecerNome()));
 		}
 		bloco.gerarCodigo(areaDeCodigo, areaDeDados);
+		areaDeCodigo.add(new CodigoFecharContexto());
 		areaDeCodigo.add(new CodigoRetornar());
 	}
 	

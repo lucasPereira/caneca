@@ -49,6 +49,7 @@ tokensSemantico=${fontesJavaAntlr}/${nomeDoAnalisadorSemantico}.tokens
 
 gerados=gerados
 geradosHtml=${gerados}/html
+geradosCasm=${gerados}/casm
 
 limpar() {
 	echo ":limpar";
@@ -79,6 +80,7 @@ criarDiretorios() {
 	mkdir -p ${recursos};
 	mkdir -p ${gerados};
 	mkdir -p ${geradosHtml};
+	mkdir -p ${geradosCasm};
 }
 
 gerarAnalisadores() {
